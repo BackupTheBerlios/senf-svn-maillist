@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r605 - in branches/socket-cleanup/Socket: Protocols	Protocols/DVB Protocols/INet Protocols/Raw Protocols/UN
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r605%20-%20in%20branches/socket-cleanup/Socket%3A%20Protocols%0A%09Protocols/DVB%20Protocols/INet%20Protocols/Raw%20Protocols/UN&In-Reply-To=%3C200801151403.m0FE3vKd004127%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000464.html">
+   <LINK REL="Next"  HREF="000466.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r605 - in branches/socket-cleanup/Socket: Protocols	Protocols/DVB Protocols/INet Protocols/Raw Protocols/UN</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r605%20-%20in%20branches/socket-cleanup/Socket%3A%20Protocols%0A%09Protocols/DVB%20Protocols/INet%20Protocols/Raw%20Protocols/UN&In-Reply-To=%3C200801151403.m0FE3vKd004127%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r605 - in branches/socket-cleanup/Socket: Protocols	Protocols/DVB Protocols/INet Protocols/Raw Protocols/UN">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Jan 15 15:03:57 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000464.html">[Senf-svn] r604 - trunk/_templates
+</A></li>
+        <LI>Next message: <A HREF="000466.html">[Senf-svn] r606 - trunk/PPI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#465">[ date ]</a>
+              <a href="thread.html#465">[ thread ]</a>
+              <a href="subject.html#465">[ subject ]</a>
+              <a href="author.html#465">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Jan 15 15:03:48 2008
+New Revision: 605
+
+Removed:
+   branches/socket-cleanup/Socket/BufferingPolicy.cc
+   branches/socket-cleanup/Socket/BufferingPolicy.hh
+Modified:
+   branches/socket-cleanup/Socket/ClientSocketHandle.cti
+   branches/socket-cleanup/Socket/ClientSocketHandle.hh
+   branches/socket-cleanup/Socket/ClientSocketHandle.test.cc
+   branches/socket-cleanup/Socket/ProtocolServerSocketHandle.test.cc
+   branches/socket-cleanup/Socket/Protocols/BSDSocketProtocol.cc
+   branches/socket-cleanup/Socket/Protocols/BSDSocketProtocol.hh
+   branches/socket-cleanup/Socket/Protocols/DVB/DVBDemuxHandles.hh
+   branches/socket-cleanup/Socket/Protocols/DVB/DVBFrontendHandle.hh
+   branches/socket-cleanup/Socket/Protocols/INet/ConnectedRawINetSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/INet/ConnectedUDPSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/INet/RawINetProtocol.hh
+   branches/socket-cleanup/Socket/Protocols/INet/RawINetSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/INet/RawINetSocketHandle.test.cc
+   branches/socket-cleanup/Socket/Protocols/INet/TCPSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/INet/TCPSocketHandle.test.cc
+   branches/socket-cleanup/Socket/Protocols/INet/UDPSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/INet/UDPSocketHandle.test.cc
+   branches/socket-cleanup/Socket/Protocols/Raw/PacketSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/Raw/TunTapSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/UN/ConnectedUNDatagramSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/UN/UNDatagramSocketHandle.hh
+   branches/socket-cleanup/Socket/SocketHandle.test.cc
+   branches/socket-cleanup/Socket/SocketPolicy.hh
+   branches/socket-cleanup/Socket/SocketPolicy.test.cc
+   branches/socket-cleanup/Socket/SocketPolicy.test.hh
+
+Log:
+Socket: Remove BufferingPolicy
+Socket: Add sndbuf/rcvbuf to BSDSocketProtocol protocol facet
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000464.html">[Senf-svn] r604 - trunk/_templates
+</A></li>
+	<LI>Next message: <A HREF="000466.html">[Senf-svn] r606 - trunk/PPI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#465">[ date ]</a>
+              <a href="thread.html#465">[ thread ]</a>
+              <a href="subject.html#465">[ subject ]</a>
+              <a href="author.html#465">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

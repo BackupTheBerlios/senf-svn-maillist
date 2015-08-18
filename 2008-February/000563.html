@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r703 - in trunk: . HowTos/NewPacket Packets Socket Utils	Utils/Daemon debian senfscons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r703%20-%20in%20trunk%3A%20.%20HowTos/NewPacket%20Packets%20Socket%20Utils%0A%09Utils/Daemon%20debian%20senfscons&In-Reply-To=%3C200802220825.m1M8PYOs010481%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000562.html">
+   <LINK REL="Next"  HREF="000564.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r703 - in trunk: . HowTos/NewPacket Packets Socket Utils	Utils/Daemon debian senfscons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r703%20-%20in%20trunk%3A%20.%20HowTos/NewPacket%20Packets%20Socket%20Utils%0A%09Utils/Daemon%20debian%20senfscons&In-Reply-To=%3C200802220825.m1M8PYOs010481%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r703 - in trunk: . HowTos/NewPacket Packets Socket Utils	Utils/Daemon debian senfscons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Fri Feb 22 09:25:34 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000562.html">[Senf-svn] r702 - in trunk: Examples/UDPClientServer PPI	Utils/Logger
+</A></li>
+        <LI>Next message: <A HREF="000564.html">[Senf-svn] r704 - trunk/debian
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#563">[ date ]</a>
+              <a href="thread.html#563">[ thread ]</a>
+              <a href="subject.html#563">[ subject ]</a>
+              <a href="author.html#563">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Fri Feb 22 09:25:25 2008
+New Revision: 703
+
+Modified:
+   trunk/HowTos/NewPacket/Mainpage.dox
+   trunk/Packets/PacketImpl.test.cc
+   trunk/Packets/PacketRegistry.ct
+   trunk/Packets/ParseHelpers.hh
+   trunk/Packets/ParseHelpers.ih
+   trunk/SConstruct
+   trunk/Socket/Protocols/INet/INet6Address.hh
+   trunk/Socket/Protocols/INet/INetAddressing.cc
+   trunk/Socket/Protocols/INet/MulticastSocketProtocol.hh
+   trunk/Socket/Protocols/INet/RawINetSocketHandle.hh
+   trunk/Socket/Protocols/INet/UDPSocketHandle.hh
+   trunk/Socket/SocketPolicy.hh
+   trunk/Utils/Daemon/Daemon.cc
+   trunk/Utils/pool_alloc_mixin.cti
+   trunk/Utils/pool_alloc_mixin.hh
+   trunk/Utils/pool_alloc_mixin.test.cc
+   trunk/Utils/senfassert.hh
+   trunk/config.hh
+   trunk/debian/control
+   trunk/senfscons/BoostUnitTests.py
+   trunk/senfscons/SENFSCons.py
+
+Log:
+debian: Update build depends
+Packets: change *_RO field helper macros to add a private r/w accessor
+senfscons: Introduce TEST_EXTRA_LIBS variable and move BOOSTFSLIB there
+Socket/Protocols/INet: Make INet[46]MulticastSocketProtocol inherit MulticastSocketprotocol
+Change SENF_NO_DEBUG to SENF_DEBUG
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000562.html">[Senf-svn] r702 - in trunk: Examples/UDPClientServer PPI	Utils/Logger
+</A></li>
+	<LI>Next message: <A HREF="000564.html">[Senf-svn] r704 - trunk/debian
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#563">[ date ]</a>
+              <a href="thread.html#563">[ thread ]</a>
+              <a href="subject.html#563">[ subject ]</a>
+              <a href="author.html#563">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

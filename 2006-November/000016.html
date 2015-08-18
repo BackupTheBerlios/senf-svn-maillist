@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r155 - trunk/satscons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r155%20-%20trunk/satscons&In-Reply-To=%3C200611141320.kAEDKNcA010801%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000015.html">
+   <LINK REL="Next"  HREF="000017.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r155 - trunk/satscons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r155%20-%20trunk/satscons&In-Reply-To=%3C200611141320.kAEDKNcA010801%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r155 - trunk/satscons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Nov 14 14:20:23 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000015.html">[Senf-svn] r154 - trunk/Utils
+</A></li>
+        <LI>Next message: <A HREF="000017.html">[Senf-svn] r156 - trunk/Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Nov 14 14:20:22 2006
+New Revision: 155
+
+Modified:
+   trunk/satscons/SatSCons.py
+
+Log:
+Remove -ansi -pedantic from the g++ command for better optimization
+Add support for 'EXTRA_DEFINES' and 'EXTRA_LIBS' config variables
+Add additional config support for Boost and STLport (BOOST_RUNTIME, BOOST_DEBUG_RUNTIME and STLPORT_DEBUGLIB)
+
+
+Modified: trunk/satscons/SatSCons.py
+==============================================================================
+--- trunk/satscons/SatSCons.py	(original)
++++ trunk/satscons/SatSCons.py	Tue Nov 14 14:20:22 2006
+@@ -8,6 +8,8 @@
+     if opts is not None: return
+     opts = SCons.Options.Options('SConfig')
+     opts.Add('CXX', 'C++ compiler to use', 'g++')
++    opts.Add('EXTRA_DEFINES', 'Additional preprocessor defines', '')
++    opts.Add('EXTRA_LIBS', 'Additional libraries to link against', '')
+     opts.Add(SCons.Options.BoolOption('final','Enable optimization',0))
+ 
+ def Finalizer(f):
+@@ -20,6 +22,8 @@
+     opts.Add('BOOST_INCLUDES', 'Boost include directory', '')
+     opts.Add('BOOST_VARIANT', 'The boost variant to use', '')
+     opts.Add('BOOST_TOOLSET', 'The boost toolset to use', '')
++    opts.Add('BOOST_RUNTIME', 'The boost runtime to use', '')
++    opts.Add('BOOST_DEBUG_RUNTIME', 'The boost debug runtime to use', '')
+     opts.Add('BOOST_LIBDIR', 'The directory of the boost libraries', '')
+     Finalizer(FinalizeBoost)
+ 
+@@ -28,7 +32,8 @@
+ 
+     if env['BOOST_TOOLSET']:
+         runtime = &quot;&quot;
+-        if not env['final'] : runtime += &quot;gd&quot;
++        if env['final'] : runtime += env.get('BOOST_RUNTIME','')
++        else            : runtime += env.get('BOOST_DEBUG_RUNTIME','gd')
+         if env['STLPORT_LIB'] : runtime += &quot;p&quot;
+         if runtime: runtime = &quot;-&quot; + runtime
+         env['BOOST_VARIANT'] = &quot;-&quot; + env['BOOST_TOOLSET'] + runtime
+@@ -43,13 +48,14 @@
+     InitOpts()
+     opts.Add('STLPORT_INCLUDES', 'STLport include directory', '')
+     opts.Add('STLPORT_LIB', 'Name of the stlport library or empty to not use stlport', '')
++    opts.Add('STLPORT_DEBUGLIB', 'Name of the stlport debug library','')
+     opts.Add('STLPORT_LIBDIR', 'The directory of the stlport libraries','')
+     Finalizer(FinalizeSTLPort)
+ 
+ def FinalizeSTLPort(env):
+-    env['STLPORT_DEBUGLIB'] = ''
+     if env['STLPORT_LIB']:
+-        env['STLPORT_DEBUGLIB'] = env['STLPORT_LIB'] + '_stldebug'
++        if not env['STLPORT_DEBUGLIB']:
++            env['STLPORT_DEBUGLIB'] = env['STLPORT_LIB'] + '_stldebug'
+         env.Append(LIBPATH = [ '$STLPORT_LIBDIR' ],
+                    CPPPATH = [ '$STLPORT_INCLUDES' ])
+         if env['final']:
+@@ -79,8 +85,7 @@
+     for finalizer in finalizers:
+         finalizer(env)
+ 
+-    env.Append(CXXFLAGS = [ '-Wall', '-Woverloaded-virtual', '-Wno-long-long',
+-                            '-pedantic', '-ansi' ],
++    env.Append(CXXFLAGS = [ '-Wall', '-Woverloaded-virtual', '-Wno-long-long' ],
+                LOCALLIBDIR = [ '#' ],
+                LIBPATH = [ '$LOCALLIBDIR' ])
+ 
+@@ -89,7 +94,10 @@
+                    CPPDEFINES = [ 'NDEBUG' ])
+     else:
+         env.Append(CXXFLAGS = [ '-O0', '-g', '-fno-inline' ],
+-                        LINKFLAGS = [ '-g' ])
++                   LINKFLAGS = [ '-g' ])
++
++    env.Append(CPPDEFINES = [ '$EXTRA_DEFINES' ],
++               LIBS = [ '$EXTRA_LIBS' ])
+ 
+     #return conf.Finish()
+     return env
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000015.html">[Senf-svn] r154 - trunk/Utils
+</A></li>
+	<LI>Next message: <A HREF="000017.html">[Senf-svn] r156 - trunk/Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

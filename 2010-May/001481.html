@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1625 - in trunk/senf: PPI Packets Socket	Socket/Protocols/INet Utils Utils/Console Utils/Termlib
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2010-May/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1625%20-%20in%20trunk/senf%3A%20PPI%20Packets%20Socket%0A%09Socket/Protocols/INet%20Utils%20Utils/Console%20Utils/Termlib&In-Reply-To=%3C201005061223.o46CNhXN003444%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001480.html">
+   <LINK REL="Next"  HREF="001482.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1625 - in trunk/senf: PPI Packets Socket	Socket/Protocols/INet Utils Utils/Console Utils/Termlib</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1625%20-%20in%20trunk/senf%3A%20PPI%20Packets%20Socket%0A%09Socket/Protocols/INet%20Utils%20Utils/Console%20Utils/Termlib&In-Reply-To=%3C201005061223.o46CNhXN003444%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r1625 - in trunk/senf: PPI Packets Socket	Socket/Protocols/INet Utils Utils/Console Utils/Termlib">subversion at senf.berlios.de
+       </A><BR>
+    <I>Thu May  6 14:23:43 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001480.html">[Senf-svn] r1624 - trunk/senf/Packets
+</A></li>
+        <LI>Next message: <A HREF="001482.html">[Senf-svn] r1626 - in trunk: senf senf/PPI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1481">[ date ]</a>
+              <a href="thread.html#1481">[ thread ]</a>
+              <a href="subject.html#1481">[ subject ]</a>
+              <a href="author.html#1481">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Thu May  6 14:23:29 2010
+New Revision: 1625
+
+Modified:
+   trunk/senf/PPI/Connectors.cc
+   trunk/senf/PPI/Connectors.cci
+   trunk/senf/PPI/DebugModules.cc
+   trunk/senf/PPI/EventManager.cc
+   trunk/senf/PPI/Events.cc
+   trunk/senf/PPI/Events.cti
+   trunk/senf/PPI/IOEvent.cc
+   trunk/senf/PPI/Module.cci
+   trunk/senf/PPI/Route.test.cc
+   trunk/senf/Packets/ArrayParser.cti
+   trunk/senf/Packets/ListBParser.ct
+   trunk/senf/Packets/ListNParser.ct
+   trunk/senf/Packets/ListParser.ct
+   trunk/senf/Packets/ListParser.cti
+   trunk/senf/Packets/Packet.cci
+   trunk/senf/Packets/PacketData.cci
+   trunk/senf/Packets/PacketImpl.cci
+   trunk/senf/Packets/PacketInterpreter.cci
+   trunk/senf/Packets/PacketRegistry.ct
+   trunk/senf/Packets/SafeIterator.cci
+   trunk/senf/Packets/SafeIterator.cti
+   trunk/senf/Packets/VariantParser.cti
+   trunk/senf/Scheduler/ClockService.cc
+   trunk/senf/Scheduler/SignalEvent.cc
+   trunk/senf/Socket/FileHandle.cci
+   trunk/senf/Socket/ProtocolClientSocketHandle.cti
+   trunk/senf/Socket/ProtocolServerSocketHandle.cti
+   trunk/senf/Socket/Protocols/INet/INetAddressing.cc
+   trunk/senf/Socket/SocketHandle.cti
+   trunk/senf/Socket/SocketProtocol.cci
+   trunk/senf/Utils/Console/Executor.cc
+   trunk/senf/Utils/Console/Node.cti
+   trunk/senf/Utils/Console/OverloadedCommand.cci
+   trunk/senf/Utils/Console/Parse.cc
+   trunk/senf/Utils/Console/Parse.cci
+   trunk/senf/Utils/Console/ScopedDirectory.cti
+   trunk/senf/Utils/Console/Traits.cc
+   trunk/senf/Utils/Console/UDPServer.cc
+   trunk/senf/Utils/Termlib/Telnet.cc
+   trunk/senf/Utils/TypeIdValue.cci
+   trunk/senf/Utils/intrusive_refcount.cci
+   trunk/senf/Utils/pool_alloc_mixin.cti
+   trunk/senf/Utils/senfassert.hh
+
+Log:
+Add 'comment' argument to SENF_ASSERT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001480.html">[Senf-svn] r1624 - trunk/senf/Packets
+</A></li>
+	<LI>Next message: <A HREF="001482.html">[Senf-svn] r1626 - in trunk: senf senf/PPI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1481">[ date ]</a>
+              <a href="thread.html#1481">[ thread ]</a>
+              <a href="subject.html#1481">[ subject ]</a>
+              <a href="author.html#1481">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

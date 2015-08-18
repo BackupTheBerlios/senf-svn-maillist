@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r162 - in trunk: doclib
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r162%20-%20in%20trunk%3A%20doclib&In-Reply-To=%3C200612132248.kBDMmkE8017973%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000022.html">
+   <LINK REL="Next"  HREF="000024.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r162 - in trunk: doclib</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r162%20-%20in%20trunk%3A%20doclib&In-Reply-To=%3C200612132248.kBDMmkE8017973%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r162 - in trunk: doclib">subversion at senf.berlios.de
+       </A><BR>
+    <I>Wed Dec 13 23:48:46 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000022.html">[Senf-svn] r161 - in trunk: . Packets Scheduler Socket Utils
+</A></li>
+        <LI>Next message: <A HREF="000024.html">[Senf-svn] r163 - in trunk: doclib satscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#23">[ date ]</a>
+              <a href="thread.html#23">[ thread ]</a>
+              <a href="subject.html#23">[ subject ]</a>
+              <a href="author.html#23">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Wed Dec 13 23:48:42 2006
+New Revision: 162
+
+Modified:
+   trunk/Doxyfile
+   trunk/Mainpage.dox
+   trunk/doclib/Doxyfile.global
+   trunk/doclib/doxy-header-overview.html
+   trunk/doclib/doxy-header.html
+
+Log:
+overview documentation updates
+
+Modified: trunk/Doxyfile
+==============================================================================
+--- trunk/Doxyfile	(original)
++++ trunk/Doxyfile	Wed Dec 13 23:48:42 2006
+@@ -71,7 +71,7 @@
+ RECURSIVE              = NO
+ EXCLUDE                = doc
+ EXCLUDE_SYMLINKS       = NO
+-EXCLUDE_PATTERNS       = 
++EXCLUDE_PATTERNS       = *~ .#*
+ EXAMPLE_PATH           = 
+ EXAMPLE_PATTERNS       = 
+ EXAMPLE_RECURSIVE      = NO
+@@ -171,7 +171,7 @@
+ MACRO_EXPANSION        = YES
+ EXPAND_ONLY_PREDEF     = YES
+ SEARCH_INCLUDES        = YES
+-INCLUDE_PATH           = libs
++INCLUDE_PATH           = 
+ INCLUDE_FILE_PATTERNS  = 
+ PREDEFINED             = DOXYGEN
+ EXPAND_AS_DEFINED      = DefineCommand
+
+Modified: trunk/Mainpage.dox
+==============================================================================
+--- trunk/Mainpage.dox	(original)
++++ trunk/Mainpage.dox	Wed Dec 13 23:48:42 2006
+@@ -7,9 +7,9 @@
+     purpose utilities and will be expedient to use well beyond its
+     primary objective.
+ 
+-    \section goals Goals
++    \section Goals
+ 
+-    The main goals where
++    The main goals where (in no particular order)
+ 
+     \li modular framework design
+     \li utilizing the power of modern C++
+@@ -17,6 +17,61 @@
+     \li extensible design    
+     \li concise interface
+ 
++    \section Components
++
++    The framework is made up of several modular components. When using
++    the library, it is possible to selectively choose to use only a
++    subset of the implemented modules. The modules are
++    
++    \subsection libSocket libSocket: C++ abstraction of the BSD socket API
++
++    This library provides a high performance and object oriented
++    abstraction of the standard socket API. It utilizes a flexible and
++    extensible policy based design. The library provides predefined
++    types for the important socket types (UDP and TCP sockets etc)
++    including raw and packet sockets. \n
++
++    \see &lt;a href=&quot;../../Socket/doc/html/index.html&quot;&gt;libSocket API
++    reference&lt;/a&gt;
++
++    \subsection libPackets libPackets: Network packet manipulation
++
++    This libarary provides a very flexible infrastructure to
++    parse, create and otherwise manipulate packetized network
++    data. Included is a library of several protocol parsers covering
++    the basic IPv4 and IPv6 network protocols down to the Ethernet
++    layer.
++
++    \see &lt;a href=&quot;../../Packets/doc/html/index.html&quot;&gt;libPackets API
++    reference&lt;/a&gt;
++
++    \subsection libScheduler libScheduler: Asynchronous event handling
++
++    The scheduler library provides an object oriented interface to the
++    standard UNIX \c select type event dispatcher. It is based on the
++    high performance \c epoll system call. It provides support for
++    read/write events as well as simple timer based events.
++
++    \see &lt;a href=&quot;../../Scheduler/doc/html/index.html&quot;&gt;libScheduler API
++    reference&lt;/a&gt;
++
++    \subsection libUtils libUtils: Collection of arbitrary utilities
++
++    This library is used be most all of the other modules for
++    miscellaneous tools and utilities. We have
++
++    \li Simple functions to manage daemon processes
++    \li Standard exception classes 
++    \li satcom::lib::intrusive_refcount to simplify the implementation
++	of classes usable with boost::intrusive_ptr
++    \li boost::bind extensions
++    \li An interface to the \c g++ demangler integrated with type_info 
++    \li Typedefs and rudimentary methods to simplify handling
++	high-resolution time values
++
++    \see &lt;a href=&quot;../../Utils/doc/html/index.html&quot;&gt;libUtils API
++    reference&lt;/a&gt;
++
+     \section code Coding practices
+ 
+     The library heavily depends on the features of modern C++. As
+
+Modified: trunk/doclib/Doxyfile.global
+==============================================================================
+--- trunk/doclib/Doxyfile.global	(original)
++++ trunk/doclib/Doxyfile.global	Wed Dec 13 23:48:42 2006
+@@ -83,7 +83,7 @@
+ RECURSIVE              = NO
+ EXCLUDE                = doc
+ EXCLUDE_SYMLINKS       = NO
+-EXCLUDE_PATTERNS       = *.test.cc
++EXCLUDE_PATTERNS       = *.test.cc *~ .#*
+ EXAMPLE_PATH           = 
+ EXAMPLE_PATTERNS       = *
+ EXAMPLE_RECURSIVE      = NO
+@@ -183,7 +183,7 @@
+ MACRO_EXPANSION        = YES
+ EXPAND_ONLY_PREDEF     = YES
+ SEARCH_INCLUDES        = YES
+-INCLUDE_PATH           = libs
++INCLUDE_PATH           = 
+ INCLUDE_FILE_PATTERNS  = 
+ PREDEFINED             = DOXYGEN
+ EXPAND_AS_DEFINED      = DefineCommand
+
+Modified: trunk/doclib/doxy-header-overview.html
+==============================================================================
+--- trunk/doclib/doxy-header-overview.html	(original)
++++ trunk/doclib/doxy-header-overview.html	Wed Dec 13 23:48:42 2006
+@@ -20,9 +20,10 @@
+     &lt;ul&gt;
+       &lt;li class=&quot;Overview&quot;&gt;&lt;a href=&quot;../../doc/html/index.html&quot;&gt;&lt;i&gt;Overview&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+       &lt;li&gt;&lt;a href=&quot;<A HREF="http://senf.berlios.de">http://senf.berlios.de</A>&quot;&gt;&lt;i&gt;SENF @ BerliOS&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
++
++      &lt;li class=&quot;libSocket&quot;&gt;&lt;a href=&quot;../../Socket/doc/html/index.html&quot;&gt;libSocket&lt;/a&gt;&lt;/li&gt;
+       &lt;li class=&quot;libPackets&quot;&gt;&lt;a href=&quot;../../Packets/doc/html/index.html&quot;&gt;libPackets&lt;/a&gt;&lt;/li&gt;
+       &lt;li class=&quot;libScheduler&quot;&gt;&lt;a href=&quot;../../Scheduler/doc/html/index.html&quot;&gt;libScheduler&lt;/a&gt;&lt;/li&gt;
+-      &lt;li class=&quot;libSocket&quot;&gt;&lt;a href=&quot;../../Socket/doc/html/index.html&quot;&gt;libSocket&lt;/a&gt;&lt;/li&gt;
+       &lt;li class=&quot;libUtils&quot;&gt;&lt;a href=&quot;../../Utils/doc/html/index.html&quot;&gt;libUtils&lt;/a&gt;&lt;/li&gt;
+     &lt;/ul&gt;
+   &lt;/div&gt;
+
+Modified: trunk/doclib/doxy-header.html
+==============================================================================
+--- trunk/doclib/doxy-header.html	(original)
++++ trunk/doclib/doxy-header.html	Wed Dec 13 23:48:42 2006
+@@ -20,9 +20,10 @@
+     &lt;ul&gt;
+       &lt;li class=&quot;Overview&quot;&gt;&lt;a href=&quot;../../../doc/html/index.html&quot;&gt;&lt;i&gt;Overview&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+       &lt;li&gt;&lt;a href=&quot;<A HREF="http://senf.berlios.de">http://senf.berlios.de</A>&quot;&gt;&lt;i&gt;SENF @ BerliOS&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
++
++      &lt;li class=&quot;libSocket&quot;&gt;&lt;a href=&quot;../../../Socket/doc/html/index.html&quot;&gt;libSocket&lt;/a&gt;&lt;/li&gt;
+       &lt;li class=&quot;libPackets&quot;&gt;&lt;a href=&quot;../../../Packets/doc/html/index.html&quot;&gt;libPackets&lt;/a&gt;&lt;/li&gt;
+       &lt;li class=&quot;libScheduler&quot;&gt;&lt;a href=&quot;../../../Scheduler/doc/html/index.html&quot;&gt;libScheduler&lt;/a&gt;&lt;/li&gt;
+-      &lt;li class=&quot;libSocket&quot;&gt;&lt;a href=&quot;../../../Socket/doc/html/index.html&quot;&gt;libSocket&lt;/a&gt;&lt;/li&gt;
+       &lt;li class=&quot;libUtils&quot;&gt;&lt;a href=&quot;../../../Utils/doc/html/index.html&quot;&gt;libUtils&lt;/a&gt;&lt;/li&gt;
+     &lt;/ul&gt;
+   &lt;/div&gt;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000022.html">[Senf-svn] r161 - in trunk: . Packets Scheduler Socket Utils
+</A></li>
+	<LI>Next message: <A HREF="000024.html">[Senf-svn] r163 - in trunk: doclib satscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#23">[ date ]</a>
+              <a href="thread.html#23">[ thread ]</a>
+              <a href="subject.html#23">[ subject ]</a>
+              <a href="author.html#23">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

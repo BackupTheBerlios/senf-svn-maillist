@@ -1,0 +1,266 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r166 - in trunk: doclib satscons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r166%20-%20in%20trunk%3A%20doclib%20satscons&In-Reply-To=%3C200612191724.kBJHOsam023759%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000026.html">
+   <LINK REL="Next"  HREF="000028.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r166 - in trunk: doclib satscons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r166%20-%20in%20trunk%3A%20doclib%20satscons&In-Reply-To=%3C200612191724.kBJHOsam023759%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r166 - in trunk: doclib satscons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Dec 19 18:24:54 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000026.html">[Senf-svn] r165 - in trunk: doclib
+</A></li>
+        <LI>Next message: <A HREF="000028.html">[Senf-svn] r167 - in trunk: . Packets Scheduler Socket Utils	Utils/impl doclib satscons senfscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#27">[ date ]</a>
+              <a href="thread.html#27">[ thread ]</a>
+              <a href="subject.html#27">[ subject ]</a>
+              <a href="author.html#27">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Dec 19 18:24:50 2006
+New Revision: 166
+
+Added:
+   trunk/satscons/SConfig.template
+      - copied unchanged from r162, /trunk/SConfig.template
+Removed:
+   trunk/SConfig.template
+Modified:
+   trunk/Doxyfile
+   trunk/Mainpage.dox
+   trunk/doclib/doxy-footer.html
+   trunk/doclib/doxy-header-overview.html
+   trunk/doclib/doxy-header.html
+   trunk/doclib/senf.css
+
+Log:
+Layout fixes (again IE .. :-( )
+
+Modified: trunk/Doxyfile
+==============================================================================
+--- trunk/Doxyfile	(original)
++++ trunk/Doxyfile	Tue Dec 19 18:24:50 2006
+@@ -56,7 +56,7 @@
+ #---------------------------------------------------------------------------
+ # configuration options related to warning and progress messages
+ #---------------------------------------------------------------------------
+-QUIET                  = NO
++QUIET                  = YES
+ WARNINGS               = YES
+ WARN_IF_UNDOCUMENTED   = NO
+ WARN_IF_DOC_ERROR      = YES
+
+Modified: trunk/Mainpage.dox
+==============================================================================
+--- trunk/Mainpage.dox	(original)
++++ trunk/Mainpage.dox	Tue Dec 19 18:24:50 2006
+@@ -30,8 +30,8 @@
+ 
+     \see \ref usage\n
+          \ref example\n
+-         &lt;a href=&quot;<A HREF="http://developer.berlios.de/projects/senf">http://developer.berlios.de/projects/senf</A>&quot;&gt;&lt;b&gt;&lt;i&gt;The BerliOS project page&lt;/i&gt;&lt;/b&gt;&lt;/a&gt;\n
+-         &lt;a href=&quot;<A HREF="http://openfacts.berlios.de/index-en.phtml?title=SENF+Network+Framework">http://openfacts.berlios.de/index-en.phtml?title=SENF+Network+Framework</A>&quot;&gt;&lt;b&gt;&lt;i&gt;The SENF Wiki at BerliOS&lt;/i&gt;&lt;/b&gt;&lt;/a&gt;
++         &lt;a class=&quot;ext&quot; href=&quot;<A HREF="http://developer.berlios.de/projects/senf">http://developer.berlios.de/projects/senf</A>&quot;&gt;The BerliOS project page&lt;/a&gt;\n
++         &lt;a class=&quot;ext&quot; href=&quot;<A HREF="http://openfacts.berlios.de/index-en.phtml?title=SENF+Network+Framework">http://openfacts.berlios.de/index-en.phtml?title=SENF+Network+Framework</A>&quot;&gt;The SENF Wiki at BerliOS&lt;/a&gt;
+ */
+ 
+ /** \page usage Using the SENF framework
+@@ -290,10 +290,10 @@
+     &lt;pre class=&quot;fragment&quot;&gt;
+       $ scons -u [target]&lt;/pre&gt;
+ 
+-    \see &lt;a href=&quot;../../satscons/doc/html/index.html&quot;&gt;&lt;b&gt;SENFSCons reference&lt;/b&gt;&lt;/a&gt; \n
+-         &lt;a href=&quot;<A HREF="http://www.scons.org/documentation.php">http://www.scons.org/documentation.php</A>&quot;&gt;&lt;b&gt;&lt;i&gt;SCons documentation&lt;/i&gt;&lt;/b&gt;&lt;/a&gt; \n
+-         &lt;a href=&quot;<A HREF="http://svnbook.red-bean.com">http://svnbook.red-bean.com</A>&quot;&gt;&lt;b&gt;&lt;i&gt;Subversion online book&lt;/i&gt;&lt;/b&gt;&lt;/a&gt; \n
+-         &lt;a href=&quot;<A HREF="http://subversion.tigris.org">http://subversion.tigris.org</A>&quot;&gt;&lt;b&gt;&lt;i&gt;Subversion Homepage&lt;/i&gt;&lt;/b&gt;&lt;/a&gt;
++    \see &lt;a href=&quot;../../satscons/doc/html/index.html&quot;&gt;SENFSCons reference&lt;/a&gt; \n
++         &lt;a class=&quot;ext&quot; href=&quot;<A HREF="http://www.scons.org/documentation.php">http://www.scons.org/documentation.php</A>&quot;&gt;SCons documentation&lt;/a&gt; \n
++         &lt;a class=&quot;ext&quot; href=&quot;<A HREF="http://svnbook.red-bean.com">http://svnbook.red-bean.com</A>&quot;&gt;Subversion online book&lt;/a&gt; \n
++         &lt;a class=&quot;ext&quot; href=&quot;<A HREF="http://subversion.tigris.org">http://subversion.tigris.org</A>&quot;&gt;Subversion Homepage&lt;/a&gt;
+  */
+ 
+ /** \page overview Introduction to the framework
+@@ -326,25 +326,25 @@
+     When building a network Application with SENF, you will use
+     several modules:
+     
+-    \li Use the &lt;a href=&quot;../../Socket/doc/html/index.html&quot;&gt;&lt;b&gt;Socket
+-      	library&lt;/b&gt;&lt;/a&gt; for network communication needs. This library
++    \li Use the &lt;a href=&quot;../../Socket/doc/html/index.html&quot;&gt;Socket
++      	library&lt;/a&gt; for network communication needs. This library
+       	includes support for raw and packet sockets to allow low level
+       	network access.
+     \li Use the &lt;a
+-      	href=&quot;../../Scheduler/doc/html/index.html&quot;&gt;&lt;b&gt;Scheduler
+-      	library&lt;/b&gt;&lt;/a&gt; to coordinate the asynchronous event
++      	href=&quot;../../Scheduler/doc/html/index.html&quot;&gt;Scheduler
++      	library&lt;/a&gt; to coordinate the asynchronous event
+       	processing. This drastically reduces the number of threads
+       	needed in your application and will greatly enhance the overall
+       	responsiveness.
+     \li To interpret low level network packets, use the &lt;a
+-      	href=&quot;../../Packets/doc/html/index.html&quot;&gt;&lt;b&gt;Packets
+-      	library&lt;/b&gt;&lt;/a&gt;. This library will provide efficient and 
++      	href=&quot;../../Packets/doc/html/index.html&quot;&gt;Packets
++      	library&lt;/a&gt;. This library will provide efficient and 
+ 	convenient access to all protocol fields. It supports parsing as
+       	well as modifying and creating packets. It has default support
+       	for the most important TCP protocols and is highly extensible
+       	with new protocols.
+-    \li Go over the &lt;a href=&quot;../../Utils/doc/html/index.html&quot;&gt;&lt;b&gt;Utils
+-      	library&lt;/b&gt;&lt;/a&gt;. It contains small helpers to
++    \li Go over the &lt;a href=&quot;../../Utils/doc/html/index.html&quot;&gt;Utils
++      	library&lt;/a&gt;. It contains small helpers to
+       	simplify tasks like daemonization, exception handling,
+         debugging and so on.
+ 
+
+Modified: trunk/doclib/doxy-footer.html
+==============================================================================
+--- trunk/doclib/doxy-footer.html	(original)
++++ trunk/doclib/doxy-footer.html	Tue Dec 19 18:24:50 2006
+@@ -1,4 +1,4 @@
+-    &lt;hr style=&quot;border: none; clear: both&quot; /&gt;
++    &lt;hr style=&quot;width:0px;border:none;clear:both;margin:0;padding:0&quot; /&gt;
+   &lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div id=&quot;footer&quot;&gt;
+
+Modified: trunk/doclib/doxy-header-overview.html
+==============================================================================
+--- trunk/doclib/doxy-header-overview.html	(original)
++++ trunk/doclib/doxy-header-overview.html	Tue Dec 19 18:24:50 2006
+@@ -19,8 +19,8 @@
+   &lt;div id=&quot;content2&quot;&gt;
+     &lt;div class=&quot;tabs&quot;&gt;
+       &lt;ul&gt;
+-        &lt;li class=&quot;Overview&quot;&gt;&lt;a href=&quot;../../doc/html/index.html&quot;&gt;&lt;i&gt;Overview&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+-        &lt;li&gt;&lt;a href=&quot;<A HREF="http://developer.berlios.de/projects/senf">http://developer.berlios.de/projects/senf</A>&quot;&gt;&lt;i&gt;SENF @ BerliOS&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
++        &lt;li class=&quot;Overview&quot;&gt;&lt;a href=&quot;../../doc/html/index.html&quot;&gt;Overview&lt;/a&gt;&lt;/li&gt;
++        &lt;li&gt;&lt;a class=&quot;ext&quot; href=&quot;<A HREF="http://developer.berlios.de/projects/senf">http://developer.berlios.de/projects/senf</A>&quot;&gt;SENF @ BerliOS&lt;/a&gt;&lt;/li&gt;
+ 
+         &lt;li class=&quot;libSocket&quot;&gt;&lt;a href=&quot;../../Socket/doc/html/index.html&quot;&gt;libSocket&lt;/a&gt;&lt;/li&gt;
+         &lt;li class=&quot;libPackets&quot;&gt;&lt;a href=&quot;../../Packets/doc/html/index.html&quot;&gt;libPackets&lt;/a&gt;&lt;/li&gt;
+
+Modified: trunk/doclib/doxy-header.html
+==============================================================================
+--- trunk/doclib/doxy-header.html	(original)
++++ trunk/doclib/doxy-header.html	Tue Dec 19 18:24:50 2006
+@@ -19,8 +19,8 @@
+   &lt;div id=&quot;content2&quot;&gt;
+     &lt;div class=&quot;tabs&quot;&gt;
+       &lt;ul&gt;
+-        &lt;li class=&quot;Overview&quot;&gt;&lt;a href=&quot;../../../doc/html/index.html&quot;&gt;&lt;i&gt;Overview&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+-        &lt;li&gt;&lt;a href=&quot;<A HREF="http://developer.berlios.de/projects/senf">http://developer.berlios.de/projects/senf</A>&quot;&gt;&lt;i&gt;SENF @ BerliOS&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
++        &lt;li class=&quot;Overview&quot;&gt;&lt;a href=&quot;../../../doc/html/index.html&quot;&gt;Overview&lt;/a&gt;&lt;/li&gt;
++        &lt;li&gt;&lt;a class=&quot;ext&quot; href=&quot;<A HREF="http://developer.berlios.de/projects/senf">http://developer.berlios.de/projects/senf</A>&quot;&gt;SENF @ BerliOS&lt;/a&gt;&lt;/li&gt;
+ 
+         &lt;li class=&quot;libSocket&quot;&gt;&lt;a href=&quot;../../../Socket/doc/html/index.html&quot;&gt;libSocket&lt;/a&gt;&lt;/li&gt;
+         &lt;li class=&quot;libPackets&quot;&gt;&lt;a href=&quot;../../../Packets/doc/html/index.html&quot;&gt;libPackets&lt;/a&gt;&lt;/li&gt;
+
+Modified: trunk/doclib/senf.css
+==============================================================================
+--- trunk/doclib/senf.css	(original)
++++ trunk/doclib/senf.css	Tue Dec 19 18:24:50 2006
+@@ -37,16 +37,29 @@
+ }
+ 
+ #content1 { 
+-	padding: 0 10px 10px 142px;
++	padding: 0 10px 10px 0;
+ 	border-bottom: 1px solid #AF9D00;
+ }
+ 
+ #content2 { 
+         /* need non-zero top padding here to prevent margin propagation */
+-	padding: 10px 0 0 0;
++	padding: 10px 0 0 142px;
+ 	max-width: 60em;
+ }
+ 
++a { 
++	font-weight: bold;
++	text-decoration: none;
++}
++
++a:contains(&quot;<A HREF="http://">http://</A>&quot;) { 
++	font-weight: normal;
++}
++
++a.ext {
++        font-style: italic;
++}
++
+ div.tabs { 
+ 	display: inline; /* IE double margin fix */
+ 	float: left;
+@@ -58,6 +71,10 @@
+ 	overflow: hidden;
+ }
+ 
++* html div.tabs { 
++	margin-bottom: 0; /* Grmpf .. IE6 is f**ing up ... */
++}
++
+ div.tabs ul { 
+ 	margin: 0;
+ 	padding: 0;
+@@ -75,6 +92,7 @@
+ 	color: #726921;
+ 	text-decoration: none;
+ 	white-space: nowrap;
++	font-weight: normal;
+ }
+ 
+ div.tabs ul li a:visited, div.tabs ul li a:active { 
+@@ -128,4 +146,5 @@
+ #footer a:hover { 
+ 	background-color: inherit;
+ 	text-decoration: underline;
+-}
+\ No newline at end of file
++}
++
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000026.html">[Senf-svn] r165 - in trunk: doclib
+</A></li>
+	<LI>Next message: <A HREF="000028.html">[Senf-svn] r167 - in trunk: . Packets Scheduler Socket Utils	Utils/impl doclib satscons senfscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#27">[ date ]</a>
+              <a href="thread.html#27">[ thread ]</a>
+              <a href="subject.html#27">[ subject ]</a>
+              <a href="author.html#27">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

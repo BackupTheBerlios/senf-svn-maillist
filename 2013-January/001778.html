@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1939 - in trunk/senf: Packets/80211Bundle Utils	Utils/Console Utils/Termlib
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2013-January/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1939%20-%20in%20trunk/senf%3A%20Packets/80211Bundle%20Utils%0A%09Utils/Console%20Utils/Termlib&In-Reply-To=%3C20130107214802.0CEF355B0C%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001779.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1939 - in trunk/senf: Packets/80211Bundle Utils	Utils/Console Utils/Termlib</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1939%20-%20in%20trunk/senf%3A%20Packets/80211Bundle%20Utils%0A%09Utils/Console%20Utils/Termlib&In-Reply-To=%3C20130107214802.0CEF355B0C%40scm.berlios.de%3E"
+       TITLE="[Senf-svn] r1939 - in trunk/senf: Packets/80211Bundle Utils	Utils/Console Utils/Termlib">subversion at senf.berlios.de
+       </A><BR>
+    <I>Mon Jan  7 22:48:01 CET 2013</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001779.html">[Senf-svn] r1940 - in trunk: . senf/PPI senf/Packets/80211Bundle	senf/Scheduler senf/Socket senf/Utils senf/Utils/Logger site_scons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1778">[ date ]</a>
+              <a href="thread.html#1778">[ thread ]</a>
+              <a href="subject.html#1778">[ subject ]</a>
+              <a href="author.html#1778">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tho
+Date: Mon Jan  7 22:48:01 2013
+New Revision: 1939
+
+Log:
+first steps for C++11 support (tested with g++ 4.7 and clang 3.2)
+80211Bundle: reordered MCSInfo members to avoid padding
+
+Added:
+   trunk/senf/Utils/Cpp11Support.hh
+      - copied, changed from r1938, trunk/senf/Packets/80211Bundle/MCSInfo.hh
+Modified:
+   trunk/senf/Packets/80211Bundle/MCSInfo.cc
+   trunk/senf/Packets/80211Bundle/MCSInfo.hh
+   trunk/senf/Utils/Console/Parse.cci
+   trunk/senf/Utils/Console/Parse.hh
+   trunk/senf/Utils/Console/Traits.hh
+   trunk/senf/Utils/Termlib/Telnet.cti
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001779.html">[Senf-svn] r1940 - in trunk: . senf/PPI senf/Packets/80211Bundle	senf/Scheduler senf/Socket senf/Utils senf/Utils/Logger site_scons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1778">[ date ]</a>
+              <a href="thread.html#1778">[ thread ]</a>
+              <a href="subject.html#1778">[ subject ]</a>
+              <a href="author.html#1778">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

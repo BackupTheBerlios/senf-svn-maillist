@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r349 - in trunk: Examples/DVBAdapter Examples/MCSniffer	Examples/Sniffer Examples/TCPClientServer	Packets/DefaultBundle Socket Socket/Protocols/DVB	Socket/Protocols/INet senfscons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r349%20-%20in%20trunk%3A%20Examples/DVBAdapter%20Examples/MCSniffer%0A%09Examples/Sniffer%20Examples/TCPClientServer%0A%09Packets/DefaultBundle%20Socket%20Socket/Protocols/DVB%0A%09Socket/Protocols/INet%20senfscons&In-Reply-To=%3C200707242157.l6OLvdn6028438%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000209.html">
+   <LINK REL="Next"  HREF="000211.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r349 - in trunk: Examples/DVBAdapter Examples/MCSniffer	Examples/Sniffer Examples/TCPClientServer	Packets/DefaultBundle Socket Socket/Protocols/DVB	Socket/Protocols/INet senfscons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r349%20-%20in%20trunk%3A%20Examples/DVBAdapter%20Examples/MCSniffer%0A%09Examples/Sniffer%20Examples/TCPClientServer%0A%09Packets/DefaultBundle%20Socket%20Socket/Protocols/DVB%0A%09Socket/Protocols/INet%20senfscons&In-Reply-To=%3C200707242157.l6OLvdn6028438%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r349 - in trunk: Examples/DVBAdapter Examples/MCSniffer	Examples/Sniffer Examples/TCPClientServer	Packets/DefaultBundle Socket Socket/Protocols/DVB	Socket/Protocols/INet senfscons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Jul 24 23:57:39 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000209.html">[Senf-svn] r348 - in trunk/Packets: .
+</A></li>
+        <LI>Next message: <A HREF="000211.html">[Senf-svn] r350 - in trunk: . Packets/DefaultBundle	Packets/MPEGDVBBundle Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#210">[ date ]</a>
+              <a href="thread.html#210">[ thread ]</a>
+              <a href="subject.html#210">[ subject ]</a>
+              <a href="author.html#210">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Jul 24 23:56:47 2007
+New Revision: 349
+
+Added:
+   trunk/Socket/Protocols/   (props changed)
+   trunk/Socket/Protocols/BSDSocketProtocol.cc
+      - copied, changed from r348, /trunk/Socket/BSDSocketProtocol.cc
+   trunk/Socket/Protocols/BSDSocketProtocol.hh
+      - copied, changed from r348, /trunk/Socket/BSDSocketProtocol.hh
+   trunk/Socket/Protocols/DVB/   (props changed)
+   trunk/Socket/Protocols/DVB/DVBDemuxHandles.cc
+      - copied unchanged from r348, /trunk/Socket/DVBDemuxHandles.cc
+   trunk/Socket/Protocols/DVB/DVBDemuxHandles.hh
+      - copied, changed from r348, /trunk/Socket/DVBDemuxHandles.hh
+   trunk/Socket/Protocols/DVB/DVBDemuxProtocol.cc
+      - copied, changed from r348, /trunk/Socket/DVBDemuxProtocol.cc
+   trunk/Socket/Protocols/DVB/DVBDemuxProtocol.hh
+      - copied, changed from r348, /trunk/Socket/DVBDemuxProtocol.hh
+   trunk/Socket/Protocols/DVB/DVBFrontendHandle.cc
+      - copied, changed from r348, /trunk/Socket/DVBFrontendHandle.cc
+   trunk/Socket/Protocols/DVB/DVBFrontendHandle.hh
+      - copied, changed from r348, /trunk/Socket/DVBFrontendHandle.hh
+   trunk/Socket/Protocols/DVB/SConscript
+   trunk/Socket/Protocols/DVB/main.test.cc
+   trunk/Socket/Protocols/GenericAddressingPolicy.cc
+      - copied unchanged from r348, /trunk/Socket/GenericAddressingPolicy.cc
+   trunk/Socket/Protocols/GenericAddressingPolicy.cti
+      - copied unchanged from r348, /trunk/Socket/GenericAddressingPolicy.cti
+   trunk/Socket/Protocols/GenericAddressingPolicy.hh
+      - copied, changed from r348, /trunk/Socket/GenericAddressingPolicy.hh
+   trunk/Socket/Protocols/GenericSockAddr.cci
+      - copied unchanged from r348, /trunk/Socket/GenericSockAddr.cci
+   trunk/Socket/Protocols/GenericSockAddr.hh
+      - copied unchanged from r348, /trunk/Socket/GenericSockAddr.hh
+   trunk/Socket/Protocols/INet/   (props changed)
+   trunk/Socket/Protocols/INet/INetAddressing.cc
+      - copied unchanged from r348, /trunk/Socket/INetAddressing.cc
+   trunk/Socket/Protocols/INet/INetAddressing.cci
+      - copied unchanged from r348, /trunk/Socket/INetAddressing.cci
+   trunk/Socket/Protocols/INet/INetAddressing.ct
+      - copied unchanged from r348, /trunk/Socket/INetAddressing.ct
+   trunk/Socket/Protocols/INet/INetAddressing.hh
+      - copied, changed from r348, /trunk/Socket/INetAddressing.hh
+   trunk/Socket/Protocols/INet/INetAddressing.test.cc
+      - copied unchanged from r348, /trunk/Socket/INetAddressing.test.cc
+   trunk/Socket/Protocols/INet/INetProtocol.cc
+      - copied unchanged from r348, /trunk/Socket/INetProtocol.cc
+   trunk/Socket/Protocols/INet/INetProtocol.hh
+      - copied, changed from r348, /trunk/Socket/INetProtocol.hh
+   trunk/Socket/Protocols/INet/SConscript
+   trunk/Socket/Protocols/INet/TCPProtocol.cc
+      - copied, changed from r348, /trunk/Socket/TCPProtocol.cc
+   trunk/Socket/Protocols/INet/TCPProtocol.hh
+      - copied, changed from r348, /trunk/Socket/TCPProtocol.hh
+   trunk/Socket/Protocols/INet/TCPSocketHandle.cc
+      - copied unchanged from r348, /trunk/Socket/TCPSocketHandle.cc
+   trunk/Socket/Protocols/INet/TCPSocketHandle.hh
+      - copied, changed from r348, /trunk/Socket/TCPSocketHandle.hh
+   trunk/Socket/Protocols/INet/TCPSocketHandle.test.cc
+      - copied unchanged from r348, /trunk/Socket/TCPSocketHandle.test.cc
+   trunk/Socket/Protocols/INet/UDPProtocol.cc
+      - copied, changed from r348, /trunk/Socket/UDPProtocol.cc
+   trunk/Socket/Protocols/INet/UDPProtocol.hh
+      - copied, changed from r348, /trunk/Socket/UDPProtocol.hh
+   trunk/Socket/Protocols/INet/UDPSocketHandle.cc
+      - copied unchanged from r348, /trunk/Socket/UDPSocketHandle.cc
+   trunk/Socket/Protocols/INet/UDPSocketHandle.hh
+      - copied, changed from r348, /trunk/Socket/UDPSocketHandle.hh
+   trunk/Socket/Protocols/INet/UDPSocketHandle.test.cc
+      - copied unchanged from r348, /trunk/Socket/UDPSocketHandle.test.cc
+   trunk/Socket/Protocols/INet/main.test.cc
+   trunk/Socket/Protocols/LLAddressing.cc
+      - copied unchanged from r348, /trunk/Socket/LLAddressing.cc
+   trunk/Socket/Protocols/LLAddressing.cci
+      - copied unchanged from r348, /trunk/Socket/LLAddressing.cci
+   trunk/Socket/Protocols/LLAddressing.ct
+      - copied unchanged from r348, /trunk/Socket/LLAddressing.ct
+   trunk/Socket/Protocols/LLAddressing.cti
+      - copied unchanged from r348, /trunk/Socket/LLAddressing.cti
+   trunk/Socket/Protocols/LLAddressing.hh
+      - copied, changed from r348, /trunk/Socket/LLAddressing.hh
+   trunk/Socket/Protocols/LLAddressing.ih
+      - copied unchanged from r348, /trunk/Socket/LLAddressing.ih
+   trunk/Socket/Protocols/LLAddressing.test.cc
+      - copied unchanged from r348, /trunk/Socket/LLAddressing.test.cc
+   trunk/Socket/Protocols/PacketSocketHandle.cc
+      - copied unchanged from r348, /trunk/Socket/PacketSocketHandle.cc
+   trunk/Socket/Protocols/PacketSocketHandle.ct
+      - copied unchanged from r348, /trunk/Socket/PacketSocketHandle.ct
+   trunk/Socket/Protocols/PacketSocketHandle.cti
+      - copied unchanged from r348, /trunk/Socket/PacketSocketHandle.cti
+   trunk/Socket/Protocols/PacketSocketHandle.hh
+      - copied, changed from r348, /trunk/Socket/PacketSocketHandle.hh
+   trunk/Socket/Protocols/PacketSocketHandle.ih
+      - copied unchanged from r348, /trunk/Socket/PacketSocketHandle.ih
+   trunk/Socket/Protocols/PacketSocketHandle.test.cc
+      - copied unchanged from r348, /trunk/Socket/PacketSocketHandle.test.cc
+   trunk/Socket/Protocols/SConscript
+   trunk/Socket/Protocols/main.test.cc
+Removed:
+   trunk/Socket/BSDSocketProtocol.cc
+   trunk/Socket/BSDSocketProtocol.hh
+   trunk/Socket/DVBDemuxHandles.cc
+   trunk/Socket/DVBDemuxHandles.hh
+   trunk/Socket/DVBDemuxProtocol.cc
+   trunk/Socket/DVBDemuxProtocol.hh
+   trunk/Socket/DVBFrontendHandle.cc
+   trunk/Socket/DVBFrontendHandle.hh
+   trunk/Socket/GenericAddressingPolicy.cc
+   trunk/Socket/GenericAddressingPolicy.cti
+   trunk/Socket/GenericAddressingPolicy.hh
+   trunk/Socket/GenericSockAddr.cci
+   trunk/Socket/GenericSockAddr.hh
+   trunk/Socket/INetAddressing.cc
+   trunk/Socket/INetAddressing.cci
+   trunk/Socket/INetAddressing.ct
+   trunk/Socket/INetAddressing.hh
+   trunk/Socket/INetAddressing.test.cc
+   trunk/Socket/INetProtocol.cc
+   trunk/Socket/INetProtocol.hh
+   trunk/Socket/LLAddressing.cc
+   trunk/Socket/LLAddressing.cci
+   trunk/Socket/LLAddressing.ct
+   trunk/Socket/LLAddressing.cti
+   trunk/Socket/LLAddressing.hh
+   trunk/Socket/LLAddressing.ih
+   trunk/Socket/LLAddressing.test.cc
+   trunk/Socket/PacketSocketHandle.cc
+   trunk/Socket/PacketSocketHandle.ct
+   trunk/Socket/PacketSocketHandle.cti
+   trunk/Socket/PacketSocketHandle.hh
+   trunk/Socket/PacketSocketHandle.ih
+   trunk/Socket/PacketSocketHandle.test.cc
+   trunk/Socket/TCPProtocol.cc
+   trunk/Socket/TCPProtocol.hh
+   trunk/Socket/TCPSocketHandle.cc
+   trunk/Socket/TCPSocketHandle.hh
+   trunk/Socket/TCPSocketHandle.test.cc
+   trunk/Socket/UDPProtocol.cc
+   trunk/Socket/UDPProtocol.hh
+   trunk/Socket/UDPSocketHandle.cc
+   trunk/Socket/UDPSocketHandle.hh
+   trunk/Socket/UDPSocketHandle.test.cc
+Modified:
+   trunk/Examples/DVBAdapter/MPEdec.cc
+   trunk/Examples/DVBAdapter/ULEdec.cc
+   trunk/Examples/DVBAdapter/frontend.cc
+   trunk/Examples/MCSniffer/MCSniffer.cc
+   trunk/Examples/Sniffer/Sniffer.cc
+   trunk/Examples/TCPClientServer/client.cc
+   trunk/Examples/TCPClientServer/server.cc
+   trunk/Packets/DefaultBundle/IpV6Extensions.test.cc
+   trunk/Packets/DefaultBundle/IpV6Packet.cc
+   trunk/Packets/DefaultBundle/IpV6Packet.test.cc
+   trunk/Socket/Doxyfile
+   trunk/Socket/SConscript
+   trunk/Socket/SocketPolicy.hh
+   trunk/senfscons/BoostUnitTests.py
+   trunk/senfscons/SENFSCons.py
+
+Log:
+Socket: Introduce sub-directory structure for concrete protocols
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000209.html">[Senf-svn] r348 - in trunk/Packets: .
+</A></li>
+	<LI>Next message: <A HREF="000211.html">[Senf-svn] r350 - in trunk: . Packets/DefaultBundle	Packets/MPEGDVBBundle Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#210">[ date ]</a>
+              <a href="thread.html#210">[ thread ]</a>
+              <a href="subject.html#210">[ subject ]</a>
+              <a href="author.html#210">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

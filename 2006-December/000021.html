@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r160 - in trunk: doclib
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r160%20-%20in%20trunk%3A%20doclib&In-Reply-To=%3C200612122304.kBCN48BJ017309%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000020.html">
+   <LINK REL="Next"  HREF="000022.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r160 - in trunk: doclib</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r160%20-%20in%20trunk%3A%20doclib&In-Reply-To=%3C200612122304.kBCN48BJ017309%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r160 - in trunk: doclib">subversion at senf.berlios.de
+       </A><BR>
+    <I>Wed Dec 13 00:04:08 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000020.html">[Senf-svn] r159 - trunk/doclib
+</A></li>
+        <LI>Next message: <A HREF="000022.html">[Senf-svn] r161 - in trunk: . Packets Scheduler Socket Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#21">[ date ]</a>
+              <a href="thread.html#21">[ thread ]</a>
+              <a href="subject.html#21">[ subject ]</a>
+              <a href="author.html#21">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Wed Dec 13 00:04:06 2006
+New Revision: 160
+
+Modified:
+   trunk/Mainpage.dox
+   trunk/doclib/senf.css
+
+Log:
+Initial overview documentation
+
+Modified: trunk/Mainpage.dox
+==============================================================================
+--- trunk/Mainpage.dox	(original)
++++ trunk/Mainpage.dox	Wed Dec 13 00:04:06 2006
+@@ -1,5 +1,51 @@
+ /** \mainpage SENF: The Simple and Extensible Network Framework
+-    
++
++    The SENF Simple and Extensible Network Framework aims to be a
++    complete set of libraries to facilitate the development of network
++    applications focusing on network protocols on the layers below the
++    application layer. However, the framework includes many general
++    purpose utilities and will be expedient to use well beyond its
++    primary objective.
++
++    \section goals Goals
++
++    The main goals where
++
++    \li modular framework design
++    \li utilizing the power of modern C++
++    \li very low overhead for frequently called members
++    \li extensible design    
++    \li concise interface
++
++    \section code Coding practices
++
++    The library heavily depends on the features of modern C++. As
++    such, it depends on a fairly recent and standards compliant C++
++    compiler (the Library is developed using \c gcc with Version at
++    least 3.4). To meet the above defined goals, the library makes
++    quite heavy use of advanced templating techniques, so
++    understanding the implementation will require expertise in the
++    intricacies of C++ templates. However, it was deemed important to
++    keep the \e visible Interface of the Library as clean and simple
++    as possible without sacrificing the projects design goals.
++
++    The library heavily depends on the \e Boost libraries (see
++    <A HREF="http://www.boost.org">http://www.boost.org</A>). The Boost libraries are an ever growing
++    collection of highest quality reusable C++ components. They are
++    designed with standardization in mind. Many of the libraries are
++    already in queue to be part of the next generation C++ standard.
++   
++    \section Dependencies
++
++    \li A standards compliant, modern C++ compiler. The library as
++        such is developed under Linux using \c gcc with Version
++        above 3.4
++    \li The Boost libraries from <A HREF="http://www.boost.org">http://www.boost.org</A>
++    \li The SCons build tool (see <A HREF="http://www.scons.org">http://www.scons.org</A>)
++    \li Linux. The library only makes use of the POSIX API's, however
++        it has not been tested beyond Linux, so if you are somewhere
++        else, you are on your own. However, we will greatly appreciate
++        feedback and patches for other platforms.
+ */
+ 
+ 
+
+Modified: trunk/doclib/senf.css
+==============================================================================
+--- trunk/doclib/senf.css	(original)
++++ trunk/doclib/senf.css	Wed Dec 13 00:04:06 2006
+@@ -39,6 +39,7 @@
+ #content { 
+ 	/* Non-0 top padding to fix margin inhertance from first non-float elt */
+ 	padding: 1px 10px 10px 142px;
++	max-width: 60em;
+ }
+ 
+ div.tabs { 
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000020.html">[Senf-svn] r159 - trunk/doclib
+</A></li>
+	<LI>Next message: <A HREF="000022.html">[Senf-svn] r161 - in trunk: . Packets Scheduler Socket Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#21">[ date ]</a>
+              <a href="thread.html#21">[ thread ]</a>
+              <a href="subject.html#21">[ subject ]</a>
+              <a href="author.html#21">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

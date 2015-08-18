@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r296 - in trunk: . Examples/MCSniffer Examples/Sniffer	PPI Packets/DefaultBundle Packets/RTPBundle Scheduler Socket	Utils Utils/impl
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r296%20-%20in%20trunk%3A%20.%20Examples/MCSniffer%20Examples/Sniffer%0A%09PPI%20Packets/DefaultBundle%20Packets/RTPBundle%20Scheduler%20Socket%0A%09Utils%20Utils/impl&In-Reply-To=%3C200707102040.l6AKeo6A022925%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000156.html">
+   <LINK REL="Next"  HREF="000158.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r296 - in trunk: . Examples/MCSniffer Examples/Sniffer	PPI Packets/DefaultBundle Packets/RTPBundle Scheduler Socket	Utils Utils/impl</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r296%20-%20in%20trunk%3A%20.%20Examples/MCSniffer%20Examples/Sniffer%0A%09PPI%20Packets/DefaultBundle%20Packets/RTPBundle%20Scheduler%20Socket%0A%09Utils%20Utils/impl&In-Reply-To=%3C200707102040.l6AKeo6A022925%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r296 - in trunk: . Examples/MCSniffer Examples/Sniffer	PPI Packets/DefaultBundle Packets/RTPBundle Scheduler Socket	Utils Utils/impl">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Jul 10 22:40:50 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000156.html">[Senf-svn] r295 - branches/new-packet/Packets
+</A></li>
+        <LI>Next message: <A HREF="000158.html">[Senf-svn] r297 - branches/new-packet/Packets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#157">[ date ]</a>
+              <a href="thread.html#157">[ thread ]</a>
+              <a href="subject.html#157">[ subject ]</a>
+              <a href="author.html#157">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Jul 10 22:39:34 2007
+New Revision: 296
+
+Modified:
+   trunk/Examples/MCSniffer/MCSniffer.cc
+   trunk/Examples/Sniffer/Sniffer.cc
+   trunk/PPI/Connectors.hh
+   trunk/PPI/Events.hh
+   trunk/PPI/Module.hh
+   trunk/PPI/PassiveQueue.hh
+   trunk/PPI/Queueing.hh
+   trunk/PPI/Route.hh
+   trunk/PPI/SocketReader.hh
+   trunk/PPI/SocketWriter.hh
+   trunk/Packets/DataPacket.cc
+   trunk/Packets/DataPacket.cti
+   trunk/Packets/DataPacket.hh
+   trunk/Packets/DefaultBundle/EthernetPacket.cc
+   trunk/Packets/DefaultBundle/EthernetPacket.cti
+   trunk/Packets/DefaultBundle/EthernetPacket.hh
+   trunk/Packets/DefaultBundle/EthernetPacket.test.cc
+   trunk/Packets/DefaultBundle/IpV4Packet.cc
+   trunk/Packets/DefaultBundle/IpV4Packet.cti
+   trunk/Packets/DefaultBundle/IpV4Packet.hh
+   trunk/Packets/DefaultBundle/IpV4Packet.test.cc
+   trunk/Packets/DefaultBundle/IpV6Extensions.cc
+   trunk/Packets/DefaultBundle/IpV6Extensions.ct
+   trunk/Packets/DefaultBundle/IpV6Extensions.hh
+   trunk/Packets/DefaultBundle/IpV6Extensions.test.cc
+   trunk/Packets/DefaultBundle/IpV6Packet.cc
+   trunk/Packets/DefaultBundle/IpV6Packet.cti
+   trunk/Packets/DefaultBundle/IpV6Packet.hh
+   trunk/Packets/DefaultBundle/IpV6Packet.test.cc
+   trunk/Packets/DefaultBundle/UDPPacket.cc
+   trunk/Packets/DefaultBundle/UDPPacket.cti
+   trunk/Packets/DefaultBundle/UDPPacket.hh
+   trunk/Packets/DefaultBundle/UDPPacket.test.cc
+   trunk/Packets/DefaultBundle/main.test.cc
+   trunk/Packets/GenericPacket.ct
+   trunk/Packets/GenericPacket.cti
+   trunk/Packets/GenericPacket.hh
+   trunk/Packets/Packet.cc
+   trunk/Packets/Packet.cci
+   trunk/Packets/Packet.ct
+   trunk/Packets/Packet.cti
+   trunk/Packets/Packet.hh
+   trunk/Packets/Packet.ih
+   trunk/Packets/Packet.test.cc
+   trunk/Packets/PacketRegistry.cc
+   trunk/Packets/PacketRegistry.ct
+   trunk/Packets/PacketRegistry.cti
+   trunk/Packets/PacketRegistry.hh
+   trunk/Packets/PacketRegistry.ih
+   trunk/Packets/PacketRegistry.test.cc
+   trunk/Packets/ParseArray.cti
+   trunk/Packets/ParseArray.hh
+   trunk/Packets/ParseArray.ih
+   trunk/Packets/ParseArray.test.cc
+   trunk/Packets/ParseInt.hh
+   trunk/Packets/ParseInt.ih
+   trunk/Packets/ParseInt.test.cc
+   trunk/Packets/ParseListS.ct
+   trunk/Packets/ParseListS.cti
+   trunk/Packets/ParseListS.hh
+   trunk/Packets/ParseListS.ih
+   trunk/Packets/ParseListS.test.cc
+   trunk/Packets/ParseVec.ct
+   trunk/Packets/ParseVec.cti
+   trunk/Packets/ParseVec.hh
+   trunk/Packets/ParseVec.test.cc
+   trunk/Packets/ParserBase.cti
+   trunk/Packets/ParserBase.hh
+   trunk/Packets/ParserBase.ih
+   trunk/Packets/ParserBase.test.cc
+   trunk/Packets/RTPBundle/RTCPPacket.cc
+   trunk/Packets/RTPBundle/RTCPPacket.cti
+   trunk/Packets/RTPBundle/RTCPPacket.hh
+   trunk/Packets/RTPBundle/RTCPPacket.test.cc
+   trunk/Packets/RTPBundle/RTPPacket.cc
+   trunk/Packets/RTPBundle/RTPPacket.cti
+   trunk/Packets/RTPBundle/RTPPacket.hh
+   trunk/Packets/RTPBundle/RTPPacket.test.cc
+   trunk/Packets/RTPBundle/main.test.cc
+   trunk/Packets/docstub.hh
+   trunk/Packets/main.test.cc
+   trunk/Packets/typeidvalue.cci
+   trunk/Packets/typeidvalue.cti
+   trunk/Packets/typeidvalue.hh
+   trunk/Scheduler/ReadHelper.cci
+   trunk/Scheduler/ReadHelper.ct
+   trunk/Scheduler/ReadHelper.cti
+   trunk/Scheduler/ReadHelper.hh
+   trunk/Scheduler/ReadHelper.ih
+   trunk/Scheduler/ReadHelper.test.cc
+   trunk/Scheduler/Scheduler.cc
+   trunk/Scheduler/Scheduler.cci
+   trunk/Scheduler/Scheduler.cti
+   trunk/Scheduler/Scheduler.hh
+   trunk/Scheduler/Scheduler.test.cc
+   trunk/Scheduler/WriteHelper.ct
+   trunk/Scheduler/WriteHelper.cti
+   trunk/Scheduler/WriteHelper.hh
+   trunk/Scheduler/WriteHelper.test.cc
+   trunk/Scheduler/main.test.cc
+   trunk/Socket/AddressingPolicy.hh
+   trunk/Socket/BSDSocketProtocol.cc
+   trunk/Socket/BSDSocketProtocol.hh
+   trunk/Socket/BufferingPolicy.cc
+   trunk/Socket/BufferingPolicy.hh
+   trunk/Socket/ClientSocketHandle.ct
+   trunk/Socket/ClientSocketHandle.cti
+   trunk/Socket/ClientSocketHandle.hh
+   trunk/Socket/ClientSocketHandle.ih
+   trunk/Socket/ClientSocketHandle.test.cc
+   trunk/Socket/CommunicationPolicy.cc
+   trunk/Socket/CommunicationPolicy.cti
+   trunk/Socket/CommunicationPolicy.hh
+   trunk/Socket/FileHandle.cc
+   trunk/Socket/FileHandle.cci
+   trunk/Socket/FileHandle.hh
+   trunk/Socket/FileHandle.ih
+   trunk/Socket/FileHandle.test.cc
+   trunk/Socket/FramingPolicy.hh
+   trunk/Socket/GenericAddressingPolicy.cc
+   trunk/Socket/GenericAddressingPolicy.cti
+   trunk/Socket/GenericAddressingPolicy.hh
+   trunk/Socket/GenericSockAddr.cci
+   trunk/Socket/GenericSockAddr.hh
+   trunk/Socket/INetAddressing.cc
+   trunk/Socket/INetAddressing.cci
+   trunk/Socket/INetAddressing.ct
+   trunk/Socket/INetAddressing.hh
+   trunk/Socket/INetAddressing.test.cc
+   trunk/Socket/INetProtocol.cc
+   trunk/Socket/INetProtocol.hh
+   trunk/Socket/LLAddressing.cc
+   trunk/Socket/LLAddressing.cci
+   trunk/Socket/LLAddressing.ct
+   trunk/Socket/LLAddressing.cti
+   trunk/Socket/LLAddressing.hh
+   trunk/Socket/LLAddressing.ih
+   trunk/Socket/LLAddressing.test.cc
+   trunk/Socket/PacketSocketHandle.cc
+   trunk/Socket/PacketSocketHandle.ct
+   trunk/Socket/PacketSocketHandle.cti
+   trunk/Socket/PacketSocketHandle.hh
+   trunk/Socket/PacketSocketHandle.ih
+   trunk/Socket/PacketSocketHandle.test.cc
+   trunk/Socket/ProtocolClientSocketHandle.cti
+   trunk/Socket/ProtocolClientSocketHandle.hh
+   trunk/Socket/ProtocolClientSocketHandle.test.cc
+   trunk/Socket/ProtocolServerSocketHandle.cti
+   trunk/Socket/ProtocolServerSocketHandle.hh
+   trunk/Socket/ProtocolServerSocketHandle.test.cc
+   trunk/Socket/ReadWritePolicy.cc
+   trunk/Socket/ReadWritePolicy.cti
+   trunk/Socket/ReadWritePolicy.hh
+   trunk/Socket/ServerSocketHandle.cti
+   trunk/Socket/ServerSocketHandle.hh
+   trunk/Socket/ServerSocketHandle.test.cc
+   trunk/Socket/SocketHandle.cc
+   trunk/Socket/SocketHandle.cci
+   trunk/Socket/SocketHandle.ct
+   trunk/Socket/SocketHandle.cti
+   trunk/Socket/SocketHandle.hh
+   trunk/Socket/SocketHandle.ih
+   trunk/Socket/SocketHandle.test.cc
+   trunk/Socket/SocketPolicy.ct
+   trunk/Socket/SocketPolicy.hh
+   trunk/Socket/SocketPolicy.ih
+   trunk/Socket/SocketPolicy.test.cc
+   trunk/Socket/SocketPolicy.test.hh
+   trunk/Socket/SocketProtocol.cc
+   trunk/Socket/SocketProtocol.cci
+   trunk/Socket/SocketProtocol.cti
+   trunk/Socket/SocketProtocol.hh
+   trunk/Socket/SocketProtocol.test.cc
+   trunk/Socket/SocketProtocol.test.hh
+   trunk/Socket/TCPProtocol.cc
+   trunk/Socket/TCPProtocol.hh
+   trunk/Socket/TCPSocketHandle.cc
+   trunk/Socket/TCPSocketHandle.hh
+   trunk/Socket/TCPSocketHandle.test.cc
+   trunk/Socket/UDPProtocol.cc
+   trunk/Socket/UDPProtocol.hh
+   trunk/Socket/UDPSocketHandle.cc
+   trunk/Socket/UDPSocketHandle.hh
+   trunk/Socket/UDPSocketHandle.test.cc
+   trunk/Socket/main.test.cc
+   trunk/Utils/Buffer.hh
+   trunk/Utils/DaemonTools.cc
+   trunk/Utils/DaemonTools.hh
+   trunk/Utils/Exception.cc
+   trunk/Utils/Exception.cci
+   trunk/Utils/Exception.hh
+   trunk/Utils/IteratorTraits.cti
+   trunk/Utils/IteratorTraits.hh
+   trunk/Utils/IteratorTraits.ih
+   trunk/Utils/IteratorTraits.test.cc
+   trunk/Utils/Logger.hh
+   trunk/Utils/Logger.test.cc
+   trunk/Utils/MicroTime.cc
+   trunk/Utils/MicroTime.hh
+   trunk/Utils/MicroTime.test.cc
+   trunk/Utils/SafeBool.cci
+   trunk/Utils/SafeBool.cti
+   trunk/Utils/SafeBool.hh
+   trunk/Utils/TypeInfo.cc
+   trunk/Utils/TypeInfo.hh
+   trunk/Utils/TypeInfo.test.cc
+   trunk/Utils/impl/membind.hh
+   trunk/Utils/intrusive_refcount.cci
+   trunk/Utils/intrusive_refcount.hh
+   trunk/Utils/intrusive_refcount.test.cc
+   trunk/Utils/main.test.cc
+   trunk/Utils/membind.hh
+   trunk/Utils/membind.test.cc
+   trunk/project.el
+
+Log:
+Add new file-variable 'comment-column'
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000156.html">[Senf-svn] r295 - branches/new-packet/Packets
+</A></li>
+	<LI>Next message: <A HREF="000158.html">[Senf-svn] r297 - branches/new-packet/Packets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#157">[ date ]</a>
+              <a href="thread.html#157">[ thread ]</a>
+              <a href="subject.html#157">[ subject ]</a>
+              <a href="author.html#157">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

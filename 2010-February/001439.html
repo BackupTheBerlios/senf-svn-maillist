@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1583 - in branches/1.0: . senf/PPI senf/Packets	senf/Packets/80211Bundle senf/Packets/DefaultBundle	senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/INet	senf/Socket/Protocols/Raw senf/Socket/Protocols/UN senf/Utils	senf/Utils/Console senf/Utils/Daemon senf/Utils/Logger	senf/Utils/Termlib
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1583%20-%20in%20branches/1.0%3A%20.%20senf/PPI%20senf/Packets%0A%09senf/Packets/80211Bundle%20senf/Packets/DefaultBundle%0A%09senf/Packets/DefaultBundle/extra_tests%0A%09senf/Packets/MPEGDVBBundle%20senf/Scheduler%20senf/Socket%0A%09senf/Socket/Protocols%20senf/Socket/Protocols/INet%0A%09senf/Socket/Protocols/Raw%20senf/Socket/Protocols/UN%20senf/Utils%0A%09senf/Utils/Console%20senf/Utils/Daemon%20senf/Utils/Logger%0A%09senf/Utils/Termlib&In-Reply-To=%3C201002241151.o1OBp9RT029399%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001438.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1583 - in branches/1.0: . senf/PPI senf/Packets	senf/Packets/80211Bundle senf/Packets/DefaultBundle	senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/INet	senf/Socket/Protocols/Raw senf/Socket/Protocols/UN senf/Utils	senf/Utils/Console senf/Utils/Daemon senf/Utils/Logger	senf/Utils/Termlib</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1583%20-%20in%20branches/1.0%3A%20.%20senf/PPI%20senf/Packets%0A%09senf/Packets/80211Bundle%20senf/Packets/DefaultBundle%0A%09senf/Packets/DefaultBundle/extra_tests%0A%09senf/Packets/MPEGDVBBundle%20senf/Scheduler%20senf/Socket%0A%09senf/Socket/Protocols%20senf/Socket/Protocols/INet%0A%09senf/Socket/Protocols/Raw%20senf/Socket/Protocols/UN%20senf/Utils%0A%09senf/Utils/Console%20senf/Utils/Daemon%20senf/Utils/Logger%0A%09senf/Utils/Termlib&In-Reply-To=%3C201002241151.o1OBp9RT029399%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r1583 - in branches/1.0: . senf/PPI senf/Packets	senf/Packets/80211Bundle senf/Packets/DefaultBundle	senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/INet	senf/Socket/Protocols/Raw senf/Socket/Protocols/UN senf/Utils	senf/Utils/Console senf/Utils/Daemon senf/Utils/Logger	senf/Utils/Termlib">subversion at senf.berlios.de
+       </A><BR>
+    <I>Wed Feb 24 12:51:09 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001438.html">[Senf-svn] r1582 - in trunk: senf/Socket/Protocols/INet	senf/Socket/Protocols/Raw
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1439">[ date ]</a>
+              <a href="thread.html#1439">[ thread ]</a>
+              <a href="subject.html#1439">[ subject ]</a>
+              <a href="author.html#1439">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tho
+Date: Wed Feb 24 12:50:10 2010
+New Revision: 1583
+
+Removed:
+   branches/1.0/senf/Utils/Console/FancyReader.hh
+Modified:
+   branches/1.0/SConstruct
+   branches/1.0/senf/PPI/Connectors.test.cc
+   branches/1.0/senf/PPI/DebugEvent.test.cc
+   branches/1.0/senf/PPI/DiscardSink.test.cc
+   branches/1.0/senf/PPI/EventManager.test.cc
+   branches/1.0/senf/PPI/Events.test.cc
+   branches/1.0/senf/PPI/IOEvent.test.cc
+   branches/1.0/senf/PPI/IdleEvent.test.cc
+   branches/1.0/senf/PPI/IntervalTimer.test.cc
+   branches/1.0/senf/PPI/ModuleManager.test.cc
+   branches/1.0/senf/PPI/Route.test.cc
+   branches/1.0/senf/PPI/Setup.test.cc
+   branches/1.0/senf/Packets/80211Bundle/WLANPacket.cc
+   branches/1.0/senf/Packets/80211Bundle/WLANPacket.hh
+   branches/1.0/senf/Packets/80211Bundle/WLANPacket.test.cc
+   branches/1.0/senf/Packets/DefaultBundle/TCPPacket.test.cc
+   branches/1.0/senf/Packets/DefaultBundle/extra_tests/   (props changed)
+   branches/1.0/senf/Packets/GenericTLV.ct
+   branches/1.0/senf/Packets/GenericTLV.cti
+   branches/1.0/senf/Packets/GenericTLV.hh
+   branches/1.0/senf/Packets/MPEGDVBBundle/TransportPacket.test.cc
+   branches/1.0/senf/Packets/extra-tests/   (props changed)
+   branches/1.0/senf/Scheduler/ClockService.test.cc
+   branches/1.0/senf/Scheduler/ReadHelper.hh
+   branches/1.0/senf/Scheduler/Scheduler.hh
+   branches/1.0/senf/Scheduler/TimerEvent.hh
+   branches/1.0/senf/Scheduler/TimerEvent.test.cc
+   branches/1.0/senf/Scheduler/WriteHelper.hh
+   branches/1.0/senf/Socket/CommunicationPolicy.cc
+   branches/1.0/senf/Socket/NetdeviceController.test.cc
+   branches/1.0/senf/Socket/ProtocolClientSocketHandle.test.cc
+   branches/1.0/senf/Socket/ProtocolServerSocketHandle.test.cc
+   branches/1.0/senf/Socket/Protocols/BSDAddressingPolicy.hh
+   branches/1.0/senf/Socket/Protocols/BSDSocketProtocol.cc
+   branches/1.0/senf/Socket/Protocols/INet/ConnectedRawINetSocketHandle.hh
+   branches/1.0/senf/Socket/Protocols/INet/ConnectedUDPSocketHandle.hh
+   branches/1.0/senf/Socket/Protocols/INet/INet4Address.cc
+   branches/1.0/senf/Socket/Protocols/INet/INet4Address.hh
+   branches/1.0/senf/Socket/Protocols/INet/INet4Address.test.cc
+   branches/1.0/senf/Socket/Protocols/INet/INet6Address.cc
+   branches/1.0/senf/Socket/Protocols/INet/INet6Address.hh
+   branches/1.0/senf/Socket/Protocols/INet/INet6Address.test.cc
+   branches/1.0/senf/Socket/Protocols/INet/INetAddressing.cc
+   branches/1.0/senf/Socket/Protocols/INet/INetAddressing.hh
+   branches/1.0/senf/Socket/Protocols/INet/INetAddressing.test.cc
+   branches/1.0/senf/Socket/Protocols/INet/INetSocketProtocol.hh
+   branches/1.0/senf/Socket/Protocols/INet/RawINetSocketHandle.hh
+   branches/1.0/senf/Socket/Protocols/INet/RawINetSocketHandle.test.cc
+   branches/1.0/senf/Socket/Protocols/INet/RawINetSocketProtocol.cc
+   branches/1.0/senf/Socket/Protocols/INet/RawINetSocketProtocol.hh
+   branches/1.0/senf/Socket/Protocols/INet/TCPSocketHandle.hh
+   branches/1.0/senf/Socket/Protocols/INet/TCPSocketProtocol.cc
+   branches/1.0/senf/Socket/Protocols/INet/TCPSocketProtocol.hh
+   branches/1.0/senf/Socket/Protocols/INet/UDPSocketHandle.hh
+   branches/1.0/senf/Socket/Protocols/INet/UDPSocketProtocol.cc
+   branches/1.0/senf/Socket/Protocols/INet/UDPSocketProtocol.hh
+   branches/1.0/senf/Socket/Protocols/Raw/EUI64.test.cc
+   branches/1.0/senf/Socket/Protocols/Raw/LLAddressing.hh
+   branches/1.0/senf/Socket/Protocols/Raw/LLAddressing.test.cc
+   branches/1.0/senf/Socket/Protocols/Raw/MACAddress.cc
+   branches/1.0/senf/Socket/Protocols/Raw/MACAddress.hh
+   branches/1.0/senf/Socket/Protocols/Raw/MACAddress.test.cc
+   branches/1.0/senf/Socket/Protocols/Raw/PacketSocketHandle.test.cc
+   branches/1.0/senf/Socket/Protocols/Raw/ParseString.ct
+   branches/1.0/senf/Socket/Protocols/Raw/TunTapSocketHandle.hh
+   branches/1.0/senf/Socket/Protocols/Raw/TunTapSocketHandle.test.cc
+   branches/1.0/senf/Socket/Protocols/UN/UNSocketProtocol.cc
+   branches/1.0/senf/Socket/Protocols/UN/UNSocketProtocol.hh
+   branches/1.0/senf/Socket/Protocols/UN/UNSocketProtocol.test.cc
+   branches/1.0/senf/Socket/ServerSocketHandle.hh
+   branches/1.0/senf/Socket/SocketProtocol.test.cc
+   branches/1.0/senf/Utils/Buffer.test.cc
+   branches/1.0/senf/Utils/Console/   (props changed)
+   branches/1.0/senf/Utils/Console/Config.hh
+   branches/1.0/senf/Utils/Console/Config.test.cc
+   branches/1.0/senf/Utils/Console/ConfigFile.cc
+   branches/1.0/senf/Utils/Console/ConfigFile.cci
+   branches/1.0/senf/Utils/Console/ConfigFile.test.cc
+   branches/1.0/senf/Utils/Console/LazyDirectory.cc
+   branches/1.0/senf/Utils/Console/Node.cci
+   branches/1.0/senf/Utils/Console/Node.hh
+   branches/1.0/senf/Utils/Console/Parse.cc
+   branches/1.0/senf/Utils/Console/ScopedDirectory.cci
+   branches/1.0/senf/Utils/Console/ScopedDirectory.cti
+   branches/1.0/senf/Utils/Console/ScopedDirectory.hh
+   branches/1.0/senf/Utils/Console/ScopedDirectory.test.cc
+   branches/1.0/senf/Utils/Console/Server.test.cc
+   branches/1.0/senf/Utils/Console/Traits.hh
+   branches/1.0/senf/Utils/Console/Traits.ih
+   branches/1.0/senf/Utils/Console/UDPServer.hh
+   branches/1.0/senf/Utils/Console/Utility.hh
+   branches/1.0/senf/Utils/Console/Variables.hh
+   branches/1.0/senf/Utils/Console/Variables.test.cc
+   branches/1.0/senf/Utils/Daemon/Daemon.ih
+   branches/1.0/senf/Utils/Exception.cci
+   branches/1.0/senf/Utils/Exception.hh
+   branches/1.0/senf/Utils/Logger/AreaRegistry.test.cc
+   branches/1.0/senf/Utils/Logger/SyslogTarget.test.cc
+   branches/1.0/senf/Utils/Termlib/   (props changed)
+   branches/1.0/senf/Utils/parameter.test.cc
+   branches/1.0/senf/Utils/pool_alloc_mixin.test.cc
+   branches/1.0/senf/Utils/senfassert.hh
+   branches/1.0/senf/Utils/type_traits.test.cc
+
+Log:
+merged improvements since Rev. 1565 from trunk to 1.0 branch
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001438.html">[Senf-svn] r1582 - in trunk: senf/Socket/Protocols/INet	senf/Socket/Protocols/Raw
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1439">[ date ]</a>
+              <a href="thread.html#1439">[ thread ]</a>
+              <a href="subject.html#1439">[ subject ]</a>
+              <a href="author.html#1439">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

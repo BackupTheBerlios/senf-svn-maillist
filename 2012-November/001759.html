@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1920 - in trunk: . senf/PPI senf/Packets	senf/Packets/DefaultBundle senf/Scheduler	senf/Socket/Protocols/Raw senf/Utils senf/Utils/Logger
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2012-November/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1920%20-%20in%20trunk%3A%20.%20senf/PPI%20senf/Packets%0A%09senf/Packets/DefaultBundle%20senf/Scheduler%0A%09senf/Socket/Protocols/Raw%20senf/Utils%20senf/Utils/Logger&In-Reply-To=%3C20121105145840.50E6F55B0C%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001758.html">
+   <LINK REL="Next"  HREF="001760.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1920 - in trunk: . senf/PPI senf/Packets	senf/Packets/DefaultBundle senf/Scheduler	senf/Socket/Protocols/Raw senf/Utils senf/Utils/Logger</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1920%20-%20in%20trunk%3A%20.%20senf/PPI%20senf/Packets%0A%09senf/Packets/DefaultBundle%20senf/Scheduler%0A%09senf/Socket/Protocols/Raw%20senf/Utils%20senf/Utils/Logger&In-Reply-To=%3C20121105145840.50E6F55B0C%40scm.berlios.de%3E"
+       TITLE="[Senf-svn] r1920 - in trunk: . senf/PPI senf/Packets	senf/Packets/DefaultBundle senf/Scheduler	senf/Socket/Protocols/Raw senf/Utils senf/Utils/Logger">subversion at senf.berlios.de
+       </A><BR>
+    <I>Mon Nov  5 15:58:40 CET 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001758.html">[Senf-svn] r1919 - in trunk/senf: Packets/DefaultBundle	Socket/Protocols/Raw Utils
+</A></li>
+        <LI>Next message: <A HREF="001760.html">[Senf-svn] r1921 - trunk/senf/Socket/Protocols/Raw
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1759">[ date ]</a>
+              <a href="thread.html#1759">[ thread ]</a>
+              <a href="subject.html#1759">[ subject ]</a>
+              <a href="author.html#1759">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tho
+Date: Mon Nov  5 15:58:39 2012
+New Revision: 1920
+
+Log:
+Packets: changed operator&lt;&lt; for fixed_sized parsers to directly copy the
+data bytes and throw an exception if the target has not sufficient
+space.
+SConstruct: enabled some warnings
+some #include cleanups
+
+Modified:
+   trunk/SConstruct
+   trunk/senf/PPI/Connectors.cc
+   trunk/senf/PPI/Connectors.cci
+   trunk/senf/PPI/Connectors.hh
+   trunk/senf/Packets/DefaultBundle/EthernetPacket.hh
+   trunk/senf/Packets/PacketParser.ct
+   trunk/senf/Packets/PacketParser.cti
+   trunk/senf/Packets/PacketParser.hh
+   trunk/senf/Packets/PacketParser.test.cc
+   trunk/senf/Scheduler/ClockService.hh
+   trunk/senf/Socket/Protocols/Raw/MACAddress.cci
+   trunk/senf/Socket/Protocols/Raw/MACAddress.hh
+   trunk/senf/Utils/Logger/LogFormat.cc
+   trunk/senf/Utils/Logger/LogFormat.hh
+   trunk/senf/Utils/StatisticAccumulator.cc
+   trunk/senf/Utils/StatisticAccumulator.hh
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001758.html">[Senf-svn] r1919 - in trunk/senf: Packets/DefaultBundle	Socket/Protocols/Raw Utils
+</A></li>
+	<LI>Next message: <A HREF="001760.html">[Senf-svn] r1921 - trunk/senf/Socket/Protocols/Raw
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1759">[ date ]</a>
+              <a href="thread.html#1759">[ thread ]</a>
+              <a href="subject.html#1759">[ subject ]</a>
+              <a href="author.html#1759">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

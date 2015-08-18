@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r906 - in trunk: Scheduler Utils Utils/Daemon senfscons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r906%20-%20in%20trunk%3A%20Scheduler%20Utils%20Utils/Daemon%20senfscons&In-Reply-To=%3C200809170749.m8H7nJ7R024911%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000762.html">
+   <LINK REL="Next"  HREF="000764.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r906 - in trunk: Scheduler Utils Utils/Daemon senfscons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r906%20-%20in%20trunk%3A%20Scheduler%20Utils%20Utils/Daemon%20senfscons&In-Reply-To=%3C200809170749.m8H7nJ7R024911%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r906 - in trunk: Scheduler Utils Utils/Daemon senfscons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Wed Sep 17 09:49:19 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000762.html">[Senf-svn] r905 - in trunk: Packets
+</A></li>
+        <LI>Next message: <A HREF="000764.html">[Senf-svn] r907 - in trunk: Console PPI Utils/Daemon
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#763">[ date ]</a>
+              <a href="thread.html#763">[ thread ]</a>
+              <a href="subject.html#763">[ subject ]</a>
+              <a href="author.html#763">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Wed Sep 17 09:49:08 2008
+New Revision: 906
+
+Added:
+   trunk/Scheduler/SignalEvent.cc
+      - copied, changed from r905, /trunk/Scheduler/SignalDispatcher.cc
+   trunk/Scheduler/SignalEvent.cci
+      - copied, changed from r905, /trunk/Scheduler/SignalDispatcher.cci
+   trunk/Scheduler/SignalEvent.hh
+      - copied, changed from r905, /trunk/Scheduler/SignalDispatcher.hh
+   trunk/Scheduler/SignalEvent.ih   (contents, props changed)
+   trunk/Scheduler/SignalEvent.test.cc
+      - copied, changed from r905, /trunk/Scheduler/SignalDispatcher.test.cc
+Removed:
+   trunk/Scheduler/SignalDispatcher.cc
+   trunk/Scheduler/SignalDispatcher.cci
+   trunk/Scheduler/SignalDispatcher.hh
+   trunk/Scheduler/SignalDispatcher.test.cc
+Modified:
+   trunk/SConstruct
+   trunk/Scheduler/FIFORunner.cc
+   trunk/Scheduler/FIFORunner.hh
+   trunk/Scheduler/FdDispatcher.test.cc
+   trunk/Scheduler/FdManager.hh
+   trunk/Scheduler/FileDispatcher.test.cc
+   trunk/Scheduler/Scheduler.cc
+   trunk/Scheduler/Scheduler.cci
+   trunk/Scheduler/Scheduler.hh
+   trunk/Scheduler/Scheduler.test.cc
+   trunk/Scheduler/TimerDispatcher.test.cc
+   trunk/Utils/Daemon/Daemon.cc
+   trunk/Utils/Daemon/Daemon.ih
+   trunk/Utils/Daemon/Daemon.test.cc
+   trunk/Utils/singleton.cti
+   trunk/Utils/singleton.hh
+   trunk/Utils/singleton.test.cc
+   trunk/senfscons/CompileCheck.py
+   trunk/senfscons/SENFSCons.py
+   trunk/senfscons/senfutil.py
+
+Log:
+Utils: Add singleton alive test member
+Scheduler: Fix FIFORunner exception safety
+Scheduler: Implement new signal event API
+Migrate SENF to use new signal API
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000762.html">[Senf-svn] r905 - in trunk: Packets
+</A></li>
+	<LI>Next message: <A HREF="000764.html">[Senf-svn] r907 - in trunk: Console PPI Utils/Daemon
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#763">[ date ]</a>
+              <a href="thread.html#763">[ thread ]</a>
+              <a href="subject.html#763">[ subject ]</a>
+              <a href="author.html#763">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

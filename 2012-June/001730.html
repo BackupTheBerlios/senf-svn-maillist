@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1891 - in trunk: . senf/PPI senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/DefaultBundle senf/Packets/MPEGDVBBundle	senf/Scheduler senf/Socket senf/Socket/Protocols/DVB	senf/Socket/Protocols/Raw senf/Utils senf/Utils/Console	senf/Utils/Daemon senf/Utils/Logger site_scons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2012-June/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1891%20-%20in%20trunk%3A%20.%20senf/PPI%20senf/Packets%0A%09senf/Packets/80211Bundle%20senf/Packets/80221Bundle%0A%09senf/Packets/DefaultBundle%20senf/Packets/MPEGDVBBundle%0A%09senf/Scheduler%20senf/Socket%20senf/Socket/Protocols/DVB%0A%09senf/Socket/Protocols/Raw%20senf/Utils%20senf/Utils/Console%0A%09senf/Utils/Daemon%20senf/Utils/Logger%20site_scons&In-Reply-To=%3C20120621083128.97A5355B0C%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001731.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1891 - in trunk: . senf/PPI senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/DefaultBundle senf/Packets/MPEGDVBBundle	senf/Scheduler senf/Socket senf/Socket/Protocols/DVB	senf/Socket/Protocols/Raw senf/Utils senf/Utils/Console	senf/Utils/Daemon senf/Utils/Logger site_scons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1891%20-%20in%20trunk%3A%20.%20senf/PPI%20senf/Packets%0A%09senf/Packets/80211Bundle%20senf/Packets/80221Bundle%0A%09senf/Packets/DefaultBundle%20senf/Packets/MPEGDVBBundle%0A%09senf/Scheduler%20senf/Socket%20senf/Socket/Protocols/DVB%0A%09senf/Socket/Protocols/Raw%20senf/Utils%20senf/Utils/Console%0A%09senf/Utils/Daemon%20senf/Utils/Logger%20site_scons&In-Reply-To=%3C20120621083128.97A5355B0C%40scm.berlios.de%3E"
+       TITLE="[Senf-svn] r1891 - in trunk: . senf/PPI senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/DefaultBundle senf/Packets/MPEGDVBBundle	senf/Scheduler senf/Socket senf/Socket/Protocols/DVB	senf/Socket/Protocols/Raw senf/Utils senf/Utils/Console	senf/Utils/Daemon senf/Utils/Logger site_scons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Thu Jun 21 10:31:28 CEST 2012</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001731.html">[Senf-svn] r1892 - in trunk/senf: Packets boost boost/icl	boost/icl/concept boost/icl/detail boost/icl/predicates	boost/icl/type_traits
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1730">[ date ]</a>
+              <a href="thread.html#1730">[ thread ]</a>
+              <a href="subject.html#1730">[ subject ]</a>
+              <a href="author.html#1730">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tho
+Date: Thu Jun 21 10:31:26 2012
+New Revision: 1891
+
+Log:
+some #include cleanups
+80211Bundle: moved static MCS info into separate file
+DefaultBundle: moved packet registries into separate file
+DefaultBundle: renamed EthVLan field 'type' to 'type_length' analogue to EthernetPacket
+scons: added -Wextra to compile flags
+
+Added:
+   trunk/senf/Packets/80211Bundle/MCSInfo.cc
+   trunk/senf/Packets/80211Bundle/MCSInfo.hh
+      - copied, changed from r1890, trunk/senf/Utils/Console/SysInfo.hh
+   trunk/senf/Packets/DefaultBundle/Registries.hh
+Modified:
+   trunk/SConstruct
+   trunk/senf/PPI/Connectors.hh
+   trunk/senf/PPI/EventManager.hh
+   trunk/senf/PPI/Jack.hh
+   trunk/senf/PPI/Module.hh
+   trunk/senf/PPI/Module.test.cc
+   trunk/senf/PPI/ModuleManager.cc
+   trunk/senf/PPI/ModuleManager.cci
+   trunk/senf/PPI/ModuleManager.hh
+   trunk/senf/PPI/QueueingSocketSink.test.cc
+   trunk/senf/PPI/RateAnalyzer.test.cc
+   trunk/senf/PPI/RateFilter.test.cc
+   trunk/senf/PPI/Route.hh
+   trunk/senf/PPI/Route.test.cc
+   trunk/senf/PPI/Setup.hh
+   trunk/senf/PPI/SocketSink.test.cc
+   trunk/senf/PPI/SocketSource.ct
+   trunk/senf/Packets/80211Bundle/RadiotapPacket.cc
+   trunk/senf/Packets/80221Bundle/MIHPacket.cc
+   trunk/senf/Packets/80221Bundle/MIHPacket.hh
+   trunk/senf/Packets/DefaultBundle/EthernetPacket.cc
+   trunk/senf/Packets/DefaultBundle/EthernetPacket.hh
+   trunk/senf/Packets/DefaultBundle/EthernetPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/ICMPv6Packet.cc
+   trunk/senf/Packets/DefaultBundle/ICMPv6Packet.hh
+   trunk/senf/Packets/DefaultBundle/IPv4Packet.cc
+   trunk/senf/Packets/DefaultBundle/IPv4Packet.hh
+   trunk/senf/Packets/DefaultBundle/IPv6Extensions.cc
+   trunk/senf/Packets/DefaultBundle/IPv6Extensions.hh
+   trunk/senf/Packets/DefaultBundle/IPv6Packet.cc
+   trunk/senf/Packets/DefaultBundle/IPv6Packet.hh
+   trunk/senf/Packets/DefaultBundle/LlcSnapPacket.cc
+   trunk/senf/Packets/DefaultBundle/LlcSnapPacket.hh
+   trunk/senf/Packets/DefaultBundle/LlcSnapPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/TCPPacket.cc
+   trunk/senf/Packets/DefaultBundle/TCPPacket.hh
+   trunk/senf/Packets/DefaultBundle/UDPPacket.cc
+   trunk/senf/Packets/DefaultBundle/UDPPacket.hh
+   trunk/senf/Packets/ListParser.hh
+   trunk/senf/Packets/MPEGDVBBundle/DTCPPacket.hh
+   trunk/senf/Packets/MPEGDVBBundle/GREPacket.cc
+   trunk/senf/Packets/MPEGDVBBundle/GREPacket.hh
+   trunk/senf/Packets/MPEGDVBBundle/MPESection.cc
+   trunk/senf/Packets/MPEGDVBBundle/MPESection.hh
+   trunk/senf/Packets/MPEGDVBBundle/TransportPacket.hh
+   trunk/senf/Packets/Packet.hh
+   trunk/senf/Packets/PacketData.hh
+   trunk/senf/Packets/PacketImpl.hh
+   trunk/senf/Packets/PacketParser.hh
+   trunk/senf/Packets/PacketRegistry.ih
+   trunk/senf/Packets/PacketType.cti
+   trunk/senf/Packets/PacketVector.hh
+   trunk/senf/Packets/VectorParser.hh
+   trunk/senf/Scheduler/ClockService.hh
+   trunk/senf/Scheduler/FIFORunner.hh
+   trunk/senf/Scheduler/Poller.hh
+   trunk/senf/Scheduler/Scheduler.hh
+   trunk/senf/Scheduler/TimerEventProxy.ct
+   trunk/senf/Scheduler/TimerSource.hh
+   trunk/senf/Socket/ClientSocketHandle.hh
+   trunk/senf/Socket/Protocols/DVB/DVBProtocolWrapper.cc
+   trunk/senf/Socket/Protocols/DVB/DVBProtocolWrapper.hh
+   trunk/senf/Socket/Protocols/DVB/DVBSocketController.cc
+   trunk/senf/Socket/Protocols/Raw/MACAddress.hh
+   trunk/senf/Socket/SocketPolicy.ih
+   trunk/senf/Utils/Console/Config.hh
+   trunk/senf/Utils/Console/Config.ih
+   trunk/senf/Utils/Console/Executor.cc
+   trunk/senf/Utils/Console/Executor.hh
+   trunk/senf/Utils/Console/LazyDirectory.hh
+   trunk/senf/Utils/Console/Node.hh
+   trunk/senf/Utils/Console/Parse.hh
+   trunk/senf/Utils/Console/ParsedCommand.hh
+   trunk/senf/Utils/Console/ScopedDirectory.hh
+   trunk/senf/Utils/Console/Server.hh
+   trunk/senf/Utils/Console/SysInfo.hh
+   trunk/senf/Utils/Console/UDPServer.hh
+   trunk/senf/Utils/Console/Variables.hh
+   trunk/senf/Utils/CpuStat.cc
+   trunk/senf/Utils/Daemon/Daemon.ih
+   trunk/senf/Utils/Exception.hh
+   trunk/senf/Utils/IteratorTraits.cti
+   trunk/senf/Utils/Logger/FileTarget.hh
+   trunk/senf/Utils/Logger/Parameters.ih
+   trunk/senf/Utils/Logger/Target.cc
+   trunk/senf/Utils/Logger/Target.hh
+   trunk/senf/Utils/ScopeExit.hh
+   trunk/senf/Utils/StatisticAccumulator.ct
+   trunk/senf/Utils/StatisticAccumulator.hh
+   trunk/senf/Utils/Statistics.hh
+   trunk/senf/Utils/StatisticsTargets.ih
+   trunk/senf/Utils/hexdump.ih
+   trunk/senf/Utils/intrusive_refcount.hh
+   trunk/senf/Utils/safe_bool.cti
+   trunk/senf/Utils/singleton.hh
+   trunk/site_scons/senfutil.py
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001731.html">[Senf-svn] r1892 - in trunk/senf: Packets boost boost/icl	boost/icl/concept boost/icl/detail boost/icl/predicates	boost/icl/type_traits
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1730">[ date ]</a>
+              <a href="thread.html#1730">[ thread ]</a>
+              <a href="subject.html#1730">[ subject ]</a>
+              <a href="author.html#1730">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

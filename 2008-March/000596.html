@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r736 - in trunk: Packets/MPEGDVBBundle Scheduler Socket	Socket/Protocols Socket/Protocols/DVB Socket/Protocols/Raw	Socket/Protocols/UN Utils Utils/Daemon
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2008-March/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r736%20-%20in%20trunk%3A%20Packets/MPEGDVBBundle%20Scheduler%20Socket%0A%09Socket/Protocols%20Socket/Protocols/DVB%20Socket/Protocols/Raw%0A%09Socket/Protocols/UN%20Utils%20Utils/Daemon&In-Reply-To=%3C200803072306.m27N6eqT028648%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000595.html">
+   <LINK REL="Next"  HREF="000597.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r736 - in trunk: Packets/MPEGDVBBundle Scheduler Socket	Socket/Protocols Socket/Protocols/DVB Socket/Protocols/Raw	Socket/Protocols/UN Utils Utils/Daemon</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r736%20-%20in%20trunk%3A%20Packets/MPEGDVBBundle%20Scheduler%20Socket%0A%09Socket/Protocols%20Socket/Protocols/DVB%20Socket/Protocols/Raw%0A%09Socket/Protocols/UN%20Utils%20Utils/Daemon&In-Reply-To=%3C200803072306.m27N6eqT028648%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r736 - in trunk: Packets/MPEGDVBBundle Scheduler Socket	Socket/Protocols Socket/Protocols/DVB Socket/Protocols/Raw	Socket/Protocols/UN Utils Utils/Daemon">subversion at senf.berlios.de
+       </A><BR>
+    <I>Sat Mar  8 00:06:40 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000595.html">[Senf-svn] r735 - trunk/Socket
+</A></li>
+        <LI>Next message: <A HREF="000597.html">[Senf-svn] r737 - trunk/Utils/Logger
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#596">[ date ]</a>
+              <a href="thread.html#596">[ thread ]</a>
+              <a href="subject.html#596">[ subject ]</a>
+              <a href="author.html#596">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Sat Mar  8 00:06:27 2008
+New Revision: 736
+
+Modified:
+   trunk/Packets/MPEGDVBBundle/TransportPacket.test.cc
+   trunk/Scheduler/ClockService.cc
+   trunk/Scheduler/ReadHelper.ct
+   trunk/Scheduler/ReadHelper.cti
+   trunk/Scheduler/Scheduler.cc
+   trunk/Scheduler/WriteHelper.ct
+   trunk/Scheduler/WriteHelper.cti
+   trunk/Socket/CommunicationPolicy.cc
+   trunk/Socket/FileHandle.cc
+   trunk/Socket/NetdeviceController.cc
+   trunk/Socket/NetdeviceController.test.cc
+   trunk/Socket/Protocols/BSDSocketProtocol.cc
+   trunk/Socket/Protocols/DVB/DVBDemuxHandles.cc
+   trunk/Socket/Protocols/DVB/DVBDemuxSocketProtocol.cc
+   trunk/Socket/Protocols/DVB/DVBFrontendHandle.cc
+   trunk/Socket/Protocols/DatagramSocketProtocol.cc
+   trunk/Socket/Protocols/GenericAddressingPolicy.cc
+   trunk/Socket/Protocols/INet/ConnectedRawINetSocketHandle.cc
+   trunk/Socket/Protocols/INet/ConnectedUDPSocketHandle.cc
+   trunk/Socket/Protocols/INet/INetSocketProtocol.cc
+   trunk/Socket/Protocols/INet/MulticastSocketProtocol.cc
+   trunk/Socket/Protocols/INet/RawINetSocketHandle.cc
+   trunk/Socket/Protocols/INet/RawINetSocketProtocol.cc
+   trunk/Socket/Protocols/INet/TCPSocketHandle.cc
+   trunk/Socket/Protocols/INet/TCPSocketProtocol.cc
+   trunk/Socket/Protocols/INet/UDPSocketHandle.cc
+   trunk/Socket/Protocols/INet/UDPSocketProtocol.cc
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.cc
+   trunk/Socket/Protocols/Raw/TunTapSocketHandle.cc
+   trunk/Socket/Protocols/UN/ConnectedUNDatagramSocketHandle.cc
+   trunk/Socket/Protocols/UN/UNDatagramSocketHandle.cc
+   trunk/Socket/Protocols/UN/UNSocketProtocol.cc
+   trunk/Socket/ReadWritePolicy.cc
+   trunk/Socket/SocketProtocol.cc
+   trunk/Utils/Daemon/Daemon.cc
+   trunk/Utils/Exception.cc
+   trunk/Utils/Exception.cci
+   trunk/Utils/Exception.hh
+
+Log:
+Utils: Implement helper  macros to add file/line information to SystemException's
+Socket: Fix NetDeviceController.test.cc (use 'lo' interface instead of 'wlan0'
+Socket/Protocols/MPEGDVBbundle: Fix TransportPacket.test.cc (add 0 to constant to fix link error)
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000595.html">[Senf-svn] r735 - trunk/Socket
+</A></li>
+	<LI>Next message: <A HREF="000597.html">[Senf-svn] r737 - trunk/Utils/Logger
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#596">[ date ]</a>
+              <a href="thread.html#596">[ thread ]</a>
+              <a href="subject.html#596">[ subject ]</a>
+              <a href="author.html#596">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

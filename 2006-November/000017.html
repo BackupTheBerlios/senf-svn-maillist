@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r156 - trunk/Utils
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r156%20-%20trunk/Utils&In-Reply-To=%3C200611141321.kAEDLDxJ010859%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000016.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r156 - trunk/Utils</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r156%20-%20trunk/Utils&In-Reply-To=%3C200611141321.kAEDLDxJ010859%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r156 - trunk/Utils">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Nov 14 14:21:13 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000016.html">[Senf-svn] r155 - trunk/satscons
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#17">[ date ]</a>
+              <a href="thread.html#17">[ thread ]</a>
+              <a href="subject.html#17">[ subject ]</a>
+              <a href="author.html#17">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Nov 14 14:21:11 2006
+New Revision: 156
+
+Added:
+   trunk/Utils/DaemonTools.cc
+   trunk/Utils/DaemonTools.hh
+
+Log:
+Add very simple daemon helpers
+
+Added: trunk/Utils/DaemonTools.cc
+==============================================================================
+--- (empty file)
++++ trunk/Utils/DaemonTools.cc	Tue Nov 14 14:21:11 2006
+@@ -0,0 +1,51 @@
++// $Id$
++//
++// Copyright (C) 2006 
++
++// Definition of non-inline non-template functions
++
++#include &quot;DaemonTools.hh&quot;
++//#include &quot;DaemonTools.ih&quot;
++
++// Custom includes
++#include &lt;sys/types.h&gt;
++#include &lt;sys/stat.h&gt;
++#include &lt;unistd.h&gt;
++#include &lt;fcntl.h&gt;
++#include &lt;errno.h&gt;
++
++#include &quot;Exception.hh&quot;
++
++//#include &quot;DaemonTools.mpp&quot;
++#define prefix_
++///////////////////////////////cc.p////////////////////////////////////////
++
++prefix_ void satcom::lib::daemonize()
++{
++    int pid = fork();
++    if (pid &lt; 0)
++	throw satcom::lib::SystemException(&quot;fork&quot;,errno);
++    if (pid &gt; 0)
++	::_exit(0);
++    if (::setsid() &lt; 0)
++	throw satcom::lib::SystemException(&quot;setsid&quot;,errno);
++}
++
++prefix_ void satcom::lib::redirect_stdio(std::string const &amp; path)
++{
++    int fd = ::open(path.c_str(),O_RDWR);
++    if (fd &lt; 0) throw satcom::lib::SystemException(&quot;open&quot;,errno);
++    if (dup2(fd,0) &lt; 0) throw satcom::lib::SystemException(&quot;dup2&quot;,errno);
++    if (dup2(fd,1) &lt; 0) throw satcom::lib::SystemException(&quot;dup2&quot;,errno);
++    if (dup2(fd,2) &lt; 0) throw satcom::lib::SystemException(&quot;dup2&quot;,errno);
++    if (::close(fd) &lt; 0) throw satcom::lib::SystemException(&quot;close&quot;,errno);
++}
++
++///////////////////////////////cc.e////////////////////////////////////////
++#undef prefix_
++//#include &quot;DaemonTools.mpp&quot;
++
++
++// Local Variables:
++// mode: c++
++// End:
+
+Added: trunk/Utils/DaemonTools.hh
+==============================================================================
+--- (empty file)
++++ trunk/Utils/DaemonTools.hh	Tue Nov 14 14:21:11 2006
+@@ -0,0 +1,32 @@
++// $Id$
++//
++// Copyright (C) 2006 
++
++#ifndef HH_DaemonTools_
++#define HH_DaemonTools_ 1
++
++// Custom includes
++#include &lt;string&gt;
++
++//#include &quot;DaemonTools.mpp&quot;
++///////////////////////////////hh.p////////////////////////////////////////
++
++namespace satcom {
++namespace lib {
++
++    void daemonize();
++    void redirect_stdio(std::string const &amp; path = &quot;/dev/null&quot;);
++
++}}
++
++///////////////////////////////hh.e////////////////////////////////////////
++//#include &quot;DaemonTools.cci&quot;
++//#include &quot;DaemonTools.ct&quot;
++//#include &quot;DaemonTools.cti&quot;
++//#include &quot;DaemonTools.mpp&quot;
++#endif
++
++
++// Local Variables:
++// mode: c++
++// End:
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000016.html">[Senf-svn] r155 - trunk/satscons
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#17">[ date ]</a>
+              <a href="thread.html#17">[ thread ]</a>
+              <a href="subject.html#17">[ subject ]</a>
+              <a href="author.html#17">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

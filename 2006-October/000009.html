@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r148 - in trunk: Packets
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r148%20-%20in%20trunk%3A%20Packets&In-Reply-To=%3C200610201432.k9KEWlrm029783%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000008.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r148 - in trunk: Packets</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r148%20-%20in%20trunk%3A%20Packets&In-Reply-To=%3C200610201432.k9KEWlrm029783%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r148 - in trunk: Packets">subversion at senf.berlios.de
+       </A><BR>
+    <I>Fri Oct 20 16:32:47 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000008.html">[Senf-svn] r147 - trunk/Utils
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#9">[ date ]</a>
+              <a href="thread.html#9">[ thread ]</a>
+              <a href="subject.html#9">[ subject ]</a>
+              <a href="author.html#9">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Fri Oct 20 16:32:45 2006
+New Revision: 148
+
+Added:
+   trunk/satscons/Dia2Png.py
+Modified:
+   trunk/Packets/Packet.hh
+   trunk/satscons/Doxygen.py
+   trunk/satscons/SatSCons.py
+
+Log:
+Dia2Png Doxygen started
+
+Modified: trunk/Packets/Packet.hh
+==============================================================================
+--- trunk/Packets/Packet.hh	(original)
++++ trunk/Packets/Packet.hh	Fri Oct 20 16:32:45 2006
+@@ -38,7 +38,7 @@
+ // implementation.
+ 
+ 
+-/** \mainpage The SatCom Packet Framework
++/** \mainpage The SENF Packet Library
+ 
+     \section arch Overall Architecture
+ 
+
+Added: trunk/satscons/Dia2Png.py
+==============================================================================
+--- (empty file)
++++ trunk/satscons/Dia2Png.py	Fri Oct 20 16:32:45 2006
+@@ -0,0 +1,37 @@
++&quot;&quot;&quot;Dia2Png SCons Builder: Build a PNG file given a DIA file.
++
++Support the specification of a scalefactor in the DIA2PNGDPI Environment variable.
++
++&quot;&quot;&quot;
++
++import os
++import SCons.Builder
++
++def dia_getSize(env,source):
++    size = None
++    for line in popen(env['DIACOM']+&quot; -e /proc/self/fd/1 -t eps &quot;+source[0],&quot;r&quot;):
++        if line.startswith(&quot;%%BoundingBox:&quot;):
++            size=map(int,line.split()[4:])
++    return size
++
++def dia2png_generator(source, target, env, for_signature):
++    if for_signature:
++        return &quot;$DIACOM -t png -s $DIA2PNGDPI $TARGET $SOURCE&quot;
++    size = dia_getSize(env,source)
++    if not size: return None;
++    size[0] = size[0]*72/int(env['DIA2PNGDPI'])
++    size[1] = size[1]*72/int(env['$DIA2PNGDPI'])
++    return env.Action(&quot;$DIACOM -t png -s %dx%d $TARGET $SOURCE&quot; % size)
++
++Dia2Png = SCons.Builder.Builder(suffix = &quot;.png&quot;,
++                                src_suffix = &quot;.dia&quot;,
++                                generator = dia2png_generator,
++                                single_source = 1)
++
++def generate(env):
++    env['BUILDERS']['Dia2Png'] = Dia2Png
++    env['DIACOM'] = &quot;dia&quot;
++    env['DIA2PNGDPI'] = 115
++
++def exists(env):
++    return 1
+
+Modified: trunk/satscons/Doxygen.py
+==============================================================================
+--- trunk/satscons/Doxygen.py	(original)
++++ trunk/satscons/Doxygen.py	Fri Oct 20 16:32:45 2006
+@@ -19,7 +19,6 @@
+                   for img in image ] +
+                 [ env.Command(stamp, source,
+                               [ 'cd $TARGET.dir &amp;&amp; $DOXYGENCOM',
+-                                # 'cd $TARGET.dir/doc/html &amp;&amp; (sed -ne \'1,/&lt;table&gt;/p\' &lt;annotated.html &amp;&amp; grep -F \'&lt;tr&gt;\' &lt;annotated.html | sort -ft\'&gt;\' -k4 &amp;&amp; sed -ne \'/&lt;\\/table&gt;/,$$p\' &lt;annotated.html) &gt;annotated.html.new &amp;&amp; mv annotated.html.new annotated.html',
+                                 &quot;touch $TARGET&quot; ],
+                               source_scanner = SCons.Defaults.ObjSourceScan) ])
+     env.Clean(stamp, dir)
+
+Modified: trunk/satscons/SatSCons.py
+==============================================================================
+--- trunk/satscons/SatSCons.py	(original)
++++ trunk/satscons/SatSCons.py	Fri Oct 20 16:32:45 2006
+@@ -139,13 +139,13 @@
+ 
+     return objects
+ 
+-def Doxygen(env, sources, testSources = None, image = []):
++def Doxygen(env, sources, testSources = None, target='doc', image = []):
+     if type(sources) == type(()):
+         testSources = sources[1]
+         sources = sources[0]
+ 
+     doc = env.Doxygen(
+-        target = 'doc',
++        target = target,
+         source = sources,
+         image = image)
+ 
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000008.html">[Senf-svn] r147 - trunk/Utils
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#9">[ date ]</a>
+              <a href="thread.html#9">[ thread ]</a>
+              <a href="subject.html#9">[ subject ]</a>
+              <a href="author.html#9">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r270 - branches/new-packet/Packets
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r270%20-%20branches/new-packet/Packets&In-Reply-To=%3C200706251438.l5PEcnw6005299%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000130.html">
+   <LINK REL="Next"  HREF="000132.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r270 - branches/new-packet/Packets</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r270%20-%20branches/new-packet/Packets&In-Reply-To=%3C200706251438.l5PEcnw6005299%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r270 - branches/new-packet/Packets">subversion at senf.berlios.de
+       </A><BR>
+    <I>Mon Jun 25 16:38:49 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000130.html">[Senf-svn] r269 - branches/new-packet/Utils
+</A></li>
+        <LI>Next message: <A HREF="000132.html">[Senf-svn] r271 - in branches/new-packet: . boost	boost/intrusive/detail
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#131">[ date ]</a>
+              <a href="thread.html#131">[ thread ]</a>
+              <a href="subject.html#131">[ subject ]</a>
+              <a href="author.html#131">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Mon Jun 25 16:38:30 2007
+New Revision: 270
+
+Added:
+   branches/new-packet/Packets/PacketData.cc
+   branches/new-packet/Packets/PacketData.cci
+   branches/new-packet/Packets/PacketData.cti
+   branches/new-packet/Packets/PacketData.hh
+   branches/new-packet/Packets/PacketData.test.cc
+   branches/new-packet/Packets/PacketImpl.cc
+   branches/new-packet/Packets/PacketImpl.cci
+   branches/new-packet/Packets/PacketImpl.cti
+   branches/new-packet/Packets/PacketImpl.hh
+   branches/new-packet/Packets/PacketImpl.test.cc
+   branches/new-packet/Packets/PacketInterpreter.cci
+   branches/new-packet/Packets/PacketInterpreter.hh
+   branches/new-packet/Packets/PacketInterpreter.test.cc
+   branches/new-packet/Packets/PacketTypes.hh
+Removed:
+   branches/new-packet/Packets/DataPacket.cc
+   branches/new-packet/Packets/DataPacket.cti
+   branches/new-packet/Packets/DataPacket.hh
+   branches/new-packet/Packets/GenericPacket.ct
+   branches/new-packet/Packets/GenericPacket.cti
+   branches/new-packet/Packets/GenericPacket.hh
+   branches/new-packet/Packets/Packet.cc
+   branches/new-packet/Packets/Packet.cci
+   branches/new-packet/Packets/Packet.ct
+   branches/new-packet/Packets/Packet.cti
+   branches/new-packet/Packets/Packet.hh
+   branches/new-packet/Packets/Packet.ih
+   branches/new-packet/Packets/Packet.mpp
+   branches/new-packet/Packets/Packet.test.cc
+   branches/new-packet/Packets/PacketRegistry.cc
+   branches/new-packet/Packets/PacketRegistry.ct
+   branches/new-packet/Packets/PacketRegistry.cti
+   branches/new-packet/Packets/PacketRegistry.hh
+   branches/new-packet/Packets/PacketRegistry.ih
+   branches/new-packet/Packets/PacketRegistry.test.cc
+   branches/new-packet/Packets/ParseArray.cti
+   branches/new-packet/Packets/ParseArray.hh
+   branches/new-packet/Packets/ParseArray.ih
+   branches/new-packet/Packets/ParseArray.test.cc
+   branches/new-packet/Packets/ParseInt.hh
+   branches/new-packet/Packets/ParseInt.ih
+   branches/new-packet/Packets/ParseInt.test.cc
+   branches/new-packet/Packets/ParseListS.ct
+   branches/new-packet/Packets/ParseListS.cti
+   branches/new-packet/Packets/ParseListS.hh
+   branches/new-packet/Packets/ParseListS.ih
+   branches/new-packet/Packets/ParseListS.test.cc
+   branches/new-packet/Packets/ParseVec.ct
+   branches/new-packet/Packets/ParseVec.cti
+   branches/new-packet/Packets/ParseVec.hh
+   branches/new-packet/Packets/ParseVec.test.cc
+   branches/new-packet/Packets/ParserBase.cti
+   branches/new-packet/Packets/ParserBase.hh
+   branches/new-packet/Packets/ParserBase.ih
+   branches/new-packet/Packets/ParserBase.test.cc
+   branches/new-packet/Packets/docstub.hh
+
+Log:
+Packet library facelift:
+* Removed old implementation (will be re-added later)
+* First implementation of low-level classes (incl. unit-testing)
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000130.html">[Senf-svn] r269 - branches/new-packet/Utils
+</A></li>
+	<LI>Next message: <A HREF="000132.html">[Senf-svn] r271 - in branches/new-packet: . boost	boost/intrusive/detail
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#131">[ date ]</a>
+              <a href="thread.html#131">[ thread ]</a>
+              <a href="subject.html#131">[ subject ]</a>
+              <a href="author.html#131">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

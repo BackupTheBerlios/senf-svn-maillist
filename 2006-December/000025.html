@@ -1,0 +1,464 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r164 - in trunk: Sniffer doclib satscons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r164%20-%20in%20trunk%3A%20Sniffer%20doclib%20satscons&In-Reply-To=%3C200612151439.kBFEdRcP028792%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000024.html">
+   <LINK REL="Next"  HREF="000026.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r164 - in trunk: Sniffer doclib satscons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r164%20-%20in%20trunk%3A%20Sniffer%20doclib%20satscons&In-Reply-To=%3C200612151439.kBFEdRcP028792%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r164 - in trunk: Sniffer doclib satscons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Fri Dec 15 15:39:27 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000024.html">[Senf-svn] r163 - in trunk: doclib satscons
+</A></li>
+        <LI>Next message: <A HREF="000026.html">[Senf-svn] r165 - in trunk: doclib
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#25">[ date ]</a>
+              <a href="thread.html#25">[ thread ]</a>
+              <a href="subject.html#25">[ subject ]</a>
+              <a href="author.html#25">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Fri Dec 15 15:39:23 2006
+New Revision: 164
+
+Added:
+   trunk/Example.dox
+Modified:
+   trunk/Doxyfile
+   trunk/Mainpage.dox
+   trunk/Sniffer/Sniffer.cc
+   trunk/doclib/logo-head.png
+   trunk/doclib/logo.xcf
+   trunk/doclib/senf.css
+   trunk/satscons/SConstruct.template
+
+Log:
+First version of overview documentation completed
+
+Modified: trunk/Doxyfile
+==============================================================================
+--- trunk/Doxyfile	(original)
++++ trunk/Doxyfile	Fri Dec 15 15:39:23 2006
+@@ -72,7 +72,7 @@
+ EXCLUDE                = doc
+ EXCLUDE_SYMLINKS       = NO
+ EXCLUDE_PATTERNS       = .*
+-EXAMPLE_PATH           = 
++EXAMPLE_PATH           = Sniffer
+ EXAMPLE_PATTERNS       = 
+ EXAMPLE_RECURSIVE      = NO
+ IMAGE_PATH             = 
+
+Added: trunk/Example.dox
+==============================================================================
+--- (empty file)
++++ trunk/Example.dox	Fri Dec 15 15:39:23 2006
+@@ -0,0 +1,110 @@
++/** \page example Sniffer: A simple example application
++
++    \dontinclude Sniffer.cc
++
++    The Sniffer application is a simple command line network sniffer
++    like \c tcpdump or \c tethereal. The application uses a packet
++    socket to read Ethernet packets from the \c eth0 interface and
++    dumps the parsed packets out to the standard output.
++
++    We will be looking at \c Sniffer.cc in the \c Sniffer
++    directory. We start by including the necessary headers
++
++    \skip // Custom includes
++    \until Ethernet
++
++    (The additional includes are part of a short-time fix which will
++    be removed as soon as possible). The example application now
++    contains a helper routine to produce a packet hexdump. We will
++    skip this routine here and go directly to the \c main function
++    
++    \skip main
++    \until try
++
++    We catch all exceptions in a \c try block. This is good for a
++    deliverable binary. When debugging the application, it might be
++    better to let the exception \c abort the execution so you can get
++    a backtrace of the exception origin in the debugger.
++
++    We now create a packet socket and bind it to the \c eth0
++    interface. By uncommenting the last line, you may switch the
++    interface into promiscuous mode.
++
++    \until //
++
++    We will now read packets from the socket forever, that is until
++    the user hits Ctrl-C
++
++    \skip while
++    \until read
++    
++    The next step is, to parse the data read from the socket as an
++    Ethernet packet
++
++    \until ;
++    
++    Lets digest this line step by step: We declare a variable named \c
++    packet as a smart pointer to an \c EthernetPacket instance. \c ptr
++    is a typedef member of all Packet classes for the corresponding
++    smart pointer type. We then initialize this pointer with a call to
++    the static \c create member of the \c Packet class. This member
++    takes the type of Packet to parse as a template argument. We pass
++    \c EthernetPacket here. The function takes an iterator range as an
++    argument, and we pass it the complete packet just read by
++    giving the range \c begin() to \c end() of our just read \c data
++    string.
++
++    The next step is, to write out the packet to the standard output
++
++    \until \n\n
++
++    The \c dump call will write out a complete representation of the
++    parsed packet data. The Packet library will \e not try to
++    interpret payload data as long as no exact indication of the
++    payload type is available (example: A UDP Payload is not parsed
++    further unless you explicitly tell the library, how to parse it).
++    Tools like \c tethereal guess the payload type by checking port
++    numbers and the payload data, however this is not advisable for a
++    general purpose packet library.
++
++    The next line, \c hexdump, will write out the \e last packet
++    component. Packets are managed as a chain of headers. The last
++    header is normally a \c DataPacket holding the payload data.
++
++    That's it. We finish of by catching the exception and giving as
++    much detail as possible if an exception is caught
++
++    \until ;
++    \until }
++    \until }
++
++    The \c prettyName function from the \c Utils library is used, to
++    get a nice, printable representation of the \e dynamic type of the
++    exception instance. It is an interface to the g++ demangler. This
++    is necessary since the \c name member of the C++ \c type_info
++    instance is a mangled name in C++.
++
++    That's it. This is all, that's necessary to read and parse raw
++    network packets using the SENF library. To try out the example
++    application, check out the library, go to the \c Sniffer directory
++    and execute
++
++    &lt;pre class=&quot;fragment&quot;&gt;
++      # scons -u
++      # ./Sniffer&lt;/pre&gt;
++
++    \see \ref components \n
++         \ref build \n
++         &lt;a href=&quot;../../Socket/doc/html/index.html&quot;&gt;&lt;b&gt;libSocket API reference&lt;/b&gt;&lt;/a&gt; \n
++         &lt;a href=&quot;../../Packets/doc/html/index.html&quot;&gt;&lt;b&gt;libPackets API reference&lt;/b&gt;&lt;/a&gt; \n
++         &lt;a href=&quot;../../Utils/doc/html/index.html&quot;&gt;&lt;b&gt;libUtils API reference&lt;/b&gt;&lt;/a&gt;
++ */
++
++
++// Local Variables:
++// mode: c++
++// mode: flyspell
++// mode: auto-fill
++// ispell-local-dictionary: &quot;american&quot;
++// End:
++
+
+Modified: trunk/Mainpage.dox
+==============================================================================
+--- trunk/Mainpage.dox	(original)
++++ trunk/Mainpage.dox	Fri Dec 15 15:39:23 2006
+@@ -48,7 +48,8 @@
+ 
+     \see \ref build \n
+          \ref components \n
+-         \ref svnsetup
++         \ref svnsetup \n
++         \ref overview
+ 
+     \section Preliminaries
+ 
+@@ -71,10 +72,6 @@
+     which relies on \c epoll)
+     
+     \todo
+-    \li Preliminaries: SVN access, Dependencies
+-    \li Building the library -&gt; Configuration
+-    \li Setting up a project using this library (svn:externals)
+-    \li Library components
+     \li coding standards and patterns
+  */
+ 
+@@ -195,12 +192,16 @@
+     reference&lt;/a&gt;
+  */
+ 
+-/** \page svnsetup Setting up a new project using SENF via SVN
++/** \page svnsetup Setting up a new project using SENF
+     
+     The preferred way to use SENF in a new project is to rely on
+     Subversion and make use of the SENFSCons build environment. The
+     following sections will describe, how this setup works.
+ 
++    \see \ref build \n
++         \ref components \n
++         \ref overview
++
+     \section svnext Setting up the project repository
+ 
+     The most seamless integration is possible if you rely on
+@@ -249,34 +250,121 @@
+     and the code will be checked out into the corresponding
+     directories. 
+ 
+-    \todo \li Configuring and building -&gt; reference to the SENFSCons
+-              dok
+- */
++    \section new_conf Configuring SENFSCons
++
++    To set up the build environment, copy the
++    &lt;tt&gt;satscons/SConstruct.template&lt;/tt&gt; to &lt;tt&gt;Satscons&lt;/tt&gt; in the
++    project root. The default setup of this file is to build all
++    subdirectories (using the \c SConscript files of the
++    subdirectories). You can add additonal global targets and
++    configuration parameters here.
++
++    If you want to use a non-default compiler or the boost library is
++    not installed in the system directories, you will have to copy
++    &lt;tt&gt;satscons/SConfig.template&lt;/tt&gt; to &lt;tt&gt;SConfig&lt;/tt&gt; in the
++    project root and edit it there. You should \e never add \c SConfig
++    to the repository since it should only contain local settings
++    necessary for building on your local system. You should therefore
++    add \c SConfig to the list of files ignored by Subversion in the
++    project root. In the project root execute
+ 
+-/** \page example Sniffer: A simple Example application
++    &lt;pre class=&quot;fragment&quot;&gt;
++      $ svn propedit svn:ignore .&lt;/pre&gt;
++
++    and add \c SConfig as a new line to the property.
++
++    \section new_build Building the project
++
++    You should now be able to build your project using
++
++    &lt;pre class=&quot;fragment&quot;&gt;
++      $ scons&lt;/pre&gt;
+ 
++    If you have not changed the \c SConstruct file, this will build
++    all modules you have importet into your project. To build and
++    execute the unit tests, use
++
++    &lt;pre class=&quot;fragment&quot;&gt;
++      $ scons all_tests&lt;/pre&gt;
++
++    you can also build only a subdirectory by changing to it and
++    running
++    
++    &lt;pre class=&quot;fragment&quot;&gt;
++      $ scons -u [target]&lt;/pre&gt;
++
++    \see &lt;a href=&quot;../../satscons/doc/html/index.html&quot;&gt;&lt;b&gt;SENFSCons reference&lt;/b&gt;&lt;/a&gt; \n
++         &lt;a href=&quot;<A HREF="http://www.scons.org/documentation.php">http://www.scons.org/documentation.php</A>&quot;&gt;&lt;b&gt;&lt;i&gt;SCons documentation&lt;/i&gt;&lt;/b&gt;&lt;/a&gt; \n
++         &lt;a href=&quot;<A HREF="http://svnbook.red-bean.com">http://svnbook.red-bean.com</A>&quot;&gt;&lt;b&gt;&lt;i&gt;Subversion online book&lt;/i&gt;&lt;/b&gt;&lt;/a&gt; \n
++         &lt;a href=&quot;<A HREF="http://subversion.tigris.org">http://subversion.tigris.org</A>&quot;&gt;&lt;b&gt;&lt;i&gt;Subversion Homepage&lt;/i&gt;&lt;/b&gt;&lt;/a&gt;
+  */
+ 
+-    \section code Coding practices
++/** \page overview Introduction to the framework
++    
++    The SENF framework is relatively complex and makes use of advanced
++    features of the C++ language. To make the most efficient use of
++    the framework, you should have at least a basic understanding of
++    C++ templates and the standard library concepts.
++
++    The library implementation at places makes heavy use of advanced
++    template techniques and relies on some very advanced template
++    libraries from Boost. The aim was however for the \e external
++    interface of the library to be as simple as possible without
++    sacrificing important functionality or adversely impacting the
++    runtime performance.
++
++    As already mentioned several times, the library relies on Boost
++    (<A HREF="http://www.boost.org">http://www.boost.org</A>) as a generic library of high quality
++    reusable C++ components. It also makes frequent use of the
++    standard library. It is designed, to integrate well into both
++    libraries and to use the same concepts and ideas.
++
++    \section startup Getting starting developing with SENF
++
++    To introduce the framework and it's general structure, a simple
++    example application is provided in the SENF repository in the \c
++    Sniffer module. Peruse this example to get a first look at how to
++    make use of SENF.
++    
++    When building a network Application with SENF, you will use
++    several modules:
++    
++    \li Use the &lt;a href=&quot;../../Socket/doc/html/index.html&quot;&gt;&lt;b&gt;Socket
++      	library&lt;/b&gt;&lt;/a&gt; for network communication needs. This library
++      	includes support for raw and packet sockets to allow low level
++      	network access.
++    \li Use the &lt;a
++      	href=&quot;../../Scheduler/doc/html/index.html&quot;&gt;&lt;b&gt;Scheduler
++      	library&lt;/b&gt;&lt;/a&gt; to coordinate the asynchronous event
++      	processing. This drastically reduces the number of threads
++      	needed in your application and will greatly enhance the overall
++      	responsiveness.
++    \li To interpret low level network packets, use the &lt;a
++      	href=&quot;../../Packets/doc/html/index.html&quot;&gt;&lt;b&gt;Packets
++      	library&lt;/b&gt;&lt;/a&gt;. This library will provide efficient and 
++	convenient access to all protocol fields. It supports parsing as
++      	well as modifying and creating packets. It has default support
++      	for the most important TCP protocols and is highly extensible
++      	with new protocols.
++    \li Go over the &lt;a href=&quot;../../Utils/doc/html/index.html&quot;&gt;&lt;b&gt;Utils
++      	library&lt;/b&gt;&lt;/a&gt;. It contains small helpers to
++      	simplify tasks like daemonization, exception handling,
++        debugging and so on.
++
++    The simplest way to get started is: copy the Sniffer application
++    and start to modify it.
++
++    \see \ref example \n
++	 \ref components \n
++         \ref svnsetup \n
++         \ref build
++ */
+ 
+-    The library heavily depends on the features of modern C++. As
+-    such, it depends on a fairly recent and standards compliant C++
+-    compiler (the Library is developed using \c gcc with Version at
+-    least 3.4). To meet the above defined goals, the library makes
+-    quite heavy use of advanced templating techniques, so
+-    understanding the implementation will require expertise in the
+-    intricacies of C++ templates. However, it was deemed important to
+-    keep the \e visible Interface of the Library as clean and simple
+-    as possible without sacrificing the projects design goals.
+-
+-    The library heavily depends on the \e Boost libraries (see
+-    <A HREF="http://www.boost.org">http://www.boost.org</A>). The Boost libraries are an ever growing
+-    collection of highest quality reusable C++ components. They are
+-    designed with standardization in mind. Many of the libraries are
+-    already in queue to be part of the next generation C++ standard.
+-   
+ 
+ // Local Variables:
+ // mode: c++
++// mode: flyspell
++// mode: auto-fill
++// ispell-local-dictionary: &quot;american&quot;
+ // End:
+ 
+
+Modified: trunk/Sniffer/Sniffer.cc
+==============================================================================
+--- trunk/Sniffer/Sniffer.cc	(original)
++++ trunk/Sniffer/Sniffer.cc	Fri Dec 15 15:39:23 2006
+@@ -86,7 +86,7 @@
+     }
+ }
+ 
+-int main (int argc, char * argv[])
++int main (int argc, char const * argv[])
+ {
+     try {
+         satcom::lib::PacketSocketHandle sock;
+@@ -104,7 +104,7 @@
+             std::cout &lt;&lt; &quot;\n\n&quot;;
+         }
+     }
+-    catch (std::exception &amp; ex) {
++    catch (std::exception const &amp; ex) {
+         std::cerr &lt;&lt; satcom::lib::prettyName(typeid(ex)) &lt;&lt; &quot;: &quot; &lt;&lt; ex.what() &lt;&lt; &quot;\n&quot;;
+     }
+ }
+
+Modified: trunk/doclib/logo-head.png
+==============================================================================
+Binary files. No diff available.
+
+Modified: trunk/doclib/logo.xcf
+==============================================================================
+Binary files. No diff available.
+
+Modified: trunk/doclib/senf.css
+==============================================================================
+--- trunk/doclib/senf.css	(original)
++++ trunk/doclib/senf.css	Fri Dec 15 15:39:23 2006
+@@ -5,8 +5,8 @@
+ }
+ 
+ #head {
+-	height: 63px;
+-	border-top: 4px solid #DECD40;
++	height: 62px;
++	border-top: 5px solid #DECD40;
+ 	border-bottom: 1px solid #AF9D00;
+ 	background: url(logo-head.png) top left no-repeat;
+ 	background-color: #EDE497;
+@@ -15,7 +15,7 @@
+ #head h1 {
+ 	margin: 0 0 0 100px;
+         padding: 6px 0 0 0;
+-	height: 34px;
++	height: 33px;
+         background-color: #DECD40;
+ 	border-bottom: 1px solid #AF9D00;
+         font-size: 22px;
+
+Modified: trunk/satscons/SConstruct.template
+==============================================================================
+--- trunk/satscons/SConstruct.template	(original)
++++ trunk/satscons/SConstruct.template	Fri Dec 15 15:39:23 2006
+@@ -6,7 +6,6 @@
+ 
+ SatSCons.UseBoost();
+ SatSCons.UseSTLPort();
+-SatSCons.UseDoxygen();
+ env = SatSCons.MakeEnvironment();
+ 
+ env.Append(
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000024.html">[Senf-svn] r163 - in trunk: doclib satscons
+</A></li>
+	<LI>Next message: <A HREF="000026.html">[Senf-svn] r165 - in trunk: doclib
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#25">[ date ]</a>
+              <a href="thread.html#25">[ thread ]</a>
+              <a href="subject.html#25">[ subject ]</a>
+              <a href="author.html#25">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

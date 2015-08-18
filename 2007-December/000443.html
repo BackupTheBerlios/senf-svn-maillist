@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r582 - in branches/socket-cleanup/Socket/Protocols: INet	Raw
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-December/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r582%20-%20in%20branches/socket-cleanup/Socket/Protocols%3A%20INet%0A%09Raw&In-Reply-To=%3C200712181813.lBIID5eJ013600%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000442.html">
+   <LINK REL="Next"  HREF="000444.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r582 - in branches/socket-cleanup/Socket/Protocols: INet	Raw</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r582%20-%20in%20branches/socket-cleanup/Socket/Protocols%3A%20INet%0A%09Raw&In-Reply-To=%3C200712181813.lBIID5eJ013600%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r582 - in branches/socket-cleanup/Socket/Protocols: INet	Raw">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Dec 18 19:13:05 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000442.html">[Senf-svn] r581 - trunk/Socket/Protocols/UN
+</A></li>
+        <LI>Next message: <A HREF="000444.html">[Senf-svn] r584 - in branches/socket-cleanup/Socket: Protocols	Protocols/DVB Protocols/INet Protocols/UN
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#443">[ date ]</a>
+              <a href="thread.html#443">[ thread ]</a>
+              <a href="subject.html#443">[ subject ]</a>
+              <a href="author.html#443">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Dec 18 19:12:46 2007
+New Revision: 582
+
+Added:
+   branches/socket-cleanup/Socket/Protocols/DatagramSocketProtocol.cc   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/DatagramSocketProtocol.hh   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/INet/ConnectedRawINetSocketHandle.cc
+      - copied, changed from r580, /branches/socket-cleanup/Socket/Protocols/INet/ConnectedRawInetSocketHandle.cc
+   branches/socket-cleanup/Socket/Protocols/INet/ConnectedRawINetSocketHandle.hh
+      - copied, changed from r580, /branches/socket-cleanup/Socket/Protocols/INet/ConnectedRawInetSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/INet/RawINetProtocol.cc
+      - copied, changed from r580, /branches/socket-cleanup/Socket/Protocols/INet/RawInetProtocol.cc
+   branches/socket-cleanup/Socket/Protocols/INet/RawINetProtocol.hh
+      - copied, changed from r580, /branches/socket-cleanup/Socket/Protocols/INet/RawInetProtocol.hh
+   branches/socket-cleanup/Socket/Protocols/INet/RawINetSocketHandle.cc
+      - copied, changed from r580, /branches/socket-cleanup/Socket/Protocols/INet/RawInetSocketHandle.cc
+   branches/socket-cleanup/Socket/Protocols/INet/RawINetSocketHandle.hh
+      - copied, changed from r580, /branches/socket-cleanup/Socket/Protocols/INet/RawInetSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/INet/RawINetSocketHandle.test.cc
+      - copied, changed from r580, /branches/socket-cleanup/Socket/Protocols/INet/RawInetSocketHandle.test.cc
+   branches/socket-cleanup/Socket/Protocols/UN.hh   (contents, props changed)
+Removed:
+   branches/socket-cleanup/Socket/Protocols/INet/ConnectedRawInetSocketHandle.cc
+   branches/socket-cleanup/Socket/Protocols/INet/ConnectedRawInetSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/INet/RawInetProtocol.cc
+   branches/socket-cleanup/Socket/Protocols/INet/RawInetProtocol.hh
+   branches/socket-cleanup/Socket/Protocols/INet/RawInetSocketHandle.cc
+   branches/socket-cleanup/Socket/Protocols/INet/RawInetSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/INet/RawInetSocketHandle.test.cc
+Modified:
+   branches/socket-cleanup/Socket/Protocols/BSDSocketProtocol.cc
+   branches/socket-cleanup/Socket/Protocols/BSDSocketProtocol.hh
+   branches/socket-cleanup/Socket/Protocols/INet/UDPSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/Raw/PacketSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/SConscript
+
+Log:
+Socket/Protocols: Move timestamp() (SIOCGSTAMP) into (new) DatagramSocketProtocol facet
+Socket/Protocols/INet: Rename all '*Inet*' classes and files to '*INet*'
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000442.html">[Senf-svn] r581 - trunk/Socket/Protocols/UN
+</A></li>
+	<LI>Next message: <A HREF="000444.html">[Senf-svn] r584 - in branches/socket-cleanup/Socket: Protocols	Protocols/DVB Protocols/INet Protocols/UN
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#443">[ date ]</a>
+              <a href="thread.html#443">[ thread ]</a>
+              <a href="subject.html#443">[ subject ]</a>
+              <a href="author.html#443">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

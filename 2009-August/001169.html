@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1312 - in trunk: . Examples/MCSniffer	Examples/MultiMCLoop Examples/RateStuffer Examples/Sniffer	Examples/TCPClientServer Examples/UDPClientServer PPI	Packets/80211Bundle Packets/80221Bundle Packets/DefaultBundle	Packets/DefaultBundle/extra_tests Packets/MPEGDVBBundle	Scheduler Socket Socket/Protocols Socket/Protocols/DVB	Socket/Protocols/INet Socket/Protocols/Raw	Socket/Protocols/UN Utils Utils/Console Utils/Daemon	Utils/Logger Utils/Termlib debian doclib senfscons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1312%20-%20in%20trunk%3A%20.%20Examples/MCSniffer%0A%09Examples/MultiMCLoop%20Examples/RateStuffer%20Examples/Sniffer%0A%09Examples/TCPClientServer%20Examples/UDPClientServer%20PPI%0A%09Packets/80211Bundle%20Packets/80221Bundle%20Packets/DefaultBundle%0A%09Packets/DefaultBundle/extra_tests%20Packets/MPEGDVBBundle%0A%09Scheduler%20Socket%20Socket/Protocols%20Socket/Protocols/DVB%0A%09Socket/Protocols/INet%20Socket/Protocols/Raw%0A%09Socket/Protocols/UN%20Utils%20Utils/Console%20Utils/Daemon%0A%09Utils/Logger%20Utils/Termlib%20debian%20doclib%20senfscons&In-Reply-To=%3C200908201133.n7KBXiO8024533%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001168.html">
+   <LINK REL="Next"  HREF="001170.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1312 - in trunk: . Examples/MCSniffer	Examples/MultiMCLoop Examples/RateStuffer Examples/Sniffer	Examples/TCPClientServer Examples/UDPClientServer PPI	Packets/80211Bundle Packets/80221Bundle Packets/DefaultBundle	Packets/DefaultBundle/extra_tests Packets/MPEGDVBBundle	Scheduler Socket Socket/Protocols Socket/Protocols/DVB	Socket/Protocols/INet Socket/Protocols/Raw	Socket/Protocols/UN Utils Utils/Console Utils/Daemon	Utils/Logger Utils/Termlib debian doclib senfscons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1312%20-%20in%20trunk%3A%20.%20Examples/MCSniffer%0A%09Examples/MultiMCLoop%20Examples/RateStuffer%20Examples/Sniffer%0A%09Examples/TCPClientServer%20Examples/UDPClientServer%20PPI%0A%09Packets/80211Bundle%20Packets/80221Bundle%20Packets/DefaultBundle%0A%09Packets/DefaultBundle/extra_tests%20Packets/MPEGDVBBundle%0A%09Scheduler%20Socket%20Socket/Protocols%20Socket/Protocols/DVB%0A%09Socket/Protocols/INet%20Socket/Protocols/Raw%0A%09Socket/Protocols/UN%20Utils%20Utils/Console%20Utils/Daemon%0A%09Utils/Logger%20Utils/Termlib%20debian%20doclib%20senfscons&In-Reply-To=%3C200908201133.n7KBXiO8024533%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r1312 - in trunk: . Examples/MCSniffer	Examples/MultiMCLoop Examples/RateStuffer Examples/Sniffer	Examples/TCPClientServer Examples/UDPClientServer PPI	Packets/80211Bundle Packets/80221Bundle Packets/DefaultBundle	Packets/DefaultBundle/extra_tests Packets/MPEGDVBBundle	Scheduler Socket Socket/Protocols Socket/Protocols/DVB	Socket/Protocols/INet Socket/Protocols/Raw	Socket/Protocols/UN Utils Utils/Console Utils/Daemon	Utils/Logger Utils/Termlib debian doclib senfscons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Thu Aug 20 13:33:44 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001168.html">[Senf-svn] r1311 - in trunk: senfscons
+</A></li>
+        <LI>Next message: <A HREF="001170.html">[Senf-svn] r1313 - in trunk: . PPI Socket Socket/Protocols/DVB	Socket/Protocols/Raw Socket/Protocols/UN Utils/Logger	Utils/Termlib debian senfscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1169">[ date ]</a>
+              <a href="thread.html#1169">[ thread ]</a>
+              <a href="subject.html#1169">[ subject ]</a>
+              <a href="author.html#1169">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Thu Aug 20 13:33:27 2009
+New Revision: 1312
+
+Added:
+   trunk/senfscons/CombinedObject.py
+   trunk/senfscons/PhonyTarget.py
+Removed:
+   trunk/senfscons/BoostUnitTest.py
+   trunk/senfscons/CompileCheck.py
+   trunk/senfscons/SConstruct.template
+   trunk/senfscons/functions.xsl
+   trunk/senfscons/xrefhtml.xslt
+   trunk/senfscons/xrefxtract.xslt
+Modified:
+   trunk/Examples/MCSniffer/SConscript
+   trunk/Examples/MultiMCLoop/SConscript
+   trunk/Examples/RateStuffer/SConscript
+   trunk/Examples/Sniffer/SConscript
+   trunk/Examples/TCPClientServer/SConscript
+   trunk/Examples/UDPClientServer/SConscript
+   trunk/PPI/SConscript
+   trunk/Packets/80211Bundle/SConscript
+   trunk/Packets/80221Bundle/SConscript
+   trunk/Packets/DefaultBundle/SConscript
+   trunk/Packets/DefaultBundle/extra_tests/SConscript
+   trunk/Packets/MPEGDVBBundle/SConscript
+   trunk/Packets/SConscript
+   trunk/SConstruct
+   trunk/Scheduler/SConscript
+   trunk/Socket/Protocols/DVB/SConscript
+   trunk/Socket/Protocols/INet/SConscript
+   trunk/Socket/Protocols/Raw/SConscript
+   trunk/Socket/Protocols/SConscript
+   trunk/Socket/Protocols/UN/SConscript
+   trunk/Socket/SConscript
+   trunk/Utils/Console/SConscript
+   trunk/Utils/Daemon/SConscript
+   trunk/Utils/Logger/SConscript
+   trunk/Utils/SConscript
+   trunk/Utils/Termlib/SConscript
+   trunk/debian/SConscript
+   trunk/doclib/SConscript
+   trunk/senfscons/Boost.py
+   trunk/senfscons/CopyToDir.py
+   trunk/senfscons/PkgDraw.py
+   trunk/senfscons/SENFSCons.py
+
+Log:
+Combine all boot build stuff in a single scons tool
+Remove and/or simplify most remaining SENFSCons stuff
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001168.html">[Senf-svn] r1311 - in trunk: senfscons
+</A></li>
+	<LI>Next message: <A HREF="001170.html">[Senf-svn] r1313 - in trunk: . PPI Socket Socket/Protocols/DVB	Socket/Protocols/Raw Socket/Protocols/UN Utils/Logger	Utils/Termlib debian senfscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1169">[ date ]</a>
+              <a href="thread.html#1169">[ thread ]</a>
+              <a href="subject.html#1169">[ subject ]</a>
+              <a href="author.html#1169">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

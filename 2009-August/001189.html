@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1332 - in trunk: senf senf/PPI senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/DefaultBundle senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Utils senf/Utils/Console senf/Utils/Daemon	senf/Utils/Logger senf/Utils/Termlib site_scons	site_scons/site_tools
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1332%20-%20in%20trunk%3A%20senf%20senf/PPI%20senf/Packets%0A%09senf/Packets/80211Bundle%20senf/Packets/80221Bundle%0A%09senf/Packets/DefaultBundle%20senf/Packets/DefaultBundle/extra_tests%0A%09senf/Packets/MPEGDVBBundle%20senf/Scheduler%20senf/Socket%0A%09senf/Socket/Protocols%20senf/Socket/Protocols/DVB%0A%09senf/Socket/Protocols/INet%20senf/Socket/Protocols/Raw%0A%09senf/Utils%20senf/Utils/Console%20senf/Utils/Daemon%0A%09senf/Utils/Logger%20senf/Utils/Termlib%20site_scons%0A%09site_scons/site_tools&In-Reply-To=%3C200908241357.n7ODvCsG014382%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001188.html">
+   <LINK REL="Next"  HREF="001190.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1332 - in trunk: senf senf/PPI senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/DefaultBundle senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Utils senf/Utils/Console senf/Utils/Daemon	senf/Utils/Logger senf/Utils/Termlib site_scons	site_scons/site_tools</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1332%20-%20in%20trunk%3A%20senf%20senf/PPI%20senf/Packets%0A%09senf/Packets/80211Bundle%20senf/Packets/80221Bundle%0A%09senf/Packets/DefaultBundle%20senf/Packets/DefaultBundle/extra_tests%0A%09senf/Packets/MPEGDVBBundle%20senf/Scheduler%20senf/Socket%0A%09senf/Socket/Protocols%20senf/Socket/Protocols/DVB%0A%09senf/Socket/Protocols/INet%20senf/Socket/Protocols/Raw%0A%09senf/Utils%20senf/Utils/Console%20senf/Utils/Daemon%0A%09senf/Utils/Logger%20senf/Utils/Termlib%20site_scons%0A%09site_scons/site_tools&In-Reply-To=%3C200908241357.n7ODvCsG014382%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r1332 - in trunk: senf senf/PPI senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/DefaultBundle senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Utils senf/Utils/Console senf/Utils/Daemon	senf/Utils/Logger senf/Utils/Termlib site_scons	site_scons/site_tools">subversion at senf.berlios.de
+       </A><BR>
+    <I>Mon Aug 24 15:57:12 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001188.html">[Senf-svn] r1331 - trunk/doclib
+</A></li>
+        <LI>Next message: <A HREF="001190.html">[Senf-svn] r1333 - trunk/senf/Packets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1189">[ date ]</a>
+              <a href="thread.html#1189">[ thread ]</a>
+              <a href="subject.html#1189">[ subject ]</a>
+              <a href="author.html#1189">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tho
+Date: Mon Aug 24 15:57:02 2009
+New Revision: 1332
+
+Modified:
+   trunk/senf/   (props changed)
+   trunk/senf/PPI/   (props changed)
+   trunk/senf/Packets/   (props changed)
+   trunk/senf/Packets/80211Bundle/   (props changed)
+   trunk/senf/Packets/80221Bundle/   (props changed)
+   trunk/senf/Packets/DefaultBundle/   (props changed)
+   trunk/senf/Packets/DefaultBundle/extra_tests/   (props changed)
+   trunk/senf/Packets/MPEGDVBBundle/   (props changed)
+   trunk/senf/Scheduler/   (props changed)
+   trunk/senf/Socket/   (props changed)
+   trunk/senf/Socket/Protocols/   (props changed)
+   trunk/senf/Socket/Protocols/DVB/   (props changed)
+   trunk/senf/Socket/Protocols/INet/   (props changed)
+   trunk/senf/Socket/Protocols/Raw/   (props changed)
+   trunk/senf/Socket/Protocols/UN/   (props changed)
+   trunk/senf/Utils/   (props changed)
+   trunk/senf/Utils/Console/   (props changed)
+   trunk/senf/Utils/Daemon/   (props changed)
+   trunk/senf/Utils/Logger/   (props changed)
+   trunk/senf/Utils/Termlib/   (props changed)
+   trunk/site_scons/   (props changed)
+   trunk/site_scons/site_tools/   (props changed)
+
+Log:
+added svn:ignore properties
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001188.html">[Senf-svn] r1331 - trunk/doclib
+</A></li>
+	<LI>Next message: <A HREF="001190.html">[Senf-svn] r1333 - trunk/senf/Packets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1189">[ date ]</a>
+              <a href="thread.html#1189">[ thread ]</a>
+              <a href="subject.html#1189">[ subject ]</a>
+              <a href="author.html#1189">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

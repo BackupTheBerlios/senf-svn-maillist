@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r351 - in trunk: . Examples/Sniffer	Packets/DefaultBundle Socket/Protocols/Raw Utils
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r351%20-%20in%20trunk%3A%20.%20Examples/Sniffer%0A%09Packets/DefaultBundle%20Socket/Protocols/Raw%20Utils&In-Reply-To=%3C200707251217.l6PCHJqP000172%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000211.html">
+   <LINK REL="Next"  HREF="000213.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r351 - in trunk: . Examples/Sniffer	Packets/DefaultBundle Socket/Protocols/Raw Utils</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r351%20-%20in%20trunk%3A%20.%20Examples/Sniffer%0A%09Packets/DefaultBundle%20Socket/Protocols/Raw%20Utils&In-Reply-To=%3C200707251217.l6PCHJqP000172%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r351 - in trunk: . Examples/Sniffer	Packets/DefaultBundle Socket/Protocols/Raw Utils">subversion at senf.berlios.de
+       </A><BR>
+    <I>Wed Jul 25 14:17:19 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000211.html">[Senf-svn] r350 - in trunk: . Packets/DefaultBundle	Packets/MPEGDVBBundle Utils
+</A></li>
+        <LI>Next message: <A HREF="000213.html">[Senf-svn] r352 - trunk/Packets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#212">[ date ]</a>
+              <a href="thread.html#212">[ thread ]</a>
+              <a href="subject.html#212">[ subject ]</a>
+              <a href="author.html#212">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Wed Jul 25 14:16:44 2007
+New Revision: 351
+
+Added:
+   trunk/Socket/Protocols/Raw/   (props changed)
+   trunk/Socket/Protocols/Raw/LLAddressing.cc
+      - copied unchanged from r350, /trunk/Socket/Protocols/LLAddressing.cc
+   trunk/Socket/Protocols/Raw/LLAddressing.cci
+      - copied unchanged from r350, /trunk/Socket/Protocols/LLAddressing.cci
+   trunk/Socket/Protocols/Raw/LLAddressing.ct
+      - copied unchanged from r350, /trunk/Socket/Protocols/LLAddressing.ct
+   trunk/Socket/Protocols/Raw/LLAddressing.cti
+      - copied unchanged from r350, /trunk/Socket/Protocols/LLAddressing.cti
+   trunk/Socket/Protocols/Raw/LLAddressing.hh
+      - copied, changed from r350, /trunk/Socket/Protocols/LLAddressing.hh
+   trunk/Socket/Protocols/Raw/LLAddressing.ih
+      - copied unchanged from r350, /trunk/Socket/Protocols/LLAddressing.ih
+   trunk/Socket/Protocols/Raw/LLAddressing.test.cc
+      - copied unchanged from r350, /trunk/Socket/Protocols/LLAddressing.test.cc
+   trunk/Socket/Protocols/Raw/MACAddress.cc
+   trunk/Socket/Protocols/Raw/MACAddress.cci
+   trunk/Socket/Protocols/Raw/MACAddress.ct
+   trunk/Socket/Protocols/Raw/MACAddress.hh
+   trunk/Socket/Protocols/Raw/MACAddress.test.cc
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.cc
+      - copied unchanged from r350, /trunk/Socket/Protocols/PacketSocketHandle.cc
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.ct
+      - copied unchanged from r350, /trunk/Socket/Protocols/PacketSocketHandle.ct
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.cti
+      - copied unchanged from r350, /trunk/Socket/Protocols/PacketSocketHandle.cti
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.hh
+      - copied, changed from r350, /trunk/Socket/Protocols/PacketSocketHandle.hh
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.ih
+      - copied unchanged from r350, /trunk/Socket/Protocols/PacketSocketHandle.ih
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.test.cc
+      - copied unchanged from r350, /trunk/Socket/Protocols/PacketSocketHandle.test.cc
+   trunk/Socket/Protocols/Raw/SConscript
+   trunk/Socket/Protocols/Raw/main.test.cc
+Removed:
+   trunk/Packets/DefaultBundle/EthernetPacket.ct
+   trunk/Socket/Protocols/LLAddressing.cc
+   trunk/Socket/Protocols/LLAddressing.cci
+   trunk/Socket/Protocols/LLAddressing.ct
+   trunk/Socket/Protocols/LLAddressing.cti
+   trunk/Socket/Protocols/LLAddressing.hh
+   trunk/Socket/Protocols/LLAddressing.ih
+   trunk/Socket/Protocols/LLAddressing.test.cc
+   trunk/Socket/Protocols/PacketSocketHandle.cc
+   trunk/Socket/Protocols/PacketSocketHandle.ct
+   trunk/Socket/Protocols/PacketSocketHandle.cti
+   trunk/Socket/Protocols/PacketSocketHandle.hh
+   trunk/Socket/Protocols/PacketSocketHandle.ih
+   trunk/Socket/Protocols/PacketSocketHandle.test.cc
+Modified:
+   trunk/Examples/Sniffer/Sniffer.cc
+   trunk/Packets/DefaultBundle/EthernetPacket.cc
+   trunk/Packets/DefaultBundle/EthernetPacket.hh
+   trunk/Utils/pool_alloc_mixin.cti
+   trunk/senf.dict
+
+Log:
+Socket: Moved PacketSocketHandle and related stuff into 'Raw' subdir
+Socket: Added complete MACAddress class
+Packets/DefaultBundle: Make EthernetPacket use the MACAddress class
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000211.html">[Senf-svn] r350 - in trunk: . Packets/DefaultBundle	Packets/MPEGDVBBundle Utils
+</A></li>
+	<LI>Next message: <A HREF="000213.html">[Senf-svn] r352 - trunk/Packets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#212">[ date ]</a>
+              <a href="thread.html#212">[ thread ]</a>
+              <a href="subject.html#212">[ subject ]</a>
+              <a href="author.html#212">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

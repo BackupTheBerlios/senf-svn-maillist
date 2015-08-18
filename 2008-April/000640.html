@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r780 - in trunk: . Socket Utils Utils/Daemon
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r780%20-%20in%20trunk%3A%20.%20Socket%20Utils%20Utils/Daemon&In-Reply-To=%3C200804040934.m349YJHJ011833%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000639.html">
+   <LINK REL="Next"  HREF="000641.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r780 - in trunk: . Socket Utils Utils/Daemon</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r780%20-%20in%20trunk%3A%20.%20Socket%20Utils%20Utils/Daemon&In-Reply-To=%3C200804040934.m349YJHJ011833%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r780 - in trunk: . Socket Utils Utils/Daemon">subversion at senf.berlios.de
+       </A><BR>
+    <I>Fri Apr  4 11:34:19 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000639.html">[Senf-svn] r779 - trunk
+</A></li>
+        <LI>Next message: <A HREF="000641.html">[Senf-svn] r781 - trunk/Socket/Protocols/INet
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#640">[ date ]</a>
+              <a href="thread.html#640">[ thread ]</a>
+              <a href="subject.html#640">[ subject ]</a>
+              <a href="author.html#640">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Fri Apr  4 11:34:14 2008
+New Revision: 780
+
+Added:
+   trunk/Utils/Backtrace.cc   (contents, props changed)
+   trunk/Utils/Backtrace.hh   (contents, props changed)
+Modified:
+   trunk/Scheduler/ClockService.cci
+   trunk/Scheduler/ClockService.hh
+   trunk/Socket/SocketHandle.cti
+   trunk/Socket/SocketHandle.hh
+   trunk/Socket/SocketHandle.test.cc
+   trunk/Utils/Daemon/Daemon.cc
+   trunk/Utils/Daemon/Daemon.hh
+   trunk/Utils/Exception.cc
+   trunk/senf.dict
+
+Log:
+Socket: Add a 'facet&lt;&gt;()' member to access protocol-facets from generic socket handles
+Scheduler: Add ClockService::from_time_t and from_timeval
+Utils: Implement generic backtrace helper
+Utils/Daemon: Catch fatal signals (plus SIGUSR2) and show a backtrace in debug builds
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000639.html">[Senf-svn] r779 - trunk
+</A></li>
+	<LI>Next message: <A HREF="000641.html">[Senf-svn] r781 - trunk/Socket/Protocols/INet
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#640">[ date ]</a>
+              <a href="thread.html#640">[ thread ]</a>
+              <a href="subject.html#640">[ subject ]</a>
+              <a href="author.html#640">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r639 - in trunk: . Examples/DVBAdapter PPI Packets	Packets/DefaultBundle Scheduler Socket Utils Utils/Daemon senfscons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r639%20-%20in%20trunk%3A%20.%20Examples/DVBAdapter%20PPI%20Packets%0A%09Packets/DefaultBundle%20Scheduler%20Socket%20Utils%20Utils/Daemon%20senfscons&In-Reply-To=%3C200801251613.m0PGDcDA030047%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000498.html">
+   <LINK REL="Next"  HREF="000500.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r639 - in trunk: . Examples/DVBAdapter PPI Packets	Packets/DefaultBundle Scheduler Socket Utils Utils/Daemon senfscons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r639%20-%20in%20trunk%3A%20.%20Examples/DVBAdapter%20PPI%20Packets%0A%09Packets/DefaultBundle%20Scheduler%20Socket%20Utils%20Utils/Daemon%20senfscons&In-Reply-To=%3C200801251613.m0PGDcDA030047%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r639 - in trunk: . Examples/DVBAdapter PPI Packets	Packets/DefaultBundle Scheduler Socket Utils Utils/Daemon senfscons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Fri Jan 25 17:13:38 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000498.html">[Senf-svn] r638 - in trunk: HowTos/NewPacket Packets	Packets/DefaultBundle Packets/MPEGDVBBundle
+</A></li>
+        <LI>Next message: <A HREF="000500.html">[Senf-svn] r640 - in trunk: HowTos/NewPacket Packets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#499">[ date ]</a>
+              <a href="thread.html#499">[ thread ]</a>
+              <a href="subject.html#499">[ subject ]</a>
+              <a href="author.html#499">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Fri Jan 25 17:13:26 2008
+New Revision: 639
+
+Added:
+   trunk/Utils/senfassert.hh   (contents, props changed)
+Modified:
+   trunk/Examples/DVBAdapter/ULEdec.cc
+   trunk/PPI/Connectors.cci
+   trunk/PPI/DebugModules.cci
+   trunk/PPI/Events.cci
+   trunk/PPI/Events.cti
+   trunk/PPI/IOEvent.cc
+   trunk/Packets/ArrayParser.cti
+   trunk/Packets/DefaultBundle/LlcSnapPacket.cc
+   trunk/Packets/ListNParser.ct
+   trunk/Packets/ListParser.ct
+   trunk/Packets/ListParser.cti
+   trunk/Packets/Packet.cci
+   trunk/Packets/PacketData.cci
+   trunk/Packets/PacketImpl.cci
+   trunk/Packets/PacketImpl.test.cc
+   trunk/Packets/PacketInterpreter.cci
+   trunk/Packets/PacketParser.cci
+   trunk/Packets/PacketParser.cti
+   trunk/Packets/PacketRegistry.ct
+   trunk/Packets/VariantParser.cti
+   trunk/SConstruct
+   trunk/Scheduler/Scheduler.cc
+   trunk/Socket/FileHandle.cci
+   trunk/Socket/ProtocolClientSocketHandle.cti
+   trunk/Socket/ProtocolServerSocketHandle.cti
+   trunk/Socket/Protocols/INet/INetAddressing.cc
+   trunk/Socket/SocketHandle.cci
+   trunk/Socket/SocketHandle.cti
+   trunk/Socket/SocketProtocol.cci
+   trunk/Utils/Daemon/Daemon.cc
+   trunk/Utils/intrusive_refcount.cci
+   trunk/Utils/pool_alloc_mixin.cti
+   trunk/Utils/pool_alloc_mixin.hh
+   trunk/Utils/pool_alloc_mixin.test.cc
+   trunk/config.hh
+   trunk/senf.dict
+   trunk/senfscons/SENFSCons.py
+
+Log:
+Added SENF_NO_DEBUG symbol and removed dependency on NDEBUG
+Implemented SENF_ASSERT and replaced all occurences of BOOST_ASSERT with SENF_ASSERT
+Packets: Fixed compile-error (missing namespace prefix) in PacketParser.cci
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000498.html">[Senf-svn] r638 - in trunk: HowTos/NewPacket Packets	Packets/DefaultBundle Packets/MPEGDVBBundle
+</A></li>
+	<LI>Next message: <A HREF="000500.html">[Senf-svn] r640 - in trunk: HowTos/NewPacket Packets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#499">[ date ]</a>
+              <a href="thread.html#499">[ thread ]</a>
+              <a href="subject.html#499">[ subject ]</a>
+              <a href="author.html#499">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r399 - in trunk: PPI PPI/detail Scheduler
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-August/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r399%20-%20in%20trunk%3A%20PPI%20PPI/detail%20Scheduler&In-Reply-To=%3C200708201121.l7KBLHV7027886%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000259.html">
+   <LINK REL="Next"  HREF="000261.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r399 - in trunk: PPI PPI/detail Scheduler</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r399%20-%20in%20trunk%3A%20PPI%20PPI/detail%20Scheduler&In-Reply-To=%3C200708201121.l7KBLHV7027886%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r399 - in trunk: PPI PPI/detail Scheduler">subversion at senf.berlios.de
+       </A><BR>
+    <I>Mon Aug 20 13:21:17 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000259.html">[Senf-svn] r398 - trunk/Scheduler
+</A></li>
+        <LI>Next message: <A HREF="000261.html">[Senf-svn] r400 - in trunk: PPI/ppitest
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#260">[ date ]</a>
+              <a href="thread.html#260">[ thread ]</a>
+              <a href="subject.html#260">[ subject ]</a>
+              <a href="author.html#260">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Mon Aug 20 13:21:00 2007
+New Revision: 399
+
+Added:
+   trunk/PPI/IntervalTimer.cc   (contents, props changed)
+   trunk/PPI/IntervalTimer.cci   (contents, props changed)
+   trunk/PPI/IntervalTimer.hh   (contents, props changed)
+Modified:
+   trunk/PPI/EventManager.cci
+   trunk/PPI/EventManager.hh
+   trunk/PPI/Events.cti
+   trunk/PPI/Events.hh
+   trunk/PPI/IOEvent.hh
+   trunk/PPI/Module.cci
+   trunk/PPI/Module.hh
+   trunk/PPI/Module.test.cc
+   trunk/PPI/SocketReader.test.cc
+   trunk/PPI/SocketWriter.test.cc
+   trunk/PPI/detail/EventBinding.cc
+   trunk/PPI/detail/EventBinding.cti
+   trunk/PPI/detail/EventBinding.hh
+   trunk/PPI/ppitest/ppitest.cc
+   trunk/Scheduler/Scheduler.cc
+   trunk/Scheduler/Scheduler.cci
+   trunk/Scheduler/Scheduler.hh
+   trunk/Scheduler/Scheduler.test.cc
+
+Log:
+PPI: Use ClockService instead of boost::posix_time
+PPI: Implement IntervalTimer event
+Scheduler: Change timeout() argyument to absolute time represented as ClockService::clock_type
+Scheduler: Implement timer event cancelation
+PPI: Implement RateStuffer in ppitest
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000259.html">[Senf-svn] r398 - trunk/Scheduler
+</A></li>
+	<LI>Next message: <A HREF="000261.html">[Senf-svn] r400 - in trunk: PPI/ppitest
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#260">[ date ]</a>
+              <a href="thread.html#260">[ thread ]</a>
+              <a href="subject.html#260">[ subject ]</a>
+              <a href="author.html#260">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

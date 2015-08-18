@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r141 - trunk/Packets
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r141%20-%20trunk/Packets&In-Reply-To=%3C200610161056.k9GAu7Is005580%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000001.html">
+   <LINK REL="Next"  HREF="000003.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r141 - trunk/Packets</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r141%20-%20trunk/Packets&In-Reply-To=%3C200610161056.k9GAu7Is005580%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r141 - trunk/Packets">subversion at senf.berlios.de
+       </A><BR>
+    <I>Mon Oct 16 12:56:07 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000001.html">[Senf-svn] r140 - trunk/Utils
+</A></li>
+        <LI>Next message: <A HREF="000003.html">[Senf-svn] r142 - trunk/Packets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2">[ date ]</a>
+              <a href="thread.html#2">[ thread ]</a>
+              <a href="subject.html#2">[ subject ]</a>
+              <a href="author.html#2">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Mon Oct 16 12:56:04 2006
+New Revision: 141
+
+Modified:
+   trunk/Packets/PacketRegistry.ih
+   trunk/Packets/ParserBase.ih
+   trunk/Packets/ParserBase.test.cc
+   trunk/Packets/typeidvalue.hh
+
+Log:
+Fixes for g++-4
+
+Modified: trunk/Packets/PacketRegistry.ih
+==============================================================================
+--- trunk/Packets/PacketRegistry.ih	(original)
++++ trunk/Packets/PacketRegistry.ih	Mon Oct 16 12:56:04 2006
+@@ -35,6 +35,7 @@
+ namespace impl {
+ 
+     struct PkReg_Entry {
++        virtual ~PkReg_Entry() {}
+         virtual void registerInterpreter(Packet const * p, 
+                                          Packet::iterator b, Packet::iterator e) = 0;
+         virtual Packet::ptr reinterpret(Packet * p) = 0;
+
+Modified: trunk/Packets/ParserBase.ih
+==============================================================================
+--- trunk/Packets/ParserBase.ih	(original)
++++ trunk/Packets/ParserBase.ih	Mon Oct 16 12:56:04 2006
+@@ -45,11 +45,11 @@
+             Parser_traits_fixed_size_check(&amp;Parser::bytes))-sizeof(Parser_traits_sentinel&lt;1&gt;);
+     };
+ 
+-    template &lt;class T&gt;
+-    Parser_traits_sentinel&lt;2&gt; Parser_traits_fixed_size_check(T);
++    template &lt;class R&gt;
++    Parser_traits_sentinel&lt;2&gt; Parser_traits_fixed_size_check(R (*)());
+ 
+     template &lt;class R,class T&gt;
+-    Parser_traits_sentinel&lt;1&gt; Parser_traits_fixed_size_check(R (T::*)());
++    Parser_traits_sentinel&lt;1&gt; Parser_traits_fixed_size_check(R (T::*)() const);
+ 
+     template &lt;class Parser, class Iterator&gt;
+     bool check(Iterator const &amp; b, Iterator const &amp; e, ParserBase *);
+
+Modified: trunk/Packets/ParserBase.test.cc
+==============================================================================
+--- trunk/Packets/ParserBase.test.cc	(original)
++++ trunk/Packets/ParserBase.test.cc	Mon Oct 16 12:56:04 2006
+@@ -28,6 +28,7 @@
+ // Custom includes
+ #include &quot;ParserBase.hh&quot;
+ #include &quot;Packet.hh&quot;
++#include &lt;boost/static_assert.hpp&gt;
+ 
+ #include &lt;boost/test/auto_unit_test.hpp&gt;
+ #include &lt;boost/test/test_tools.hpp&gt;
+@@ -85,6 +86,9 @@
+ 
+ BOOST_AUTO_UNIT_TEST(parserBase_construction)
+ {
++    BOOST_STATIC_ASSERT( pkf::Parser_traits&lt; Parse_Test&lt;&gt; &gt;::fixed_size );
++    BOOST_STATIC_ASSERT( ! pkf::Parser_traits&lt; Parse_Test2&lt;&gt; &gt;::fixed_size );
++
+     BOOST_CHECK_EQUAL( pkf::min_bytes&lt; Parse_Test&lt;int&gt; &gt;(), 14u );
+     BOOST_CHECK( pkf::check&lt; Parse_Test&lt;int&gt; &gt;(0,14) );
+     BOOST_CHECK( ! pkf::check&lt; Parse_Test&lt;int&gt; &gt;(2,15) );
+
+Modified: trunk/Packets/typeidvalue.hh
+==============================================================================
+--- trunk/Packets/typeidvalue.hh	(original)
++++ trunk/Packets/typeidvalue.hh	Mon Oct 16 12:56:04 2006
+@@ -68,6 +68,7 @@
+         template &lt;class Type&gt; TypeIdValue(Type *);
+ 
+         struct Value {
++            virtual ~Value() {}
+             virtual std::type_info const &amp; id() = 0;
+             virtual Value * clone() = 0;
+         };
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000001.html">[Senf-svn] r140 - trunk/Utils
+</A></li>
+	<LI>Next message: <A HREF="000003.html">[Senf-svn] r142 - trunk/Packets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2">[ date ]</a>
+              <a href="thread.html#2">[ thread ]</a>
+              <a href="subject.html#2">[ subject ]</a>
+              <a href="author.html#2">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

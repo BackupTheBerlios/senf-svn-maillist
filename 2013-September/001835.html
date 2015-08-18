@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1996 - in trunk/senf/Socket: . Protocols/Raw
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1996%20-%20in%20trunk/senf/Socket%3A%20.%20Protocols/Raw&In-Reply-To=%3C20130923073126.DC4B355B0C%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001834.html">
+   <LINK REL="Next"  HREF="001836.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1996 - in trunk/senf/Socket: . Protocols/Raw</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1996%20-%20in%20trunk/senf/Socket%3A%20.%20Protocols/Raw&In-Reply-To=%3C20130923073126.DC4B355B0C%40scm.berlios.de%3E"
+       TITLE="[Senf-svn] r1996 - in trunk/senf/Socket: . Protocols/Raw">subversion at senf.berlios.de
+       </A><BR>
+    <I>Mon Sep 23 09:31:26 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001834.html">[Senf-svn] r1995 - in trunk/senf: PPI Utils/FastDelegate
+</A></li>
+        <LI>Next message: <A HREF="001836.html">[Senf-svn] r1997 - in trunk/senf: Socket Socket/Protocols/Raw Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1835">[ date ]</a>
+              <a href="thread.html#1835">[ thread ]</a>
+              <a href="subject.html#1835">[ subject ]</a>
+              <a href="author.html#1835">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Mon Sep 23 09:31:26 2013
+New Revision: 1996
+
+Log:
+Socket: QueueReadPolicy / QueueWritePolicy and ConnectedMMapPacketSocketHandle
+
+Added:
+   trunk/senf/Socket/Protocols/Raw/LinuxPacketSocketProtocol.cc   (contents, props changed)
+   trunk/senf/Socket/Protocols/Raw/LinuxPacketSocketProtocol.hh   (contents, props changed)
+   trunk/senf/Socket/Protocols/Raw/MMapPacketSocketHandle.cc   (contents, props changed)
+   trunk/senf/Socket/Protocols/Raw/MMapPacketSocketHandle.hh
+      - copied, changed from r1995, trunk/senf/Socket/Protocols/Raw/PacketSocketHandle.hh
+   trunk/senf/Socket/Protocols/Raw/MMapSocketProtocol.cc   (contents, props changed)
+   trunk/senf/Socket/Protocols/Raw/MMapSocketProtocol.hh   (contents, props changed)
+   trunk/senf/Socket/Protocols/Raw/MMapSocketProtocol.test.cc   (contents, props changed)
+   trunk/senf/Socket/QueueReadWritePolicy.cci   (contents, props changed)
+   trunk/senf/Socket/QueueReadWritePolicy.hh   (contents, props changed)
+   trunk/senf/Socket/QueueReadWritePolicy.ih   (contents, props changed)
+   trunk/senf/Socket/QueueReadWritePolicy.test.cc   (contents, props changed)
+Deleted:
+   trunk/senf/Socket/Protocols/Raw/MmapedPacketSocketHandle.cc
+   trunk/senf/Socket/Protocols/Raw/MmapedPacketSocketHandle.hh
+   trunk/senf/Socket/Protocols/Raw/MmapedPacketSocketHandle.test.cc
+Modified:
+   trunk/senf/Socket/ClientSocketHandle.cti
+   trunk/senf/Socket/ClientSocketHandle.hh
+   trunk/senf/Socket/FileHandle.cci
+   trunk/senf/Socket/FileHandle.hh
+   trunk/senf/Socket/FileHandle.ih
+   trunk/senf/Socket/Protocols/Raw/PacketSocketHandle.cc
+   trunk/senf/Socket/Protocols/Raw/PacketSocketHandle.hh
+   trunk/senf/Socket/ReadWritePolicy.hh
+   trunk/senf/Socket/SocketPolicy.hh
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001834.html">[Senf-svn] r1995 - in trunk/senf: PPI Utils/FastDelegate
+</A></li>
+	<LI>Next message: <A HREF="001836.html">[Senf-svn] r1997 - in trunk/senf: Socket Socket/Protocols/Raw Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1835">[ date ]</a>
+              <a href="thread.html#1835">[ thread ]</a>
+              <a href="subject.html#1835">[ subject ]</a>
+              <a href="author.html#1835">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

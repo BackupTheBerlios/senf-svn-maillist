@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1277 - in trunk: PPI Packets/80221Bundle	Packets/DefaultBundle Packets/MPEGDVBBundle Scheduler Socket	Utils/Console
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1277%20-%20in%20trunk%3A%20PPI%20Packets/80221Bundle%0A%09Packets/DefaultBundle%20Packets/MPEGDVBBundle%20Scheduler%20Socket%0A%09Utils/Console&In-Reply-To=%3C200907231854.n6NIssXq015534%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001133.html">
+   <LINK REL="Next"  HREF="001135.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1277 - in trunk: PPI Packets/80221Bundle	Packets/DefaultBundle Packets/MPEGDVBBundle Scheduler Socket	Utils/Console</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1277%20-%20in%20trunk%3A%20PPI%20Packets/80221Bundle%0A%09Packets/DefaultBundle%20Packets/MPEGDVBBundle%20Scheduler%20Socket%0A%09Utils/Console&In-Reply-To=%3C200907231854.n6NIssXq015534%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r1277 - in trunk: PPI Packets/80221Bundle	Packets/DefaultBundle Packets/MPEGDVBBundle Scheduler Socket	Utils/Console">subversion at senf.berlios.de
+       </A><BR>
+    <I>Thu Jul 23 20:54:54 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001133.html">[Senf-svn] r1276 - trunk/Scheduler
+</A></li>
+        <LI>Next message: <A HREF="001135.html">[Senf-svn] r1278 - trunk/Scheduler
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1134">[ date ]</a>
+              <a href="thread.html#1134">[ thread ]</a>
+              <a href="subject.html#1134">[ subject ]</a>
+              <a href="author.html#1134">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Thu Jul 23 20:54:42 2009
+New Revision: 1277
+
+Modified:
+   trunk/PPI/SocketSink.cc
+   trunk/Packets/80211Bundle/RadiotapPacket.cc
+   trunk/Packets/80211Bundle/RadiotapPacket.hh
+   trunk/Packets/80211Bundle/RadiotapPacket.test.cc
+   trunk/Packets/80211Bundle/WLANPacket.cc
+   trunk/Packets/80211Bundle/WLANPacket.hh
+   trunk/Packets/80211Bundle/WLANPacket.test.cc
+   trunk/Packets/80221Bundle/MIHPacket.cc
+   trunk/Packets/80221Bundle/TLVPacket.cc
+   trunk/Packets/DefaultBundle/EthernetPacket.cc
+   trunk/Packets/DefaultBundle/ICMPv6Packet.cc
+   trunk/Packets/DefaultBundle/IPv4Packet.cc
+   trunk/Packets/DefaultBundle/IPv6Extensions.cc
+   trunk/Packets/DefaultBundle/IPv6Packet.cc
+   trunk/Packets/DefaultBundle/LlcSnapPacket.cc
+   trunk/Packets/DefaultBundle/RTPPacket.cc
+   trunk/Packets/DefaultBundle/UDPPacket.cc
+   trunk/Packets/MPEGDVBBundle/DTCPPacket.cc
+   trunk/Packets/MPEGDVBBundle/DTCPPacket.test.cc
+   trunk/Packets/MPEGDVBBundle/GREPacket.cc
+   trunk/Packets/MPEGDVBBundle/MPESection.cc
+   trunk/Packets/MPEGDVBBundle/SNDUPacket.cc
+   trunk/Packets/MPEGDVBBundle/TransportPacket.cc
+   trunk/Scheduler/ClockService.cci
+   trunk/Socket/NetdeviceController.cc
+   trunk/Socket/SocketHandle.test.cc
+   trunk/Utils/Console/Executor.cc
+   trunk/Utils/Console/Executor.hh
+   trunk/Utils/Console/Executor.test.cc
+   trunk/Utils/Console/Parse.cc
+   trunk/Utils/Console/Parse.hh
+   trunk/Utils/Console/Parse.ih
+   trunk/Utils/Console/Parse.test.cc
+   trunk/Utils/Console/ParsedCommand.test.cc
+   trunk/Utils/Console/UDPServer.test.cc
+
+Log:
+Cleanup: Remove TAB chars and std::cerr debug output
+Packets: Clean up output formatting in all dump() members
+Packets/80211Bundle: RadiotapPacket: Use length header field to get header size
+Packets/80211Bundle: Move FCS from WLANPacket to RadiotapPacket
+Packets/80211Bundle: Replace WLANPacket variant parsing by three separate packet types for control, management and data frames
+Packets/80211Bundle: complete dump() members
+Utils/Console: Implement 'ls' command and move old 'ls' to 'll'
+Scheduler: ClockService: Handle unset (that is 0) clock_type value explicitly in senf::ClockSservice::abstime()
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001133.html">[Senf-svn] r1276 - trunk/Scheduler
+</A></li>
+	<LI>Next message: <A HREF="001135.html">[Senf-svn] r1278 - trunk/Scheduler
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1134">[ date ]</a>
+              <a href="thread.html#1134">[ thread ]</a>
+              <a href="subject.html#1134">[ subject ]</a>
+              <a href="author.html#1134">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

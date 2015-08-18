@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r576 - in branches/socket-cleanup: . PPI Packets	Packets/DefaultBundle Packets/MPEGDVBBundle Utils
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-December/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r576%20-%20in%20branches/socket-cleanup%3A%20.%20PPI%20Packets%0A%09Packets/DefaultBundle%20Packets/MPEGDVBBundle%20Utils&In-Reply-To=%3C200712181202.lBIC2YJp012877%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000436.html">
+   <LINK REL="Next"  HREF="000438.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r576 - in branches/socket-cleanup: . PPI Packets	Packets/DefaultBundle Packets/MPEGDVBBundle Utils</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r576%20-%20in%20branches/socket-cleanup%3A%20.%20PPI%20Packets%0A%09Packets/DefaultBundle%20Packets/MPEGDVBBundle%20Utils&In-Reply-To=%3C200712181202.lBIC2YJp012877%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r576 - in branches/socket-cleanup: . PPI Packets	Packets/DefaultBundle Packets/MPEGDVBBundle Utils">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Dec 18 13:02:34 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000436.html">[Senf-svn] r575 - trunk
+</A></li>
+        <LI>Next message: <A HREF="000438.html">[Senf-svn] r577 - branches/socket-cleanup/Socket/Protocols/UN
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#437">[ date ]</a>
+              <a href="thread.html#437">[ thread ]</a>
+              <a href="subject.html#437">[ subject ]</a>
+              <a href="author.html#437">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Dec 18 13:01:25 2007
+New Revision: 576
+
+Added:
+   branches/socket-cleanup/PPI/SocketSink.cti
+      - copied unchanged from r572, /trunk/PPI/SocketSink.cti
+   branches/socket-cleanup/PPI/SocketSource.cti
+      - copied unchanged from r572, /trunk/PPI/SocketSource.cti
+   branches/socket-cleanup/Packets/ArrayParser.ct
+      - copied unchanged from r572, /trunk/Packets/ArrayParser.ct
+   branches/socket-cleanup/Packets/ArrayParser.cti
+      - copied unchanged from r572, /trunk/Packets/ArrayParser.cti
+   branches/socket-cleanup/Packets/ArrayParser.hh
+      - copied unchanged from r572, /trunk/Packets/ArrayParser.hh
+   branches/socket-cleanup/Packets/ArrayParser.ih
+      - copied unchanged from r572, /trunk/Packets/ArrayParser.ih
+   branches/socket-cleanup/Packets/ArrayParser.test.cc
+      - copied unchanged from r572, /trunk/Packets/ArrayParser.test.cc
+   branches/socket-cleanup/Packets/IntParser.hh
+      - copied unchanged from r572, /trunk/Packets/IntParser.hh
+   branches/socket-cleanup/Packets/IntParser.ih
+      - copied unchanged from r572, /trunk/Packets/IntParser.ih
+   branches/socket-cleanup/Packets/IntParser.test.cc
+      - copied unchanged from r572, /trunk/Packets/IntParser.test.cc
+   branches/socket-cleanup/Packets/ListBParser.cti
+      - copied unchanged from r572, /trunk/Packets/ListBParser.cti
+   branches/socket-cleanup/Packets/ListBParser.hh
+      - copied unchanged from r572, /trunk/Packets/ListBParser.hh
+   branches/socket-cleanup/Packets/ListBParser.ih
+      - copied unchanged from r572, /trunk/Packets/ListBParser.ih
+   branches/socket-cleanup/Packets/ListBParser.test.cc
+      - copied unchanged from r572, /trunk/Packets/ListBParser.test.cc
+   branches/socket-cleanup/Packets/ListNParser.ct
+      - copied unchanged from r572, /trunk/Packets/ListNParser.ct
+   branches/socket-cleanup/Packets/ListNParser.cti
+      - copied unchanged from r572, /trunk/Packets/ListNParser.cti
+   branches/socket-cleanup/Packets/ListNParser.hh
+      - copied unchanged from r572, /trunk/Packets/ListNParser.hh
+   branches/socket-cleanup/Packets/ListNParser.ih
+      - copied unchanged from r572, /trunk/Packets/ListNParser.ih
+   branches/socket-cleanup/Packets/ListNParser.test.cc
+      - copied unchanged from r572, /trunk/Packets/ListNParser.test.cc
+   branches/socket-cleanup/Packets/ListParser.ct
+      - copied unchanged from r572, /trunk/Packets/ListParser.ct
+   branches/socket-cleanup/Packets/ListParser.cti
+      - copied unchanged from r572, /trunk/Packets/ListParser.cti
+   branches/socket-cleanup/Packets/ListParser.dox
+      - copied unchanged from r572, /trunk/Packets/ListParser.dox
+   branches/socket-cleanup/Packets/ListParser.hh
+      - copied unchanged from r572, /trunk/Packets/ListParser.hh
+   branches/socket-cleanup/Packets/ListParser.ih
+      - copied unchanged from r572, /trunk/Packets/ListParser.ih
+   branches/socket-cleanup/Packets/ListParser.test.cc
+      - copied unchanged from r572, /trunk/Packets/ListParser.test.cc
+   branches/socket-cleanup/Packets/VariantParser.ct
+      - copied unchanged from r572, /trunk/Packets/VariantParser.ct
+   branches/socket-cleanup/Packets/VariantParser.cti
+      - copied unchanged from r572, /trunk/Packets/VariantParser.cti
+   branches/socket-cleanup/Packets/VariantParser.dox
+      - copied unchanged from r572, /trunk/Packets/VariantParser.dox
+   branches/socket-cleanup/Packets/VariantParser.hh
+      - copied unchanged from r572, /trunk/Packets/VariantParser.hh
+   branches/socket-cleanup/Packets/VariantParser.ih
+      - copied unchanged from r572, /trunk/Packets/VariantParser.ih
+   branches/socket-cleanup/Packets/VariantParser.test.cc
+      - copied unchanged from r572, /trunk/Packets/VariantParser.test.cc
+   branches/socket-cleanup/Packets/VectorParser.ct
+      - copied unchanged from r572, /trunk/Packets/VectorParser.ct
+   branches/socket-cleanup/Packets/VectorParser.cti
+      - copied unchanged from r572, /trunk/Packets/VectorParser.cti
+   branches/socket-cleanup/Packets/VectorParser.dox
+      - copied unchanged from r572, /trunk/Packets/VectorParser.dox
+   branches/socket-cleanup/Packets/VectorParser.hh
+      - copied unchanged from r572, /trunk/Packets/VectorParser.hh
+   branches/socket-cleanup/Packets/VectorParser.ih
+      - copied unchanged from r572, /trunk/Packets/VectorParser.ih
+   branches/socket-cleanup/Packets/VectorParser.test.cc
+      - copied unchanged from r572, /trunk/Packets/VectorParser.test.cc
+Removed:
+   branches/socket-cleanup/Packets/ParseArray.ct
+   branches/socket-cleanup/Packets/ParseArray.cti
+   branches/socket-cleanup/Packets/ParseArray.hh
+   branches/socket-cleanup/Packets/ParseArray.ih
+   branches/socket-cleanup/Packets/ParseArray.test.cc
+   branches/socket-cleanup/Packets/ParseInt.hh
+   branches/socket-cleanup/Packets/ParseInt.ih
+   branches/socket-cleanup/Packets/ParseInt.test.cc
+   branches/socket-cleanup/Packets/ParseList.ct
+   branches/socket-cleanup/Packets/ParseList.cti
+   branches/socket-cleanup/Packets/ParseList.dox
+   branches/socket-cleanup/Packets/ParseList.hh
+   branches/socket-cleanup/Packets/ParseList.ih
+   branches/socket-cleanup/Packets/ParseList.test.cc
+   branches/socket-cleanup/Packets/ParseListB.cti
+   branches/socket-cleanup/Packets/ParseListB.hh
+   branches/socket-cleanup/Packets/ParseListB.ih
+   branches/socket-cleanup/Packets/ParseListB.test.cc
+   branches/socket-cleanup/Packets/ParseListN.ct
+   branches/socket-cleanup/Packets/ParseListN.cti
+   branches/socket-cleanup/Packets/ParseListN.hh
+   branches/socket-cleanup/Packets/ParseListN.ih
+   branches/socket-cleanup/Packets/ParseListN.test.cc
+   branches/socket-cleanup/Packets/ParseVariant.ct
+   branches/socket-cleanup/Packets/ParseVariant.cti
+   branches/socket-cleanup/Packets/ParseVariant.dox
+   branches/socket-cleanup/Packets/ParseVariant.hh
+   branches/socket-cleanup/Packets/ParseVariant.ih
+   branches/socket-cleanup/Packets/ParseVariant.test.cc
+   branches/socket-cleanup/Packets/ParseVec.ct
+   branches/socket-cleanup/Packets/ParseVec.cti
+   branches/socket-cleanup/Packets/ParseVec.dox
+   branches/socket-cleanup/Packets/ParseVec.hh
+   branches/socket-cleanup/Packets/ParseVec.ih
+   branches/socket-cleanup/Packets/ParseVec.test.cc
+Modified:
+   branches/socket-cleanup/   (props changed)
+   branches/socket-cleanup/PPI/Setup.hh
+   branches/socket-cleanup/PPI/SocketSink.ct
+   branches/socket-cleanup/PPI/SocketSink.hh
+   branches/socket-cleanup/PPI/SocketSource.ct
+   branches/socket-cleanup/PPI/SocketSource.hh
+   branches/socket-cleanup/Packets/DefaultBundle/EthernetPacket.hh
+   branches/socket-cleanup/Packets/DefaultBundle/IPv4Packet.cc
+   branches/socket-cleanup/Packets/DefaultBundle/IPv4Packet.hh
+   branches/socket-cleanup/Packets/DefaultBundle/IPv6Extensions.hh
+   branches/socket-cleanup/Packets/DefaultBundle/IPv6Packet.cc
+   branches/socket-cleanup/Packets/DefaultBundle/IPv6Packet.hh
+   branches/socket-cleanup/Packets/DefaultBundle/LlcSnapPacket.hh
+   branches/socket-cleanup/Packets/DefaultBundle/UDPPacket.cc
+   branches/socket-cleanup/Packets/DefaultBundle/UDPPacket.hh
+   branches/socket-cleanup/Packets/MPEGDVBBundle/DTCPPacket.hh
+   branches/socket-cleanup/Packets/MPEGDVBBundle/GREPacket.hh
+   branches/socket-cleanup/Packets/MPEGDVBBundle/GREPacket.test.cc
+   branches/socket-cleanup/Packets/MPEGDVBBundle/MPESection.cc
+   branches/socket-cleanup/Packets/MPEGDVBBundle/MPESection.hh
+   branches/socket-cleanup/Packets/MPEGDVBBundle/SNDUPacket.cc
+   branches/socket-cleanup/Packets/MPEGDVBBundle/SNDUPacket.hh
+   branches/socket-cleanup/Packets/MPEGDVBBundle/TLVPacket.cc
+   branches/socket-cleanup/Packets/MPEGDVBBundle/TLVPacket.hh
+   branches/socket-cleanup/Packets/MPEGDVBBundle/TLVPacket.test.cc
+   branches/socket-cleanup/Packets/MPEGDVBBundle/TransportPacket.hh
+   branches/socket-cleanup/Packets/Packet.test.cc
+   branches/socket-cleanup/Packets/PacketParser.ct
+   branches/socket-cleanup/Packets/PacketParser.cti
+   branches/socket-cleanup/Packets/PacketParser.hh
+   branches/socket-cleanup/Packets/PacketParser.test.cc
+   branches/socket-cleanup/Packets/PacketTypes.hh
+   branches/socket-cleanup/Packets/ParseHelpers.hh
+   branches/socket-cleanup/Packets/ParseHelpers.ih
+   branches/socket-cleanup/Packets/ParseHelpers.test.cc
+   branches/socket-cleanup/SConstruct
+   branches/socket-cleanup/Socket/ClientSocketHandle.ih   (contents, props changed)
+   branches/socket-cleanup/Socket/NetdeviceController.cc
+   branches/socket-cleanup/Utils/Exception.cc
+
+Log:
+Merged revisions 568-573 via svnmerge from 
+<A HREF="https://svn.berlios.de/svnroot/repos/senf/trunk">https://svn.berlios.de/svnroot/repos/senf/trunk</A>
+
+.......
+  r570 | g0dil | 2007-12-17 13:07:11 +0100 (Mon, 17 Dec 2007) | 2 lines
+  
+  Utils/Exception: Allow to disable ErrnoExceptions via SENF_NO_ERRNOEXC
+  PPI: Allow access to source/sink helper in (Active|Passive)Socket(Source|Sink)
+.......
+  r571 | tho | 2007-12-17 15:41:04 +0100 (Mon, 17 Dec 2007) | 1 line
+  
+  renamed all parsers from parse_X to XParser.
+.......
+  r572 | tho | 2007-12-17 15:47:04 +0100 (Mon, 17 Dec 2007) | 1 line
+  
+  set keyword-property
+.......
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000436.html">[Senf-svn] r575 - trunk
+</A></li>
+	<LI>Next message: <A HREF="000438.html">[Senf-svn] r577 - branches/socket-cleanup/Socket/Protocols/UN
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#437">[ date ]</a>
+              <a href="thread.html#437">[ thread ]</a>
+              <a href="subject.html#437">[ subject ]</a>
+              <a href="author.html#437">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

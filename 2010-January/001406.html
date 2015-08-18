@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1550 - in trunk: Examples/psi2tsModule senf/PPI	senf/Packets senf/Packets/80211Bundle	senf/Packets/80221Bundle senf/Packets/DefaultBundle	senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Socket/Protocols/UN senf/Utils senf/Utils/Console	senf/Utils/Daemon senf/Utils/Logger senf/Utils/Termlib
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1550%20-%20in%20trunk%3A%20Examples/psi2tsModule%20senf/PPI%0A%09senf/Packets%20senf/Packets/80211Bundle%0A%09senf/Packets/80221Bundle%20senf/Packets/DefaultBundle%0A%09senf/Packets/DefaultBundle/extra_tests%0A%09senf/Packets/MPEGDVBBundle%20senf/Scheduler%20senf/Socket%0A%09senf/Socket/Protocols%20senf/Socket/Protocols/DVB%0A%09senf/Socket/Protocols/INet%20senf/Socket/Protocols/Raw%0A%09senf/Socket/Protocols/UN%20senf/Utils%20senf/Utils/Console%0A%09senf/Utils/Daemon%20senf/Utils/Logger%20senf/Utils/Termlib&In-Reply-To=%3C201001260935.o0Q9ZBax014152%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001405.html">
+   <LINK REL="Next"  HREF="001407.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1550 - in trunk: Examples/psi2tsModule senf/PPI	senf/Packets senf/Packets/80211Bundle	senf/Packets/80221Bundle senf/Packets/DefaultBundle	senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Socket/Protocols/UN senf/Utils senf/Utils/Console	senf/Utils/Daemon senf/Utils/Logger senf/Utils/Termlib</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1550%20-%20in%20trunk%3A%20Examples/psi2tsModule%20senf/PPI%0A%09senf/Packets%20senf/Packets/80211Bundle%0A%09senf/Packets/80221Bundle%20senf/Packets/DefaultBundle%0A%09senf/Packets/DefaultBundle/extra_tests%0A%09senf/Packets/MPEGDVBBundle%20senf/Scheduler%20senf/Socket%0A%09senf/Socket/Protocols%20senf/Socket/Protocols/DVB%0A%09senf/Socket/Protocols/INet%20senf/Socket/Protocols/Raw%0A%09senf/Socket/Protocols/UN%20senf/Utils%20senf/Utils/Console%0A%09senf/Utils/Daemon%20senf/Utils/Logger%20senf/Utils/Termlib&In-Reply-To=%3C201001260935.o0Q9ZBax014152%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r1550 - in trunk: Examples/psi2tsModule senf/PPI	senf/Packets senf/Packets/80211Bundle	senf/Packets/80221Bundle senf/Packets/DefaultBundle	senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Socket/Protocols/UN senf/Utils senf/Utils/Console	senf/Utils/Daemon senf/Utils/Logger senf/Utils/Termlib">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Jan 26 10:35:11 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001405.html">[Senf-svn] r1549 - trunk/senf/Packets/DefaultBundle
+</A></li>
+        <LI>Next message: <A HREF="001407.html">[Senf-svn] r1551 - in trunk/senf/Utils: Termlib
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1406">[ date ]</a>
+              <a href="thread.html#1406">[ thread ]</a>
+              <a href="subject.html#1406">[ subject ]</a>
+              <a href="author.html#1406">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tho
+Date: Tue Jan 26 10:34:24 2010
+New Revision: 1550
+
+Modified:
+   trunk/Examples/psi2tsModule/main.test.cc
+   trunk/Examples/psi2tsModule/psi2ts.test.cc
+   trunk/senf/PPI/ActiveFeeder.test.cc
+   trunk/senf/PPI/AnnotationRouter.test.cc
+   trunk/senf/PPI/CloneSource.test.cc
+   trunk/senf/PPI/Connectors.test.cc
+   trunk/senf/PPI/DebugEvent.test.cc
+   trunk/senf/PPI/DebugModules.test.cc
+   trunk/senf/PPI/DiscardSink.test.cc
+   trunk/senf/PPI/Duplicators.test.cc
+   trunk/senf/PPI/EventManager.test.cc
+   trunk/senf/PPI/Events.test.cc
+   trunk/senf/PPI/IOEvent.test.cc
+   trunk/senf/PPI/IdleEvent.test.cc
+   trunk/senf/PPI/IntervalTimer.test.cc
+   trunk/senf/PPI/Jack.test.cc
+   trunk/senf/PPI/Joins.test.cc
+   trunk/senf/PPI/Module.test.cc
+   trunk/senf/PPI/ModuleManager.test.cc
+   trunk/senf/PPI/MonitorModule.test.cc
+   trunk/senf/PPI/MultiConnectorMixin.test.cc
+   trunk/senf/PPI/PassiveQueue.test.cc
+   trunk/senf/PPI/Queueing.test.cc
+   trunk/senf/PPI/RateAnalyzer.test.cc
+   trunk/senf/PPI/RateFilter.test.cc
+   trunk/senf/PPI/Route.test.cc
+   trunk/senf/PPI/Setup.test.cc
+   trunk/senf/PPI/SocketSink.test.cc
+   trunk/senf/PPI/SocketSource.test.cc
+   trunk/senf/PPI/ThrottleBarrier.test.cc
+   trunk/senf/PPI/main.test.cc
+   trunk/senf/Packets/80211Bundle/RadiotapPacket.test.cc
+   trunk/senf/Packets/80211Bundle/WLANBeaconPacket.test.cc
+   trunk/senf/Packets/80211Bundle/WLANPacket.test.cc
+   trunk/senf/Packets/80211Bundle/main.test.cc
+   trunk/senf/Packets/80221Bundle/MIHPacket.test.cc
+   trunk/senf/Packets/80221Bundle/MIHTypes.test.cc
+   trunk/senf/Packets/80221Bundle/TLVParser.test.cc
+   trunk/senf/Packets/80221Bundle/main.test.cc
+   trunk/senf/Packets/ArrayParser.test.cc
+   trunk/senf/Packets/AuxParser.test.cc
+   trunk/senf/Packets/DefaultBundle/EthernetPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/ICMPv6Packet.test.cc
+   trunk/senf/Packets/DefaultBundle/IPv4Packet.test.cc
+   trunk/senf/Packets/DefaultBundle/IPv6Extensions.test.cc
+   trunk/senf/Packets/DefaultBundle/IPv6Packet.test.cc
+   trunk/senf/Packets/DefaultBundle/ListOptionTypeParser.test.cc
+   trunk/senf/Packets/DefaultBundle/LlcSnapPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/Mldv2Packet.test.cc
+   trunk/senf/Packets/DefaultBundle/RTPPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/TCPPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/UDPPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/extra_tests/PacketLink.test.cc
+   trunk/senf/Packets/DefaultBundle/extra_tests/main.test.cc
+   trunk/senf/Packets/DefaultBundle/main.test.cc
+   trunk/senf/Packets/DumpFormat.test.cc
+   trunk/senf/Packets/GenericTLV.test.cc
+   trunk/senf/Packets/IntParser.test.cc
+   trunk/senf/Packets/ListBParser.test.cc
+   trunk/senf/Packets/ListNParser.test.cc
+   trunk/senf/Packets/MPEGDVBBundle/DTCPPacket.test.cc
+   trunk/senf/Packets/MPEGDVBBundle/GREPacket.test.cc
+   trunk/senf/Packets/MPEGDVBBundle/MPESection.test.cc
+   trunk/senf/Packets/MPEGDVBBundle/TransportPacket.test.cc
+   trunk/senf/Packets/MPEGDVBBundle/main.test.cc
+   trunk/senf/Packets/Packet.test.cc
+   trunk/senf/Packets/PacketData.test.cc
+   trunk/senf/Packets/PacketImpl.test.cc
+   trunk/senf/Packets/PacketInterpreter.test.cc
+   trunk/senf/Packets/PacketParser.test.cc
+   trunk/senf/Packets/PacketRegistry.test.cc
+   trunk/senf/Packets/ParseHelpers.test.cc
+   trunk/senf/Packets/SafeIterator.test.cc
+   trunk/senf/Packets/StringParser.test.cc
+   trunk/senf/Packets/VariantParser.test.cc
+   trunk/senf/Packets/VectorParser.test.cc
+   trunk/senf/Packets/extra-tests/AllBundles.test.cc
+   trunk/senf/Packets/extra-tests/main.test.cc
+   trunk/senf/Packets/main.test.cc
+   trunk/senf/Scheduler/ClockService.test.cc
+   trunk/senf/Scheduler/EventManager.test.cc
+   trunk/senf/Scheduler/FdEvent.test.cc
+   trunk/senf/Scheduler/IdleEvent.test.cc
+   trunk/senf/Scheduler/Poller.test.cc
+   trunk/senf/Scheduler/Scheduler.test.cc
+   trunk/senf/Scheduler/SignalEvent.test.cc
+   trunk/senf/Scheduler/TimerEvent.test.cc
+   trunk/senf/Scheduler/main.test.cc
+   trunk/senf/Socket/ClientSocketHandle.test.cc
+   trunk/senf/Socket/FileHandle.test.cc
+   trunk/senf/Socket/NetdeviceController.test.cc
+   trunk/senf/Socket/ProtocolClientSocketHandle.test.cc
+   trunk/senf/Socket/ProtocolServerSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/BSDAddressingPolicy.test.cc
+   trunk/senf/Socket/Protocols/BSDSocketAddress.test.cc
+   trunk/senf/Socket/Protocols/DVB/main.test.cc
+   trunk/senf/Socket/Protocols/INet/INet4Address.test.cc
+   trunk/senf/Socket/Protocols/INet/INet6Address.test.cc
+   trunk/senf/Socket/Protocols/INet/INetAddressing.test.cc
+   trunk/senf/Socket/Protocols/INet/MulticastSocketProtocol.test.cc
+   trunk/senf/Socket/Protocols/INet/RawINetSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/INet/TCPSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/INet/UDPSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/INet/main.test.cc
+   trunk/senf/Socket/Protocols/Raw/EUI64.test.cc
+   trunk/senf/Socket/Protocols/Raw/LLAddressing.test.cc
+   trunk/senf/Socket/Protocols/Raw/MACAddress.test.cc
+   trunk/senf/Socket/Protocols/Raw/PacketSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/Raw/TunTapSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/Raw/main.test.cc
+   trunk/senf/Socket/Protocols/UN/UNAddressing.test.cc
+   trunk/senf/Socket/Protocols/UN/UNDatagramSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/UN/UNSocketProtocol.test.cc
+   trunk/senf/Socket/Protocols/UN/main.test.cc
+   trunk/senf/Socket/Protocols/main.test.cc
+   trunk/senf/Socket/ServerSocketHandle.test.cc
+   trunk/senf/Socket/SocketHandle.test.cc
+   trunk/senf/Socket/SocketPolicy.test.cc
+   trunk/senf/Socket/SocketProtocol.test.cc
+   trunk/senf/Socket/main.test.cc
+   trunk/senf/Utils/Buffer.test.cc
+   trunk/senf/Utils/Console/Config.test.cc
+   trunk/senf/Utils/Console/ConfigFile.test.cc
+   trunk/senf/Utils/Console/Executor.test.cc
+   trunk/senf/Utils/Console/Node.test.cc
+   trunk/senf/Utils/Console/OverloadedCommand.test.cc
+   trunk/senf/Utils/Console/Parse.test.cc
+   trunk/senf/Utils/Console/ParsedCommand.test.cc
+   trunk/senf/Utils/Console/ProgramOptions.test.cc
+   trunk/senf/Utils/Console/STLSupport.test.cc
+   trunk/senf/Utils/Console/ScopedDirectory.test.cc
+   trunk/senf/Utils/Console/Server.test.cc
+   trunk/senf/Utils/Console/Traits.test.cc
+   trunk/senf/Utils/Console/UDPServer.test.cc
+   trunk/senf/Utils/Console/Utility.test.cc
+   trunk/senf/Utils/Console/Variables.test.cc
+   trunk/senf/Utils/Console/main.test.cc
+   trunk/senf/Utils/Daemon/Daemon.test.cc
+   trunk/senf/Utils/Daemon/main.test.cc
+   trunk/senf/Utils/DiscardStream.test.cc
+   trunk/senf/Utils/Exception.test.cc
+   trunk/senf/Utils/Format.test.cc
+   trunk/senf/Utils/IpChecksum.test.cc
+   trunk/senf/Utils/IteratorTraits.test.cc
+   trunk/senf/Utils/Logger/AreaRegistry.test.cc
+   trunk/senf/Utils/Logger/Config.test.cc
+   trunk/senf/Utils/Logger/FileTarget.test.cc
+   trunk/senf/Utils/Logger/Log.test.cc
+   trunk/senf/Utils/Logger/StreamRegistry.test.cc
+   trunk/senf/Utils/Logger/SyslogTarget.test.cc
+   trunk/senf/Utils/Logger/SyslogUDPTarget.test.cc
+   trunk/senf/Utils/Logger/Target.test.cc
+   trunk/senf/Utils/Logger/main.test.cc
+   trunk/senf/Utils/Statistics.test.cc
+   trunk/senf/Utils/String.test.cc
+   trunk/senf/Utils/Termlib/Telnet.test.cc
+   trunk/senf/Utils/Termlib/Terminfo.test.cc
+   trunk/senf/Utils/Termlib/main.test.cc
+   trunk/senf/Utils/TypeIdValue.test.cc
+   trunk/senf/Utils/TypeInfo.test.cc
+   trunk/senf/Utils/auto_unit_test.hh
+   trunk/senf/Utils/hexdump.test.cc
+   trunk/senf/Utils/intrusive_refcount.test.cc
+   trunk/senf/Utils/main.test.cc
+   trunk/senf/Utils/membind.test.cc
+   trunk/senf/Utils/mpl.test.cc
+   trunk/senf/Utils/parameter.test.cc
+   trunk/senf/Utils/pool_alloc_mixin.test.cc
+   trunk/senf/Utils/safe_bool.test.cc
+   trunk/senf/Utils/singleton.test.cc
+   trunk/senf/Utils/type_traits.test.cc
+
+Log:
+all unit tests: replaced BOOST_AUTO_UNIT_TEST with new SENF_AUTO_UNIT_TEST macro
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001405.html">[Senf-svn] r1549 - trunk/senf/Packets/DefaultBundle
+</A></li>
+	<LI>Next message: <A HREF="001407.html">[Senf-svn] r1551 - in trunk/senf/Utils: Termlib
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1406">[ date ]</a>
+              <a href="thread.html#1406">[ thread ]</a>
+              <a href="subject.html#1406">[ subject ]</a>
+              <a href="author.html#1406">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

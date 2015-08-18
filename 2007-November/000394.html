@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r533 - in trunk: . Scheduler Socket Socket/Protocols	Socket/Protocols/DVB Socket/Protocols/Raw Socket/Protocols/UN	Utils doclib
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r533%20-%20in%20trunk%3A%20.%20Scheduler%20Socket%20Socket/Protocols%0A%09Socket/Protocols/DVB%20Socket/Protocols/Raw%20Socket/Protocols/UN%0A%09Utils%20doclib&In-Reply-To=%3C200711231734.lANHYxCk010646%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000393.html">
+   <LINK REL="Next"  HREF="000395.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r533 - in trunk: . Scheduler Socket Socket/Protocols	Socket/Protocols/DVB Socket/Protocols/Raw Socket/Protocols/UN	Utils doclib</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r533%20-%20in%20trunk%3A%20.%20Scheduler%20Socket%20Socket/Protocols%0A%09Socket/Protocols/DVB%20Socket/Protocols/Raw%20Socket/Protocols/UN%0A%09Utils%20doclib&In-Reply-To=%3C200711231734.lANHYxCk010646%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r533 - in trunk: . Scheduler Socket Socket/Protocols	Socket/Protocols/DVB Socket/Protocols/Raw Socket/Protocols/UN	Utils doclib">subversion at senf.berlios.de
+       </A><BR>
+    <I>Fri Nov 23 18:34:59 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000393.html">[Senf-svn] r532 - trunk/Socket/Protocols/Raw
+</A></li>
+        <LI>Next message: <A HREF="000395.html">[Senf-svn] r534 - trunk/Socket/Protocols/Raw
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#394">[ date ]</a>
+              <a href="thread.html#394">[ thread ]</a>
+              <a href="subject.html#394">[ subject ]</a>
+              <a href="author.html#394">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Fri Nov 23 18:34:30 2007
+New Revision: 533
+
+Modified:
+   trunk/Scheduler/ClockService.cc
+   trunk/Scheduler/ReadHelper.ct
+   trunk/Scheduler/ReadHelper.cti
+   trunk/Scheduler/Scheduler.cc
+   trunk/Scheduler/WriteHelper.ct
+   trunk/Scheduler/WriteHelper.cti
+   trunk/Socket/BufferingPolicy.cc
+   trunk/Socket/CommunicationPolicy.cc
+   trunk/Socket/FileHandle.cc
+   trunk/Socket/FileHandle.cci
+   trunk/Socket/FileHandle.test.cc
+   trunk/Socket/Protocols/BSDSocketProtocol.cc
+   trunk/Socket/Protocols/DVB/DVBDemuxHandles.cc
+   trunk/Socket/Protocols/DVB/DVBDemuxProtocol.cc
+   trunk/Socket/Protocols/DVB/DVBFrontendHandle.cc
+   trunk/Socket/Protocols/GenericAddressingPolicy.cc
+   trunk/Socket/Protocols/INet/ConnectedUDPSocketHandle.cc
+   trunk/Socket/Protocols/INet/INetProtocol.cc
+   trunk/Socket/Protocols/INet/TCPProtocol.cc
+   trunk/Socket/Protocols/INet/TCPSocketHandle.cc
+   trunk/Socket/Protocols/INet/UDPProtocol.cc
+   trunk/Socket/Protocols/INet/UDPSocketHandle.cc
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.cc
+   trunk/Socket/Protocols/UN/UNDatagramSocketHandle.cc
+   trunk/Socket/Protocols/UN/UNProtocol.cc
+   trunk/Socket/ReadWritePolicy.cc
+   trunk/Socket/SocketProtocol.cc
+   trunk/Utils/Exception.cc
+   trunk/Utils/Exception.cci
+   trunk/Utils/Exception.cti
+   trunk/Utils/Exception.hh
+   trunk/Utils/Exception.test.cc
+   trunk/config.hh
+   trunk/doclib/SConscript
+
+Log:
+Utils: Implement more flexible SystemException
+Replace all 'throw SystemException(...)' commands with 'throwErrno(...)'
+Add additional links to documentation header
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000393.html">[Senf-svn] r532 - trunk/Socket/Protocols/Raw
+</A></li>
+	<LI>Next message: <A HREF="000395.html">[Senf-svn] r534 - trunk/Socket/Protocols/Raw
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#394">[ date ]</a>
+              <a href="thread.html#394">[ thread ]</a>
+              <a href="subject.html#394">[ subject ]</a>
+              <a href="author.html#394">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

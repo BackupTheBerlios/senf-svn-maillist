@@ -1,0 +1,721 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1382 - in trunk: . _templates admin doclib	scons/scons-1.2.0 scons/scons-1.2.0/engine/SCons	scons/scons-1.2.0/engine/SCons/Node	scons/scons-1.2.0/engine/SCons/Options	scons/scons-1.2.0/engine/SCons/Platform	scons/scons-1.2.0/engine/SCons/Scanner	scons/scons-1.2.0/engine/SCons/Script	scons/scons-1.2.0/engine/SCons/Tool	scons/scons-1.2.0/engine/SCons/Tool/packaging	scons/scons-1.2.0/engine/SCons/Variables	scons/scons-1.2.0/engine/SCons/compat senf/PPI site_scons	tools tools/_templates tools/scons-1.2.0	tools/scons-1.2.0/engine tools/scons-1.2.0/engine/SCons	tools/scons-1.2.0/engine/SCons/Node	tools/scons-1.2.0/engine/SCons/Options	tools/scons-1.2.0/engine/SCons/Platform	tools/scons-1.2.0/engine/SCons/Scanner	tools/scons-1.2.0/engine/SCons/Script	tools/scons-1.2.0/engine/SCons/Tool	tools/scons-1.2.0/engine/SCons/Tool/packaging	tools/scons-1.2.0/engine/SCons/Variables	tools/scons-1.2.0/engine/SCons/compat tools/scons-1.2.0/script
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2009-September/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1382%20-%20in%20trunk%3A%20.%20_templates%20admin%20doclib%0A%09scons/scons-1.2.0%20scons/scons-1.2.0/engine/SCons%0A%09scons/scons-1.2.0/engine/SCons/Node%0A%09scons/scons-1.2.0/engine/SCons/Options%0A%09scons/scons-1.2.0/engine/SCons/Platform%0A%09scons/scons-1.2.0/engine/SCons/Scanner%0A%09scons/scons-1.2.0/engine/SCons/Script%0A%09scons/scons-1.2.0/engine/SCons/Tool%0A%09scons/scons-1.2.0/engine/SCons/Tool/packaging%0A%09scons/scons-1.2.0/engine/SCons/Variables%0A%09scons/scons-1.2.0/engine/SCons/compat%20senf/PPI%20site_scons%0A%09tools%20tools/_templates%20tools/scons-1.2.0%0A%09tools/scons-1.2.0/engine%20tools/scons-1.2.0/engine/SCons%0A%09tools/scons-1.2.0/engine/SCons/Node%0A%09tools/scons-1.2.0/engine/SCons/Options%0A%09tools/scons-1.2.0/engine/SCons/Platform%0A%09tools/scons-1.2.0/engine/SCons/Scanner%0A%09tools/scons-1.2.0/engine/SCons/Script%0A%09tools/scons-1.2.0/engine/SCons/Tool%0A%09tools/scons-1.2.0/engine/SCons/Tool/packaging%0A%09tools/scons-1.2.0/engine/SCons/Variables%0A%09tools/scons-1.2.0/engine/SCons/compat%20tools/scons-1.2.0/script&In-Reply-To=%3C200909041122.n84BMJk3017325%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001238.html">
+   <LINK REL="Next"  HREF="001239.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1382 - in trunk: . _templates admin doclib	scons/scons-1.2.0 scons/scons-1.2.0/engine/SCons	scons/scons-1.2.0/engine/SCons/Node	scons/scons-1.2.0/engine/SCons/Options	scons/scons-1.2.0/engine/SCons/Platform	scons/scons-1.2.0/engine/SCons/Scanner	scons/scons-1.2.0/engine/SCons/Script	scons/scons-1.2.0/engine/SCons/Tool	scons/scons-1.2.0/engine/SCons/Tool/packaging	scons/scons-1.2.0/engine/SCons/Variables	scons/scons-1.2.0/engine/SCons/compat senf/PPI site_scons	tools tools/_templates tools/scons-1.2.0	tools/scons-1.2.0/engine tools/scons-1.2.0/engine/SCons	tools/scons-1.2.0/engine/SCons/Node	tools/scons-1.2.0/engine/SCons/Options	tools/scons-1.2.0/engine/SCons/Platform	tools/scons-1.2.0/engine/SCons/Scanner	tools/scons-1.2.0/engine/SCons/Script	tools/scons-1.2.0/engine/SCons/Tool	tools/scons-1.2.0/engine/SCons/Tool/packaging	tools/scons-1.2.0/engine/SCons/Variables	tools/scons-1.2.0/engine/SCons/compat tools/scons-1.2.0/script</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1382%20-%20in%20trunk%3A%20.%20_templates%20admin%20doclib%0A%09scons/scons-1.2.0%20scons/scons-1.2.0/engine/SCons%0A%09scons/scons-1.2.0/engine/SCons/Node%0A%09scons/scons-1.2.0/engine/SCons/Options%0A%09scons/scons-1.2.0/engine/SCons/Platform%0A%09scons/scons-1.2.0/engine/SCons/Scanner%0A%09scons/scons-1.2.0/engine/SCons/Script%0A%09scons/scons-1.2.0/engine/SCons/Tool%0A%09scons/scons-1.2.0/engine/SCons/Tool/packaging%0A%09scons/scons-1.2.0/engine/SCons/Variables%0A%09scons/scons-1.2.0/engine/SCons/compat%20senf/PPI%20site_scons%0A%09tools%20tools/_templates%20tools/scons-1.2.0%0A%09tools/scons-1.2.0/engine%20tools/scons-1.2.0/engine/SCons%0A%09tools/scons-1.2.0/engine/SCons/Node%0A%09tools/scons-1.2.0/engine/SCons/Options%0A%09tools/scons-1.2.0/engine/SCons/Platform%0A%09tools/scons-1.2.0/engine/SCons/Scanner%0A%09tools/scons-1.2.0/engine/SCons/Script%0A%09tools/scons-1.2.0/engine/SCons/Tool%0A%09tools/scons-1.2.0/engine/SCons/Tool/packaging%0A%09tools/scons-1.2.0/engine/SCons/Variables%0A%09tools/scons-1.2.0/engine/SCons/compat%20tools/scons-1.2.0/script&In-Reply-To=%3C200909041122.n84BMJk3017325%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r1382 - in trunk: . _templates admin doclib	scons/scons-1.2.0 scons/scons-1.2.0/engine/SCons	scons/scons-1.2.0/engine/SCons/Node	scons/scons-1.2.0/engine/SCons/Options	scons/scons-1.2.0/engine/SCons/Platform	scons/scons-1.2.0/engine/SCons/Scanner	scons/scons-1.2.0/engine/SCons/Script	scons/scons-1.2.0/engine/SCons/Tool	scons/scons-1.2.0/engine/SCons/Tool/packaging	scons/scons-1.2.0/engine/SCons/Variables	scons/scons-1.2.0/engine/SCons/compat senf/PPI site_scons	tools tools/_templates tools/scons-1.2.0	tools/scons-1.2.0/engine tools/scons-1.2.0/engine/SCons	tools/scons-1.2.0/engine/SCons/Node	tools/scons-1.2.0/engine/SCons/Options	tools/scons-1.2.0/engine/SCons/Platform	tools/scons-1.2.0/engine/SCons/Scanner	tools/scons-1.2.0/engine/SCons/Script	tools/scons-1.2.0/engine/SCons/Tool	tools/scons-1.2.0/engine/SCons/Tool/packaging	tools/scons-1.2.0/engine/SCons/Variables	tools/scons-1.2.0/engine/SCons/compat tools/scons-1.2.0/script">subversion at senf.berlios.de
+       </A><BR>
+    <I>Fri Sep  4 13:22:19 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001238.html">[Senf-svn] r1381 - trunk/site_scons
+</A></li>
+        <LI>Next message: <A HREF="001239.html">[Senf-svn] r1383 - in trunk/senf/Packets: .
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1241">[ date ]</a>
+              <a href="thread.html#1241">[ thread ]</a>
+              <a href="subject.html#1241">[ subject ]</a>
+              <a href="author.html#1241">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Fri Sep  4 13:13:52 2009
+New Revision: 1382
+
+Added:
+   trunk/doclib/Glossary.dox   (contents, props changed)
+      - copied, changed from r1381, /trunk/Glossary.dox
+   trunk/doclib/Mainpage.dox   (contents, props changed)
+      - copied, changed from r1381, /trunk/Mainpage.dox
+   trunk/tools/
+   trunk/tools/_templates/
+   trunk/tools/_templates/Example.SConscript
+      - copied, changed from r1381, /trunk/_templates/SConscript
+   trunk/tools/_templates/Example.cc   (contents, props changed)
+      - copied, changed from r1381, /trunk/_templates/Example.cc
+   trunk/tools/_templates/Example.cci   (contents, props changed)
+      - copied, changed from r1381, /trunk/_templates/Example.cci
+   trunk/tools/_templates/Example.ct   (contents, props changed)
+      - copied, changed from r1381, /trunk/_templates/Example.ct
+   trunk/tools/_templates/Example.cti   (contents, props changed)
+      - copied, changed from r1381, /trunk/_templates/Example.cti
+   trunk/tools/_templates/Example.dox   (contents, props changed)
+      - copied, changed from r1381, /trunk/_templates/Example.dox
+   trunk/tools/_templates/Example.hh   (contents, props changed)
+      - copied, changed from r1381, /trunk/_templates/Example.hh
+   trunk/tools/_templates/Example.ih   (contents, props changed)
+      - copied, changed from r1381, /trunk/_templates/Example.ih
+   trunk/tools/_templates/Example.mpp   (contents, props changed)
+      - copied, changed from r1381, /trunk/_templates/Example.mpp
+   trunk/tools/_templates/Example.test.cc   (contents, props changed)
+      - copied, changed from r1381, /trunk/_templates/Example.test.cc
+   trunk/tools/add.sh
+      - copied, changed from r1381, /trunk/_templates/add.sh
+   trunk/tools/drawmodules.py   (contents, props changed)
+      - copied, changed from r1381, /trunk/senf/PPI/drawmodules.py
+   trunk/tools/find-sources.sh
+      - copied, changed from r1381, /trunk/find-sources.sh
+   trunk/tools/run-test-gdb.sh
+      - copied, changed from r1381, /trunk/run-test-gdb.sh
+   trunk/tools/scons   (contents, props changed)
+   trunk/tools/scons-1.2.0/
+   trunk/tools/scons-1.2.0/CHANGES.txt
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/CHANGES.txt
+   trunk/tools/scons-1.2.0/LICENSE.txt
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/LICENSE.txt
+   trunk/tools/scons-1.2.0/MANIFEST
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/MANIFEST
+   trunk/tools/scons-1.2.0/PKG-INFO
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/PKG-INFO
+   trunk/tools/scons-1.2.0/README.txt
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/README.txt
+   trunk/tools/scons-1.2.0/RELEASE.txt
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/RELEASE.txt
+   trunk/tools/scons-1.2.0/engine/
+   trunk/tools/scons-1.2.0/engine/SCons/
+   trunk/tools/scons-1.2.0/engine/SCons/Action.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Action.py
+   trunk/tools/scons-1.2.0/engine/SCons/Builder.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Builder.py
+   trunk/tools/scons-1.2.0/engine/SCons/CacheDir.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/CacheDir.py
+   trunk/tools/scons-1.2.0/engine/SCons/Conftest.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Conftest.py
+   trunk/tools/scons-1.2.0/engine/SCons/Debug.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Debug.py
+   trunk/tools/scons-1.2.0/engine/SCons/Defaults.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Defaults.py
+   trunk/tools/scons-1.2.0/engine/SCons/Environment.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Environment.py
+   trunk/tools/scons-1.2.0/engine/SCons/Errors.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Errors.py
+   trunk/tools/scons-1.2.0/engine/SCons/Executor.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Executor.py
+   trunk/tools/scons-1.2.0/engine/SCons/Job.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Job.py
+   trunk/tools/scons-1.2.0/engine/SCons/Memoize.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Memoize.py
+   trunk/tools/scons-1.2.0/engine/SCons/Node/
+   trunk/tools/scons-1.2.0/engine/SCons/Node/Alias.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Node/Alias.py
+   trunk/tools/scons-1.2.0/engine/SCons/Node/FS.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Node/FS.py
+   trunk/tools/scons-1.2.0/engine/SCons/Node/Python.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Node/Python.py
+   trunk/tools/scons-1.2.0/engine/SCons/Node/__init__.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Node/__init__.py
+   trunk/tools/scons-1.2.0/engine/SCons/Options/
+   trunk/tools/scons-1.2.0/engine/SCons/Options/BoolOption.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Options/BoolOption.py
+   trunk/tools/scons-1.2.0/engine/SCons/Options/EnumOption.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Options/EnumOption.py
+   trunk/tools/scons-1.2.0/engine/SCons/Options/ListOption.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Options/ListOption.py
+   trunk/tools/scons-1.2.0/engine/SCons/Options/PackageOption.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Options/PackageOption.py
+   trunk/tools/scons-1.2.0/engine/SCons/Options/PathOption.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Options/PathOption.py
+   trunk/tools/scons-1.2.0/engine/SCons/Options/__init__.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Options/__init__.py
+   trunk/tools/scons-1.2.0/engine/SCons/PathList.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/PathList.py
+   trunk/tools/scons-1.2.0/engine/SCons/Platform/
+   trunk/tools/scons-1.2.0/engine/SCons/Platform/__init__.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Platform/__init__.py
+   trunk/tools/scons-1.2.0/engine/SCons/Platform/aix.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Platform/aix.py
+   trunk/tools/scons-1.2.0/engine/SCons/Platform/cygwin.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Platform/cygwin.py
+   trunk/tools/scons-1.2.0/engine/SCons/Platform/darwin.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Platform/darwin.py
+   trunk/tools/scons-1.2.0/engine/SCons/Platform/hpux.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Platform/hpux.py
+   trunk/tools/scons-1.2.0/engine/SCons/Platform/irix.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Platform/irix.py
+   trunk/tools/scons-1.2.0/engine/SCons/Platform/os2.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Platform/os2.py
+   trunk/tools/scons-1.2.0/engine/SCons/Platform/posix.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Platform/posix.py
+   trunk/tools/scons-1.2.0/engine/SCons/Platform/sunos.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Platform/sunos.py
+   trunk/tools/scons-1.2.0/engine/SCons/Platform/win32.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Platform/win32.py
+   trunk/tools/scons-1.2.0/engine/SCons/SConf.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/SConf.py
+   trunk/tools/scons-1.2.0/engine/SCons/SConsign.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/SConsign.py
+   trunk/tools/scons-1.2.0/engine/SCons/Scanner/
+   trunk/tools/scons-1.2.0/engine/SCons/Scanner/C.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Scanner/C.py
+   trunk/tools/scons-1.2.0/engine/SCons/Scanner/D.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Scanner/D.py
+   trunk/tools/scons-1.2.0/engine/SCons/Scanner/Dir.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Scanner/Dir.py
+   trunk/tools/scons-1.2.0/engine/SCons/Scanner/Fortran.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Scanner/Fortran.py
+   trunk/tools/scons-1.2.0/engine/SCons/Scanner/IDL.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Scanner/IDL.py
+   trunk/tools/scons-1.2.0/engine/SCons/Scanner/LaTeX.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Scanner/LaTeX.py
+   trunk/tools/scons-1.2.0/engine/SCons/Scanner/Prog.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Scanner/Prog.py
+   trunk/tools/scons-1.2.0/engine/SCons/Scanner/RC.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Scanner/RC.py
+   trunk/tools/scons-1.2.0/engine/SCons/Scanner/__init__.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Scanner/__init__.py
+   trunk/tools/scons-1.2.0/engine/SCons/Script/
+   trunk/tools/scons-1.2.0/engine/SCons/Script/Interactive.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Script/Interactive.py
+   trunk/tools/scons-1.2.0/engine/SCons/Script/Main.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Script/Main.py
+   trunk/tools/scons-1.2.0/engine/SCons/Script/SConsOptions.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Script/SConsOptions.py
+   trunk/tools/scons-1.2.0/engine/SCons/Script/SConscript.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Script/SConscript.py
+   trunk/tools/scons-1.2.0/engine/SCons/Script/__init__.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Script/__init__.py
+   trunk/tools/scons-1.2.0/engine/SCons/Sig.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Sig.py
+   trunk/tools/scons-1.2.0/engine/SCons/Subst.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Subst.py
+   trunk/tools/scons-1.2.0/engine/SCons/Taskmaster.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Taskmaster.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/386asm.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/386asm.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/BitKeeper.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/BitKeeper.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/CVS.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/CVS.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/FortranCommon.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/FortranCommon.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/JavaCommon.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/JavaCommon.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/Perforce.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/Perforce.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/PharLapCommon.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/PharLapCommon.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/RCS.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/RCS.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/SCCS.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/SCCS.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/Subversion.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/Subversion.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/__init__.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/__init__.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/aixc++.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/aixc++.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/aixcc.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/aixcc.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/aixf77.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/aixf77.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/aixlink.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/aixlink.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/applelink.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/applelink.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/ar.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/ar.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/as.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/as.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/bcc32.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/bcc32.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/c++.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/c++.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/cc.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/cc.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/cvf.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/cvf.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/default.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/default.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/dmd.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/dmd.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/dvi.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/dvi.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/dvipdf.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/dvipdf.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/dvips.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/dvips.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/f77.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/f77.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/f90.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/f90.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/f95.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/f95.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/filesystem.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/filesystem.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/fortran.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/fortran.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/g++.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/g++.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/g77.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/g77.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/gas.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/gas.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/gcc.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/gcc.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/gfortran.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/gfortran.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/gnulink.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/gnulink.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/gs.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/gs.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/hpc++.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/hpc++.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/hpcc.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/hpcc.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/hplink.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/hplink.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/icc.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/icc.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/icl.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/icl.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/ifl.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/ifl.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/ifort.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/ifort.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/ilink.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/ilink.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/ilink32.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/ilink32.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/install.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/install.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/intelc.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/intelc.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/jar.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/jar.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/javac.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/javac.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/javah.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/javah.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/latex.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/latex.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/lex.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/lex.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/link.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/link.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/linkloc.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/linkloc.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/m4.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/m4.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/masm.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/masm.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/midl.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/midl.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/mingw.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/mingw.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/mslib.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/mslib.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/mslink.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/mslink.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/msvc.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/msvc.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/msvs.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/msvs.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/mwcc.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/mwcc.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/mwld.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/mwld.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/nasm.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/nasm.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/packaging/
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/packaging/__init__.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/__init__.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/packaging/ipk.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/ipk.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/packaging/msi.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/msi.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/packaging/rpm.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/rpm.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/packaging/src_tarbz2.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/src_tarbz2.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/packaging/src_targz.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/src_targz.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/packaging/src_zip.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/src_zip.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/packaging/tarbz2.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/tarbz2.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/packaging/targz.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/targz.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/packaging/zip.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/zip.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/pdf.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/pdf.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/pdflatex.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/pdflatex.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/pdftex.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/pdftex.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/qt.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/qt.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/rmic.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/rmic.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/rpcgen.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/rpcgen.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/rpm.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/rpm.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/sgiar.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/sgiar.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/sgic++.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/sgic++.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/sgicc.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/sgicc.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/sgilink.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/sgilink.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/sunar.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/sunar.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/sunc++.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/sunc++.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/suncc.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/suncc.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/sunf77.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/sunf77.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/sunf90.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/sunf90.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/sunf95.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/sunf95.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/sunlink.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/sunlink.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/swig.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/swig.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/tar.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/tar.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/tex.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/tex.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/tlib.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/tlib.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/wix.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/wix.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/yacc.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/yacc.py
+   trunk/tools/scons-1.2.0/engine/SCons/Tool/zip.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Tool/zip.py
+   trunk/tools/scons-1.2.0/engine/SCons/Util.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Util.py
+   trunk/tools/scons-1.2.0/engine/SCons/Variables/
+   trunk/tools/scons-1.2.0/engine/SCons/Variables/BoolVariable.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Variables/BoolVariable.py
+   trunk/tools/scons-1.2.0/engine/SCons/Variables/EnumVariable.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Variables/EnumVariable.py
+   trunk/tools/scons-1.2.0/engine/SCons/Variables/ListVariable.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Variables/ListVariable.py
+   trunk/tools/scons-1.2.0/engine/SCons/Variables/PackageVariable.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Variables/PackageVariable.py
+   trunk/tools/scons-1.2.0/engine/SCons/Variables/PathVariable.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Variables/PathVariable.py
+   trunk/tools/scons-1.2.0/engine/SCons/Variables/__init__.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Variables/__init__.py
+   trunk/tools/scons-1.2.0/engine/SCons/Warnings.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/Warnings.py
+   trunk/tools/scons-1.2.0/engine/SCons/__init__.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/__init__.py
+   trunk/tools/scons-1.2.0/engine/SCons/compat/
+   trunk/tools/scons-1.2.0/engine/SCons/compat/__init__.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/compat/__init__.py
+   trunk/tools/scons-1.2.0/engine/SCons/compat/_scons_UserString.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_UserString.py
+   trunk/tools/scons-1.2.0/engine/SCons/compat/_scons_hashlib.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_hashlib.py
+   trunk/tools/scons-1.2.0/engine/SCons/compat/_scons_itertools.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_itertools.py
+   trunk/tools/scons-1.2.0/engine/SCons/compat/_scons_optparse.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_optparse.py
+   trunk/tools/scons-1.2.0/engine/SCons/compat/_scons_sets.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_sets.py
+   trunk/tools/scons-1.2.0/engine/SCons/compat/_scons_sets15.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_sets15.py
+   trunk/tools/scons-1.2.0/engine/SCons/compat/_scons_shlex.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_shlex.py
+   trunk/tools/scons-1.2.0/engine/SCons/compat/_scons_subprocess.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_subprocess.py
+   trunk/tools/scons-1.2.0/engine/SCons/compat/_scons_textwrap.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_textwrap.py
+   trunk/tools/scons-1.2.0/engine/SCons/compat/builtins.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/compat/builtins.py
+   trunk/tools/scons-1.2.0/engine/SCons/cpp.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/cpp.py
+   trunk/tools/scons-1.2.0/engine/SCons/dblite.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/dblite.py
+   trunk/tools/scons-1.2.0/engine/SCons/exitfuncs.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/engine/SCons/exitfuncs.py
+   trunk/tools/scons-1.2.0/os_spawnv_fix.diff
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/os_spawnv_fix.diff
+   trunk/tools/scons-1.2.0/scons-time.1
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/scons-time.1
+   trunk/tools/scons-1.2.0/scons.1
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/scons.1
+   trunk/tools/scons-1.2.0/sconsign.1
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/sconsign.1
+   trunk/tools/scons-1.2.0/script/
+   trunk/tools/scons-1.2.0/script/scons
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/script/scons
+   trunk/tools/scons-1.2.0/script/scons-time
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/script/scons-time
+   trunk/tools/scons-1.2.0/script/scons.bat
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/script/scons.bat
+   trunk/tools/scons-1.2.0/script/sconsign
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/script/sconsign
+   trunk/tools/scons-1.2.0/setup.cfg
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/setup.cfg
+   trunk/tools/scons-1.2.0/setup.py
+      - copied, changed from r1381, /trunk/scons/scons-1.2.0/setup.py
+   trunk/tools/valgrind.sup
+      - copied, changed from r1381, /trunk/valgrind.sup
+Removed:
+   trunk/Glossary.dox
+   trunk/Mainpage.dox
+   trunk/_templates/Example.cc
+   trunk/_templates/Example.cci
+   trunk/_templates/Example.ct
+   trunk/_templates/Example.cti
+   trunk/_templates/Example.dox
+   trunk/_templates/Example.hh
+   trunk/_templates/Example.ih
+   trunk/_templates/Example.mpp
+   trunk/_templates/Example.test.cc
+   trunk/_templates/SConscript
+   trunk/_templates/add.sh
+   trunk/admin/build.sh
+   trunk/admin/dump.sh
+   trunk/find-sources.sh
+   trunk/run-test-gdb.sh
+   trunk/scons/scons-1.2.0/CHANGES.txt
+   trunk/scons/scons-1.2.0/LICENSE.txt
+   trunk/scons/scons-1.2.0/MANIFEST
+   trunk/scons/scons-1.2.0/PKG-INFO
+   trunk/scons/scons-1.2.0/README.txt
+   trunk/scons/scons-1.2.0/RELEASE.txt
+   trunk/scons/scons-1.2.0/engine/SCons/Action.py
+   trunk/scons/scons-1.2.0/engine/SCons/Builder.py
+   trunk/scons/scons-1.2.0/engine/SCons/CacheDir.py
+   trunk/scons/scons-1.2.0/engine/SCons/Conftest.py
+   trunk/scons/scons-1.2.0/engine/SCons/Debug.py
+   trunk/scons/scons-1.2.0/engine/SCons/Defaults.py
+   trunk/scons/scons-1.2.0/engine/SCons/Environment.py
+   trunk/scons/scons-1.2.0/engine/SCons/Errors.py
+   trunk/scons/scons-1.2.0/engine/SCons/Executor.py
+   trunk/scons/scons-1.2.0/engine/SCons/Job.py
+   trunk/scons/scons-1.2.0/engine/SCons/Memoize.py
+   trunk/scons/scons-1.2.0/engine/SCons/Node/Alias.py
+   trunk/scons/scons-1.2.0/engine/SCons/Node/FS.py
+   trunk/scons/scons-1.2.0/engine/SCons/Node/Python.py
+   trunk/scons/scons-1.2.0/engine/SCons/Node/__init__.py
+   trunk/scons/scons-1.2.0/engine/SCons/Options/BoolOption.py
+   trunk/scons/scons-1.2.0/engine/SCons/Options/EnumOption.py
+   trunk/scons/scons-1.2.0/engine/SCons/Options/ListOption.py
+   trunk/scons/scons-1.2.0/engine/SCons/Options/PackageOption.py
+   trunk/scons/scons-1.2.0/engine/SCons/Options/PathOption.py
+   trunk/scons/scons-1.2.0/engine/SCons/Options/__init__.py
+   trunk/scons/scons-1.2.0/engine/SCons/PathList.py
+   trunk/scons/scons-1.2.0/engine/SCons/Platform/__init__.py
+   trunk/scons/scons-1.2.0/engine/SCons/Platform/aix.py
+   trunk/scons/scons-1.2.0/engine/SCons/Platform/cygwin.py
+   trunk/scons/scons-1.2.0/engine/SCons/Platform/darwin.py
+   trunk/scons/scons-1.2.0/engine/SCons/Platform/hpux.py
+   trunk/scons/scons-1.2.0/engine/SCons/Platform/irix.py
+   trunk/scons/scons-1.2.0/engine/SCons/Platform/os2.py
+   trunk/scons/scons-1.2.0/engine/SCons/Platform/posix.py
+   trunk/scons/scons-1.2.0/engine/SCons/Platform/sunos.py
+   trunk/scons/scons-1.2.0/engine/SCons/Platform/win32.py
+   trunk/scons/scons-1.2.0/engine/SCons/SConf.py
+   trunk/scons/scons-1.2.0/engine/SCons/SConsign.py
+   trunk/scons/scons-1.2.0/engine/SCons/Scanner/C.py
+   trunk/scons/scons-1.2.0/engine/SCons/Scanner/D.py
+   trunk/scons/scons-1.2.0/engine/SCons/Scanner/Dir.py
+   trunk/scons/scons-1.2.0/engine/SCons/Scanner/Fortran.py
+   trunk/scons/scons-1.2.0/engine/SCons/Scanner/IDL.py
+   trunk/scons/scons-1.2.0/engine/SCons/Scanner/LaTeX.py
+   trunk/scons/scons-1.2.0/engine/SCons/Scanner/Prog.py
+   trunk/scons/scons-1.2.0/engine/SCons/Scanner/RC.py
+   trunk/scons/scons-1.2.0/engine/SCons/Scanner/__init__.py
+   trunk/scons/scons-1.2.0/engine/SCons/Script/Interactive.py
+   trunk/scons/scons-1.2.0/engine/SCons/Script/Main.py
+   trunk/scons/scons-1.2.0/engine/SCons/Script/SConsOptions.py
+   trunk/scons/scons-1.2.0/engine/SCons/Script/SConscript.py
+   trunk/scons/scons-1.2.0/engine/SCons/Script/__init__.py
+   trunk/scons/scons-1.2.0/engine/SCons/Sig.py
+   trunk/scons/scons-1.2.0/engine/SCons/Subst.py
+   trunk/scons/scons-1.2.0/engine/SCons/Taskmaster.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/386asm.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/BitKeeper.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/CVS.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/FortranCommon.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/JavaCommon.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/Perforce.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/PharLapCommon.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/RCS.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/SCCS.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/Subversion.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/__init__.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/aixc++.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/aixcc.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/aixf77.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/aixlink.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/applelink.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/ar.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/as.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/bcc32.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/c++.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/cc.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/cvf.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/default.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/dmd.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/dvi.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/dvipdf.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/dvips.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/f77.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/f90.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/f95.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/filesystem.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/fortran.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/g++.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/g77.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/gas.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/gcc.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/gfortran.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/gnulink.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/gs.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/hpc++.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/hpcc.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/hplink.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/icc.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/icl.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/ifl.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/ifort.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/ilink.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/ilink32.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/install.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/intelc.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/jar.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/javac.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/javah.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/latex.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/lex.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/link.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/linkloc.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/m4.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/masm.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/midl.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/mingw.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/mslib.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/mslink.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/msvc.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/msvs.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/mwcc.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/mwld.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/nasm.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/__init__.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/ipk.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/msi.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/rpm.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/src_tarbz2.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/src_targz.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/src_zip.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/tarbz2.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/targz.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/packaging/zip.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/pdf.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/pdflatex.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/pdftex.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/qt.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/rmic.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/rpcgen.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/rpm.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/sgiar.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/sgic++.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/sgicc.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/sgilink.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/sunar.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/sunc++.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/suncc.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/sunf77.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/sunf90.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/sunf95.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/sunlink.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/swig.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/tar.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/tex.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/tlib.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/wix.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/yacc.py
+   trunk/scons/scons-1.2.0/engine/SCons/Tool/zip.py
+   trunk/scons/scons-1.2.0/engine/SCons/Util.py
+   trunk/scons/scons-1.2.0/engine/SCons/Variables/BoolVariable.py
+   trunk/scons/scons-1.2.0/engine/SCons/Variables/EnumVariable.py
+   trunk/scons/scons-1.2.0/engine/SCons/Variables/ListVariable.py
+   trunk/scons/scons-1.2.0/engine/SCons/Variables/PackageVariable.py
+   trunk/scons/scons-1.2.0/engine/SCons/Variables/PathVariable.py
+   trunk/scons/scons-1.2.0/engine/SCons/Variables/__init__.py
+   trunk/scons/scons-1.2.0/engine/SCons/Warnings.py
+   trunk/scons/scons-1.2.0/engine/SCons/__init__.py
+   trunk/scons/scons-1.2.0/engine/SCons/compat/__init__.py
+   trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_UserString.py
+   trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_hashlib.py
+   trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_itertools.py
+   trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_optparse.py
+   trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_sets.py
+   trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_sets15.py
+   trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_shlex.py
+   trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_subprocess.py
+   trunk/scons/scons-1.2.0/engine/SCons/compat/_scons_textwrap.py
+   trunk/scons/scons-1.2.0/engine/SCons/compat/builtins.py
+   trunk/scons/scons-1.2.0/engine/SCons/cpp.py
+   trunk/scons/scons-1.2.0/engine/SCons/dblite.py
+   trunk/scons/scons-1.2.0/engine/SCons/exitfuncs.py
+   trunk/scons/scons-1.2.0/os_spawnv_fix.diff
+   trunk/scons/scons-1.2.0/scons-time.1
+   trunk/scons/scons-1.2.0/scons.1
+   trunk/scons/scons-1.2.0/sconsign.1
+   trunk/scons/scons-1.2.0/script/scons
+   trunk/scons/scons-1.2.0/script/scons-time
+   trunk/scons/scons-1.2.0/script/scons.bat
+   trunk/scons/scons-1.2.0/script/sconsign
+   trunk/scons/scons-1.2.0/setup.cfg
+   trunk/scons/scons-1.2.0/setup.py
+   trunk/senf/PPI/drawmodules.py
+   trunk/valgrind.sup
+Modified:
+   trunk/SConstruct
+   trunk/site_scons/site_init.py
+
+Log:
+Toplevel directory cleanup
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001238.html">[Senf-svn] r1381 - trunk/site_scons
+</A></li>
+	<LI>Next message: <A HREF="001239.html">[Senf-svn] r1383 - in trunk/senf/Packets: .
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1241">[ date ]</a>
+              <a href="thread.html#1241">[ thread ]</a>
+              <a href="subject.html#1241">[ subject ]</a>
+              <a href="author.html#1241">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r154 - trunk/Utils
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r154%20-%20trunk/Utils&In-Reply-To=%3C200611102315.kAANFeE4017906%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000014.html">
+   <LINK REL="Next"  HREF="000016.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r154 - trunk/Utils</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r154%20-%20trunk/Utils&In-Reply-To=%3C200611102315.kAANFeE4017906%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r154 - trunk/Utils">subversion at senf.berlios.de
+       </A><BR>
+    <I>Sat Nov 11 00:15:40 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000014.html">[Senf-svn] r153 - trunk/Socket
+</A></li>
+        <LI>Next message: <A HREF="000016.html">[Senf-svn] r155 - trunk/satscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Sat Nov 11 00:15:37 2006
+New Revision: 154
+
+Added:
+   trunk/Utils/SafeBool.cci
+   trunk/Utils/SafeBool.cti
+   trunk/Utils/SafeBool.hh
+
+Log:
+add SafeBool
+
+Added: trunk/Utils/SafeBool.cci
+==============================================================================
+--- (empty file)
++++ trunk/Utils/SafeBool.cci	Sat Nov 11 00:15:37 2006
+@@ -0,0 +1,36 @@
++// $Id$
++//
++// Copyright (C) 2006 
++
++// Definition of inline non-template functions
++
++// Custom includes
++
++#define prefix_ inline
++///////////////////////////////cci.p///////////////////////////////////////
++
++prefix_ void satcom::lib::SafeBoolBase::this_type_does_not_support_comparisons()
++    const
++{}
++
++prefix_ satcom::lib::SafeBoolBase::SafeBoolBase()
++{}
++
++prefix_ satcom::lib::SafeBoolBase::SafeBoolBase(const SafeBoolBase&amp;)
++{}
++
++prefix_ satcom::lib::SafeBoolBase&amp; satcom::lib::SafeBoolBase::operator=(const SafeBoolBase&amp;)
++{
++    return *this;
++}
++
++prefix_ satcom::lib::SafeBoolBase::~SafeBoolBase()
++{}
++
++///////////////////////////////cci.e///////////////////////////////////////
++#undef prefix_
++
++
++// Local Variables:
++// mode: c++
++// End:
+
+Added: trunk/Utils/SafeBool.cti
+==============================================================================
+--- (empty file)
++++ trunk/Utils/SafeBool.cti	Sat Nov 11 00:15:37 2006
+@@ -0,0 +1,51 @@
++// $Id$
++//
++// Copyright (C) 2006 
++
++// Definition of inline template functions
++
++//#include &quot;SafeBool.ih&quot;
++
++// Custom includes
++
++#define prefix_ inline
++///////////////////////////////cti.p///////////////////////////////////////
++
++template &lt;typename T&gt;
++prefix_ satcom::lib::SafeBool&lt;T&gt;::operator bool_type()
++    const
++{
++    return (static_cast&lt;const T*&gt;(this))-&gt;boolean_test()
++	? &amp;SafeBoolBase::this_type_does_not_support_comparisons : 0;
++}
++
++template &lt;typename T&gt;
++prefix_ bool satcom::lib::SafeBool&lt;T&gt;::operator!()
++    const
++{
++    return ! (static_cast&lt;const T*&gt;(this))-&gt;boolean_test();
++}
++
++template &lt;typename T&gt;
++prefix_ satcom::lib::SafeBool&lt;T&gt;::~SafeBool()
++{}
++
++template &lt;typename T, typename U&gt;
++prefix_ void satcom::lib::operator==(const SafeBool&lt;T&gt;&amp; lhs, const SafeBool&lt;U&gt;&amp; rhs)
++{
++    lhs.this_type_does_not_support_comparisons();     
++}
++
++template &lt;typename T, typename U&gt;
++prefix_ void satcom::lib::operator!=(const SafeBool&lt;T&gt;&amp; lhs, const SafeBool&lt;U&gt;&amp; rhs)
++{
++    lhs.this_type_does_not_support_comparisons();
++}
++
++///////////////////////////////cti.e///////////////////////////////////////
++#undef prefix_
++
++
++// Local Variables:
++// mode: c++
++// End:
+
+Added: trunk/Utils/SafeBool.hh
+==============================================================================
+--- (empty file)
++++ trunk/Utils/SafeBool.hh	Sat Nov 11 00:15:37 2006
+@@ -0,0 +1,82 @@
++// $Id$
++//
++// Copyright (C) 2006 
++
++#ifndef HH_SafeBool_
++#define HH_SafeBool_ 1
++
++// Custom includes
++
++//#include &quot;SafeBool.mpp&quot;
++///////////////////////////////hh.p////////////////////////////////////////
++
++namespace satcom {
++namespace lib {
++    
++    // This is a direct copy of a safe bool solution by Bjorn Karlsson 
++    // from <A HREF="http://www.artima.com/cppsource/safebool.html">http://www.artima.com/cppsource/safebool.html</A>
++    //
++    // Usage:
++    //    class TestableWithVirtual 
++    //        : public safe_bool&lt;&gt; 
++    //    {
++    //    protected:
++    //        bool boolean_test() const 
++    //        {
++    //            // Perform Boolean logic here
++    //        }
++    //    };
++    //
++    //    class TestableWithoutVirtual 
++    //        : public safe_bool &lt;TestableWithoutVirtual&gt; 
++    //    {
++    //    public:
++    //        bool boolean_test() const 
++    //        {
++    //            // Perform Boolean logic here
++    //        }
++    //    };
++
++    class SafeBoolBase 
++    {
++    protected:
++	typedef void (SafeBoolBase::*bool_type)() const;
++	void this_type_does_not_support_comparisons() const;
++
++	SafeBoolBase();
++	SafeBoolBase(const SafeBoolBase&amp;);
++	SafeBoolBase&amp; operator=(const SafeBoolBase&amp;);
++	~SafeBoolBase();
++    };
++
++    template &lt;typename T=void&gt; 
++    class SafeBool 
++	: public SafeBoolBase 
++    {
++    public:
++	operator bool_type() const;
++	bool operator !() const;
++
++    protected:
++	~SafeBool();
++    };
++
++    template &lt;typename T, typename U&gt; 
++    void operator==(const SafeBool&lt;T&gt;&amp; lhs,const SafeBool&lt;U&gt;&amp; rhs);
++
++    template &lt;typename T,typename U&gt; 
++    void operator!=(const SafeBool&lt;T&gt;&amp; lhs,const SafeBool&lt;U&gt;&amp; rhs);
++
++}}
++
++///////////////////////////////hh.e////////////////////////////////////////
++#include &quot;SafeBool.cci&quot;
++//#include &quot;SafeBool.ct&quot;
++#include &quot;SafeBool.cti&quot;
++//#include &quot;SafeBool.mpp&quot;
++#endif
++
++
++// Local Variables:
++// mode: c++
++// End:
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000014.html">[Senf-svn] r153 - trunk/Socket
+</A></li>
+	<LI>Next message: <A HREF="000016.html">[Senf-svn] r155 - trunk/satscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

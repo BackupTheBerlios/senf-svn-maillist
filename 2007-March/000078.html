@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r217 - trunk/Socket
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r217%20-%20trunk/Socket&In-Reply-To=%3C200703201428.l2KESTc7025496%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000077.html">
+   <LINK REL="Next"  HREF="000079.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r217 - trunk/Socket</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r217%20-%20trunk/Socket&In-Reply-To=%3C200703201428.l2KESTc7025496%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r217 - trunk/Socket">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Mar 20 15:28:29 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000077.html">[Senf-svn] r216 - trunk/Socket
+</A></li>
+        <LI>Next message: <A HREF="000079.html">[Senf-svn] r218 - trunk/Socket
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#78">[ date ]</a>
+              <a href="thread.html#78">[ thread ]</a>
+              <a href="subject.html#78">[ subject ]</a>
+              <a href="author.html#78">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tho
+Date: Tue Mar 20 15:28:12 2007
+New Revision: 217
+
+Modified:
+   trunk/Socket/BSDSocketProtocol.cc   (props changed)
+   trunk/Socket/BSDSocketProtocol.hh   (props changed)
+   trunk/Socket/BufferingPolicy.cc   (props changed)
+   trunk/Socket/BufferingPolicy.hh   (props changed)
+   trunk/Socket/ClientSocketHandle.cti   (props changed)
+   trunk/Socket/ClientSocketHandle.hh   (props changed)
+   trunk/Socket/ClientSocketHandle.test.cc   (props changed)
+   trunk/Socket/CommunicationPolicy.cc   (props changed)
+   trunk/Socket/CommunicationPolicy.cti   (props changed)
+   trunk/Socket/CommunicationPolicy.hh   (props changed)
+   trunk/Socket/FileHandle.cc   (props changed)
+   trunk/Socket/FileHandle.hh   (props changed)
+   trunk/Socket/FileHandle.ih   (props changed)
+   trunk/Socket/FileHandle.test.cc   (props changed)
+   trunk/Socket/FramingPolicy.hh   (props changed)
+   trunk/Socket/GenericAddressingPolicy.cc   (props changed)
+   trunk/Socket/GenericAddressingPolicy.cti   (props changed)
+   trunk/Socket/GenericAddressingPolicy.hh   (props changed)
+   trunk/Socket/GenericSockAddr.hh   (props changed)
+   trunk/Socket/INetAddressing.cc   (props changed)
+   trunk/Socket/INetAddressing.hh   (props changed)
+   trunk/Socket/INetAddressing.test.cc   (props changed)
+   trunk/Socket/INetProtocol.cc   (props changed)
+   trunk/Socket/INetProtocol.hh   (props changed)
+   trunk/Socket/LLAddressing.cc   (props changed)
+   trunk/Socket/LLAddressing.cti   (props changed)
+   trunk/Socket/LLAddressing.hh   (props changed)
+   trunk/Socket/LLAddressing.ih   (props changed)
+   trunk/Socket/LLAddressing.test.cc   (props changed)
+   trunk/Socket/PacketSocketHandle.cc   (props changed)
+   trunk/Socket/PacketSocketHandle.cti   (props changed)
+   trunk/Socket/PacketSocketHandle.hh   (props changed)
+   trunk/Socket/PacketSocketHandle.ih   (props changed)
+   trunk/Socket/PacketSocketHandle.test.cc   (props changed)
+   trunk/Socket/ProtocolClientSocketHandle.cti   (props changed)
+   trunk/Socket/ProtocolClientSocketHandle.hh   (props changed)
+   trunk/Socket/ProtocolClientSocketHandle.test.cc   (props changed)
+   trunk/Socket/ProtocolServerSocketHandle.cti   (props changed)
+   trunk/Socket/ProtocolServerSocketHandle.hh   (props changed)
+   trunk/Socket/ProtocolServerSocketHandle.test.cc   (props changed)
+   trunk/Socket/ReadWritePolicy.cc   (props changed)
+   trunk/Socket/ReadWritePolicy.cti   (props changed)
+   trunk/Socket/ReadWritePolicy.hh   (props changed)
+   trunk/Socket/ServerSocketHandle.cti   (props changed)
+   trunk/Socket/ServerSocketHandle.hh   (props changed)
+   trunk/Socket/ServerSocketHandle.test.cc   (props changed)
+   trunk/Socket/SocketHandle.cc   (props changed)
+   trunk/Socket/SocketHandle.cti   (props changed)
+   trunk/Socket/SocketHandle.hh   (props changed)
+   trunk/Socket/SocketHandle.ih   (props changed)
+   trunk/Socket/SocketHandle.test.cc   (props changed)
+   trunk/Socket/SocketPolicy.hh   (props changed)
+   trunk/Socket/SocketPolicy.ih   (props changed)
+   trunk/Socket/SocketPolicy.test.cc   (props changed)
+   trunk/Socket/SocketPolicy.test.hh   (props changed)
+   trunk/Socket/SocketProtocol.cc   (props changed)
+   trunk/Socket/SocketProtocol.cti   (props changed)
+   trunk/Socket/SocketProtocol.hh   (props changed)
+   trunk/Socket/SocketProtocol.test.cc   (props changed)
+   trunk/Socket/SocketProtocol.test.hh   (props changed)
+   trunk/Socket/TCPProtocol.cc   (props changed)
+   trunk/Socket/TCPProtocol.hh   (props changed)
+   trunk/Socket/TCPSocketHandle.cc   (props changed)
+   trunk/Socket/TCPSocketHandle.hh   (props changed)
+   trunk/Socket/TCPSocketHandle.test.cc   (props changed)
+   trunk/Socket/UDPProtocol.cc   (props changed)
+   trunk/Socket/UDPProtocol.hh   (props changed)
+   trunk/Socket/UDPSocketHandle.cc   (props changed)
+   trunk/Socket/UDPSocketHandle.hh   (props changed)
+   trunk/Socket/main.test.cc   (contents, props changed)
+
+Log:
+added svn property keywords
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000077.html">[Senf-svn] r216 - trunk/Socket
+</A></li>
+	<LI>Next message: <A HREF="000079.html">[Senf-svn] r218 - trunk/Socket
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#78">[ date ]</a>
+              <a href="thread.html#78">[ thread ]</a>
+              <a href="subject.html#78">[ subject ]</a>
+              <a href="author.html#78">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

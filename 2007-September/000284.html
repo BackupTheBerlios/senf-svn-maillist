@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r423 - in trunk: . Examples/DVBAdapter	Examples/MCSniffer Examples/RateStuffer Examples/Sniffer	Examples/TCPClientServer PPI PPI/detail Packets	Packets/DefaultBundle Packets/MPEGDVBBundle Scheduler Socket	Socket/Protocols Socket/Protocols/DVB Socket/Protocols/INet	Socket/Protocols/Raw Utils Utils/impl boost/intrusive/detail	debian senfscons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r423%20-%20in%20trunk%3A%20.%20Examples/DVBAdapter%0A%09Examples/MCSniffer%20Examples/RateStuffer%20Examples/Sniffer%0A%09Examples/TCPClientServer%20PPI%20PPI/detail%20Packets%0A%09Packets/DefaultBundle%20Packets/MPEGDVBBundle%20Scheduler%20Socket%0A%09Socket/Protocols%20Socket/Protocols/DVB%20Socket/Protocols/INet%0A%09Socket/Protocols/Raw%20Utils%20Utils/impl%20boost/intrusive/detail%0A%09debian%20senfscons&In-Reply-To=%3C200708312206.l7VM6dZG025211%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000285.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r423 - in trunk: . Examples/DVBAdapter	Examples/MCSniffer Examples/RateStuffer Examples/Sniffer	Examples/TCPClientServer PPI PPI/detail Packets	Packets/DefaultBundle Packets/MPEGDVBBundle Scheduler Socket	Socket/Protocols Socket/Protocols/DVB Socket/Protocols/INet	Socket/Protocols/Raw Utils Utils/impl boost/intrusive/detail	debian senfscons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r423%20-%20in%20trunk%3A%20.%20Examples/DVBAdapter%0A%09Examples/MCSniffer%20Examples/RateStuffer%20Examples/Sniffer%0A%09Examples/TCPClientServer%20PPI%20PPI/detail%20Packets%0A%09Packets/DefaultBundle%20Packets/MPEGDVBBundle%20Scheduler%20Socket%0A%09Socket/Protocols%20Socket/Protocols/DVB%20Socket/Protocols/INet%0A%09Socket/Protocols/Raw%20Utils%20Utils/impl%20boost/intrusive/detail%0A%09debian%20senfscons&In-Reply-To=%3C200708312206.l7VM6dZG025211%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r423 - in trunk: . Examples/DVBAdapter	Examples/MCSniffer Examples/RateStuffer Examples/Sniffer	Examples/TCPClientServer PPI PPI/detail Packets	Packets/DefaultBundle Packets/MPEGDVBBundle Scheduler Socket	Socket/Protocols Socket/Protocols/DVB Socket/Protocols/INet	Socket/Protocols/Raw Utils Utils/impl boost/intrusive/detail	debian senfscons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Sat Sep  1 00:06:39 CEST 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000285.html">[Senf-svn] r424 - in trunk: . Packets Scheduler Socket Utils	Utils/impl senfscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#284">[ date ]</a>
+              <a href="thread.html#284">[ thread ]</a>
+              <a href="subject.html#284">[ subject ]</a>
+              <a href="author.html#284">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Sat Sep  1 00:05:37 2007
+New Revision: 423
+
+Added:
+   trunk/PPI/PPI.hh   (contents, props changed)
+   trunk/Socket/Socket.hh   (contents, props changed)
+   trunk/debian/PPI.hh   (contents, props changed)
+   trunk/debian/Packets.hh   (contents, props changed)
+   trunk/debian/Socket.hh   (contents, props changed)
+   trunk/debian/config.h
+Modified:
+   trunk/   (props changed)
+   trunk/Examples/DVBAdapter/MPEdec.cc
+   trunk/Examples/DVBAdapter/ULEdec.cc
+   trunk/Examples/DVBAdapter/ULEdec.hh
+   trunk/Examples/DVBAdapter/frontend.cc
+   trunk/Examples/MCSniffer/MCSniffer.cc
+   trunk/Examples/RateStuffer/ratestuffer.cc
+   trunk/Examples/Sniffer/Sniffer.cc
+   trunk/Examples/TCPClientServer/client.cc
+   trunk/Examples/TCPClientServer/server.cc
+   trunk/PPI/   (props changed)
+   trunk/PPI/CloneSource.hh
+   trunk/PPI/CloneSource.test.cc
+   trunk/PPI/Connectors.hh
+   trunk/PPI/DebugModules.cti
+   trunk/PPI/DebugModules.hh
+   trunk/PPI/DebugModules.test.cc
+   trunk/PPI/EventManager.cci
+   trunk/PPI/EventManager.hh
+   trunk/PPI/Events.hh
+   trunk/PPI/IOEvent.hh
+   trunk/PPI/IdleEvent.cc
+   trunk/PPI/IntervalTimer.cc
+   trunk/PPI/IntervalTimer.hh
+   trunk/PPI/Joins.test.cc
+   trunk/PPI/Module.hh
+   trunk/PPI/ModuleManager.cc
+   trunk/PPI/PassiveQueue.test.cc
+   trunk/PPI/Queueing.test.cc
+   trunk/PPI/SConscript
+   trunk/PPI/SocketReader.hh
+   trunk/PPI/SocketReader.test.cc
+   trunk/PPI/SocketWriter.hh
+   trunk/PPI/SocketWriter.test.cc
+   trunk/PPI/ThrottleBarrier.test.cc
+   trunk/PPI/detail/EventBinding.hh
+   trunk/Packets/DefaultBundle/EthernetPacket.hh
+   trunk/Packets/DefaultBundle/IpV4Packet.hh
+   trunk/Packets/DefaultBundle/IpV6Extensions.test.cc
+   trunk/Packets/DefaultBundle/IpV6Packet.cc
+   trunk/Packets/DefaultBundle/IpV6Packet.hh
+   trunk/Packets/DefaultBundle/IpV6Packet.test.cc
+   trunk/Packets/DefaultBundle/UDPPacket.cc
+   trunk/Packets/DefaultBundle/UDPPacket.hh
+   trunk/Packets/MPEGDVBBundle/DSMCCSection.hh
+   trunk/Packets/MPEGDVBBundle/DatagramSection.hh
+   trunk/Packets/MPEGDVBBundle/SNDUPacket.cc
+   trunk/Packets/MPEGDVBBundle/SNDUPacket.hh
+   trunk/Packets/MPEGDVBBundle/TransportPacket.hh
+   trunk/Packets/Packet.hh
+   trunk/Packets/PacketData.hh
+   trunk/Packets/PacketImpl.hh
+   trunk/Packets/PacketInterpreter.hh
+   trunk/Packets/PacketParser.hh
+   trunk/Packets/PacketParser.ih
+   trunk/Packets/PacketRegistry.hh
+   trunk/Packets/PacketRegistry.ih
+   trunk/Packets/PacketTypes.hh
+   trunk/Packets/SConscript
+   trunk/SConstruct
+   trunk/Scheduler/ClockService.cc
+   trunk/Scheduler/ClockService.cci
+   trunk/Scheduler/ClockService.hh
+   trunk/Scheduler/ReadHelper.ct
+   trunk/Scheduler/ReadHelper.cti
+   trunk/Scheduler/ReadHelper.hh
+   trunk/Scheduler/Scheduler.cc
+   trunk/Scheduler/WriteHelper.ct
+   trunk/Scheduler/WriteHelper.cti
+   trunk/Scheduler/WriteHelper.hh
+   trunk/Socket/   (props changed)
+   trunk/Socket/BufferingPolicy.cc
+   trunk/Socket/ClientSocketHandle.ct
+   trunk/Socket/ClientSocketHandle.ih
+   trunk/Socket/CommunicationPolicy.cc
+   trunk/Socket/FileHandle.cc
+   trunk/Socket/FileHandle.cci
+   trunk/Socket/FileHandle.hh
+   trunk/Socket/FileHandle.ih
+   trunk/Socket/ProtocolClientSocketHandle.cti
+   trunk/Socket/ProtocolClientSocketHandle.hh
+   trunk/Socket/ProtocolServerSocketHandle.cti
+   trunk/Socket/ProtocolServerSocketHandle.hh
+   trunk/Socket/Protocols/BSDSocketProtocol.cc
+   trunk/Socket/Protocols/BSDSocketProtocol.hh
+   trunk/Socket/Protocols/DVB/DVBDemuxHandles.cc
+   trunk/Socket/Protocols/DVB/DVBDemuxHandles.hh
+   trunk/Socket/Protocols/DVB/DVBDemuxProtocol.cc
+   trunk/Socket/Protocols/DVB/DVBDemuxProtocol.hh
+   trunk/Socket/Protocols/DVB/DVBFrontendHandle.cc
+   trunk/Socket/Protocols/DVB/DVBFrontendHandle.hh
+   trunk/Socket/Protocols/GenericAddressingPolicy.cc
+   trunk/Socket/Protocols/GenericAddressingPolicy.hh
+   trunk/Socket/Protocols/INet/ConnectedUDPSocketHandle.cc
+   trunk/Socket/Protocols/INet/ConnectedUDPSocketHandle.hh
+   trunk/Socket/Protocols/INet/INet4Address.hh
+   trunk/Socket/Protocols/INet/INet6Address.hh
+   trunk/Socket/Protocols/INet/INetAddressing.hh
+   trunk/Socket/Protocols/INet/INetProtocol.cc
+   trunk/Socket/Protocols/INet/INetProtocol.hh
+   trunk/Socket/Protocols/INet/TCPProtocol.cc
+   trunk/Socket/Protocols/INet/TCPProtocol.hh
+   trunk/Socket/Protocols/INet/TCPSocketHandle.cc
+   trunk/Socket/Protocols/INet/TCPSocketHandle.hh
+   trunk/Socket/Protocols/INet/UDPProtocol.cc
+   trunk/Socket/Protocols/INet/UDPProtocol.hh
+   trunk/Socket/Protocols/INet/UDPSocketHandle.cc
+   trunk/Socket/Protocols/INet/UDPSocketHandle.hh
+   trunk/Socket/Protocols/Raw/LLAddressing.cc
+   trunk/Socket/Protocols/Raw/LLAddressing.hh
+   trunk/Socket/Protocols/Raw/MACAddress.hh
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.hh
+   trunk/Socket/SConscript
+   trunk/Socket/SocketHandle.cc
+   trunk/Socket/SocketHandle.cci
+   trunk/Socket/SocketHandle.cti
+   trunk/Socket/SocketPolicy.ih
+   trunk/Utils/Buffer.hh
+   trunk/Utils/impl/membind.hh
+   trunk/Utils/membind.hh
+   trunk/Utils/membind.test.cc
+   trunk/boost/intrusive/detail/ihashtable.hpp
+   trunk/boost/intrusive/detail/irbtree.hpp
+   trunk/boost/intrusive/detail/list_node.hpp
+   trunk/boost/intrusive/detail/pointer_to_other.hpp
+   trunk/boost/intrusive/detail/pointer_type.hpp
+   trunk/boost/intrusive/detail/rbtree_node.hpp
+   trunk/boost/intrusive/detail/slist_node.hpp
+   trunk/boost/intrusive/detail/utilities.hpp
+   trunk/boost/intrusive/ilist.hpp
+   trunk/boost/intrusive/ilist_hook.hpp
+   trunk/boost/intrusive/iset.hpp
+   trunk/boost/intrusive/iset_hook.hpp
+   trunk/boost/intrusive/islist.hpp
+   trunk/boost/intrusive/islist_hook.hpp
+   trunk/boost/intrusive/iunordered_set.hpp
+   trunk/boost/intrusive/iunordered_set_hook.hpp
+   trunk/boost/intrusive/list_algorithms.hpp
+   trunk/boost/intrusive/rbtree_algorithms.hpp
+   trunk/boost/intrusive/slist_algorithms.hpp
+   trunk/debian/libsenf-dev.install
+   trunk/debian/rules
+   trunk/senfscons/SENFSCons.py
+
+Log:
+Move include files in debian packge into 'senf' subdirectory
+Make all include path's relative
+Add 'senf/Packets.hh', 'senf/PPI.hh' and 'senf/Socket.hh'
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000285.html">[Senf-svn] r424 - in trunk: . Packets Scheduler Socket Utils	Utils/impl senfscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#284">[ date ]</a>
+              <a href="thread.html#284">[ thread ]</a>
+              <a href="subject.html#284">[ subject ]</a>
+              <a href="author.html#284">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

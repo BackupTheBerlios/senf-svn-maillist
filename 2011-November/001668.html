@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1829 - in trunk/senf: Packets Packets/80221Bundle Utils
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2011-November/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1829%20-%20in%20trunk/senf%3A%20Packets%20Packets/80221Bundle%20Utils&In-Reply-To=%3C20111124133732.890574814DA%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001667.html">
+   <LINK REL="Next"  HREF="001669.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1829 - in trunk/senf: Packets Packets/80221Bundle Utils</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1829%20-%20in%20trunk/senf%3A%20Packets%20Packets/80221Bundle%20Utils&In-Reply-To=%3C20111124133732.890574814DA%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r1829 - in trunk/senf: Packets Packets/80221Bundle Utils">subversion at senf.berlios.de
+       </A><BR>
+    <I>Thu Nov 24 14:37:32 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001667.html">[Senf-svn] r1828 - trunk/senf/Packets
+</A></li>
+        <LI>Next message: <A HREF="001669.html">[Senf-svn] r1830 - trunk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1668">[ date ]</a>
+              <a href="thread.html#1668">[ thread ]</a>
+              <a href="subject.html#1668">[ subject ]</a>
+              <a href="author.html#1668">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tho
+Date: Thu Nov 24 14:37:31 2011
+New Revision: 1829
+
+Log:
+Packets: another not smart but efficient 'shortcut' for ConcretePacket::next() (like Rev. #1818)
+  (we have to think about the internal packet refcounting pointer handling)
+Utils: added const members to Statistic class
+
+Modified:
+   trunk/senf/Packets/80221Bundle/TLVParser.cc
+   trunk/senf/Packets/80221Bundle/TLVParser.hh
+   trunk/senf/Packets/Packet.cc
+   trunk/senf/Packets/Packet.cci
+   trunk/senf/Packets/Packet.ct
+   trunk/senf/Packets/Packet.cti
+   trunk/senf/Packets/Packet.hh
+   trunk/senf/Utils/Statistics.cci
+   trunk/senf/Utils/Statistics.hh
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001667.html">[Senf-svn] r1828 - trunk/senf/Packets
+</A></li>
+	<LI>Next message: <A HREF="001669.html">[Senf-svn] r1830 - trunk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1668">[ date ]</a>
+              <a href="thread.html#1668">[ thread ]</a>
+              <a href="subject.html#1668">[ subject ]</a>
+              <a href="author.html#1668">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

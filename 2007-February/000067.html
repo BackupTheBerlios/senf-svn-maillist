@@ -1,0 +1,285 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r206 - in trunk: . Packets Scheduler Socket Utils	Utils/impl doclib senfscons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r206%20-%20in%20trunk%3A%20.%20Packets%20Scheduler%20Socket%20Utils%0A%09Utils/impl%20doclib%20senfscons&In-Reply-To=%3C200702201422.l1KEMBnY027913%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000066.html">
+   <LINK REL="Next"  HREF="000068.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r206 - in trunk: . Packets Scheduler Socket Utils	Utils/impl doclib senfscons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r206%20-%20in%20trunk%3A%20.%20Packets%20Scheduler%20Socket%20Utils%0A%09Utils/impl%20doclib%20senfscons&In-Reply-To=%3C200702201422.l1KEMBnY027913%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r206 - in trunk: . Packets Scheduler Socket Utils	Utils/impl doclib senfscons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Feb 20 15:22:11 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000066.html">[Senf-svn] r205 - trunk/Utils
+</A></li>
+        <LI>Next message: <A HREF="000068.html">[Senf-svn] r207 - in trunk: Socket senfscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#67">[ date ]</a>
+              <a href="thread.html#67">[ thread ]</a>
+              <a href="subject.html#67">[ subject ]</a>
+              <a href="author.html#67">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Feb 20 15:20:52 2007
+New Revision: 206
+
+Removed:
+   trunk/Packets/.cvsignore
+Modified:
+   trunk/Example.dox
+   trunk/LICENSE
+   trunk/Mainpage.dox
+   trunk/Packets/DataPacket.cc
+   trunk/Packets/DataPacket.cti
+   trunk/Packets/DataPacket.hh
+   trunk/Packets/EthernetPacket.cc
+   trunk/Packets/EthernetPacket.cti
+   trunk/Packets/EthernetPacket.hh
+   trunk/Packets/EthernetPacket.test.cc
+   trunk/Packets/GenericPacket.ct
+   trunk/Packets/GenericPacket.cti
+   trunk/Packets/GenericPacket.hh
+   trunk/Packets/IpV4Packet.cc
+   trunk/Packets/IpV4Packet.cti
+   trunk/Packets/IpV4Packet.hh
+   trunk/Packets/IpV4Packet.test.cc
+   trunk/Packets/IpV6Extensions.cc
+   trunk/Packets/IpV6Extensions.ct
+   trunk/Packets/IpV6Extensions.hh
+   trunk/Packets/IpV6Extensions.test.cc
+   trunk/Packets/IpV6Packet.cc
+   trunk/Packets/IpV6Packet.cti
+   trunk/Packets/IpV6Packet.hh
+   trunk/Packets/IpV6Packet.test.cc
+   trunk/Packets/Mainpage.dox
+   trunk/Packets/Packet.cc
+   trunk/Packets/Packet.cci
+   trunk/Packets/Packet.ct
+   trunk/Packets/Packet.cti
+   trunk/Packets/Packet.hh
+   trunk/Packets/Packet.ih
+   trunk/Packets/Packet.mpp
+   trunk/Packets/Packet.test.cc
+   trunk/Packets/PacketRegistry.cc
+   trunk/Packets/PacketRegistry.ct
+   trunk/Packets/PacketRegistry.cti
+   trunk/Packets/PacketRegistry.hh
+   trunk/Packets/PacketRegistry.ih
+   trunk/Packets/PacketRegistry.test.cc
+   trunk/Packets/ParseArray.cti
+   trunk/Packets/ParseArray.hh
+   trunk/Packets/ParseArray.ih
+   trunk/Packets/ParseArray.test.cc
+   trunk/Packets/ParseInt.hh
+   trunk/Packets/ParseInt.ih
+   trunk/Packets/ParseInt.test.cc
+   trunk/Packets/ParseListS.ct
+   trunk/Packets/ParseListS.cti
+   trunk/Packets/ParseListS.hh
+   trunk/Packets/ParseListS.ih
+   trunk/Packets/ParseListS.test.cc
+   trunk/Packets/ParseVec.ct
+   trunk/Packets/ParseVec.cti
+   trunk/Packets/ParseVec.hh
+   trunk/Packets/ParseVec.test.cc
+   trunk/Packets/ParserBase.cti
+   trunk/Packets/ParserBase.hh
+   trunk/Packets/ParserBase.ih
+   trunk/Packets/ParserBase.test.cc
+   trunk/Packets/RTCPPacket.cc
+   trunk/Packets/RTCPPacket.cti
+   trunk/Packets/RTCPPacket.hh
+   trunk/Packets/RTCPPacket.test.cc
+   trunk/Packets/RTPPacket.cc
+   trunk/Packets/RTPPacket.cti
+   trunk/Packets/RTPPacket.hh
+   trunk/Packets/RTPPacket.test.cc
+   trunk/Packets/UDPPacket.cc
+   trunk/Packets/UDPPacket.cti
+   trunk/Packets/UDPPacket.hh
+   trunk/Packets/UDPPacket.test.cc
+   trunk/Packets/docstub.hh
+   trunk/Packets/main.test.cc
+   trunk/Packets/typeidvalue.cci
+   trunk/Packets/typeidvalue.cti
+   trunk/Packets/typeidvalue.hh
+   trunk/SConstruct
+   trunk/Scheduler/Mainpage.dox
+   trunk/Scheduler/ReadHelper.cci
+   trunk/Scheduler/ReadHelper.ct
+   trunk/Scheduler/ReadHelper.cti
+   trunk/Scheduler/ReadHelper.hh
+   trunk/Scheduler/ReadHelper.ih
+   trunk/Scheduler/ReadHelper.test.cc
+   trunk/Scheduler/Scheduler.cc
+   trunk/Scheduler/Scheduler.cci
+   trunk/Scheduler/Scheduler.cti
+   trunk/Scheduler/Scheduler.hh
+   trunk/Scheduler/Scheduler.test.cc
+   trunk/Scheduler/WriteHelper.ct
+   trunk/Scheduler/WriteHelper.cti
+   trunk/Scheduler/WriteHelper.hh
+   trunk/Scheduler/WriteHelper.test.cc
+   trunk/Scheduler/main.test.cc
+   trunk/Sniffer/Sniffer.cc
+   trunk/Socket/AddressingPolicy.hh
+   trunk/Socket/BSDSocketProtocol.cc
+   trunk/Socket/BSDSocketProtocol.hh
+   trunk/Socket/BufferingPolicy.cc
+   trunk/Socket/BufferingPolicy.hh
+   trunk/Socket/ClientSocketHandle.ct
+   trunk/Socket/ClientSocketHandle.cti
+   trunk/Socket/ClientSocketHandle.hh
+   trunk/Socket/ClientSocketHandle.test.cc
+   trunk/Socket/CommunicationPolicy.cc
+   trunk/Socket/CommunicationPolicy.cti
+   trunk/Socket/CommunicationPolicy.hh
+   trunk/Socket/FileHandle.cc
+   trunk/Socket/FileHandle.cci
+   trunk/Socket/FileHandle.hh
+   trunk/Socket/FileHandle.ih
+   trunk/Socket/FileHandle.test.cc
+   trunk/Socket/FramingPolicy.hh
+   trunk/Socket/GenericAddressingPolicy.cc
+   trunk/Socket/GenericAddressingPolicy.cti
+   trunk/Socket/GenericAddressingPolicy.hh
+   trunk/Socket/GenericSockAddr.cci
+   trunk/Socket/GenericSockAddr.hh
+   trunk/Socket/INetAddressing.cc
+   trunk/Socket/INetAddressing.cci
+   trunk/Socket/INetAddressing.ct
+   trunk/Socket/INetAddressing.hh
+   trunk/Socket/INetAddressing.test.cc
+   trunk/Socket/INetProtocol.cc
+   trunk/Socket/INetProtocol.hh
+   trunk/Socket/LLAddressing.cc
+   trunk/Socket/LLAddressing.cci
+   trunk/Socket/LLAddressing.ct
+   trunk/Socket/LLAddressing.cti
+   trunk/Socket/LLAddressing.hh
+   trunk/Socket/LLAddressing.ih
+   trunk/Socket/LLAddressing.test.cc
+   trunk/Socket/Mainpage.dox
+   trunk/Socket/PacketSocketHandle.cc
+   trunk/Socket/PacketSocketHandle.ct
+   trunk/Socket/PacketSocketHandle.cti
+   trunk/Socket/PacketSocketHandle.hh
+   trunk/Socket/PacketSocketHandle.ih
+   trunk/Socket/PacketSocketHandle.test.cc
+   trunk/Socket/ProtocolClientSocketHandle.cti
+   trunk/Socket/ProtocolClientSocketHandle.hh
+   trunk/Socket/ProtocolClientSocketHandle.mpp
+   trunk/Socket/ProtocolClientSocketHandle.test.cc
+   trunk/Socket/ProtocolServerSocketHandle.cti
+   trunk/Socket/ProtocolServerSocketHandle.hh
+   trunk/Socket/ProtocolServerSocketHandle.mpp
+   trunk/Socket/ProtocolServerSocketHandle.test.cc
+   trunk/Socket/ReadWritePolicy.cc
+   trunk/Socket/ReadWritePolicy.cti
+   trunk/Socket/ReadWritePolicy.hh
+   trunk/Socket/ServerSocketHandle.cti
+   trunk/Socket/ServerSocketHandle.hh
+   trunk/Socket/ServerSocketHandle.test.cc
+   trunk/Socket/SocketHandle.cc
+   trunk/Socket/SocketHandle.cci
+   trunk/Socket/SocketHandle.ct
+   trunk/Socket/SocketHandle.cti
+   trunk/Socket/SocketHandle.hh
+   trunk/Socket/SocketHandle.ih
+   trunk/Socket/SocketHandle.test.cc
+   trunk/Socket/SocketPolicy.ct
+   trunk/Socket/SocketPolicy.hh
+   trunk/Socket/SocketPolicy.ih
+   trunk/Socket/SocketPolicy.test.cc
+   trunk/Socket/SocketPolicy.test.hh
+   trunk/Socket/SocketProtocol.cc
+   trunk/Socket/SocketProtocol.cci
+   trunk/Socket/SocketProtocol.cti
+   trunk/Socket/SocketProtocol.hh
+   trunk/Socket/SocketProtocol.test.cc
+   trunk/Socket/SocketProtocol.test.hh
+   trunk/Socket/TCPProtocol.cc
+   trunk/Socket/TCPProtocol.hh
+   trunk/Socket/TCPSocketHandle.cc
+   trunk/Socket/TCPSocketHandle.hh
+   trunk/Socket/TCPSocketHandle.test.cc
+   trunk/Socket/main.test.cc
+   trunk/Utils/DaemonTools.cc
+   trunk/Utils/DaemonTools.hh
+   trunk/Utils/Exception.cc
+   trunk/Utils/Exception.cci
+   trunk/Utils/Exception.hh
+   trunk/Utils/Logger.hh
+   trunk/Utils/Logger.test.cc
+   trunk/Utils/Mainpage.dox
+   trunk/Utils/MicroTime.cc
+   trunk/Utils/MicroTime.hh
+   trunk/Utils/MicroTime.test.cc
+   trunk/Utils/SafeBool.cci
+   trunk/Utils/SafeBool.cti
+   trunk/Utils/SafeBool.hh
+   trunk/Utils/TypeInfo.cc
+   trunk/Utils/TypeInfo.hh
+   trunk/Utils/TypeInfo.test.cc
+   trunk/Utils/impl/demangle.h
+   trunk/Utils/impl/membind.hh
+   trunk/Utils/intrusive_refcount.cci
+   trunk/Utils/intrusive_refcount.hh
+   trunk/Utils/intrusive_refcount.test.cc
+   trunk/Utils/main.test.cc
+   trunk/Utils/membind.hh
+   trunk/Utils/membind.test.cc
+   trunk/doclib/Doxyfile.global
+   trunk/doclib/doxy-header-overview.html
+   trunk/doclib/logo.xcf
+   trunk/doclib/senf.css
+   trunk/project.el
+   trunk/run-test-gdb.sh
+   trunk/senfscons/Doxyfile.template
+   trunk/senfscons/Doxygen.py
+   trunk/senfscons/Mainpage.dox
+   trunk/senfscons/SENFSCons.py
+
+Log:
+Fixed whitespace in all files (no tabs)
+Unified emacs Local Variables
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000066.html">[Senf-svn] r205 - trunk/Utils
+</A></li>
+	<LI>Next message: <A HREF="000068.html">[Senf-svn] r207 - in trunk: Socket senfscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#67">[ date ]</a>
+              <a href="thread.html#67">[ thread ]</a>
+              <a href="subject.html#67">[ subject ]</a>
+              <a href="author.html#67">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

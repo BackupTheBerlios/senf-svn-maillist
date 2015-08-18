@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r776 - trunk/Utils/Daemon
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r776%20-%20trunk/Utils/Daemon&In-Reply-To=%3C200804030930.m339UHn2010796%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000635.html">
+   <LINK REL="Next"  HREF="000637.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r776 - trunk/Utils/Daemon</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r776%20-%20trunk/Utils/Daemon&In-Reply-To=%3C200804030930.m339UHn2010796%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r776 - trunk/Utils/Daemon">subversion at senf.berlios.de
+       </A><BR>
+    <I>Thu Apr  3 11:30:17 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000635.html">[Senf-svn] r775 - in trunk: Console Packets Socket Utils	Utils/Daemon
+</A></li>
+        <LI>Next message: <A HREF="000637.html">[Senf-svn] r777 - in trunk: Console PPI Scheduler Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#636">[ date ]</a>
+              <a href="thread.html#636">[ thread ]</a>
+              <a href="subject.html#636">[ subject ]</a>
+              <a href="author.html#636">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: jkaeber
+Date: Thu Apr  3 11:30:14 2008
+New Revision: 776
+
+Modified:
+   trunk/Utils/Daemon/Daemon.cc
+   trunk/Utils/Daemon/Daemon.hh
+
+Log:
+Modified argv() to return the original &quot;char **&quot; instead of &quot;char const **&quot;.
+
+According to C99, section 5.1.2.2.1 (Program startup):
+&quot;The parameters argc and argv and the strings pointed to
+ by the argv array shall be modifiable by the program, and
+ retain their last-stored values between program startup and
+ program termination.&quot;
+And it makes using boost::program_options much easier :)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000635.html">[Senf-svn] r775 - in trunk: Console Packets Socket Utils	Utils/Daemon
+</A></li>
+	<LI>Next message: <A HREF="000637.html">[Senf-svn] r777 - in trunk: Console PPI Scheduler Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#636">[ date ]</a>
+              <a href="thread.html#636">[ thread ]</a>
+              <a href="subject.html#636">[ subject ]</a>
+              <a href="author.html#636">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

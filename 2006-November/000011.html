@@ -1,0 +1,398 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r150 - in trunk: Utils
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r150%20-%20in%20trunk%3A%20Utils&In-Reply-To=%3C200611061540.kA6FeJcQ028001%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000010.html">
+   <LINK REL="Next"  HREF="000012.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r150 - in trunk: Utils</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r150%20-%20in%20trunk%3A%20Utils&In-Reply-To=%3C200611061540.kA6FeJcQ028001%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r150 - in trunk: Utils">subversion at senf.berlios.de
+       </A><BR>
+    <I>Mon Nov  6 16:40:19 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000010.html">[Senf-svn] r149 - in trunk: Packets Scheduler
+</A></li>
+        <LI>Next message: <A HREF="000012.html">[Senf-svn] r151 - trunk/satscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Mon Nov  6 16:40:15 2006
+New Revision: 150
+
+Added:
+   trunk/Utils/MicroTime.cc
+   trunk/Utils/MicroTime.hh
+   trunk/Utils/MicroTime.test.cc
+Modified:
+   trunk/Scheduler/Scheduler.cc
+   trunk/Scheduler/Scheduler.hh
+   trunk/Scheduler/Scheduler.test.cc
+
+Log:
+Simple timeout implementation
+
+Modified: trunk/Scheduler/Scheduler.cc
+==============================================================================
+--- trunk/Scheduler/Scheduler.cc	(original)
++++ trunk/Scheduler/Scheduler.cc	Mon Nov  6 16:40:15 2006
+@@ -71,6 +71,7 @@
+ #include &lt;errno.h&gt;
+ #include &lt;sys/epoll.h&gt;
+ #include &quot;Utils/Exception.hh&quot;
++#include &quot;Utils/MicroTime.hh&quot;
+ 
+ static const int EPollInitialSize = 16;
+ 
+@@ -83,6 +84,11 @@
+     return instance;
+ }
+ 
++prefix_ void satcom::lib::Scheduler::timeout(unsigned long timeout, TimerCallback const &amp; cb)
++{
++    timerQueue_.push(TimerSpec(now()+1000*timeout,cb));
++}
++
+ prefix_ satcom::lib::Scheduler::Scheduler()
+     : epollFd_(epoll_create(EPollInitialSize))
+ {
+@@ -90,7 +96,7 @@
+         throw SystemException(errno);
+ }
+ 
+-prefix_ void satcom::lib::Scheduler::do_add(int fd, InternalCallback const &amp; cb, EventId eventMask)
++prefix_ void satcom::lib::Scheduler::do_add(int fd, SimpleCallback const &amp; cb, EventId eventMask)
+ {
+     FdTable::iterator i (fdTable_.find(fd));
+     int action (EPOLL_CTL_MOD);
+@@ -141,6 +147,7 @@
+         throw SystemException(errno);
+ }
+ 
++
+ prefix_ int satcom::lib::Scheduler::EventSpec::epollMask()
+     const
+ {
+@@ -158,11 +165,21 @@
+     terminate_ = false;
+     while (! terminate_) {
+         struct epoll_event ev;
+-        int events = epoll_wait(epollFd_, &amp;ev, 1, 1000);
++	MicroTime timeNow = now();
++	while ( ! timerQueue_.empty() &amp;&amp; timerQueue_.top().timeout &lt;= timeNow ) {
++	    timerQueue_.top().cb();
++	    timerQueue_.pop();
++	}
++	if (terminate_) 
++	    return;
++	int timeout = timerQueue_.empty() ? -1 : int((timerQueue_.top().timeout - timeNow)/1000);
++	    
++        int events = epoll_wait(epollFd_, &amp;ev, 1, timeout);
+         if (events&lt;0)
+             // Hmm ... man epoll says, it will NOT return with EINTR ??
+             throw SystemException(errno);
+         if (events==0)
++	    // Timeout .. it will be run when reachiung the top of the loop
+             continue;
+         
+         FdTable::iterator i = fdTable_.find(ev.data.fd);
+
+Modified: trunk/Scheduler/Scheduler.hh
+==============================================================================
+--- trunk/Scheduler/Scheduler.hh	(original)
++++ trunk/Scheduler/Scheduler.hh	Mon Nov  6 16:40:15 2006
+@@ -25,10 +25,13 @@
+ 
+ // Custom includes
+ #include &lt;map&gt;
++#include &lt;queue&gt;
+ #include &lt;boost/function.hpp&gt;
+ #include &lt;boost/utility.hpp&gt;
+ #include &lt;boost/call_traits.hpp&gt;
+ 
++#include &quot;Utils/MicroTime.hh&quot;
++
+ //#include &quot;scheduler.mpp&quot;
+ ///////////////////////////////hh.p////////////////////////////////////////
+ 
+@@ -59,6 +62,8 @@
+             typedef boost::function&lt;void (typename boost::call_traits&lt;Handle&gt;::param_type,
+                                           EventId) &gt; Callback;
+         };
++	typedef boost::function&lt;void (EventId)&gt; SimpleCallback;
++	typedef boost::function&lt;void ()&gt; TimerCallback;
+ 
+         ///////////////////////////////////////////////////////////////////////////
+         ///\name Structors and default members
+@@ -78,38 +83,52 @@
+         template &lt;class Handle&gt;
+         void add(Handle const &amp; handle, 
+                  typename GenericCallback&lt;Handle&gt;::Callback const &amp; cb,
+-                 EventId eventMask = EV_ALL);
+-        template &lt;class Handle&gt;
++                 EventId eventMask = EV_ALL); 
++	template &lt;class Handle&gt;
+         void remove(Handle const &amp; handle, EventId eventMask = EV_ALL);
+ 
+-        void process();
++	void timeout(unsigned long timeout, TimerCallback const &amp; cb);
+ 
++        void process();
+         void terminate();
+ 
+     protected:
+ 
+     private:
+         Scheduler();
+- 
+-	typedef boost::function&lt;void (EventId)&gt; InternalCallback;
+-	
+-        void do_add(int fd, InternalCallback const &amp; cb, EventId eventMask = EV_ALL);
++ 	
++        void do_add(int fd, SimpleCallback const &amp; cb, EventId eventMask = EV_ALL);
+         void do_remove(int fd, EventId eventMask = EV_ALL);
+-	
++
+ 	struct EventSpec 
+         {
+-            InternalCallback cb_read;
+-            InternalCallback cb_prio;
+-            InternalCallback cb_write;
+-            InternalCallback cb_hup;
+-            InternalCallback cb_err;
++            SimpleCallback cb_read;
++            SimpleCallback cb_prio;
++            SimpleCallback cb_write;
++            SimpleCallback cb_hup;
++            SimpleCallback cb_err;
+ 
+             int epollMask() const;
+         };
++	
++	struct TimerSpec
++	{
++	    TimerSpec() : timeout(), cb() {}
++            TimerSpec(unsigned long long timeout_, TimerCallback cb_)
++                : timeout(timeout_), cb(cb_) {}
++
++	    bool operator&lt; (TimerSpec const &amp; other) const
++		{ return timeout &gt; other.timeout; }
++	    
++	    unsigned long long timeout;
++	    TimerCallback cb;
++	};
+         
+         typedef std::map&lt;int,EventSpec&gt; FdTable;
++	typedef std::priority_queue&lt;TimerSpec&gt; TimerQueue;
+ 
+         FdTable fdTable_;
++	TimerQueue timerQueue_;
+         int epollFd_;
+         bool terminate_;
+     };
+
+Modified: trunk/Scheduler/Scheduler.test.cc
+==============================================================================
+--- trunk/Scheduler/Scheduler.test.cc	(original)
++++ trunk/Scheduler/Scheduler.test.cc	Mon Nov  6 16:40:15 2006
+@@ -163,6 +163,11 @@
+         }
+         Scheduler::instance().terminate();
+     }
++
++    void timeout() 
++    {
++	Scheduler::instance().terminate();
++    }
+      
+     struct HandleWrapper
+     {
+@@ -182,6 +187,12 @@
+             return;
+         callback(handle.fd_,event);
+     }
++
++    bool is_close(MicroTime a, MicroTime b)
++    {
++	return (a&lt;b ? b-a : a-b) &lt; 1100;
++    }
++	    
+ }
+ 
+ BOOST_AUTO_UNIT_TEST(scheduler)
+@@ -216,6 +227,14 @@
+     buffer[size]=0;
+     BOOST_CHECK_EQUAL( buffer, &quot;READ&quot; );
+ 
++    BOOST_CHECK_NO_THROW( Scheduler::instance().timeout(100,&amp;timeout) );
++    BOOST_CHECK_NO_THROW( Scheduler::instance().timeout(200,&amp;timeout) );
++    MicroTime t (now());
++    BOOST_CHECK_NO_THROW( Scheduler::instance().process() );
++    BOOST_CHECK_PREDICATE( is_close, (now()) (t+100*1000) );
++    BOOST_CHECK_NO_THROW( Scheduler::instance().process() );
++    BOOST_CHECK_PREDICATE( is_close, (now()) (t+200*1000) );
++    
+     HandleWrapper handle(sock,&quot;TheTag&quot;);
+     BOOST_CHECK_NO_THROW( Scheduler::instance().add(handle,&amp;handleCallback,Scheduler::EV_WRITE) );
+     strcpy(buffer,&quot;WRITE&quot;);
+
+Added: trunk/Utils/MicroTime.cc
+==============================================================================
+--- (empty file)
++++ trunk/Utils/MicroTime.cc	Mon Nov  6 16:40:15 2006
+@@ -0,0 +1,37 @@
++// $Id$
++//
++// Copyright (C) 2006 
++
++// Definition of non-inline non-template functions
++
++#include &quot;MicroTime.hh&quot;
++//#include &quot;MicroTime.ih&quot;
++
++// Custom includes
++#include &lt;sys/time.h&gt;
++#include &lt;time.h&gt;
++#include &lt;errno.h&gt;
++
++#include &quot;Utils/Exception.hh&quot;
++
++//#include &quot;MicroTime.mpp&quot;
++#define prefix_
++///////////////////////////////cc.p////////////////////////////////////////
++
++prefix_ satcom::lib::MicroTime satcom::lib::now()
++{
++    struct timeval tv;
++    if (gettimeofday(&amp;tv,0) &lt; 0)
++	throw SystemException(errno);
++    return 1000000*MicroTime(tv.tv_sec) + tv.tv_usec;
++}
++
++
++///////////////////////////////cc.e////////////////////////////////////////
++#undef prefix_
++//#include &quot;MicroTime.mpp&quot;
++
++
++// Local Variables:
++// mode: c++
++// End:
+
+Added: trunk/Utils/MicroTime.hh
+==============================================================================
+--- (empty file)
++++ trunk/Utils/MicroTime.hh	Mon Nov  6 16:40:15 2006
+@@ -0,0 +1,33 @@
++// $Id$
++//
++// Copyright (C) 2006 
++
++#ifndef HH_MicroTime_
++#define HH_MicroTime_ 1
++
++// Custom includes
++#include &lt;boost/cstdint.hpp&gt;
++
++//#include &quot;MicroTime.mpp&quot;
++///////////////////////////////hh.p////////////////////////////////////////
++
++namespace satcom {
++namespace lib {
++
++    typedef boost::uint64_t MicroTime;
++
++    MicroTime now();
++
++}}
++
++///////////////////////////////hh.e////////////////////////////////////////
++//#include &quot;MicroTime.cci&quot;
++//#include &quot;MicroTime.ct&quot;
++//#include &quot;MicroTime.cti&quot;
++//#include &quot;MicroTime.mpp&quot;
++#endif
++
++
++// Local Variables:
++// mode: c++
++// End:
+
+Added: trunk/Utils/MicroTime.test.cc
+==============================================================================
+--- (empty file)
++++ trunk/Utils/MicroTime.test.cc	Mon Nov  6 16:40:15 2006
+@@ -0,0 +1,30 @@
++// $Id$
++//
++// Copyright (C) 2006 
++
++// Unit tests
++
++//#include &quot;MicroTime.test.hh&quot;
++//#include &quot;MicroTime.test.ih&quot;
++
++// Custom includes
++#include &quot;MicroTime.hh&quot;
++
++#include &lt;boost/test/auto_unit_test.hpp&gt;
++#include &lt;boost/test/test_tools.hpp&gt;
++
++#define prefix_
++///////////////////////////////cc.p////////////////////////////////////////
++
++BOOST_AUTO_UNIT_TEST(microTime)
++{
++    BOOST_CHECK_NO_THROW( satcom::lib::now() );
++}
++
++///////////////////////////////cc.e////////////////////////////////////////
++#undef prefix_
++
++
++// Local Variables:
++// mode: c++
++// End:
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000010.html">[Senf-svn] r149 - in trunk: Packets Scheduler
+</A></li>
+	<LI>Next message: <A HREF="000012.html">[Senf-svn] r151 - trunk/satscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

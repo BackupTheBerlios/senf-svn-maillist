@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r304 - branches/new-packet/Packets
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r304%20-%20branches/new-packet/Packets&In-Reply-To=%3C200707141226.l6ECQx09001675%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000164.html">
+   <LINK REL="Next"  HREF="000166.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r304 - branches/new-packet/Packets</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r304%20-%20branches/new-packet/Packets&In-Reply-To=%3C200707141226.l6ECQx09001675%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r304 - branches/new-packet/Packets">subversion at senf.berlios.de
+       </A><BR>
+    <I>Sat Jul 14 14:26:59 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000164.html">[Senf-svn] r303 - in branches/new-packet: Packets
+</A></li>
+        <LI>Next message: <A HREF="000166.html">[Senf-svn] r305 - in branches/new-packet/Packets: .
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#165">[ date ]</a>
+              <a href="thread.html#165">[ thread ]</a>
+              <a href="subject.html#165">[ subject ]</a>
+              <a href="author.html#165">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Sat Jul 14 14:26:47 2007
+New Revision: 304
+
+Added:
+   branches/new-packet/Packets/PacketParser.ct
+Removed:
+   branches/new-packet/Packets/SafePacketParser.cti
+   branches/new-packet/Packets/SafePacketParser.hh
+   branches/new-packet/Packets/SafePacketParser.test.cc
+   branches/new-packet/Packets/safe_data_iterator.cci
+   branches/new-packet/Packets/safe_data_iterator.hh
+   branches/new-packet/Packets/safe_data_iterator.test.cc
+Modified:
+   branches/new-packet/Packets/Packet.hh
+   branches/new-packet/Packets/PacketData.cci
+   branches/new-packet/Packets/PacketData.hh
+   branches/new-packet/Packets/PacketData.test.cc
+   branches/new-packet/Packets/PacketImpl.cti
+   branches/new-packet/Packets/PacketImpl.hh
+   branches/new-packet/Packets/PacketParser.cci
+   branches/new-packet/Packets/PacketParser.cti
+   branches/new-packet/Packets/PacketParser.hh
+   branches/new-packet/Packets/PacketParser.ih
+   branches/new-packet/Packets/PacketParser.mpp
+   branches/new-packet/Packets/PacketParser.test.cc
+   branches/new-packet/Packets/ParseList.ct
+   branches/new-packet/Packets/ParseList.cti
+   branches/new-packet/Packets/ParseList.hh
+   branches/new-packet/Packets/ParseListB.cti
+   branches/new-packet/Packets/ParseListB.hh
+   branches/new-packet/Packets/ParseListB.ih
+   branches/new-packet/Packets/ParseListB.test.cc
+   branches/new-packet/Packets/ParseListN.cti
+   branches/new-packet/Packets/ParseListN.hh
+   branches/new-packet/Packets/ParseListN.ih
+   branches/new-packet/Packets/ParseVec.ct
+   branches/new-packet/Packets/ParseVec.cti
+
+Log:
+Packets: Simplify header dependencies by moving safe_data_iterator into PacketData.* and SafePacketParser into PacketParser.*
+Packets: Add workaround for recursive include to packetData.hh
+Packets: Ipmlement generic parser assignment as operator&lt;&lt;
+Packets: Add 'update()' member to list policy
+Packets: ParseList: separate parser policy from container policy
+Packets: Lots of Fixes in ParseList regarding iterator invalidation
+Packets: Almost completely re-implement ParseListB policy to make it work
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000164.html">[Senf-svn] r303 - in branches/new-packet: Packets
+</A></li>
+	<LI>Next message: <A HREF="000166.html">[Senf-svn] r305 - in branches/new-packet/Packets: .
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#165">[ date ]</a>
+              <a href="thread.html#165">[ thread ]</a>
+              <a href="subject.html#165">[ subject ]</a>
+              <a href="author.html#165">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

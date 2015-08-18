@@ -1,0 +1,309 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r299 - in branches/new-packet: . Examples/MCSniffer	Examples/Sniffer PPI Packets Packets/DefaultBundle	Packets/RTPBundle Scheduler Utils Utils/impl
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r299%20-%20in%20branches/new-packet%3A%20.%20Examples/MCSniffer%0A%09Examples/Sniffer%20PPI%20Packets%20Packets/DefaultBundle%0A%09Packets/RTPBundle%20Scheduler%20Utils%20Utils/impl&In-Reply-To=%3C200707102124.l6ALOvQd026193%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000159.html">
+   <LINK REL="Next"  HREF="000161.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r299 - in branches/new-packet: . Examples/MCSniffer	Examples/Sniffer PPI Packets Packets/DefaultBundle	Packets/RTPBundle Scheduler Utils Utils/impl</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r299%20-%20in%20branches/new-packet%3A%20.%20Examples/MCSniffer%0A%09Examples/Sniffer%20PPI%20Packets%20Packets/DefaultBundle%0A%09Packets/RTPBundle%20Scheduler%20Utils%20Utils/impl&In-Reply-To=%3C200707102124.l6ALOvQd026193%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r299 - in branches/new-packet: . Examples/MCSniffer	Examples/Sniffer PPI Packets Packets/DefaultBundle	Packets/RTPBundle Scheduler Utils Utils/impl">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Jul 10 23:24:57 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000159.html">[Senf-svn] r298 - trunk
+</A></li>
+        <LI>Next message: <A HREF="000161.html">[Senf-svn] r300 - trunk/doclib
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#160">[ date ]</a>
+              <a href="thread.html#160">[ thread ]</a>
+              <a href="subject.html#160">[ subject ]</a>
+              <a href="author.html#160">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Jul 10 23:23:49 2007
+New Revision: 299
+
+Modified:
+   branches/new-packet/   (props changed)
+   branches/new-packet/Examples/MCSniffer/MCSniffer.cc
+   branches/new-packet/Examples/Sniffer/Sniffer.cc
+   branches/new-packet/PPI/Connectors.hh
+   branches/new-packet/PPI/Events.hh
+   branches/new-packet/PPI/Mainpage.dox
+   branches/new-packet/PPI/Module.hh
+   branches/new-packet/PPI/PassiveQueue.hh
+   branches/new-packet/PPI/Queueing.hh
+   branches/new-packet/PPI/Route.hh
+   branches/new-packet/PPI/SocketReader.hh
+   branches/new-packet/PPI/SocketWriter.hh
+   branches/new-packet/Packets/DefaultBundle/EthernetPacket.cc
+   branches/new-packet/Packets/DefaultBundle/EthernetPacket.hh
+   branches/new-packet/Packets/DefaultBundle/EthernetPacket.test.cc
+   branches/new-packet/Packets/DefaultBundle/main.test.cc
+   branches/new-packet/Packets/Packet.cc
+   branches/new-packet/Packets/Packet.cci
+   branches/new-packet/Packets/Packet.ct
+   branches/new-packet/Packets/Packet.cti
+   branches/new-packet/Packets/Packet.hh
+   branches/new-packet/Packets/Packet.test.cc
+   branches/new-packet/Packets/PacketData.cc
+   branches/new-packet/Packets/PacketData.cci
+   branches/new-packet/Packets/PacketData.cti
+   branches/new-packet/Packets/PacketData.hh
+   branches/new-packet/Packets/PacketData.test.cc
+   branches/new-packet/Packets/PacketImpl.cc
+   branches/new-packet/Packets/PacketImpl.cci
+   branches/new-packet/Packets/PacketImpl.cti
+   branches/new-packet/Packets/PacketImpl.hh
+   branches/new-packet/Packets/PacketImpl.test.cc
+   branches/new-packet/Packets/PacketInterpreter.cc
+   branches/new-packet/Packets/PacketInterpreter.cci
+   branches/new-packet/Packets/PacketInterpreter.ct
+   branches/new-packet/Packets/PacketInterpreter.cti
+   branches/new-packet/Packets/PacketInterpreter.hh
+   branches/new-packet/Packets/PacketInterpreter.test.cc
+   branches/new-packet/Packets/PacketParser.cci
+   branches/new-packet/Packets/PacketParser.cti
+   branches/new-packet/Packets/PacketParser.hh
+   branches/new-packet/Packets/PacketParser.ih
+   branches/new-packet/Packets/PacketParser.test.cc
+   branches/new-packet/Packets/PacketRegistry.cc
+   branches/new-packet/Packets/PacketRegistry.ct
+   branches/new-packet/Packets/PacketRegistry.cti
+   branches/new-packet/Packets/PacketRegistry.hh
+   branches/new-packet/Packets/PacketRegistry.ih
+   branches/new-packet/Packets/PacketRegistry.test.cc
+   branches/new-packet/Packets/PacketType.cci
+   branches/new-packet/Packets/PacketType.cti
+   branches/new-packet/Packets/PacketType.hh
+   branches/new-packet/Packets/PacketTypes.hh
+   branches/new-packet/Packets/ParseArray.ct
+   branches/new-packet/Packets/ParseArray.cti
+   branches/new-packet/Packets/ParseArray.hh
+   branches/new-packet/Packets/ParseArray.ih
+   branches/new-packet/Packets/ParseArray.test.cc
+   branches/new-packet/Packets/ParseInt.hh
+   branches/new-packet/Packets/ParseInt.ih
+   branches/new-packet/Packets/ParseInt.test.cc
+   branches/new-packet/Packets/ParseVec.ct
+   branches/new-packet/Packets/ParseVec.cti
+   branches/new-packet/Packets/ParseVec.hh
+   branches/new-packet/Packets/ParseVec.test.cc
+   branches/new-packet/Packets/RTPBundle/RTCPPacket.cc
+   branches/new-packet/Packets/RTPBundle/RTCPPacket.cti
+   branches/new-packet/Packets/RTPBundle/RTCPPacket.hh
+   branches/new-packet/Packets/RTPBundle/RTCPPacket.test.cc
+   branches/new-packet/Packets/RTPBundle/RTPPacket.cc
+   branches/new-packet/Packets/RTPBundle/RTPPacket.cti
+   branches/new-packet/Packets/RTPBundle/RTPPacket.hh
+   branches/new-packet/Packets/RTPBundle/RTPPacket.test.cc
+   branches/new-packet/Packets/RTPBundle/main.test.cc
+   branches/new-packet/Packets/main.test.cc
+   branches/new-packet/Packets/main.test.hh
+   branches/new-packet/Packets/typeidvalue.cci
+   branches/new-packet/Packets/typeidvalue.cti
+   branches/new-packet/Packets/typeidvalue.hh
+   branches/new-packet/Scheduler/ReadHelper.cci
+   branches/new-packet/Scheduler/ReadHelper.ct
+   branches/new-packet/Scheduler/ReadHelper.cti
+   branches/new-packet/Scheduler/ReadHelper.hh
+   branches/new-packet/Scheduler/ReadHelper.ih
+   branches/new-packet/Scheduler/ReadHelper.test.cc
+   branches/new-packet/Scheduler/Scheduler.cc
+   branches/new-packet/Scheduler/Scheduler.cci
+   branches/new-packet/Scheduler/Scheduler.cti
+   branches/new-packet/Scheduler/Scheduler.hh
+   branches/new-packet/Scheduler/Scheduler.test.cc
+   branches/new-packet/Scheduler/WriteHelper.ct
+   branches/new-packet/Scheduler/WriteHelper.cti
+   branches/new-packet/Scheduler/WriteHelper.hh
+   branches/new-packet/Scheduler/WriteHelper.test.cc
+   branches/new-packet/Scheduler/main.test.cc
+   branches/new-packet/Socket/AddressingPolicy.hh
+   branches/new-packet/Socket/BSDSocketProtocol.cc
+   branches/new-packet/Socket/BSDSocketProtocol.hh
+   branches/new-packet/Socket/BufferingPolicy.cc
+   branches/new-packet/Socket/BufferingPolicy.hh
+   branches/new-packet/Socket/ClientSocketHandle.ct
+   branches/new-packet/Socket/ClientSocketHandle.cti
+   branches/new-packet/Socket/ClientSocketHandle.hh
+   branches/new-packet/Socket/ClientSocketHandle.ih
+   branches/new-packet/Socket/ClientSocketHandle.test.cc
+   branches/new-packet/Socket/CommunicationPolicy.cc
+   branches/new-packet/Socket/CommunicationPolicy.cti
+   branches/new-packet/Socket/CommunicationPolicy.hh
+   branches/new-packet/Socket/FileHandle.cc
+   branches/new-packet/Socket/FileHandle.cci
+   branches/new-packet/Socket/FileHandle.hh
+   branches/new-packet/Socket/FileHandle.ih
+   branches/new-packet/Socket/FileHandle.test.cc
+   branches/new-packet/Socket/FramingPolicy.hh
+   branches/new-packet/Socket/GenericAddressingPolicy.cc
+   branches/new-packet/Socket/GenericAddressingPolicy.cti
+   branches/new-packet/Socket/GenericAddressingPolicy.hh
+   branches/new-packet/Socket/GenericSockAddr.cci
+   branches/new-packet/Socket/GenericSockAddr.hh
+   branches/new-packet/Socket/INetAddressing.cc
+   branches/new-packet/Socket/INetAddressing.cci
+   branches/new-packet/Socket/INetAddressing.ct
+   branches/new-packet/Socket/INetAddressing.hh
+   branches/new-packet/Socket/INetAddressing.test.cc
+   branches/new-packet/Socket/INetProtocol.cc
+   branches/new-packet/Socket/INetProtocol.hh
+   branches/new-packet/Socket/LLAddressing.cc
+   branches/new-packet/Socket/LLAddressing.cci
+   branches/new-packet/Socket/LLAddressing.ct
+   branches/new-packet/Socket/LLAddressing.cti
+   branches/new-packet/Socket/LLAddressing.hh
+   branches/new-packet/Socket/LLAddressing.ih
+   branches/new-packet/Socket/LLAddressing.test.cc
+   branches/new-packet/Socket/PacketSocketHandle.cc
+   branches/new-packet/Socket/PacketSocketHandle.ct
+   branches/new-packet/Socket/PacketSocketHandle.cti
+   branches/new-packet/Socket/PacketSocketHandle.hh
+   branches/new-packet/Socket/PacketSocketHandle.ih
+   branches/new-packet/Socket/PacketSocketHandle.test.cc
+   branches/new-packet/Socket/ProtocolClientSocketHandle.cti
+   branches/new-packet/Socket/ProtocolClientSocketHandle.hh
+   branches/new-packet/Socket/ProtocolClientSocketHandle.test.cc
+   branches/new-packet/Socket/ProtocolServerSocketHandle.cti
+   branches/new-packet/Socket/ProtocolServerSocketHandle.hh
+   branches/new-packet/Socket/ProtocolServerSocketHandle.test.cc
+   branches/new-packet/Socket/ReadWritePolicy.cc
+   branches/new-packet/Socket/ReadWritePolicy.cti
+   branches/new-packet/Socket/ReadWritePolicy.hh
+   branches/new-packet/Socket/ServerSocketHandle.cti
+   branches/new-packet/Socket/ServerSocketHandle.hh
+   branches/new-packet/Socket/ServerSocketHandle.test.cc
+   branches/new-packet/Socket/SocketHandle.cc
+   branches/new-packet/Socket/SocketHandle.cci
+   branches/new-packet/Socket/SocketHandle.ct
+   branches/new-packet/Socket/SocketHandle.cti
+   branches/new-packet/Socket/SocketHandle.hh
+   branches/new-packet/Socket/SocketHandle.ih
+   branches/new-packet/Socket/SocketHandle.test.cc
+   branches/new-packet/Socket/SocketPolicy.ct
+   branches/new-packet/Socket/SocketPolicy.hh
+   branches/new-packet/Socket/SocketPolicy.ih
+   branches/new-packet/Socket/SocketPolicy.test.cc
+   branches/new-packet/Socket/SocketPolicy.test.hh
+   branches/new-packet/Socket/SocketProtocol.cc
+   branches/new-packet/Socket/SocketProtocol.cci
+   branches/new-packet/Socket/SocketProtocol.cti
+   branches/new-packet/Socket/SocketProtocol.hh
+   branches/new-packet/Socket/SocketProtocol.test.cc
+   branches/new-packet/Socket/SocketProtocol.test.hh
+   branches/new-packet/Socket/TCPProtocol.cc
+   branches/new-packet/Socket/TCPProtocol.hh
+   branches/new-packet/Socket/TCPSocketHandle.cc
+   branches/new-packet/Socket/TCPSocketHandle.hh
+   branches/new-packet/Socket/TCPSocketHandle.test.cc
+   branches/new-packet/Socket/UDPProtocol.cc
+   branches/new-packet/Socket/UDPProtocol.hh
+   branches/new-packet/Socket/UDPSocketHandle.cc
+   branches/new-packet/Socket/UDPSocketHandle.hh
+   branches/new-packet/Socket/UDPSocketHandle.test.cc
+   branches/new-packet/Socket/main.test.cc
+   branches/new-packet/Utils/Buffer.hh
+   branches/new-packet/Utils/DaemonTools.cc
+   branches/new-packet/Utils/DaemonTools.hh
+   branches/new-packet/Utils/Exception.cc
+   branches/new-packet/Utils/Exception.cci
+   branches/new-packet/Utils/Exception.hh
+   branches/new-packet/Utils/IteratorTraits.cti
+   branches/new-packet/Utils/IteratorTraits.hh
+   branches/new-packet/Utils/IteratorTraits.ih
+   branches/new-packet/Utils/IteratorTraits.test.cc
+   branches/new-packet/Utils/Logger.hh
+   branches/new-packet/Utils/Logger.test.cc
+   branches/new-packet/Utils/MicroTime.cc
+   branches/new-packet/Utils/MicroTime.hh
+   branches/new-packet/Utils/MicroTime.test.cc
+   branches/new-packet/Utils/SafeBool.cci
+   branches/new-packet/Utils/SafeBool.cti
+   branches/new-packet/Utils/SafeBool.hh
+   branches/new-packet/Utils/TypeInfo.cc
+   branches/new-packet/Utils/TypeInfo.hh
+   branches/new-packet/Utils/TypeInfo.test.cc
+   branches/new-packet/Utils/impl/membind.hh
+   branches/new-packet/Utils/intrusive_refcount.cci
+   branches/new-packet/Utils/intrusive_refcount.cti
+   branches/new-packet/Utils/intrusive_refcount.hh
+   branches/new-packet/Utils/intrusive_refcount.test.cc
+   branches/new-packet/Utils/main.test.cc
+   branches/new-packet/Utils/membind.hh
+   branches/new-packet/Utils/membind.test.cc
+   branches/new-packet/Utils/pool_alloc_mixin.cti
+   branches/new-packet/Utils/pool_alloc_mixin.hh
+   branches/new-packet/Utils/singleton.cti
+   branches/new-packet/Utils/singleton.hh
+   branches/new-packet/project.el
+   branches/new-packet/run-test-gdb.sh
+
+Log:
+Merged revisions 263,265-278,281,283-298 via svnmerge from 
+<A HREF="https://svn.berlios.de/svnroot/repos/senf/trunk">https://svn.berlios.de/svnroot/repos/senf/trunk</A>
+
+.......
+  r285 | tho | 2007-07-04 16:33:38 +0200 (Wed, 04 Jul 2007) | 1 line
+  
+  fixed some typos
+.......
+  r291 | g0dil | 2007-07-09 15:53:22 +0200 (Mon, 09 Jul 2007) | 1 line
+  
+  Close bugs: #11525
+.......
+  r292 | tho | 2007-07-10 09:34:37 +0200 (Tue, 10 Jul 2007) | 1 line
+  
+  some small documentation fixes
+.......
+  r296 | g0dil | 2007-07-10 22:39:34 +0200 (Tue, 10 Jul 2007) | 1 line
+  
+  Add new file-variable 'comment-column'
+.......
+  r298 | g0dil | 2007-07-10 22:47:10 +0200 (Tue, 10 Jul 2007) | 2 lines
+  
+  Fix continuation-line parsing in run-test-gdb.sh script
+  Add c-backslash-column variable to senf-c-style
+.......
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000159.html">[Senf-svn] r298 - trunk
+</A></li>
+	<LI>Next message: <A HREF="000161.html">[Senf-svn] r300 - trunk/doclib
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#160">[ date ]</a>
+              <a href="thread.html#160">[ thread ]</a>
+              <a href="subject.html#160">[ subject ]</a>
+              <a href="author.html#160">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

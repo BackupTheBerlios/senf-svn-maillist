@@ -1,0 +1,355 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r153 - trunk/Socket
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r153%20-%20trunk/Socket&In-Reply-To=%3C200611102315.kAANF23E017838%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000013.html">
+   <LINK REL="Next"  HREF="000015.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r153 - trunk/Socket</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r153%20-%20trunk/Socket&In-Reply-To=%3C200611102315.kAANF23E017838%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r153 - trunk/Socket">subversion at senf.berlios.de
+       </A><BR>
+    <I>Sat Nov 11 00:15:02 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000013.html">[Senf-svn] r152 - trunk/Scheduler
+</A></li>
+        <LI>Next message: <A HREF="000015.html">[Senf-svn] r154 - trunk/Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#14">[ date ]</a>
+              <a href="thread.html#14">[ thread ]</a>
+              <a href="subject.html#14">[ subject ]</a>
+              <a href="author.html#14">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Sat Nov 11 00:14:58 2006
+New Revision: 153
+
+Added:
+   trunk/Socket/GenericSockAddr.cci
+   trunk/Socket/GenericSockAddr.hh
+Modified:
+   trunk/Socket/ClientSocketHandle.ct
+   trunk/Socket/ClientSocketHandle.hh
+   trunk/Socket/CommunicationPolicy.cc
+   trunk/Socket/FileHandle.cci
+   trunk/Socket/FileHandle.hh
+   trunk/Socket/SocketHandle.cc
+   trunk/Socket/SocketPolicy.ih
+
+Log:
+add optional 'limit' argument to read
+add missing retrive_filehandle overload
+fix operator bool (use safe bool idiom)
+add GenericSockAddr as default Address implementation
+
+Modified: trunk/Socket/ClientSocketHandle.ct
+==============================================================================
+--- trunk/Socket/ClientSocketHandle.ct	(original)
++++ trunk/Socket/ClientSocketHandle.ct	Sat Nov 11 00:14:58 2006
+@@ -30,17 +30,19 @@
+ ///////////////////////////////ct.p////////////////////////////////////////
+ 
+ template &lt;class Policy&gt;
+-prefix_ std::string satcom::lib::ClientSocketHandle&lt;Policy&gt;::read()
++prefix_ std::string satcom::lib::ClientSocketHandle&lt;Policy&gt;::read(unsigned limit)
+ {
+     std::string rv;
+-    this-&gt;read(rv);
++    this-&gt;read(rv,limit);
+     return rv;
+ }
+ 
+ template &lt;class Policy&gt;
+-prefix_ void satcom::lib::ClientSocketHandle&lt;Policy&gt;::read(std::string &amp; buffer)
++prefix_ void satcom::lib::ClientSocketHandle&lt;Policy&gt;::read(std::string &amp; buffer, unsigned limit)
+ {
+     unsigned nread = available();
++    if (limit&gt;0 &amp;&amp; nread&gt;limit) 
++	nread = limit;
+     // FIXME: This is not necessary correct and more or less a hack ...
+     buffer.assign(nread,0);
+     unsigned rv = this-&gt;read(const_cast&lt;char *&gt;(buffer.data()),nread);
+
+Modified: trunk/Socket/ClientSocketHandle.hh
+==============================================================================
+--- trunk/Socket/ClientSocketHandle.hh	(original)
++++ trunk/Socket/ClientSocketHandle.hh	Sat Nov 11 00:14:58 2006
+@@ -78,8 +78,8 @@
+         ///@{
+ 
+         // read from socket (connected or unconnected)
+-        std::string  read         ();
+-        void         read         (std::string &amp; buffer);
++        std::string  read         (unsigned limit=0);
++        void         read         (std::string &amp; buffer, unsigned limit=0);
+         unsigned     read         (char * buffer, unsigned size);
+ 
+         // read from unconnected socket returning peer address
+
+Modified: trunk/Socket/CommunicationPolicy.cc
+==============================================================================
+--- trunk/Socket/CommunicationPolicy.cc	(original)
++++ trunk/Socket/CommunicationPolicy.cc	Sat Nov 11 00:14:58 2006
+@@ -53,7 +53,6 @@
+             switch (errno) {
+             case EWOULDBLOCK:
+                 return -1;
+-                break;
+             case EINTR:
+                 break;
+             default:
+
+Modified: trunk/Socket/FileHandle.cci
+==============================================================================
+--- trunk/Socket/FileHandle.cci	(original)
++++ trunk/Socket/FileHandle.cci	Sat Nov 11 00:14:58 2006
+@@ -172,18 +172,12 @@
+     return body().valid();
+ }
+ 
+-prefix_ satcom::lib::FileHandle::operator bool ()
++prefix_ bool satcom::lib::FileHandle::boolean_test()
+     const
+ {
+     return valid() &amp;&amp; !eof();
+ }
+ 
+-prefix_ bool satcom::lib::FileHandle::operator!()
+-    const
+-{
+-    return ! (valid() &amp;&amp; !eof());
+-}
+-
+ prefix_ int satcom::lib::FileHandle::fd()
+     const
+ {
+@@ -233,6 +227,11 @@
+     return handle;
+ }
+ 
++prefix_ int satcom::lib::retrieve_filehandle(FileHandle handle)
++{
++    return handle.fd();
++}
++
+ ///////////////////////////////cci.e///////////////////////////////////////
+ #undef prefix_
+ 
+
+Modified: trunk/Socket/FileHandle.hh
+==============================================================================
+--- trunk/Socket/FileHandle.hh	(original)
++++ trunk/Socket/FileHandle.hh	Sat Nov 11 00:14:58 2006
+@@ -33,6 +33,7 @@
+ 
+ // Custom includes
+ #include &lt;memory&gt; // std::auto_ptr
++#include &quot;Utils/SafeBool.hh&quot;
+ 
+ //#include &quot;FileHandle.mpp&quot;
+ ///////////////////////////////hh.p////////////////////////////////////////
+@@ -44,6 +45,7 @@
+     /** \brief
+      */
+     class FileHandle
++	: public SafeBool&lt;FileHandle&gt;
+     {
+     public:
+         ///////////////////////////////////////////////////////////////////////////
+@@ -77,8 +79,7 @@
+         bool eof() const;
+         bool valid() const;
+ 
+-        operator bool () const;
+-        bool operator!() const;
++	bool boolean_test() const;
+ 
+         int fd() const;
+ 
+@@ -99,6 +100,8 @@
+         FileBody::ptr body_;
+     };
+ 
++    int retrieve_filehandle(FileHandle handle);
++
+ }}
+ 
+ ///////////////////////////////hh.e////////////////////////////////////////
+
+Added: trunk/Socket/GenericSockAddr.cci
+==============================================================================
+--- (empty file)
++++ trunk/Socket/GenericSockAddr.cci	Sat Nov 11 00:14:58 2006
+@@ -0,0 +1,38 @@
++// $Id$
++//
++// Copyright (C) 2006 
++
++// Definition of inline non-template functions
++
++// Custom includes
++
++#define prefix_ inline
++///////////////////////////////cci.p///////////////////////////////////////
++
++prefix_ satcom::lib::GenericSockAddr::GenericSockAddr()
++{}
++
++prefix_ struct sockaddr * satcom::lib::GenericSockAddr::sockaddr_p()
++{
++    return reinterpret_cast&lt;sockaddr *&gt;(&amp;addr_);
++}
++
++prefix_ struct sockaddr const * satcom::lib::GenericSockAddr::sockaddr_p()
++    const
++{
++    return reinterpret_cast&lt;sockaddr const *&gt;(&amp;addr_);
++}
++
++prefix_ unsigned satcom::lib::GenericSockAddr::sockaddr_len()
++    const
++{
++    return sizeof(addr_);
++}
++
++///////////////////////////////cci.e///////////////////////////////////////
++#undef prefix_
++
++
++// Local Variables:
++// mode: c++
++// End:
+
+Added: trunk/Socket/GenericSockAddr.hh
+==============================================================================
+--- (empty file)
++++ trunk/Socket/GenericSockAddr.hh	Sat Nov 11 00:14:58 2006
+@@ -0,0 +1,42 @@
++// $Id$
++//
++// Copyright (C) 2006 
++
++#ifndef HH_GenericSockAddr_
++#define HH_GenericSockAddr_ 1
++
++// Custom includes
++#include &lt;sys/socket.h&gt;
++
++//#include &quot;GenericSockAddr.mpp&quot;
++///////////////////////////////hh.p////////////////////////////////////////
++
++namespace satcom {
++namespace lib {
++
++    class GenericSockAddr
++    {
++    public:
++	GenericSockAddr();
++	
++	struct sockaddr * sockaddr_p();
++	struct sockaddr const * sockaddr_p() const;
++	unsigned sockaddr_len() const;
++	
++    private:
++	struct ::sockaddr_storage addr_;
++    };
++
++}}
++
++///////////////////////////////hh.e////////////////////////////////////////
++#include &quot;GenericSockAddr.cci&quot;
++//#include &quot;GenericSockAddr.ct&quot;
++//#include &quot;GenericSockAddr.cti&quot;
++//#include &quot;GenericSockAddr.mpp&quot;
++#endif
++
++
++// Local Variables:
++// mode: c++
++// End:
+
+Modified: trunk/Socket/SocketHandle.cc
+==============================================================================
+--- trunk/Socket/SocketHandle.cc	(original)
++++ trunk/Socket/SocketHandle.cc	Sat Nov 11 00:14:58 2006
+@@ -99,12 +99,14 @@
+             return false;
+         if (contains(i2,i2_end,'.'))
+             // the longer string is a sub-'directory' of the shorter
++	    // FIXME: shouldn't this be *i2 == '.' ?
+             return true;
+         return *i1 &lt; *i2;
+     }
+     else if (i2 == i2_end) { // &amp;&amp; i1 != i1_end
+         if (contains(i1,i1_end,'.'))
+             // the longer string is a sub-'directory' of the shorter
++	    // FIXME: shouldn't this be *i1 == '.' ?
+             return false;
+         return *i1 &lt; *i2;
+     }
+
+Modified: trunk/Socket/SocketPolicy.ih
+==============================================================================
+--- trunk/Socket/SocketPolicy.ih	(original)
++++ trunk/Socket/SocketPolicy.ih	Sat Nov 11 00:14:58 2006
+@@ -46,6 +46,8 @@
+ #include &lt;boost/mpl/and.hpp&gt;
+ #include &lt;boost/utility.hpp&gt; // for enable_if
+ 
++#include &quot;GenericSockAddr.hh&quot;
++
+ ///////////////////////////////ih.p////////////////////////////////////////
+ 
+ namespace satcom {
+@@ -62,11 +64,7 @@
+     {
+         virtual ~ AddressingPolicyBase() {}
+         
+-        class Address 
+-        {
+-        private:
+-            Address();
+-        };
++	typedef GenericSockAddr Address;
+     };
+ 
+ #   define SP_DeclareBase(x1,x2,SomePolicy)                                             \
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000013.html">[Senf-svn] r152 - trunk/Scheduler
+</A></li>
+	<LI>Next message: <A HREF="000015.html">[Senf-svn] r154 - trunk/Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#14">[ date ]</a>
+              <a href="thread.html#14">[ thread ]</a>
+              <a href="subject.html#14">[ subject ]</a>
+              <a href="author.html#14">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

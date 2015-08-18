@@ -1,0 +1,255 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1025 - in trunk: . HowTos PPI Scheduler	Scheduler/Console Utils Utils/Console Utils/Daemon	Utils/Logger Utils/impl include/senf senfscons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1025%20-%20in%20trunk%3A%20.%20HowTos%20PPI%20Scheduler%0A%09Scheduler/Console%20Utils%20Utils/Console%20Utils/Daemon%0A%09Utils/Logger%20Utils/impl%20include/senf%20senfscons&In-Reply-To=%3C200812190001.mBJ01Tuf022184%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000881.html">
+   <LINK REL="Next"  HREF="000883.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1025 - in trunk: . HowTos PPI Scheduler	Scheduler/Console Utils Utils/Console Utils/Daemon	Utils/Logger Utils/impl include/senf senfscons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1025%20-%20in%20trunk%3A%20.%20HowTos%20PPI%20Scheduler%0A%09Scheduler/Console%20Utils%20Utils/Console%20Utils/Daemon%0A%09Utils/Logger%20Utils/impl%20include/senf%20senfscons&In-Reply-To=%3C200812190001.mBJ01Tuf022184%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r1025 - in trunk: . HowTos PPI Scheduler	Scheduler/Console Utils Utils/Console Utils/Daemon	Utils/Logger Utils/impl include/senf senfscons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Fri Dec 19 01:01:29 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000881.html">[Senf-svn] r1024 - in trunk: Packets/80211Bundle
+</A></li>
+        <LI>Next message: <A HREF="000883.html">[Senf-svn] r1026 - in trunk: HowTos senfscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#882">[ date ]</a>
+              <a href="thread.html#882">[ thread ]</a>
+              <a href="subject.html#882">[ subject ]</a>
+              <a href="author.html#882">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Fri Dec 19 01:00:01 2008
+New Revision: 1025
+
+Added:
+   trunk/Utils/Console/
+      - copied from r1018, /trunk/Scheduler/Console/
+   trunk/Utils/Console/Config.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Config.cc
+   trunk/Utils/Console/Config.cci
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Config.cci
+   trunk/Utils/Console/Config.cti
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Config.cti
+   trunk/Utils/Console/Config.hh
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Config.hh
+   trunk/Utils/Console/Config.ih
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Config.ih
+   trunk/Utils/Console/Config.test.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Config.test.cc
+   trunk/Utils/Console/ConfigFile.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ConfigFile.cc
+   trunk/Utils/Console/ConfigFile.cci
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ConfigFile.cci
+   trunk/Utils/Console/ConfigFile.hh
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ConfigFile.hh
+   trunk/Utils/Console/ConfigFile.ih
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ConfigFile.ih
+   trunk/Utils/Console/ConfigFile.test.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ConfigFile.test.cc
+   trunk/Utils/Console/Console.hh
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Console.hh
+   trunk/Utils/Console/Doxyfile
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Doxyfile
+   trunk/Utils/Console/Example.dox
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Example.dox
+   trunk/Utils/Console/Executor.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Executor.cc
+   trunk/Utils/Console/Executor.cci
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Executor.cci
+   trunk/Utils/Console/Executor.hh
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Executor.hh
+   trunk/Utils/Console/Executor.test.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Executor.test.cc
+   trunk/Utils/Console/LazyDirectory.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/LazyDirectory.cc
+   trunk/Utils/Console/LazyDirectory.hh
+      - copied unchanged from r1024, /trunk/Scheduler/Console/LazyDirectory.hh
+   trunk/Utils/Console/Mainpage.dox
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Mainpage.dox
+   trunk/Utils/Console/Node.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Node.cc
+   trunk/Utils/Console/Node.cci
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Node.cci
+   trunk/Utils/Console/Node.cti
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Node.cti
+   trunk/Utils/Console/Node.hh
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Node.hh
+   trunk/Utils/Console/Node.ih
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Node.ih
+   trunk/Utils/Console/Node.test.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Node.test.cc
+   trunk/Utils/Console/OverloadedCommand.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/OverloadedCommand.cc
+   trunk/Utils/Console/OverloadedCommand.cci
+      - copied unchanged from r1024, /trunk/Scheduler/Console/OverloadedCommand.cci
+   trunk/Utils/Console/OverloadedCommand.cti
+      - copied unchanged from r1024, /trunk/Scheduler/Console/OverloadedCommand.cti
+   trunk/Utils/Console/OverloadedCommand.hh
+      - copied unchanged from r1024, /trunk/Scheduler/Console/OverloadedCommand.hh
+   trunk/Utils/Console/OverloadedCommand.test.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/OverloadedCommand.test.cc
+   trunk/Utils/Console/Parse.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Parse.cc
+   trunk/Utils/Console/Parse.cci
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Parse.cci
+   trunk/Utils/Console/Parse.hh
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Parse.hh
+   trunk/Utils/Console/Parse.ih
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Parse.ih
+   trunk/Utils/Console/Parse.test.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Parse.test.cc
+   trunk/Utils/Console/ParsedCommand.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ParsedCommand.cc
+   trunk/Utils/Console/ParsedCommand.cci
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ParsedCommand.cci
+   trunk/Utils/Console/ParsedCommand.ct
+      - copied, changed from r1024, /trunk/Scheduler/Console/ParsedCommand.ct
+   trunk/Utils/Console/ParsedCommand.cti
+      - copied, changed from r1024, /trunk/Scheduler/Console/ParsedCommand.cti
+   trunk/Utils/Console/ParsedCommand.hh
+      - copied, changed from r1024, /trunk/Scheduler/Console/ParsedCommand.hh
+   trunk/Utils/Console/ParsedCommand.ih
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ParsedCommand.ih
+   trunk/Utils/Console/ParsedCommand.mpp
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ParsedCommand.mpp
+   trunk/Utils/Console/ParsedCommand.test.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ParsedCommand.test.cc
+   trunk/Utils/Console/ProgramOptions.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ProgramOptions.cc
+   trunk/Utils/Console/ProgramOptions.cci
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ProgramOptions.cci
+   trunk/Utils/Console/ProgramOptions.cti
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ProgramOptions.cti
+   trunk/Utils/Console/ProgramOptions.hh
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ProgramOptions.hh
+   trunk/Utils/Console/ProgramOptions.ih
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ProgramOptions.ih
+   trunk/Utils/Console/ProgramOptions.test.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ProgramOptions.test.cc
+   trunk/Utils/Console/Readline.cc
+      - copied, changed from r1024, /trunk/Scheduler/Console/Readline.cc
+   trunk/Utils/Console/Readline.cci
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Readline.cci
+   trunk/Utils/Console/Readline.hh
+      - copied, changed from r1024, /trunk/Scheduler/Console/Readline.hh
+   trunk/Utils/Console/SConscript
+      - copied, changed from r1024, /trunk/Scheduler/Console/SConscript
+   trunk/Utils/Console/ScopedDirectory.cci
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ScopedDirectory.cci
+   trunk/Utils/Console/ScopedDirectory.cti
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ScopedDirectory.cti
+   trunk/Utils/Console/ScopedDirectory.hh
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ScopedDirectory.hh
+   trunk/Utils/Console/ScopedDirectory.test.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/ScopedDirectory.test.cc
+   trunk/Utils/Console/Server.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Server.cc
+   trunk/Utils/Console/Server.cci
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Server.cci
+   trunk/Utils/Console/Server.hh
+      - copied, changed from r1024, /trunk/Scheduler/Console/Server.hh
+   trunk/Utils/Console/Server.ih
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Server.ih
+   trunk/Utils/Console/Server.test.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Server.test.cc
+   trunk/Utils/Console/Sysdir.cci
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Sysdir.cci
+   trunk/Utils/Console/Sysdir.hh
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Sysdir.hh
+   trunk/Utils/Console/Sysdir.ih
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Sysdir.ih
+   trunk/Utils/Console/Traits.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Traits.cc
+   trunk/Utils/Console/Traits.cci
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Traits.cci
+   trunk/Utils/Console/Traits.ct
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Traits.ct
+   trunk/Utils/Console/Traits.cti
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Traits.cti
+   trunk/Utils/Console/Traits.hh
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Traits.hh
+   trunk/Utils/Console/Traits.ih
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Traits.ih
+   trunk/Utils/Console/Traits.test.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Traits.test.cc
+   trunk/Utils/Console/Variables.cti
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Variables.cti
+   trunk/Utils/Console/Variables.hh
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Variables.hh
+   trunk/Utils/Console/Variables.ih
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Variables.ih
+   trunk/Utils/Console/Variables.test.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/Variables.test.cc
+   trunk/Utils/Console/main.test.cc   (contents, props changed)
+   trunk/Utils/Console/testServer.cc
+      - copied unchanged from r1024, /trunk/Scheduler/Console/testServer.cc
+Removed:
+   trunk/Scheduler/Console/
+Modified:
+   trunk/HowTos/SConscript
+   trunk/PPI/SConscript
+   trunk/Packets/SConscript
+   trunk/SConstruct
+   trunk/Scheduler/ClockService.cc
+   trunk/Scheduler/ClockService.hh
+   trunk/Scheduler/EventManager.cc
+   trunk/Scheduler/EventManager.hh
+   trunk/Scheduler/SConscript
+   trunk/Utils/Daemon/SConscript
+   trunk/Utils/Logger/IOStreamTarget.cc
+   trunk/Utils/Logger/SConscript
+   trunk/Utils/Logger/TimeSource.cc
+   trunk/Utils/Logger/TimeSource.hh
+   trunk/Utils/SConscript
+   trunk/Utils/impl/membind.hh
+   trunk/Utils/membind.hh
+   trunk/config.hh
+   trunk/include/senf/Console
+   trunk/include/senf/Console.hh
+   trunk/senfscons/SENFSCons.py
+
+Log:
+Move Console from Scheduler into Utils
+Refactor build system to remove sub-library dependencies
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000881.html">[Senf-svn] r1024 - in trunk: Packets/80211Bundle
+</A></li>
+	<LI>Next message: <A HREF="000883.html">[Senf-svn] r1026 - in trunk: HowTos senfscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#882">[ date ]</a>
+              <a href="thread.html#882">[ thread ]</a>
+              <a href="subject.html#882">[ subject ]</a>
+              <a href="author.html#882">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

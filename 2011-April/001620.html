@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1781 - in trunk: . senf/PPI senf/Packets senf/Scheduler	senf/Utils senf/Utils/Console senf/Utils/Daemon	senf/Utils/Termlib site_scons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1781%20-%20in%20trunk%3A%20.%20senf/PPI%20senf/Packets%20senf/Scheduler%0A%09senf/Utils%20senf/Utils/Console%20senf/Utils/Daemon%0A%09senf/Utils/Termlib%20site_scons&In-Reply-To=%3C20110411121020.162084803F1%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001619.html">
+   <LINK REL="Next"  HREF="001621.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1781 - in trunk: . senf/PPI senf/Packets senf/Scheduler	senf/Utils senf/Utils/Console senf/Utils/Daemon	senf/Utils/Termlib site_scons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1781%20-%20in%20trunk%3A%20.%20senf/PPI%20senf/Packets%20senf/Scheduler%0A%09senf/Utils%20senf/Utils/Console%20senf/Utils/Daemon%0A%09senf/Utils/Termlib%20site_scons&In-Reply-To=%3C20110411121020.162084803F1%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r1781 - in trunk: . senf/PPI senf/Packets senf/Scheduler	senf/Utils senf/Utils/Console senf/Utils/Daemon	senf/Utils/Termlib site_scons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Mon Apr 11 14:10:19 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001619.html">[Senf-svn] r1780 - in trunk/senf: Scheduler Utils
+</A></li>
+        <LI>Next message: <A HREF="001621.html">[Senf-svn] r1782 - trunk/site_scons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1620">[ date ]</a>
+              <a href="thread.html#1620">[ thread ]</a>
+              <a href="subject.html#1620">[ subject ]</a>
+              <a href="author.html#1620">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tho
+Date: Mon Apr 11 14:10:19 2011
+New Revision: 1781
+
+Log:
+removed needless Boost.Iostreams dependency
+some #include cleanups
+
+Modified:
+   trunk/SConstruct
+   trunk/senf/PPI/DebugModules.cci
+   trunk/senf/PPI/EventManager.cci
+   trunk/senf/PPI/IOEvent.hh
+   trunk/senf/PPI/IdleEvent.hh
+   trunk/senf/PPI/IntervalTimer.cc
+   trunk/senf/PPI/IntervalTimer.hh
+   trunk/senf/PPI/ModuleManager.cc
+   trunk/senf/PPI/ModuleManager.hh
+   trunk/senf/Packets/PacketImpl.cci
+   trunk/senf/Packets/PacketParser.cti
+   trunk/senf/Packets/PacketRegistry.ct
+   trunk/senf/Scheduler/FIFORunner.cc
+   trunk/senf/Scheduler/FIFORunner.hh
+   trunk/senf/Scheduler/FdEvent.cc
+   trunk/senf/Scheduler/FdEvent.cci
+   trunk/senf/Scheduler/ReadHelper.ct
+   trunk/senf/Scheduler/SignalEvent.cci
+   trunk/senf/Scheduler/WriteHelper.ct
+   trunk/senf/Utils/Backtrace.hh
+   trunk/senf/Utils/Console/Executor.cc
+   trunk/senf/Utils/Console/Server.cc
+   trunk/senf/Utils/Console/Server.cci
+   trunk/senf/Utils/Console/Server.hh
+   trunk/senf/Utils/Console/Server.ih
+   trunk/senf/Utils/Console/Traits.cti
+   trunk/senf/Utils/Console/UDPServer.test.cc
+   trunk/senf/Utils/Console/Utility.ct
+   trunk/senf/Utils/Console/Utility.hh
+   trunk/senf/Utils/Console/testServer.cc
+   trunk/senf/Utils/Daemon/Daemon.ih
+   trunk/senf/Utils/Exception.cc
+   trunk/senf/Utils/Statistics.cc
+   trunk/senf/Utils/Statistics.cci
+   trunk/senf/Utils/Statistics.hh
+   trunk/senf/Utils/Termlib/Telnet.cci
+   trunk/senf/Utils/Termlib/Telnet.hh
+   trunk/site_scons/senfutil.py
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001619.html">[Senf-svn] r1780 - in trunk/senf: Scheduler Utils
+</A></li>
+	<LI>Next message: <A HREF="001621.html">[Senf-svn] r1782 - trunk/site_scons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1620">[ date ]</a>
+              <a href="thread.html#1620">[ thread ]</a>
+              <a href="subject.html#1620">[ subject ]</a>
+              <a href="author.html#1620">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

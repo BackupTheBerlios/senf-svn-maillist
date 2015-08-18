@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1631 - in trunk: . boost/intrusive	boost/intrusive/detail senf/Packets senf/Scheduler	senf/Utils/Daemon senf/boost_intrusive	senf/boost_intrusive/detail site_scons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2010-May/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1631%20-%20in%20trunk%3A%20.%20boost/intrusive%0A%09boost/intrusive/detail%20senf/Packets%20senf/Scheduler%0A%09senf/Utils/Daemon%20senf/boost_intrusive%0A%09senf/boost_intrusive/detail%20site_scons&In-Reply-To=%3C201005282116.o4SLGiep000355%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001486.html">
+   <LINK REL="Next"  HREF="001488.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1631 - in trunk: . boost/intrusive	boost/intrusive/detail senf/Packets senf/Scheduler	senf/Utils/Daemon senf/boost_intrusive	senf/boost_intrusive/detail site_scons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1631%20-%20in%20trunk%3A%20.%20boost/intrusive%0A%09boost/intrusive/detail%20senf/Packets%20senf/Scheduler%0A%09senf/Utils/Daemon%20senf/boost_intrusive%0A%09senf/boost_intrusive/detail%20site_scons&In-Reply-To=%3C201005282116.o4SLGiep000355%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r1631 - in trunk: . boost/intrusive	boost/intrusive/detail senf/Packets senf/Scheduler	senf/Utils/Daemon senf/boost_intrusive	senf/boost_intrusive/detail site_scons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Fri May 28 23:16:44 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001486.html">[Senf-svn] r1630 - in trunk/Examples: MCSniffer MultiMCLoop	RateStuffer Sniffer TCPClientServer
+</A></li>
+        <LI>Next message: <A HREF="001488.html">[Senf-svn] r1632 - trunk/senf/Packets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1487">[ date ]</a>
+              <a href="thread.html#1487">[ thread ]</a>
+              <a href="subject.html#1487">[ subject ]</a>
+              <a href="author.html#1487">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Fri May 28 23:16:15 2010
+New Revision: 1631
+
+Added:
+   trunk/senf/boost_intrusive/
+   trunk/senf/boost_intrusive/detail/
+   trunk/senf/boost_intrusive/detail/config_begin.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/detail/config_begin.hpp
+   trunk/senf/boost_intrusive/detail/config_end.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/detail/config_end.hpp
+   trunk/senf/boost_intrusive/detail/ebo_holder.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/detail/ebo_holder.hpp
+   trunk/senf/boost_intrusive/detail/ihashtable.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/detail/ihashtable.hpp
+   trunk/senf/boost_intrusive/detail/irbtree.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/detail/irbtree.hpp
+   trunk/senf/boost_intrusive/detail/list_node.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/detail/list_node.hpp
+   trunk/senf/boost_intrusive/detail/pointer_to_other.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/detail/pointer_to_other.hpp
+   trunk/senf/boost_intrusive/detail/pointer_type.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/detail/pointer_type.hpp
+   trunk/senf/boost_intrusive/detail/rbtree_node.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/detail/rbtree_node.hpp
+   trunk/senf/boost_intrusive/detail/slist_node.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/detail/slist_node.hpp
+   trunk/senf/boost_intrusive/detail/utilities.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/detail/utilities.hpp
+   trunk/senf/boost_intrusive/ilist.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/ilist.hpp
+   trunk/senf/boost_intrusive/ilist_hook.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/ilist_hook.hpp
+   trunk/senf/boost_intrusive/iset.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/iset.hpp
+   trunk/senf/boost_intrusive/iset_hook.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/iset_hook.hpp
+   trunk/senf/boost_intrusive/islist.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/islist.hpp
+   trunk/senf/boost_intrusive/islist_hook.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/islist_hook.hpp
+   trunk/senf/boost_intrusive/iunordered_set.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/iunordered_set.hpp
+   trunk/senf/boost_intrusive/iunordered_set_hook.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/iunordered_set_hook.hpp
+   trunk/senf/boost_intrusive/linking_policy.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/linking_policy.hpp
+   trunk/senf/boost_intrusive/list_algorithms.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/list_algorithms.hpp
+   trunk/senf/boost_intrusive/rbtree_algorithms.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/rbtree_algorithms.hpp
+   trunk/senf/boost_intrusive/slist_algorithms.hpp
+      - copied, changed from r1630, /trunk/boost/intrusive/slist_algorithms.hpp
+Removed:
+   trunk/boost/intrusive/detail/config_begin.hpp
+   trunk/boost/intrusive/detail/config_end.hpp
+   trunk/boost/intrusive/detail/ebo_holder.hpp
+   trunk/boost/intrusive/detail/ihashtable.hpp
+   trunk/boost/intrusive/detail/irbtree.hpp
+   trunk/boost/intrusive/detail/list_node.hpp
+   trunk/boost/intrusive/detail/pointer_to_other.hpp
+   trunk/boost/intrusive/detail/pointer_type.hpp
+   trunk/boost/intrusive/detail/rbtree_node.hpp
+   trunk/boost/intrusive/detail/slist_node.hpp
+   trunk/boost/intrusive/detail/utilities.hpp
+   trunk/boost/intrusive/ilist.hpp
+   trunk/boost/intrusive/ilist_hook.hpp
+   trunk/boost/intrusive/iset.hpp
+   trunk/boost/intrusive/iset_hook.hpp
+   trunk/boost/intrusive/islist.hpp
+   trunk/boost/intrusive/islist_hook.hpp
+   trunk/boost/intrusive/iunordered_set.hpp
+   trunk/boost/intrusive/iunordered_set_hook.hpp
+   trunk/boost/intrusive/linking_policy.hpp
+   trunk/boost/intrusive/list_algorithms.hpp
+   trunk/boost/intrusive/rbtree_algorithms.hpp
+   trunk/boost/intrusive/slist_algorithms.hpp
+Modified:
+   trunk/SConstruct
+   trunk/debian/libsenf-dev.install
+   trunk/senf/Packets/PacketInterpreter.hh
+   trunk/senf/Packets/PacketTypes.hh
+   trunk/senf/Scheduler/EventHook.hh
+   trunk/senf/Scheduler/EventManager.hh
+   trunk/senf/Scheduler/FIFORunner.hh
+   trunk/senf/Scheduler/FdEvent.hh
+   trunk/senf/Scheduler/FdEvent.ih
+   trunk/senf/Scheduler/IdleEvent.hh
+   trunk/senf/Scheduler/SignalEvent.hh
+   trunk/senf/Scheduler/SignalEvent.ih
+   trunk/senf/Scheduler/TimerEvent.hh
+   trunk/senf/Scheduler/TimerEvent.ih
+   trunk/senf/Utils/Daemon/Daemon.ih
+   trunk/site_scons/senfutil.py
+
+Log:
+Move boost/intrusive to senf/boost_intrusive
+Fix installation of boost_ext into dev package
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001486.html">[Senf-svn] r1630 - in trunk/Examples: MCSniffer MultiMCLoop	RateStuffer Sniffer TCPClientServer
+</A></li>
+	<LI>Next message: <A HREF="001488.html">[Senf-svn] r1632 - trunk/senf/Packets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1487">[ date ]</a>
+              <a href="thread.html#1487">[ thread ]</a>
+              <a href="subject.html#1487">[ subject ]</a>
+              <a href="author.html#1487">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

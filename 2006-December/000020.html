@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r159 - trunk/doclib
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r159%20-%20trunk/doclib&In-Reply-To=%3C200612121538.kBCFcF0b023004%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000019.html">
+   <LINK REL="Next"  HREF="000021.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r159 - trunk/doclib</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r159%20-%20trunk/doclib&In-Reply-To=%3C200612121538.kBCFcF0b023004%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r159 - trunk/doclib">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Dec 12 16:38:15 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000019.html">[Senf-svn] r158 - in trunk: . Scheduler Socket Utils doclib
+</A></li>
+        <LI>Next message: <A HREF="000021.html">[Senf-svn] r160 - in trunk: doclib
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#20">[ date ]</a>
+              <a href="thread.html#20">[ thread ]</a>
+              <a href="subject.html#20">[ subject ]</a>
+              <a href="author.html#20">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Dec 12 16:38:13 2006
+New Revision: 159
+
+Modified:
+   trunk/doclib/doxy-header-overview.html
+   trunk/doclib/doxy-header.html
+   trunk/doclib/senf.css
+
+Log:
+Documentation: Internet Explorer fixes
+
+Modified: trunk/doclib/doxy-header-overview.html
+==============================================================================
+--- trunk/doclib/doxy-header-overview.html	(original)
++++ trunk/doclib/doxy-header-overview.html	Tue Dec 12 16:38:13 2006
+@@ -5,7 +5,7 @@
+ &lt;link href=&quot;doxygen.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+ &lt;link href=&quot;../../doclib/senf.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+ &lt;style type=&quot;text/css&quot;&gt;
+-li.$projectname a { background-color: #EDE497; }
++div.tabs ul li.$projectname a { background-color: #EDE497; }
+ &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+@@ -13,14 +13,16 @@
+ &lt;div id=&quot;head&quot;&gt;
+   &lt;h1&gt;SENF Extensible Network Framework&lt;/h1&gt;
+   &lt;h2&gt;SENF Framework API reference&lt;/h2&gt;
+-  &lt;ul&gt;
+-    &lt;li class=&quot;Overview&quot;&gt;&lt;a href=&quot;../../doc/html/index.html&quot;&gt;&lt;i&gt;Overview&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+-    &lt;li&gt;&lt;a href=&quot;<A HREF="http://senf.berlios.de">http://senf.berlios.de</A>&quot;&gt;&lt;i&gt;SENF @ BerliOS&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+-    &lt;li class=&quot;libPackets&quot;&gt;&lt;a href=&quot;../../Packets/doc/html/index.html&quot;&gt;libPackets&lt;/a&gt;&lt;/li&gt;
+-    &lt;li class=&quot;libScheduler&quot;&gt;&lt;a href=&quot;../../Scheduler/doc/html/index.html&quot;&gt;libScheduler&lt;/a&gt;&lt;/li&gt;
+-    &lt;li class=&quot;libSocket&quot;&gt;&lt;a href=&quot;../../Socket/doc/html/index.html&quot;&gt;libSocket&lt;/a&gt;&lt;/li&gt;
+-    &lt;li class=&quot;libUtils&quot;&gt;&lt;a href=&quot;../../Utils/doc/html/index.html&quot;&gt;libUtils&lt;/a&gt;&lt;/li&gt;
+-  &lt;/ul&gt;
+ &lt;/div&gt;
+ 
+ &lt;div id=&quot;content&quot;&gt;
++  &lt;div class=&quot;tabs&quot;&gt;
++    &lt;ul&gt;
++      &lt;li class=&quot;Overview&quot;&gt;&lt;a href=&quot;../../doc/html/index.html&quot;&gt;&lt;i&gt;Overview&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
++      &lt;li&gt;&lt;a href=&quot;<A HREF="http://senf.berlios.de">http://senf.berlios.de</A>&quot;&gt;&lt;i&gt;SENF @ BerliOS&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
++      &lt;li class=&quot;libPackets&quot;&gt;&lt;a href=&quot;../../Packets/doc/html/index.html&quot;&gt;libPackets&lt;/a&gt;&lt;/li&gt;
++      &lt;li class=&quot;libScheduler&quot;&gt;&lt;a href=&quot;../../Scheduler/doc/html/index.html&quot;&gt;libScheduler&lt;/a&gt;&lt;/li&gt;
++      &lt;li class=&quot;libSocket&quot;&gt;&lt;a href=&quot;../../Socket/doc/html/index.html&quot;&gt;libSocket&lt;/a&gt;&lt;/li&gt;
++      &lt;li class=&quot;libUtils&quot;&gt;&lt;a href=&quot;../../Utils/doc/html/index.html&quot;&gt;libUtils&lt;/a&gt;&lt;/li&gt;
++    &lt;/ul&gt;
++  &lt;/div&gt;
+
+Modified: trunk/doclib/doxy-header.html
+==============================================================================
+--- trunk/doclib/doxy-header.html	(original)
++++ trunk/doclib/doxy-header.html	Tue Dec 12 16:38:13 2006
+@@ -5,7 +5,7 @@
+ &lt;link href=&quot;doxygen.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+ &lt;link href=&quot;../../../doclib/senf.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+ &lt;style type=&quot;text/css&quot;&gt;
+-li.$projectname a { background-color: #EDE497; }
++div.tabs ul li.$projectname a { background-color: #EDE497; }
+ &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+@@ -13,14 +13,16 @@
+ &lt;div id=&quot;head&quot;&gt;
+   &lt;h1&gt;SENF Extensible Network Framework&lt;/h1&gt;
+   &lt;h2&gt;SENF Framework API reference&lt;/h2&gt;
+-  &lt;ul&gt;
+-    &lt;li class=&quot;Overview&quot;&gt;&lt;a href=&quot;../../../doc/html/index.html&quot;&gt;&lt;i&gt;Overview&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+-    &lt;li&gt;&lt;a href=&quot;<A HREF="http://senf.berlios.de">http://senf.berlios.de</A>&quot;&gt;&lt;i&gt;SENF @ BerliOS&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+-    &lt;li class=&quot;libPackets&quot;&gt;&lt;a href=&quot;../../../Packets/doc/html/index.html&quot;&gt;libPackets&lt;/a&gt;&lt;/li&gt;
+-    &lt;li class=&quot;libScheduler&quot;&gt;&lt;a href=&quot;../../../Scheduler/doc/html/index.html&quot;&gt;libScheduler&lt;/a&gt;&lt;/li&gt;
+-    &lt;li class=&quot;libSocket&quot;&gt;&lt;a href=&quot;../../../Socket/doc/html/index.html&quot;&gt;libSocket&lt;/a&gt;&lt;/li&gt;
+-    &lt;li class=&quot;libUtils&quot;&gt;&lt;a href=&quot;../../../Utils/doc/html/index.html&quot;&gt;libUtils&lt;/a&gt;&lt;/li&gt;
+-  &lt;/ul&gt;
+ &lt;/div&gt;
+ 
+ &lt;div id=&quot;content&quot;&gt;
++  &lt;div class=&quot;tabs&quot;&gt;
++    &lt;ul&gt;
++      &lt;li class=&quot;Overview&quot;&gt;&lt;a href=&quot;../../../doc/html/index.html&quot;&gt;&lt;i&gt;Overview&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
++      &lt;li&gt;&lt;a href=&quot;<A HREF="http://senf.berlios.de">http://senf.berlios.de</A>&quot;&gt;&lt;i&gt;SENF @ BerliOS&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
++      &lt;li class=&quot;libPackets&quot;&gt;&lt;a href=&quot;../../../Packets/doc/html/index.html&quot;&gt;libPackets&lt;/a&gt;&lt;/li&gt;
++      &lt;li class=&quot;libScheduler&quot;&gt;&lt;a href=&quot;../../../Scheduler/doc/html/index.html&quot;&gt;libScheduler&lt;/a&gt;&lt;/li&gt;
++      &lt;li class=&quot;libSocket&quot;&gt;&lt;a href=&quot;../../../Socket/doc/html/index.html&quot;&gt;libSocket&lt;/a&gt;&lt;/li&gt;
++      &lt;li class=&quot;libUtils&quot;&gt;&lt;a href=&quot;../../../Utils/doc/html/index.html&quot;&gt;libUtils&lt;/a&gt;&lt;/li&gt;
++    &lt;/ul&gt;
++  &lt;/div&gt;
+
+Modified: trunk/doclib/senf.css
+==============================================================================
+--- trunk/doclib/senf.css	(original)
++++ trunk/doclib/senf.css	Tue Dec 12 16:38:13 2006
+@@ -36,52 +36,18 @@
+ 	white-space: nowrap;
+ }
+ 
+-#head ul { 
+-	float: left;
+-	margin: 10px 0 0 10px;
+-	width: 120px;
+-	background-color: #FDF7C3;
+-	border: 1px solid #AF9D00;
+-	list-style-type: none;
+-	padding: 0;
+-}
+-
+-#head ul li { 
+-	display: inline;
+-}
+-
+-#head ul li a, #head ul li b { 
+-	padding: 2px 5px;
+-	display: block;
+-}
+-
+-#head ul li b { 
+-	border-bottom: 1px solid #AF9D00;
+-	background-color: #EDE497;
+-	color: #726921;
+-}
+-
+-#head ul li a, #head ul li a:active, #head ul li a:visited { 
+-	color: #726921;
+-	text-decoration: none;
+-}
+-
+-#head ul li a:hover { 
+-	background-color: #EDE497;
+-	text-decoration: none;
+-}
+-
+ #content { 
+ 	/* Non-0 top padding to fix margin inhertance from first non-float elt */
+ 	padding: 1px 10px 10px 142px;
+ }
+ 
+ div.tabs { 
++	display: inline; /* IE double margin fix */
+ 	float: left;
+ 	clear: left;
+ 	background-color: #FDF7C3;
+ 	border: 1px solid #AF9D00;
+-	margin: 10px 0 0 -132px;
++        margin: 10px 0 0 -132px;
+ 	width: 120px; 
+ 	overflow: hidden;
+ }
+@@ -100,14 +66,14 @@
+ 	display: block;
+ 	padding: 2px 5px;
+         font-size: 13px;
+-	font-weight: normal;
+ 	color: #726921;
+ 	text-decoration: none;
+ 	white-space: nowrap;
+ }
+ 
+-div.tabs a:visited, div.tabs a:active { 
++div.tabs ul li a:visited, div.tabs ul li a:active { 
+ 	color: #726921;
++        text-decoration: none;
+ }
+ 
+ div.tabs ul li a:hover, div.tabs ul li#current a { 
+@@ -125,3 +91,12 @@
+ 	margin: 0;	
+ }
+ 
++div.qindex {
++	width: auto;
++	background-color: #e8eef2;
++	border: 1px solid #84b0c7;
++	text-align: center;
++	margin: 2px;
++	padding: 2px;
++	line-height: 140%;
++}
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000019.html">[Senf-svn] r158 - in trunk: . Scheduler Socket Utils doclib
+</A></li>
+	<LI>Next message: <A HREF="000021.html">[Senf-svn] r160 - in trunk: doclib
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#20">[ date ]</a>
+              <a href="thread.html#20">[ thread ]</a>
+              <a href="subject.html#20">[ subject ]</a>
+              <a href="author.html#20">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

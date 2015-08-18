@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1324 - in trunk: senf/PPI senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Socket/Protocols/UN senf/Utils senf/Utils/Console	senf/Utils/Daemon senf/Utils/Logger senf/Utils/Termlib site_scons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1324%20-%20in%20trunk%3A%20senf/PPI%20senf/Packets%0A%09senf/Packets/80211Bundle%20senf/Packets/80221Bundle%0A%09senf/Packets/DefaultBundle/extra_tests%0A%09senf/Packets/MPEGDVBBundle%20senf/Scheduler%20senf/Socket%0A%09senf/Socket/Protocols%20senf/Socket/Protocols/DVB%0A%09senf/Socket/Protocols/INet%20senf/Socket/Protocols/Raw%0A%09senf/Socket/Protocols/UN%20senf/Utils%20senf/Utils/Console%0A%09senf/Utils/Daemon%20senf/Utils/Logger%20senf/Utils/Termlib%20site_scons&In-Reply-To=%3C200908211513.n7LFDH3Q024691%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001179.html">
+   <LINK REL="Next"  HREF="001181.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1324 - in trunk: senf/PPI senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Socket/Protocols/UN senf/Utils senf/Utils/Console	senf/Utils/Daemon senf/Utils/Logger senf/Utils/Termlib site_scons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1324%20-%20in%20trunk%3A%20senf/PPI%20senf/Packets%0A%09senf/Packets/80211Bundle%20senf/Packets/80221Bundle%0A%09senf/Packets/DefaultBundle/extra_tests%0A%09senf/Packets/MPEGDVBBundle%20senf/Scheduler%20senf/Socket%0A%09senf/Socket/Protocols%20senf/Socket/Protocols/DVB%0A%09senf/Socket/Protocols/INet%20senf/Socket/Protocols/Raw%0A%09senf/Socket/Protocols/UN%20senf/Utils%20senf/Utils/Console%0A%09senf/Utils/Daemon%20senf/Utils/Logger%20senf/Utils/Termlib%20site_scons&In-Reply-To=%3C200908211513.n7LFDH3Q024691%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r1324 - in trunk: senf/PPI senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Socket/Protocols/UN senf/Utils senf/Utils/Console	senf/Utils/Daemon senf/Utils/Logger senf/Utils/Termlib site_scons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Fri Aug 21 17:13:17 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001179.html">[Senf-svn] r1323 - in trunk: PPI Scheduler Socket Utils include	senfscons
+</A></li>
+        <LI>Next message: <A HREF="001181.html">[Senf-svn] r1325 - in trunk/Examples: MCSniffer MultiMCLoop	UDPClientServer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1180">[ date ]</a>
+              <a href="thread.html#1180">[ thread ]</a>
+              <a href="subject.html#1180">[ subject ]</a>
+              <a href="author.html#1180">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Fri Aug 21 17:13:11 2009
+New Revision: 1324
+
+Modified:
+   trunk/senf/PPI/SConscript
+   trunk/senf/Packets/80211Bundle/SConscript
+   trunk/senf/Packets/80221Bundle/SConscript
+   trunk/senf/Packets/DefaultBundle/SConscript
+   trunk/senf/Packets/DefaultBundle/extra_tests/SConscript
+   trunk/senf/Packets/MPEGDVBBundle/SConscript
+   trunk/senf/Packets/SConscript
+   trunk/senf/Scheduler/SConscript
+   trunk/senf/Socket/Protocols/DVB/SConscript
+   trunk/senf/Socket/Protocols/INet/SConscript
+   trunk/senf/Socket/Protocols/Raw/SConscript
+   trunk/senf/Socket/Protocols/SConscript
+   trunk/senf/Socket/Protocols/UN/SConscript
+   trunk/senf/Socket/SConscript
+   trunk/senf/Utils/Console/SConscript
+   trunk/senf/Utils/Daemon/SConscript
+   trunk/senf/Utils/Logger/SConscript
+   trunk/senf/Utils/SConscript
+   trunk/senf/Utils/Termlib/SConscript
+   trunk/site_scons/SENFSCons.py
+
+Log:
+Add SENFSCons.AutoRules and SENFSCons.AutoPacketBundle macro-like functions
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001179.html">[Senf-svn] r1323 - in trunk: PPI Scheduler Socket Utils include	senfscons
+</A></li>
+	<LI>Next message: <A HREF="001181.html">[Senf-svn] r1325 - in trunk/Examples: MCSniffer MultiMCLoop	UDPClientServer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1180">[ date ]</a>
+              <a href="thread.html#1180">[ thread ]</a>
+              <a href="subject.html#1180">[ subject ]</a>
+              <a href="author.html#1180">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

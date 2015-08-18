@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r579 - in trunk: . Socket Socket/Protocols	Socket/Protocols/DVB Socket/Protocols/Raw Socket/Protocols/UN
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-December/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r579%20-%20in%20trunk%3A%20.%20Socket%20Socket/Protocols%0A%09Socket/Protocols/DVB%20Socket/Protocols/Raw%20Socket/Protocols/UN&In-Reply-To=%3C200712181342.lBIDgppp030214%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000439.html">
+   <LINK REL="Next"  HREF="000441.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r579 - in trunk: . Socket Socket/Protocols	Socket/Protocols/DVB Socket/Protocols/Raw Socket/Protocols/UN</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r579%20-%20in%20trunk%3A%20.%20Socket%20Socket/Protocols%0A%09Socket/Protocols/DVB%20Socket/Protocols/Raw%20Socket/Protocols/UN&In-Reply-To=%3C200712181342.lBIDgppp030214%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r579 - in trunk: . Socket Socket/Protocols	Socket/Protocols/DVB Socket/Protocols/Raw Socket/Protocols/UN">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Dec 18 14:42:51 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000439.html">[Senf-svn] r578 - trunk
+</A></li>
+        <LI>Next message: <A HREF="000441.html">[Senf-svn] r580 - branches/socket-cleanup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#440">[ date ]</a>
+              <a href="thread.html#440">[ thread ]</a>
+              <a href="subject.html#440">[ subject ]</a>
+              <a href="author.html#440">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Dec 18 14:42:38 2007
+New Revision: 579
+
+Removed:
+   trunk/Socket/Protocols/UN/UNAddress.cc
+   trunk/Socket/Protocols/UN/UNAddress.hh
+   trunk/Socket/Protocols/UN/UNAddress.test.cc
+   trunk/Socket/Protocols/UN/all_includes.hh
+Modified:
+   trunk/   (props changed)
+   trunk/Socket/FileHandle.cci
+   trunk/Socket/FileHandle.hh
+   trunk/Socket/FileHandle.ih
+   trunk/Socket/Protocols/BSDSocketProtocol.cc
+   trunk/Socket/Protocols/DVB/DVBDemuxHandles.cc
+   trunk/Socket/Protocols/DVB/DVBDemuxProtocol.cc
+   trunk/Socket/Protocols/DVB/DVBFrontendHandle.cc
+   trunk/Socket/Protocols/INet/ConnectedRawInetSocketHandle.cc
+   trunk/Socket/Protocols/INet/ConnectedUDPSocketHandle.cc
+   trunk/Socket/Protocols/INet/INetAddressing.hh
+   trunk/Socket/Protocols/INet/INetProtocol.cc
+   trunk/Socket/Protocols/INet/RawInetProtocol.cc
+   trunk/Socket/Protocols/INet/RawInetSocketHandle.cc
+   trunk/Socket/Protocols/INet/TCPProtocol.cc
+   trunk/Socket/Protocols/INet/TCPSocketHandle.cc
+   trunk/Socket/Protocols/INet/TCPSocketHandle.hh
+   trunk/Socket/Protocols/INet/UDPProtocol.cc
+   trunk/Socket/Protocols/INet/UDPSocketHandle.cc
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.cc
+   trunk/Socket/Protocols/Raw/TunTapSocketHandle.cc
+   trunk/Socket/Protocols/UN/   (props changed)
+   trunk/Socket/Protocols/UN/UNAddressing.cc
+   trunk/Socket/Protocols/UN/UNAddressing.hh
+   trunk/Socket/Protocols/UN/UNDatagramSocketHandle.cc
+   trunk/Socket/Protocols/UN/UNDatagramSocketHandle.hh
+   trunk/Socket/Protocols/UN/UNProtocol.cc
+   trunk/Socket/SocketHandle.cc
+   trunk/Socket/SocketHandle.cci
+   trunk/Socket/SocketHandle.ct
+   trunk/Socket/SocketHandle.cti
+   trunk/Socket/SocketHandle.hh
+   trunk/Socket/SocketHandle.ih
+   trunk/Socket/SocketPolicy.ct
+   trunk/Socket/SocketPolicy.hh
+   trunk/Socket/SocketProtocol.cci
+   trunk/Socket/SocketProtocol.cti
+   trunk/Socket/SocketProtocol.hh
+
+Log:
+Merged revisions 570-575,577-578 via svnmerge from 
+<A HREF="https://svn.berlios.de/svnroot/repos/senf/branches/socket-cleanup">https://svn.berlios.de/svnroot/repos/senf/branches/socket-cleanup</A>
+
+.......
+  r573 | g0dil | 2007-12-18 12:15:23 +0100 (Tue, 18 Dec 2007) | 6 lines
+  
+  Socket: Replace 'SocketProtocol::body()' member with 'fh()' and 'fd()' members
+  Socket: Rename ConvertibleString to StreamableString and use 'operator&lt;&lt;' instead of 'operator='
+  Socket: some minor documentation clarifications
+  Socket/Protocols/UN: Removed unneeded UNAddress
+  Socket/Protocols/UN: Fixed UNSocketAddress to adhere to the GenericAddressingPolicy requirements
+.......
+  r577 | g0dil | 2007-12-18 13:08:27 +0100 (Tue, 18 Dec 2007) | 1 line
+  
+  Socket/Protocols/UN: Add all_includes.hh to svn:ignore
+.......
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000439.html">[Senf-svn] r578 - trunk
+</A></li>
+	<LI>Next message: <A HREF="000441.html">[Senf-svn] r580 - branches/socket-cleanup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#440">[ date ]</a>
+              <a href="thread.html#440">[ thread ]</a>
+              <a href="subject.html#440">[ subject ]</a>
+              <a href="author.html#440">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

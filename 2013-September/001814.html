@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1975 - in trunk/senf: PPI Packets Packets/DefaultBundle	Scheduler Utils
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1975%20-%20in%20trunk/senf%3A%20PPI%20Packets%20Packets/DefaultBundle%0A%09Scheduler%20Utils&In-Reply-To=%3C20130902131758.AAE0955B0C%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001815.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1975 - in trunk/senf: PPI Packets Packets/DefaultBundle	Scheduler Utils</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1975%20-%20in%20trunk/senf%3A%20PPI%20Packets%20Packets/DefaultBundle%0A%09Scheduler%20Utils&In-Reply-To=%3C20130902131758.AAE0955B0C%40scm.berlios.de%3E"
+       TITLE="[Senf-svn] r1975 - in trunk/senf: PPI Packets Packets/DefaultBundle	Scheduler Utils">subversion at senf.berlios.de
+       </A><BR>
+    <I>Mon Sep  2 15:17:58 CEST 2013</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001815.html">[Senf-svn] r1976 - trunk/senf/Utils/Console
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1814">[ date ]</a>
+              <a href="thread.html#1814">[ thread ]</a>
+              <a href="subject.html#1814">[ subject ]</a>
+              <a href="author.html#1814">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tho
+Date: Mon Sep  2 15:17:57 2013
+New Revision: 1975
+
+Log:
+more c++11 support:
+* safe_bool now uses explicit operator bool 
+* introduced SENF_NULLPTR and SENF_CONSTEXPR macros
+
+Modified:
+   trunk/senf/PPI/Connectors.cc
+   trunk/senf/PPI/Connectors.cci
+   trunk/senf/PPI/DebugModules.cci
+   trunk/senf/Packets/BitsetParser.cci
+   trunk/senf/Packets/DefaultBundle/Mldv2Packet.test.cc
+   trunk/senf/Packets/Packet.cc
+   trunk/senf/Packets/Packet.hh
+   trunk/senf/Packets/PacketInterpreter.cci
+   trunk/senf/Packets/PacketInterpreter.hh
+   trunk/senf/Packets/PacketParser.cti
+   trunk/senf/Packets/ParseHelpers.ih
+   trunk/senf/Scheduler/ClockService.cci
+   trunk/senf/Scheduler/ClockService.hh
+   trunk/senf/Scheduler/FIFORunner.cc
+   trunk/senf/Utils/Cpp11Support.hh
+   trunk/senf/Utils/CpuStat.cc
+   trunk/senf/Utils/RestrictedInt.hh
+   trunk/senf/Utils/safe_bool.cci
+   trunk/senf/Utils/safe_bool.cti
+   trunk/senf/Utils/safe_bool.hh
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001815.html">[Senf-svn] r1976 - trunk/senf/Utils/Console
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1814">[ date ]</a>
+              <a href="thread.html#1814">[ thread ]</a>
+              <a href="subject.html#1814">[ subject ]</a>
+              <a href="author.html#1814">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

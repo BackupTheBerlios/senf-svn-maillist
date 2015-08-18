@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r511 - in trunk: PPI Scheduler Socket	Socket/Protocols/INet
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r511%20-%20in%20trunk%3A%20PPI%20Scheduler%20Socket%0A%09Socket/Protocols/INet&In-Reply-To=%3C200711131458.lADEwv17010551%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000371.html">
+   <LINK REL="Next"  HREF="000373.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r511 - in trunk: PPI Scheduler Socket	Socket/Protocols/INet</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r511%20-%20in%20trunk%3A%20PPI%20Scheduler%20Socket%0A%09Socket/Protocols/INet&In-Reply-To=%3C200711131458.lADEwv17010551%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r511 - in trunk: PPI Scheduler Socket	Socket/Protocols/INet">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Nov 13 15:58:57 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000371.html">[Senf-svn] r510 - in trunk: Examples/Sniffer Socket/Protocols/INet
+</A></li>
+        <LI>Next message: <A HREF="000373.html">[Senf-svn] r512 - in trunk: Packets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#372">[ date ]</a>
+              <a href="thread.html#372">[ thread ]</a>
+              <a href="subject.html#372">[ subject ]</a>
+              <a href="author.html#372">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Nov 13 15:58:50 2007
+New Revision: 511
+
+Added:
+   trunk/valgrind.sup
+Modified:
+   trunk/PPI/CloneSource.test.cc
+   trunk/PPI/IntervalTimer.test.cc
+   trunk/SConstruct
+   trunk/Scheduler/ClockService.test.cc
+   trunk/Scheduler/Scheduler.cc
+   trunk/Scheduler/Scheduler.hh
+   trunk/Scheduler/Scheduler.test.cc
+   trunk/Socket/FileHandle.test.cc
+   trunk/Socket/Protocols/INet/INet6Address.cc
+   trunk/Socket/Protocols/INet/TCPSocketHandle.test.cc
+
+Log:
+Socket/Protocols/Inet: Fix off-by-one error in INet6Address
+PPI: Fix cloneSource unit-test packet construction
+Scheduler: BUGFIX: uninitialized loop variable
+Scheduler: BUGFIX: delay deletions in fdTable_ (can't change map while iterating over it)
+Add global 'valgrind' target
+Add 'valgrind.sup' suppressions file to suppress custom benign valgrind errors
+Fix all unit-tests to run correcly under valgrind (mostly timing adjustments)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000371.html">[Senf-svn] r510 - in trunk: Examples/Sniffer Socket/Protocols/INet
+</A></li>
+	<LI>Next message: <A HREF="000373.html">[Senf-svn] r512 - in trunk: Packets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#372">[ date ]</a>
+              <a href="thread.html#372">[ thread ]</a>
+              <a href="subject.html#372">[ subject ]</a>
+              <a href="author.html#372">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

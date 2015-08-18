@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r909 - in trunk: Console Examples/MCSniffer	Examples/Sniffer Examples/TCPClientServer PPI Scheduler Utils/Daemon
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r909%20-%20in%20trunk%3A%20Console%20Examples/MCSniffer%0A%09Examples/Sniffer%20Examples/TCPClientServer%20PPI%20Scheduler%20Utils/Daemon&In-Reply-To=%3C200809191052.m8JAqpMu010518%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000765.html">
+   <LINK REL="Next"  HREF="000767.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r909 - in trunk: Console Examples/MCSniffer	Examples/Sniffer Examples/TCPClientServer PPI Scheduler Utils/Daemon</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r909%20-%20in%20trunk%3A%20Console%20Examples/MCSniffer%0A%09Examples/Sniffer%20Examples/TCPClientServer%20PPI%20Scheduler%20Utils/Daemon&In-Reply-To=%3C200809191052.m8JAqpMu010518%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r909 - in trunk: Console Examples/MCSniffer	Examples/Sniffer Examples/TCPClientServer PPI Scheduler Utils/Daemon">subversion at senf.berlios.de
+       </A><BR>
+    <I>Fri Sep 19 12:52:51 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000765.html">[Senf-svn] r908 - trunk/Scheduler
+</A></li>
+        <LI>Next message: <A HREF="000767.html">[Senf-svn] r910 - trunk/Scheduler
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#766">[ date ]</a>
+              <a href="thread.html#766">[ thread ]</a>
+              <a href="subject.html#766">[ subject ]</a>
+              <a href="author.html#766">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Fri Sep 19 12:52:03 2008
+New Revision: 909
+
+Added:
+   trunk/Scheduler/FdEvent.cc
+      - copied, changed from r908, /trunk/Scheduler/FdDispatcher.cc
+   trunk/Scheduler/FdEvent.cci
+      - copied, changed from r908, /trunk/Scheduler/FdDispatcher.cci
+   trunk/Scheduler/FdEvent.ct
+      - copied, changed from r908, /trunk/Scheduler/FdDispatcher.ct
+   trunk/Scheduler/FdEvent.cti
+      - copied, changed from r908, /trunk/Scheduler/FdDispatcher.cti
+   trunk/Scheduler/FdEvent.hh
+      - copied, changed from r908, /trunk/Scheduler/FdDispatcher.hh
+   trunk/Scheduler/FdEvent.ih
+      - copied, changed from r908, /trunk/Scheduler/FdDispatcher.ih
+   trunk/Scheduler/FdEvent.test.cc
+      - copied, changed from r908, /trunk/Scheduler/FdDispatcher.test.cc
+   trunk/Utils/Daemon/Daemon.cci   (contents, props changed)
+Removed:
+   trunk/Scheduler/Binding.cci
+   trunk/Scheduler/Binding.cti
+   trunk/Scheduler/Binding.hh
+   trunk/Scheduler/Binding.test.cc
+   trunk/Scheduler/FdDispatcher.cc
+   trunk/Scheduler/FdDispatcher.cci
+   trunk/Scheduler/FdDispatcher.ct
+   trunk/Scheduler/FdDispatcher.cti
+   trunk/Scheduler/FdDispatcher.hh
+   trunk/Scheduler/FdDispatcher.ih
+   trunk/Scheduler/FdDispatcher.test.cc
+   trunk/Scheduler/FileDispatcher.cc
+   trunk/Scheduler/FileDispatcher.cci
+   trunk/Scheduler/FileDispatcher.hh
+   trunk/Scheduler/FileDispatcher.test.cc
+   trunk/Scheduler/Scheduler.cti
+Modified:
+   trunk/Console/Readline.cc
+   trunk/Console/Readline.hh
+   trunk/Console/Server.cc
+   trunk/Console/Server.hh
+   trunk/Console/Server.ih
+   trunk/Examples/MCSniffer/MCSniffer.cc
+   trunk/Examples/Sniffer/Sniffer.cc
+   trunk/Examples/TCPClientServer/server.cc
+   trunk/Examples/UDPClientServer/udpServer.cc
+   trunk/PPI/IOEvent.cc
+   trunk/PPI/IOEvent.cti
+   trunk/PPI/IOEvent.hh
+   trunk/Scheduler/FIFORunner.cc
+   trunk/Scheduler/FIFORunner.cci
+   trunk/Scheduler/FIFORunner.hh
+   trunk/Scheduler/Poller.ct
+   trunk/Scheduler/ReadHelper.ct
+   trunk/Scheduler/ReadHelper.hh
+   trunk/Scheduler/Scheduler.cc
+   trunk/Scheduler/Scheduler.cci
+   trunk/Scheduler/Scheduler.hh
+   trunk/Scheduler/Scheduler.test.cc
+   trunk/Scheduler/SignalEvent.cc
+   trunk/Scheduler/TimerEvent.cc
+   trunk/Scheduler/TimerEvent.hh
+   trunk/Scheduler/TimerEvent.ih
+   trunk/Scheduler/WriteHelper.ct
+   trunk/Scheduler/WriteHelper.hh
+   trunk/Utils/Daemon/Daemon.cc
+   trunk/Utils/Daemon/Daemon.hh
+   trunk/Utils/Daemon/Daemon.ih
+
+Log:
+Scheduler: Implement new file descriptor event API
+Scheduler: Clean up FIFORunner::TaskInfo interface
+Update rest of senf to use the new API
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000765.html">[Senf-svn] r908 - trunk/Scheduler
+</A></li>
+	<LI>Next message: <A HREF="000767.html">[Senf-svn] r910 - trunk/Scheduler
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#766">[ date ]</a>
+              <a href="thread.html#766">[ thread ]</a>
+              <a href="subject.html#766">[ subject ]</a>
+              <a href="author.html#766">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

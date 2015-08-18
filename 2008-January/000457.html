@@ -1,0 +1,607 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r597 - in branches/socket-cleanup: . Examples	Examples/DVBAdapter Examples/MCSniffer Examples/RateStuffer	Examples/Sniffer Examples/TCPClientServer PPI PPI/detail	Packets Packets/DefaultBundle Packets/MPEGDVBBundle Scheduler	Socket/Protocols Socket/Protocols/DVB Socket/Protocols/INet	Socket/Protocols/Raw Socket/Protocols/UN Utils Utils/Daemon	Utils/Logger Utils/impl debian senfscons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r597%20-%20in%20branches/socket-cleanup%3A%20.%20Examples%0A%09Examples/DVBAdapter%20Examples/MCSniffer%20Examples/RateStuffer%0A%09Examples/Sniffer%20Examples/TCPClientServer%20PPI%20PPI/detail%0A%09Packets%20Packets/DefaultBundle%20Packets/MPEGDVBBundle%20Scheduler%0A%09Socket/Protocols%20Socket/Protocols/DVB%20Socket/Protocols/INet%0A%09Socket/Protocols/Raw%20Socket/Protocols/UN%20Utils%20Utils/Daemon%0A%09Utils/Logger%20Utils/impl%20debian%20senfscons&In-Reply-To=%3C200801150920.m0F9KEYw010542%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000456.html">
+   <LINK REL="Next"  HREF="000458.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r597 - in branches/socket-cleanup: . Examples	Examples/DVBAdapter Examples/MCSniffer Examples/RateStuffer	Examples/Sniffer Examples/TCPClientServer PPI PPI/detail	Packets Packets/DefaultBundle Packets/MPEGDVBBundle Scheduler	Socket/Protocols Socket/Protocols/DVB Socket/Protocols/INet	Socket/Protocols/Raw Socket/Protocols/UN Utils Utils/Daemon	Utils/Logger Utils/impl debian senfscons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r597%20-%20in%20branches/socket-cleanup%3A%20.%20Examples%0A%09Examples/DVBAdapter%20Examples/MCSniffer%20Examples/RateStuffer%0A%09Examples/Sniffer%20Examples/TCPClientServer%20PPI%20PPI/detail%0A%09Packets%20Packets/DefaultBundle%20Packets/MPEGDVBBundle%20Scheduler%0A%09Socket/Protocols%20Socket/Protocols/DVB%20Socket/Protocols/INet%0A%09Socket/Protocols/Raw%20Socket/Protocols/UN%20Utils%20Utils/Daemon%0A%09Utils/Logger%20Utils/impl%20debian%20senfscons&In-Reply-To=%3C200801150920.m0F9KEYw010542%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r597 - in branches/socket-cleanup: . Examples	Examples/DVBAdapter Examples/MCSniffer Examples/RateStuffer	Examples/Sniffer Examples/TCPClientServer PPI PPI/detail	Packets Packets/DefaultBundle Packets/MPEGDVBBundle Scheduler	Socket/Protocols Socket/Protocols/DVB Socket/Protocols/INet	Socket/Protocols/Raw Socket/Protocols/UN Utils Utils/Daemon	Utils/Logger Utils/impl debian senfscons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Jan 15 10:20:14 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000456.html">[Senf-svn] r596 - in branches/socket-cleanup: Socket/Protocols/UN
+</A></li>
+        <LI>Next message: <A HREF="000458.html">[Senf-svn] r598 - trunk/Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#457">[ date ]</a>
+              <a href="thread.html#457">[ thread ]</a>
+              <a href="subject.html#457">[ subject ]</a>
+              <a href="author.html#457">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Jan 15 10:16:20 2008
+New Revision: 597
+
+Modified:
+   branches/socket-cleanup/   (props changed)
+   branches/socket-cleanup/Examples/DVBAdapter/MPEdec.cc
+   branches/socket-cleanup/Examples/DVBAdapter/ULEdec.cc
+   branches/socket-cleanup/Examples/DVBAdapter/ULEdec.hh
+   branches/socket-cleanup/Examples/DVBAdapter/frontend.cc
+   branches/socket-cleanup/Examples/MCSniffer/MCSniffer.cc
+   branches/socket-cleanup/Examples/Mainpage.dox   (contents, props changed)
+   branches/socket-cleanup/Examples/RateStuffer/Mainpage.dox   (contents, props changed)
+   branches/socket-cleanup/Examples/RateStuffer/ratestuffer.cc   (contents, props changed)
+   branches/socket-cleanup/Examples/Sniffer/Mainpage.dox   (contents, props changed)
+   branches/socket-cleanup/Examples/Sniffer/Sniffer.cc
+   branches/socket-cleanup/Examples/TCPClientServer/client.cc
+   branches/socket-cleanup/Examples/TCPClientServer/server.cc
+   branches/socket-cleanup/Mainpage.dox   (contents, props changed)
+   branches/socket-cleanup/PPI/ActiveFeeder.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/ActiveFeeder.cci   (contents, props changed)
+   branches/socket-cleanup/PPI/ActiveFeeder.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/ActiveFeeder.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/CloneSource.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/CloneSource.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/CloneSource.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/Connectors.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/Connectors.cci   (contents, props changed)
+   branches/socket-cleanup/PPI/Connectors.cti   (contents, props changed)
+   branches/socket-cleanup/PPI/Connectors.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/Connectors.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/DebugEvent.cci   (contents, props changed)
+   branches/socket-cleanup/PPI/DebugEvent.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/DebugEvent.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/DebugModules.cci   (contents, props changed)
+   branches/socket-cleanup/PPI/DebugModules.cti   (contents, props changed)
+   branches/socket-cleanup/PPI/DebugModules.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/DebugModules.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/DiscardSink.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/DiscardSink.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/DiscardSink.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/EventManager.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/EventManager.cci   (contents, props changed)
+   branches/socket-cleanup/PPI/EventManager.ct   (contents, props changed)
+   branches/socket-cleanup/PPI/EventManager.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/EventManager.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/Events.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/Events.cci   (contents, props changed)
+   branches/socket-cleanup/PPI/Events.cti   (contents, props changed)
+   branches/socket-cleanup/PPI/Events.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/Events.ih   (contents, props changed)
+   branches/socket-cleanup/PPI/Events.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/IOEvent.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/IOEvent.cti   (contents, props changed)
+   branches/socket-cleanup/PPI/IOEvent.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/IOEvent.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/IdleEvent.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/IdleEvent.cci   (contents, props changed)
+   branches/socket-cleanup/PPI/IdleEvent.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/IdleEvent.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/IntervalTimer.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/IntervalTimer.cci   (contents, props changed)
+   branches/socket-cleanup/PPI/IntervalTimer.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/IntervalTimer.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/Joins.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/Joins.cci   (contents, props changed)
+   branches/socket-cleanup/PPI/Joins.cti   (contents, props changed)
+   branches/socket-cleanup/PPI/Joins.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/Joins.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/Mainpage.dox   (contents, props changed)
+   branches/socket-cleanup/PPI/Module.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/Module.cci   (contents, props changed)
+   branches/socket-cleanup/PPI/Module.ct   (contents, props changed)
+   branches/socket-cleanup/PPI/Module.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/Module.ih   (contents, props changed)
+   branches/socket-cleanup/PPI/Module.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/ModuleManager.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/ModuleManager.cci   (contents, props changed)
+   branches/socket-cleanup/PPI/ModuleManager.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/ModuleManager.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/PPI.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/PassiveQueue.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/PassiveQueue.cci   (contents, props changed)
+   branches/socket-cleanup/PPI/PassiveQueue.cti   (contents, props changed)
+   branches/socket-cleanup/PPI/PassiveQueue.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/PassiveQueue.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/Queueing.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/Queueing.cci   (contents, props changed)
+   branches/socket-cleanup/PPI/Queueing.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/Queueing.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/Route.cci   (contents, props changed)
+   branches/socket-cleanup/PPI/Route.ct   (contents, props changed)
+   branches/socket-cleanup/PPI/Route.cti   (contents, props changed)
+   branches/socket-cleanup/PPI/Route.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/Route.ih   (contents, props changed)
+   branches/socket-cleanup/PPI/Route.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/Setup.cci   (contents, props changed)
+   branches/socket-cleanup/PPI/Setup.cti   (contents, props changed)
+   branches/socket-cleanup/PPI/Setup.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/Setup.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/SocketSink.cci   (contents, props changed)
+   branches/socket-cleanup/PPI/SocketSink.ct   (contents, props changed)
+   branches/socket-cleanup/PPI/SocketSink.cti   (contents, props changed)
+   branches/socket-cleanup/PPI/SocketSink.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/SocketSink.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/SocketSource.ct   (contents, props changed)
+   branches/socket-cleanup/PPI/SocketSource.cti   (contents, props changed)
+   branches/socket-cleanup/PPI/SocketSource.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/SocketSource.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/ThrottleBarrier.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/ThrottleBarrier.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/ThrottleBarrier.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/detail/Callback.cti   (contents, props changed)
+   branches/socket-cleanup/PPI/detail/Callback.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/detail/EventBinding.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/detail/EventBinding.cci   (contents, props changed)
+   branches/socket-cleanup/PPI/detail/EventBinding.cti   (contents, props changed)
+   branches/socket-cleanup/PPI/detail/EventBinding.hh   (contents, props changed)
+   branches/socket-cleanup/PPI/main.test.cc   (contents, props changed)
+   branches/socket-cleanup/PPI/predecl.hh   (contents, props changed)
+   branches/socket-cleanup/Packets/ArrayParser.ct
+   branches/socket-cleanup/Packets/ArrayParser.cti
+   branches/socket-cleanup/Packets/ArrayParser.hh
+   branches/socket-cleanup/Packets/ArrayParser.ih
+   branches/socket-cleanup/Packets/ArrayParser.test.cc
+   branches/socket-cleanup/Packets/DataPacket.hh
+   branches/socket-cleanup/Packets/DefaultBundle/EthernetPacket.cc
+   branches/socket-cleanup/Packets/DefaultBundle/EthernetPacket.hh
+   branches/socket-cleanup/Packets/DefaultBundle/EthernetPacket.test.cc
+   branches/socket-cleanup/Packets/DefaultBundle/IPv4Packet.cc
+   branches/socket-cleanup/Packets/DefaultBundle/IPv4Packet.hh
+   branches/socket-cleanup/Packets/DefaultBundle/IPv4Packet.test.cc
+   branches/socket-cleanup/Packets/DefaultBundle/IPv6Extensions.cc
+   branches/socket-cleanup/Packets/DefaultBundle/IPv6Extensions.hh
+   branches/socket-cleanup/Packets/DefaultBundle/IPv6Extensions.test.cc
+   branches/socket-cleanup/Packets/DefaultBundle/IPv6Packet.cc
+   branches/socket-cleanup/Packets/DefaultBundle/IPv6Packet.hh
+   branches/socket-cleanup/Packets/DefaultBundle/IPv6Packet.test.cc
+   branches/socket-cleanup/Packets/DefaultBundle/LlcSnapPacket.cc
+   branches/socket-cleanup/Packets/DefaultBundle/LlcSnapPacket.hh
+   branches/socket-cleanup/Packets/DefaultBundle/LlcSnapPacket.test.cc
+   branches/socket-cleanup/Packets/DefaultBundle/Mainpage.dox   (contents, props changed)
+   branches/socket-cleanup/Packets/DefaultBundle/UDPPacket.cc
+   branches/socket-cleanup/Packets/DefaultBundle/UDPPacket.hh
+   branches/socket-cleanup/Packets/DefaultBundle/UDPPacket.test.cc
+   branches/socket-cleanup/Packets/DefaultBundle/main.test.cc
+   branches/socket-cleanup/Packets/IntParser.hh
+   branches/socket-cleanup/Packets/IntParser.ih
+   branches/socket-cleanup/Packets/IntParser.test.cc
+   branches/socket-cleanup/Packets/ListBParser.cti
+   branches/socket-cleanup/Packets/ListBParser.hh
+   branches/socket-cleanup/Packets/ListBParser.ih
+   branches/socket-cleanup/Packets/ListBParser.test.cc
+   branches/socket-cleanup/Packets/ListNParser.ct
+   branches/socket-cleanup/Packets/ListNParser.cti
+   branches/socket-cleanup/Packets/ListNParser.hh
+   branches/socket-cleanup/Packets/ListNParser.ih
+   branches/socket-cleanup/Packets/ListNParser.test.cc
+   branches/socket-cleanup/Packets/ListParser.ct
+   branches/socket-cleanup/Packets/ListParser.cti
+   branches/socket-cleanup/Packets/ListParser.dox
+   branches/socket-cleanup/Packets/ListParser.hh
+   branches/socket-cleanup/Packets/ListParser.ih
+   branches/socket-cleanup/Packets/ListParser.test.cc
+   branches/socket-cleanup/Packets/MPEGDVBBundle/DTCPPacket.cc
+   branches/socket-cleanup/Packets/MPEGDVBBundle/DTCPPacket.hh
+   branches/socket-cleanup/Packets/MPEGDVBBundle/GREPacket.cc
+   branches/socket-cleanup/Packets/MPEGDVBBundle/GREPacket.hh
+   branches/socket-cleanup/Packets/MPEGDVBBundle/GREPacket.test.cc
+   branches/socket-cleanup/Packets/MPEGDVBBundle/MPEGDVBBundle.dox   (contents, props changed)
+   branches/socket-cleanup/Packets/MPEGDVBBundle/MPESection.cc
+   branches/socket-cleanup/Packets/MPEGDVBBundle/MPESection.hh
+   branches/socket-cleanup/Packets/MPEGDVBBundle/MPESection.test.cc
+   branches/socket-cleanup/Packets/MPEGDVBBundle/SNDUPacket.cc
+   branches/socket-cleanup/Packets/MPEGDVBBundle/SNDUPacket.hh
+   branches/socket-cleanup/Packets/MPEGDVBBundle/TLVPacket.cc
+   branches/socket-cleanup/Packets/MPEGDVBBundle/TLVPacket.ct
+   branches/socket-cleanup/Packets/MPEGDVBBundle/TLVPacket.hh
+   branches/socket-cleanup/Packets/MPEGDVBBundle/TLVPacket.test.cc
+   branches/socket-cleanup/Packets/MPEGDVBBundle/TransportPacket.cc
+   branches/socket-cleanup/Packets/MPEGDVBBundle/TransportPacket.hh
+   branches/socket-cleanup/Packets/MPEGDVBBundle/TransportPacket.test.cc
+   branches/socket-cleanup/Packets/MPEGDVBBundle/main.test.cc
+   branches/socket-cleanup/Packets/Mainpage.dox   (contents, props changed)
+   branches/socket-cleanup/Packets/Packet.cc
+   branches/socket-cleanup/Packets/Packet.cci
+   branches/socket-cleanup/Packets/Packet.ct
+   branches/socket-cleanup/Packets/Packet.cti
+   branches/socket-cleanup/Packets/Packet.hh
+   branches/socket-cleanup/Packets/Packet.test.cc
+   branches/socket-cleanup/Packets/PacketData.cc
+   branches/socket-cleanup/Packets/PacketData.cci
+   branches/socket-cleanup/Packets/PacketData.cti
+   branches/socket-cleanup/Packets/PacketData.hh
+   branches/socket-cleanup/Packets/PacketData.test.cc
+   branches/socket-cleanup/Packets/PacketImpl.cc
+   branches/socket-cleanup/Packets/PacketImpl.cci
+   branches/socket-cleanup/Packets/PacketImpl.cti
+   branches/socket-cleanup/Packets/PacketImpl.hh
+   branches/socket-cleanup/Packets/PacketImpl.test.cc
+   branches/socket-cleanup/Packets/PacketInterpreter.cc
+   branches/socket-cleanup/Packets/PacketInterpreter.cci
+   branches/socket-cleanup/Packets/PacketInterpreter.ct
+   branches/socket-cleanup/Packets/PacketInterpreter.cti
+   branches/socket-cleanup/Packets/PacketInterpreter.hh
+   branches/socket-cleanup/Packets/PacketInterpreter.test.cc
+   branches/socket-cleanup/Packets/PacketParser.cci
+   branches/socket-cleanup/Packets/PacketParser.ct
+   branches/socket-cleanup/Packets/PacketParser.cti
+   branches/socket-cleanup/Packets/PacketParser.hh
+   branches/socket-cleanup/Packets/PacketParser.ih
+   branches/socket-cleanup/Packets/PacketParser.test.cc
+   branches/socket-cleanup/Packets/PacketRegistry.cc
+   branches/socket-cleanup/Packets/PacketRegistry.ct
+   branches/socket-cleanup/Packets/PacketRegistry.cti
+   branches/socket-cleanup/Packets/PacketRegistry.hh
+   branches/socket-cleanup/Packets/PacketRegistry.ih
+   branches/socket-cleanup/Packets/PacketRegistry.test.cc
+   branches/socket-cleanup/Packets/PacketType.cci
+   branches/socket-cleanup/Packets/PacketType.cti
+   branches/socket-cleanup/Packets/PacketType.hh
+   branches/socket-cleanup/Packets/PacketTypes.hh
+   branches/socket-cleanup/Packets/Packets.hh
+   branches/socket-cleanup/Packets/ParseHelpers.hh
+   branches/socket-cleanup/Packets/ParseHelpers.ih
+   branches/socket-cleanup/Packets/ParseHelpers.test.cc
+   branches/socket-cleanup/Packets/VariantParser.ct
+   branches/socket-cleanup/Packets/VariantParser.cti
+   branches/socket-cleanup/Packets/VariantParser.dox   (contents, props changed)
+   branches/socket-cleanup/Packets/VariantParser.hh
+   branches/socket-cleanup/Packets/VariantParser.ih
+   branches/socket-cleanup/Packets/VariantParser.test.cc
+   branches/socket-cleanup/Packets/VectorParser.ct
+   branches/socket-cleanup/Packets/VectorParser.cti
+   branches/socket-cleanup/Packets/VectorParser.dox   (contents, props changed)
+   branches/socket-cleanup/Packets/VectorParser.hh
+   branches/socket-cleanup/Packets/VectorParser.ih
+   branches/socket-cleanup/Packets/VectorParser.test.cc
+   branches/socket-cleanup/Packets/main.test.cc
+   branches/socket-cleanup/Packets/main.test.hh
+   branches/socket-cleanup/Packets/parse_fixed_setup.hh
+   branches/socket-cleanup/Packets/parse_setup.hh
+   branches/socket-cleanup/Scheduler/ClockService.cc   (contents, props changed)
+   branches/socket-cleanup/Scheduler/ClockService.cci   (contents, props changed)
+   branches/socket-cleanup/Scheduler/ClockService.hh   (contents, props changed)
+   branches/socket-cleanup/Scheduler/ClockService.test.cc   (contents, props changed)
+   branches/socket-cleanup/Scheduler/Mainpage.dox   (contents, props changed)
+   branches/socket-cleanup/Scheduler/Scheduler.cc
+   branches/socket-cleanup/Scheduler/Scheduler.cci
+   branches/socket-cleanup/Scheduler/Scheduler.cti
+   branches/socket-cleanup/Scheduler/Scheduler.hh
+   branches/socket-cleanup/Scheduler/Scheduler.test.cc
+   branches/socket-cleanup/Scheduler/main.test.cc
+   branches/socket-cleanup/Socket/AddressingPolicy.hh
+   branches/socket-cleanup/Socket/BufferingPolicy.cc
+   branches/socket-cleanup/Socket/BufferingPolicy.hh
+   branches/socket-cleanup/Socket/ClientSocketHandle.ct
+   branches/socket-cleanup/Socket/ClientSocketHandle.cti
+   branches/socket-cleanup/Socket/ClientSocketHandle.hh
+   branches/socket-cleanup/Socket/ClientSocketHandle.ih
+   branches/socket-cleanup/Socket/ClientSocketHandle.test.cc
+   branches/socket-cleanup/Socket/CommunicationPolicy.cc
+   branches/socket-cleanup/Socket/CommunicationPolicy.cci   (contents, props changed)
+   branches/socket-cleanup/Socket/CommunicationPolicy.cti
+   branches/socket-cleanup/Socket/CommunicationPolicy.hh
+   branches/socket-cleanup/Socket/FileHandle.cc
+   branches/socket-cleanup/Socket/FileHandle.cci
+   branches/socket-cleanup/Socket/FileHandle.hh
+   branches/socket-cleanup/Socket/FileHandle.ih
+   branches/socket-cleanup/Socket/FileHandle.test.cc
+   branches/socket-cleanup/Socket/FramingPolicy.hh
+   branches/socket-cleanup/Socket/Mainpage.dox   (contents, props changed)
+   branches/socket-cleanup/Socket/NetdeviceController.cc
+   branches/socket-cleanup/Socket/NetdeviceController.hh
+   branches/socket-cleanup/Socket/NetdeviceController.test.cc
+   branches/socket-cleanup/Socket/ProtocolClientSocketHandle.cti
+   branches/socket-cleanup/Socket/ProtocolClientSocketHandle.hh
+   branches/socket-cleanup/Socket/ProtocolClientSocketHandle.mpp   (contents, props changed)
+   branches/socket-cleanup/Socket/ProtocolClientSocketHandle.test.cc
+   branches/socket-cleanup/Socket/ProtocolServerSocketHandle.cti
+   branches/socket-cleanup/Socket/ProtocolServerSocketHandle.hh
+   branches/socket-cleanup/Socket/ProtocolServerSocketHandle.mpp   (contents, props changed)
+   branches/socket-cleanup/Socket/ProtocolServerSocketHandle.test.cc
+   branches/socket-cleanup/Socket/Protocols/BSDSocketProtocol.cc
+   branches/socket-cleanup/Socket/Protocols/BSDSocketProtocol.hh
+   branches/socket-cleanup/Socket/Protocols/DVB.hh   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/DVB/DVB.hh   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/DVB/DVBDemuxHandles.cc
+   branches/socket-cleanup/Socket/Protocols/DVB/DVBDemuxHandles.hh
+   branches/socket-cleanup/Socket/Protocols/DVB/DVBDemuxProtocol.cc
+   branches/socket-cleanup/Socket/Protocols/DVB/DVBDemuxProtocol.hh
+   branches/socket-cleanup/Socket/Protocols/DVB/DVBFrontendHandle.cc
+   branches/socket-cleanup/Socket/Protocols/DVB/DVBFrontendHandle.hh
+   branches/socket-cleanup/Socket/Protocols/GenericAddressingPolicy.cc
+   branches/socket-cleanup/Socket/Protocols/GenericAddressingPolicy.cti
+   branches/socket-cleanup/Socket/Protocols/GenericAddressingPolicy.hh
+   branches/socket-cleanup/Socket/Protocols/INet.hh   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/INet/ConnectedRawINetSocketHandle.cc   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/INet/ConnectedRawINetSocketHandle.hh   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/INet/ConnectedUDPSocketHandle.cc   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/INet/ConnectedUDPSocketHandle.hh   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/INet/INet.hh   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/INet/INet4Address.cc
+   branches/socket-cleanup/Socket/Protocols/INet/INet4Address.cci
+   branches/socket-cleanup/Socket/Protocols/INet/INet4Address.ct
+   branches/socket-cleanup/Socket/Protocols/INet/INet4Address.cti   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/INet/INet4Address.hh
+   branches/socket-cleanup/Socket/Protocols/INet/INet4Address.test.cc
+   branches/socket-cleanup/Socket/Protocols/INet/INet6Address.cc
+   branches/socket-cleanup/Socket/Protocols/INet/INet6Address.cci
+   branches/socket-cleanup/Socket/Protocols/INet/INet6Address.ct
+   branches/socket-cleanup/Socket/Protocols/INet/INet6Address.cti
+   branches/socket-cleanup/Socket/Protocols/INet/INet6Address.hh
+   branches/socket-cleanup/Socket/Protocols/INet/INet6Address.ih   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/INet/INet6Address.test.cc
+   branches/socket-cleanup/Socket/Protocols/INet/INetAddressing.cc
+   branches/socket-cleanup/Socket/Protocols/INet/INetAddressing.cci
+   branches/socket-cleanup/Socket/Protocols/INet/INetAddressing.hh
+   branches/socket-cleanup/Socket/Protocols/INet/INetAddressing.test.cc
+   branches/socket-cleanup/Socket/Protocols/INet/INetProtocol.cc
+   branches/socket-cleanup/Socket/Protocols/INet/INetProtocol.hh
+   branches/socket-cleanup/Socket/Protocols/INet/RawINetProtocol.cc   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/INet/RawINetProtocol.hh   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/INet/RawINetSocketHandle.cc   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/INet/RawINetSocketHandle.hh   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/INet/RawINetSocketHandle.test.cc   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/INet/TCPProtocol.cc
+   branches/socket-cleanup/Socket/Protocols/INet/TCPProtocol.hh
+   branches/socket-cleanup/Socket/Protocols/INet/TCPSocketHandle.cc
+   branches/socket-cleanup/Socket/Protocols/INet/TCPSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/INet/TCPSocketHandle.test.cc
+   branches/socket-cleanup/Socket/Protocols/INet/UDPProtocol.cc
+   branches/socket-cleanup/Socket/Protocols/INet/UDPProtocol.hh
+   branches/socket-cleanup/Socket/Protocols/INet/UDPSocketHandle.cc
+   branches/socket-cleanup/Socket/Protocols/INet/UDPSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/INet/UDPSocketHandle.test.cc   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/INet/main.test.cc   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/Raw.hh   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/Raw/LLAddressing.cc
+   branches/socket-cleanup/Socket/Protocols/Raw/LLAddressing.cci
+   branches/socket-cleanup/Socket/Protocols/Raw/LLAddressing.hh
+   branches/socket-cleanup/Socket/Protocols/Raw/LLAddressing.test.cc
+   branches/socket-cleanup/Socket/Protocols/Raw/MACAddress.cc
+   branches/socket-cleanup/Socket/Protocols/Raw/MACAddress.cci
+   branches/socket-cleanup/Socket/Protocols/Raw/MACAddress.ct
+   branches/socket-cleanup/Socket/Protocols/Raw/MACAddress.hh
+   branches/socket-cleanup/Socket/Protocols/Raw/MACAddress.test.cc
+   branches/socket-cleanup/Socket/Protocols/Raw/PacketSocketHandle.cc
+   branches/socket-cleanup/Socket/Protocols/Raw/PacketSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/Raw/PacketSocketHandle.test.cc
+   branches/socket-cleanup/Socket/Protocols/Raw/Raw.hh
+   branches/socket-cleanup/Socket/Protocols/Raw/TunTapSocketHandle.cc
+   branches/socket-cleanup/Socket/Protocols/Raw/TunTapSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/Raw/TunTapSocketHandle.test.cc
+   branches/socket-cleanup/Socket/Protocols/Raw/main.test.cc
+   branches/socket-cleanup/Socket/Protocols/UN/ConnectedUNDatagramSocketHandle.cc   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/UN/ConnectedUNDatagramSocketHandle.hh   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/UN/UN.hh   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/UN/UNAddressing.cc   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/UN/UNAddressing.hh   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/UN/UNAddressing.test.cc   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/UN/UNDatagramSocketHandle.cc   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/UN/UNDatagramSocketHandle.hh   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/UN/UNDatagramSocketHandle.test.cc   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/UN/UNProtocol.cc   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/UN/UNProtocol.hh   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/UN/UNProtocol.test.cc   (contents, props changed)
+   branches/socket-cleanup/Socket/Protocols/UN/main.test.cc   (contents, props changed)
+   branches/socket-cleanup/Socket/ReadWritePolicy.cc
+   branches/socket-cleanup/Socket/ReadWritePolicy.cti
+   branches/socket-cleanup/Socket/ReadWritePolicy.hh
+   branches/socket-cleanup/Socket/ServerSocketHandle.cti
+   branches/socket-cleanup/Socket/ServerSocketHandle.hh
+   branches/socket-cleanup/Socket/ServerSocketHandle.test.cc
+   branches/socket-cleanup/Socket/Socket.hh   (contents, props changed)
+   branches/socket-cleanup/Socket/SocketHandle.cc
+   branches/socket-cleanup/Socket/SocketHandle.cci
+   branches/socket-cleanup/Socket/SocketHandle.ct
+   branches/socket-cleanup/Socket/SocketHandle.cti
+   branches/socket-cleanup/Socket/SocketHandle.hh
+   branches/socket-cleanup/Socket/SocketHandle.ih
+   branches/socket-cleanup/Socket/SocketHandle.test.cc
+   branches/socket-cleanup/Socket/SocketPolicy.ct
+   branches/socket-cleanup/Socket/SocketPolicy.hh
+   branches/socket-cleanup/Socket/SocketPolicy.ih
+   branches/socket-cleanup/Socket/SocketPolicy.test.cc
+   branches/socket-cleanup/Socket/SocketPolicy.test.hh
+   branches/socket-cleanup/Socket/SocketProtocol.cc
+   branches/socket-cleanup/Socket/SocketProtocol.cci
+   branches/socket-cleanup/Socket/SocketProtocol.cti
+   branches/socket-cleanup/Socket/SocketProtocol.hh
+   branches/socket-cleanup/Socket/SocketProtocol.test.cc
+   branches/socket-cleanup/Socket/SocketProtocol.test.hh
+   branches/socket-cleanup/Socket/main.test.cc
+   branches/socket-cleanup/Utils/Buffer.hh
+   branches/socket-cleanup/Utils/Buffer.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/Daemon.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/Daemon/Daemon.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/Daemon/Daemon.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/Daemon/Daemon.ih   (contents, props changed)
+   branches/socket-cleanup/Utils/Daemon/Daemon.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/Daemon/Mainpage.dox   (contents, props changed)
+   branches/socket-cleanup/Utils/Daemon/main.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/Exception.cc
+   branches/socket-cleanup/Utils/Exception.cti   (contents, props changed)
+   branches/socket-cleanup/Utils/Exception.hh
+   branches/socket-cleanup/Utils/Exception.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/IpChecksum.cci   (contents, props changed)
+   branches/socket-cleanup/Utils/IpChecksum.cti   (contents, props changed)
+   branches/socket-cleanup/Utils/IpChecksum.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/IpChecksum.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/IteratorTraits.cti
+   branches/socket-cleanup/Utils/IteratorTraits.hh
+   branches/socket-cleanup/Utils/IteratorTraits.ih
+   branches/socket-cleanup/Utils/IteratorTraits.test.cc
+   branches/socket-cleanup/Utils/Logger.hh
+   branches/socket-cleanup/Utils/Logger/AreaRegistry.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/AreaRegistry.cci   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/AreaRegistry.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/AreaRegistry.ih   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/AreaRegistry.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Config.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Config.ih   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Config.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/ConsoleTarget.cci   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/ConsoleTarget.hh
+   branches/socket-cleanup/Utils/Logger/Definitions.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Definitions.ih   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/FileTarget.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/FileTarget.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/IOStreamTarget.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/IOStreamTarget.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Levels.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Levels.ih   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Log.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Log.ih   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Log.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Logger.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Mainpage.dox   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Parameters.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Parameters.ih   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Parameters.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/SenfLog.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/StreamRegistry.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/StreamRegistry.cci   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/StreamRegistry.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/StreamRegistry.ih   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/StreamRegistry.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/StringTarget.cti   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/StringTarget.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Target.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Target.cci   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Target.cti   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Target.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Target.ih   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/Target.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/main.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/Logger/main.test.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/Mainpage.dox   (contents, props changed)
+   branches/socket-cleanup/Utils/TypeIdValue.cci
+   branches/socket-cleanup/Utils/TypeIdValue.cti
+   branches/socket-cleanup/Utils/TypeIdValue.hh
+   branches/socket-cleanup/Utils/TypeIdValue.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/TypeInfo.cc
+   branches/socket-cleanup/Utils/TypeInfo.hh
+   branches/socket-cleanup/Utils/TypeInfo.test.cc
+   branches/socket-cleanup/Utils/auto_unit_test.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/hexdump.ct   (contents, props changed)
+   branches/socket-cleanup/Utils/hexdump.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/hexdump.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/impl/membind.hh
+   branches/socket-cleanup/Utils/intrusive_refcount.cci
+   branches/socket-cleanup/Utils/intrusive_refcount.cti
+   branches/socket-cleanup/Utils/intrusive_refcount.hh
+   branches/socket-cleanup/Utils/intrusive_refcount.test.cc
+   branches/socket-cleanup/Utils/main.test.cc
+   branches/socket-cleanup/Utils/membind.hh
+   branches/socket-cleanup/Utils/membind.test.cc
+   branches/socket-cleanup/Utils/mpl.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/mpl.ih   (contents, props changed)
+   branches/socket-cleanup/Utils/mpl.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/pool_alloc_mixin.cti
+   branches/socket-cleanup/Utils/pool_alloc_mixin.hh
+   branches/socket-cleanup/Utils/pool_alloc_mixin.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/preprocessor.hh   (contents, props changed)
+   branches/socket-cleanup/Utils/preprocessor.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/safe_bool.cci
+   branches/socket-cleanup/Utils/safe_bool.cti
+   branches/socket-cleanup/Utils/safe_bool.hh
+   branches/socket-cleanup/Utils/safe_bool.test.cc   (contents, props changed)
+   branches/socket-cleanup/Utils/singleton.cti
+   branches/socket-cleanup/Utils/singleton.hh
+   branches/socket-cleanup/Utils/singleton.test.cc   (contents, props changed)
+   branches/socket-cleanup/config.hh   (contents, props changed)
+   branches/socket-cleanup/debian/copyright
+   branches/socket-cleanup/senf.dict
+   branches/socket-cleanup/senfscons/Doxygen.py
+   branches/socket-cleanup/senfscons/Mainpage.dox   (contents, props changed)
+
+Log:
+Merged revisions 576-577,580,582,584-596 via svnmerge from 
+<A HREF="https://svn.berlios.de/svnroot/repos/senf/trunk">https://svn.berlios.de/svnroot/repos/senf/trunk</A>
+
+.......
+  r585 | tho | 2007-12-28 22:12:16 +0100 (Fri, 28 Dec 2007) | 1 line
+  
+  NEW FILE HEADER / COPYRIGHT FORMAT
+.......
+  r586 | tho | 2007-12-29 17:45:22 +0100 (Sat, 29 Dec 2007) | 1 line
+  
+  set keyword svn property on more files
+.......
+  r587 | dw6 | 2008-01-08 17:06:22 +0100 (Tue, 08 Jan 2008) | 2 lines
+  
+  adding a function to replace the socket handle int the SocketSource / SocketSink. 
+  renaming the &quot;write helper&quot; / &quot;read helper&quot; classes (formerly named &quot;Sink&quot; / &quot;Source&quot;) to Writer and Reader
+.......
+  r588 | tho | 2008-01-09 10:11:07 +0100 (Wed, 09 Jan 2008) | 1 line
+  
+  fixed some file headers to the new format
+.......
+  r589 | jkaeber | 2008-01-11 10:00:09 +0100 (Fri, 11 Jan 2008) | 2 lines
+  
+  Access the ConsoleTarget singleton via instance()
+.......
+  r590 | jkaeber | 2008-01-11 11:41:29 +0100 (Fri, 11 Jan 2008) | 2 lines
+  
+  Typo: ethernet -&gt; eth
+.......
+  r591 | dw6 | 2008-01-11 16:44:00 +0100 (Fri, 11 Jan 2008) | 1 line
+  
+  adding accessor methods for the v4/v6FeedLists
+.......
+  r592 | dw6 | 2008-01-11 16:45:54 +0100 (Fri, 11 Jan 2008) | 1 line
+  
+  implementing initial dump
+.......
+  r593 | tho | 2008-01-14 13:40:05 +0100 (Mon, 14 Jan 2008) | 1 line
+  
+  made the TLVPacketType more generic
+.......
+  r594 | tho | 2008-01-14 14:17:14 +0100 (Mon, 14 Jan 2008) | 1 line
+  
+  fixed typo
+.......
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000456.html">[Senf-svn] r596 - in branches/socket-cleanup: Socket/Protocols/UN
+</A></li>
+	<LI>Next message: <A HREF="000458.html">[Senf-svn] r598 - trunk/Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#457">[ date ]</a>
+              <a href="thread.html#457">[ thread ]</a>
+              <a href="subject.html#457">[ subject ]</a>
+              <a href="author.html#457">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

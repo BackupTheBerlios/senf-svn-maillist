@@ -1,0 +1,556 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r585 - in trunk: . Examples/DVBAdapter	Examples/MCSniffer Examples/RateStuffer Examples/Sniffer	Examples/TCPClientServer PPI PPI/detail Packets/DefaultBundle	Packets/MPEGDVBBundle Scheduler Socket Socket/Protocols	Socket/Protocols/DVB Socket/Protocols/INet	Socket/Protocols/Raw Socket/Protocols/UN Utils Utils/Daemon	Utils/Logger Utils/impl debian senfscons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-December/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r585%20-%20in%20trunk%3A%20.%20Examples/DVBAdapter%0A%09Examples/MCSniffer%20Examples/RateStuffer%20Examples/Sniffer%0A%09Examples/TCPClientServer%20PPI%20PPI/detail%20Packets/DefaultBundle%0A%09Packets/MPEGDVBBundle%20Scheduler%20Socket%20Socket/Protocols%0A%09Socket/Protocols/DVB%20Socket/Protocols/INet%0A%09Socket/Protocols/Raw%20Socket/Protocols/UN%20Utils%20Utils/Daemon%0A%09Utils/Logger%20Utils/impl%20debian%20senfscons&In-Reply-To=%3C200712282115.lBSLFv26022587%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000444.html">
+   <LINK REL="Next"  HREF="000446.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r585 - in trunk: . Examples/DVBAdapter	Examples/MCSniffer Examples/RateStuffer Examples/Sniffer	Examples/TCPClientServer PPI PPI/detail Packets/DefaultBundle	Packets/MPEGDVBBundle Scheduler Socket Socket/Protocols	Socket/Protocols/DVB Socket/Protocols/INet	Socket/Protocols/Raw Socket/Protocols/UN Utils Utils/Daemon	Utils/Logger Utils/impl debian senfscons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r585%20-%20in%20trunk%3A%20.%20Examples/DVBAdapter%0A%09Examples/MCSniffer%20Examples/RateStuffer%20Examples/Sniffer%0A%09Examples/TCPClientServer%20PPI%20PPI/detail%20Packets/DefaultBundle%0A%09Packets/MPEGDVBBundle%20Scheduler%20Socket%20Socket/Protocols%0A%09Socket/Protocols/DVB%20Socket/Protocols/INet%0A%09Socket/Protocols/Raw%20Socket/Protocols/UN%20Utils%20Utils/Daemon%0A%09Utils/Logger%20Utils/impl%20debian%20senfscons&In-Reply-To=%3C200712282115.lBSLFv26022587%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r585 - in trunk: . Examples/DVBAdapter	Examples/MCSniffer Examples/RateStuffer Examples/Sniffer	Examples/TCPClientServer PPI PPI/detail Packets/DefaultBundle	Packets/MPEGDVBBundle Scheduler Socket Socket/Protocols	Socket/Protocols/DVB Socket/Protocols/INet	Socket/Protocols/Raw Socket/Protocols/UN Utils Utils/Daemon	Utils/Logger Utils/impl debian senfscons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Fri Dec 28 22:15:57 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000444.html">[Senf-svn] r584 - in branches/socket-cleanup/Socket: Protocols	Protocols/DVB Protocols/INet Protocols/UN
+</A></li>
+        <LI>Next message: <A HREF="000446.html">[Senf-svn] r586 - in trunk: . Examples Examples/RateStuffer	Examples/Sniffer PPI PPI/detail Packets Packets/DefaultBundle	Packets/MPEGDVBBundle Scheduler Socket Socket/Protocols/DVB	Socket/Protocols/INet Socket/Protocols/UN Utils Utils/Daemon	Utils/Logger senfscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#445">[ date ]</a>
+              <a href="thread.html#445">[ thread ]</a>
+              <a href="subject.html#445">[ subject ]</a>
+              <a href="author.html#445">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tho
+Date: Fri Dec 28 22:12:16 2007
+New Revision: 585
+
+Modified:
+   trunk/Examples/DVBAdapter/MPEdec.cc
+   trunk/Examples/DVBAdapter/ULEdec.cc
+   trunk/Examples/DVBAdapter/ULEdec.hh
+   trunk/Examples/DVBAdapter/frontend.cc
+   trunk/Examples/MCSniffer/MCSniffer.cc
+   trunk/Examples/RateStuffer/Mainpage.dox
+   trunk/Examples/RateStuffer/ratestuffer.cc
+   trunk/Examples/Sniffer/Mainpage.dox
+   trunk/Examples/Sniffer/Sniffer.cc
+   trunk/Examples/TCPClientServer/client.cc
+   trunk/Examples/TCPClientServer/server.cc
+   trunk/Mainpage.dox
+   trunk/PPI/ActiveFeeder.cc   (contents, props changed)
+   trunk/PPI/ActiveFeeder.cci   (contents, props changed)
+   trunk/PPI/ActiveFeeder.hh   (contents, props changed)
+   trunk/PPI/ActiveFeeder.test.cc   (contents, props changed)
+   trunk/PPI/CloneSource.cc   (contents, props changed)
+   trunk/PPI/CloneSource.hh   (contents, props changed)
+   trunk/PPI/CloneSource.test.cc   (contents, props changed)
+   trunk/PPI/Connectors.cc   (contents, props changed)
+   trunk/PPI/Connectors.cci   (contents, props changed)
+   trunk/PPI/Connectors.cti   (contents, props changed)
+   trunk/PPI/Connectors.hh   (contents, props changed)
+   trunk/PPI/Connectors.test.cc   (contents, props changed)
+   trunk/PPI/DebugEvent.cci   (contents, props changed)
+   trunk/PPI/DebugEvent.hh   (contents, props changed)
+   trunk/PPI/DebugEvent.test.cc   (contents, props changed)
+   trunk/PPI/DebugModules.cci   (contents, props changed)
+   trunk/PPI/DebugModules.cti   (contents, props changed)
+   trunk/PPI/DebugModules.hh   (contents, props changed)
+   trunk/PPI/DebugModules.test.cc   (contents, props changed)
+   trunk/PPI/DiscardSink.cc   (contents, props changed)
+   trunk/PPI/DiscardSink.hh   (contents, props changed)
+   trunk/PPI/DiscardSink.test.cc   (contents, props changed)
+   trunk/PPI/EventManager.cc   (contents, props changed)
+   trunk/PPI/EventManager.cci   (contents, props changed)
+   trunk/PPI/EventManager.ct   (contents, props changed)
+   trunk/PPI/EventManager.hh   (contents, props changed)
+   trunk/PPI/EventManager.test.cc   (contents, props changed)
+   trunk/PPI/Events.cc   (contents, props changed)
+   trunk/PPI/Events.cci   (contents, props changed)
+   trunk/PPI/Events.cti   (contents, props changed)
+   trunk/PPI/Events.hh   (contents, props changed)
+   trunk/PPI/Events.ih   (contents, props changed)
+   trunk/PPI/Events.test.cc   (contents, props changed)
+   trunk/PPI/IOEvent.cc   (contents, props changed)
+   trunk/PPI/IOEvent.cti   (contents, props changed)
+   trunk/PPI/IOEvent.hh   (contents, props changed)
+   trunk/PPI/IOEvent.test.cc   (contents, props changed)
+   trunk/PPI/IdleEvent.cc   (contents, props changed)
+   trunk/PPI/IdleEvent.cci   (contents, props changed)
+   trunk/PPI/IdleEvent.hh   (contents, props changed)
+   trunk/PPI/IdleEvent.test.cc   (contents, props changed)
+   trunk/PPI/IntervalTimer.cc   (contents, props changed)
+   trunk/PPI/IntervalTimer.cci   (contents, props changed)
+   trunk/PPI/IntervalTimer.hh   (contents, props changed)
+   trunk/PPI/IntervalTimer.test.cc   (contents, props changed)
+   trunk/PPI/Joins.cc   (contents, props changed)
+   trunk/PPI/Joins.cci   (contents, props changed)
+   trunk/PPI/Joins.cti   (contents, props changed)
+   trunk/PPI/Joins.hh   (contents, props changed)
+   trunk/PPI/Joins.test.cc   (contents, props changed)
+   trunk/PPI/Mainpage.dox
+   trunk/PPI/Module.cc   (contents, props changed)
+   trunk/PPI/Module.cci   (contents, props changed)
+   trunk/PPI/Module.ct   (contents, props changed)
+   trunk/PPI/Module.hh   (contents, props changed)
+   trunk/PPI/Module.ih   (contents, props changed)
+   trunk/PPI/Module.test.cc   (contents, props changed)
+   trunk/PPI/ModuleManager.cc   (contents, props changed)
+   trunk/PPI/ModuleManager.cci   (contents, props changed)
+   trunk/PPI/ModuleManager.hh   (contents, props changed)
+   trunk/PPI/ModuleManager.test.cc   (contents, props changed)
+   trunk/PPI/PPI.hh   (contents, props changed)
+   trunk/PPI/PassiveQueue.cc   (contents, props changed)
+   trunk/PPI/PassiveQueue.cci   (contents, props changed)
+   trunk/PPI/PassiveQueue.cti   (contents, props changed)
+   trunk/PPI/PassiveQueue.hh   (contents, props changed)
+   trunk/PPI/PassiveQueue.test.cc   (contents, props changed)
+   trunk/PPI/Queueing.cc   (contents, props changed)
+   trunk/PPI/Queueing.cci   (contents, props changed)
+   trunk/PPI/Queueing.hh   (contents, props changed)
+   trunk/PPI/Queueing.test.cc   (contents, props changed)
+   trunk/PPI/Route.cci   (contents, props changed)
+   trunk/PPI/Route.ct   (contents, props changed)
+   trunk/PPI/Route.cti   (contents, props changed)
+   trunk/PPI/Route.hh   (contents, props changed)
+   trunk/PPI/Route.ih   (contents, props changed)
+   trunk/PPI/Route.test.cc   (contents, props changed)
+   trunk/PPI/Setup.cci   (contents, props changed)
+   trunk/PPI/Setup.cti   (contents, props changed)
+   trunk/PPI/Setup.hh   (contents, props changed)
+   trunk/PPI/Setup.test.cc   (contents, props changed)
+   trunk/PPI/SocketSink.cci   (contents, props changed)
+   trunk/PPI/SocketSink.ct   (contents, props changed)
+   trunk/PPI/SocketSink.cti   (contents, props changed)
+   trunk/PPI/SocketSink.hh   (contents, props changed)
+   trunk/PPI/SocketSink.test.cc   (contents, props changed)
+   trunk/PPI/SocketSource.ct   (contents, props changed)
+   trunk/PPI/SocketSource.cti   (contents, props changed)
+   trunk/PPI/SocketSource.hh   (contents, props changed)
+   trunk/PPI/SocketSource.test.cc   (contents, props changed)
+   trunk/PPI/ThrottleBarrier.cc   (contents, props changed)
+   trunk/PPI/ThrottleBarrier.hh   (contents, props changed)
+   trunk/PPI/ThrottleBarrier.test.cc   (contents, props changed)
+   trunk/PPI/detail/Callback.cti
+   trunk/PPI/detail/Callback.hh
+   trunk/PPI/detail/EventBinding.cc
+   trunk/PPI/detail/EventBinding.cci
+   trunk/PPI/detail/EventBinding.cti
+   trunk/PPI/detail/EventBinding.hh
+   trunk/PPI/main.test.cc   (contents, props changed)
+   trunk/PPI/predecl.hh   (contents, props changed)
+   trunk/Packets/ArrayParser.ct
+   trunk/Packets/ArrayParser.cti
+   trunk/Packets/ArrayParser.hh
+   trunk/Packets/ArrayParser.ih
+   trunk/Packets/ArrayParser.test.cc
+   trunk/Packets/DataPacket.hh
+   trunk/Packets/DefaultBundle/EthernetPacket.cc
+   trunk/Packets/DefaultBundle/EthernetPacket.hh
+   trunk/Packets/DefaultBundle/EthernetPacket.test.cc
+   trunk/Packets/DefaultBundle/IPv4Packet.cc
+   trunk/Packets/DefaultBundle/IPv4Packet.hh
+   trunk/Packets/DefaultBundle/IPv4Packet.test.cc
+   trunk/Packets/DefaultBundle/IPv6Extensions.cc
+   trunk/Packets/DefaultBundle/IPv6Extensions.hh
+   trunk/Packets/DefaultBundle/IPv6Extensions.test.cc
+   trunk/Packets/DefaultBundle/IPv6Packet.cc
+   trunk/Packets/DefaultBundle/IPv6Packet.hh
+   trunk/Packets/DefaultBundle/IPv6Packet.test.cc
+   trunk/Packets/DefaultBundle/LlcSnapPacket.cc
+   trunk/Packets/DefaultBundle/LlcSnapPacket.hh
+   trunk/Packets/DefaultBundle/LlcSnapPacket.test.cc
+   trunk/Packets/DefaultBundle/Mainpage.dox
+   trunk/Packets/DefaultBundle/UDPPacket.cc
+   trunk/Packets/DefaultBundle/UDPPacket.hh
+   trunk/Packets/DefaultBundle/UDPPacket.test.cc
+   trunk/Packets/DefaultBundle/main.test.cc
+   trunk/Packets/IntParser.hh
+   trunk/Packets/IntParser.ih
+   trunk/Packets/IntParser.test.cc
+   trunk/Packets/ListBParser.cti
+   trunk/Packets/ListBParser.hh
+   trunk/Packets/ListBParser.ih
+   trunk/Packets/ListBParser.test.cc
+   trunk/Packets/ListNParser.ct
+   trunk/Packets/ListNParser.cti
+   trunk/Packets/ListNParser.hh
+   trunk/Packets/ListNParser.ih
+   trunk/Packets/ListNParser.test.cc
+   trunk/Packets/ListParser.ct
+   trunk/Packets/ListParser.cti
+   trunk/Packets/ListParser.dox
+   trunk/Packets/ListParser.hh
+   trunk/Packets/ListParser.ih
+   trunk/Packets/ListParser.test.cc
+   trunk/Packets/MPEGDVBBundle/DTCPPacket.cc
+   trunk/Packets/MPEGDVBBundle/DTCPPacket.hh
+   trunk/Packets/MPEGDVBBundle/GREPacket.cc
+   trunk/Packets/MPEGDVBBundle/GREPacket.hh
+   trunk/Packets/MPEGDVBBundle/GREPacket.test.cc
+   trunk/Packets/MPEGDVBBundle/MPEGDVBBundle.dox
+   trunk/Packets/MPEGDVBBundle/MPESection.cc
+   trunk/Packets/MPEGDVBBundle/MPESection.hh
+   trunk/Packets/MPEGDVBBundle/MPESection.test.cc
+   trunk/Packets/MPEGDVBBundle/SNDUPacket.cc
+   trunk/Packets/MPEGDVBBundle/SNDUPacket.hh
+   trunk/Packets/MPEGDVBBundle/TLVPacket.cc
+   trunk/Packets/MPEGDVBBundle/TLVPacket.ct
+   trunk/Packets/MPEGDVBBundle/TLVPacket.hh
+   trunk/Packets/MPEGDVBBundle/TLVPacket.test.cc
+   trunk/Packets/MPEGDVBBundle/TransportPacket.cc
+   trunk/Packets/MPEGDVBBundle/TransportPacket.hh
+   trunk/Packets/MPEGDVBBundle/TransportPacket.test.cc
+   trunk/Packets/MPEGDVBBundle/main.test.cc
+   trunk/Packets/Packet.cc
+   trunk/Packets/Packet.cci
+   trunk/Packets/Packet.ct
+   trunk/Packets/Packet.cti
+   trunk/Packets/Packet.hh
+   trunk/Packets/Packet.test.cc
+   trunk/Packets/PacketData.cc
+   trunk/Packets/PacketData.cci
+   trunk/Packets/PacketData.cti
+   trunk/Packets/PacketData.hh
+   trunk/Packets/PacketData.test.cc
+   trunk/Packets/PacketImpl.cc
+   trunk/Packets/PacketImpl.cci
+   trunk/Packets/PacketImpl.cti
+   trunk/Packets/PacketImpl.hh
+   trunk/Packets/PacketImpl.test.cc
+   trunk/Packets/PacketInterpreter.cc
+   trunk/Packets/PacketInterpreter.cci
+   trunk/Packets/PacketInterpreter.ct
+   trunk/Packets/PacketInterpreter.cti
+   trunk/Packets/PacketInterpreter.hh
+   trunk/Packets/PacketInterpreter.test.cc
+   trunk/Packets/PacketParser.cci
+   trunk/Packets/PacketParser.ct
+   trunk/Packets/PacketParser.cti
+   trunk/Packets/PacketParser.hh
+   trunk/Packets/PacketParser.ih
+   trunk/Packets/PacketParser.test.cc
+   trunk/Packets/PacketRegistry.cc
+   trunk/Packets/PacketRegistry.ct
+   trunk/Packets/PacketRegistry.cti
+   trunk/Packets/PacketRegistry.hh
+   trunk/Packets/PacketRegistry.ih
+   trunk/Packets/PacketRegistry.test.cc
+   trunk/Packets/PacketType.cci
+   trunk/Packets/PacketType.cti
+   trunk/Packets/PacketType.hh
+   trunk/Packets/PacketTypes.hh
+   trunk/Packets/Packets.hh
+   trunk/Packets/ParseHelpers.hh
+   trunk/Packets/ParseHelpers.ih
+   trunk/Packets/ParseHelpers.test.cc
+   trunk/Packets/VariantParser.ct
+   trunk/Packets/VariantParser.cti
+   trunk/Packets/VariantParser.dox
+   trunk/Packets/VariantParser.hh
+   trunk/Packets/VariantParser.ih
+   trunk/Packets/VariantParser.test.cc
+   trunk/Packets/VectorParser.ct
+   trunk/Packets/VectorParser.cti
+   trunk/Packets/VectorParser.dox
+   trunk/Packets/VectorParser.hh
+   trunk/Packets/VectorParser.ih
+   trunk/Packets/VectorParser.test.cc
+   trunk/Packets/main.test.cc
+   trunk/Packets/main.test.hh
+   trunk/Packets/parse_fixed_setup.hh
+   trunk/Packets/parse_setup.hh
+   trunk/Scheduler/ClockService.cc
+   trunk/Scheduler/ClockService.cci
+   trunk/Scheduler/ClockService.hh
+   trunk/Scheduler/ClockService.test.cc
+   trunk/Scheduler/Scheduler.cc
+   trunk/Scheduler/Scheduler.cci
+   trunk/Scheduler/Scheduler.cti
+   trunk/Scheduler/Scheduler.hh
+   trunk/Scheduler/Scheduler.test.cc
+   trunk/Scheduler/main.test.cc
+   trunk/Socket/AddressingPolicy.hh
+   trunk/Socket/BufferingPolicy.cc
+   trunk/Socket/BufferingPolicy.hh
+   trunk/Socket/ClientSocketHandle.ct
+   trunk/Socket/ClientSocketHandle.cti
+   trunk/Socket/ClientSocketHandle.hh
+   trunk/Socket/ClientSocketHandle.ih
+   trunk/Socket/ClientSocketHandle.test.cc
+   trunk/Socket/CommunicationPolicy.cc
+   trunk/Socket/CommunicationPolicy.cci
+   trunk/Socket/CommunicationPolicy.cti
+   trunk/Socket/CommunicationPolicy.hh
+   trunk/Socket/FileHandle.cc
+   trunk/Socket/FileHandle.cci
+   trunk/Socket/FileHandle.hh
+   trunk/Socket/FileHandle.ih
+   trunk/Socket/FileHandle.test.cc
+   trunk/Socket/FramingPolicy.hh
+   trunk/Socket/NetdeviceController.cc
+   trunk/Socket/NetdeviceController.hh
+   trunk/Socket/NetdeviceController.test.cc
+   trunk/Socket/ProtocolClientSocketHandle.cti
+   trunk/Socket/ProtocolClientSocketHandle.hh
+   trunk/Socket/ProtocolClientSocketHandle.mpp
+   trunk/Socket/ProtocolClientSocketHandle.test.cc
+   trunk/Socket/ProtocolServerSocketHandle.cti
+   trunk/Socket/ProtocolServerSocketHandle.hh
+   trunk/Socket/ProtocolServerSocketHandle.mpp
+   trunk/Socket/ProtocolServerSocketHandle.test.cc
+   trunk/Socket/Protocols/BSDSocketProtocol.cc
+   trunk/Socket/Protocols/BSDSocketProtocol.hh
+   trunk/Socket/Protocols/DVB.hh
+   trunk/Socket/Protocols/DVB/DVB.hh
+   trunk/Socket/Protocols/DVB/DVBDemuxHandles.cc
+   trunk/Socket/Protocols/DVB/DVBDemuxHandles.hh
+   trunk/Socket/Protocols/DVB/DVBDemuxProtocol.cc
+   trunk/Socket/Protocols/DVB/DVBDemuxProtocol.hh
+   trunk/Socket/Protocols/DVB/DVBFrontendHandle.cc
+   trunk/Socket/Protocols/DVB/DVBFrontendHandle.hh
+   trunk/Socket/Protocols/GenericAddressingPolicy.cc
+   trunk/Socket/Protocols/GenericAddressingPolicy.cti
+   trunk/Socket/Protocols/GenericAddressingPolicy.hh
+   trunk/Socket/Protocols/INet.hh
+   trunk/Socket/Protocols/INet/ConnectedRawInetSocketHandle.cc
+   trunk/Socket/Protocols/INet/ConnectedRawInetSocketHandle.hh
+   trunk/Socket/Protocols/INet/ConnectedUDPSocketHandle.cc
+   trunk/Socket/Protocols/INet/ConnectedUDPSocketHandle.hh
+   trunk/Socket/Protocols/INet/INet.hh
+   trunk/Socket/Protocols/INet/INet4Address.cc
+   trunk/Socket/Protocols/INet/INet4Address.cci
+   trunk/Socket/Protocols/INet/INet4Address.ct
+   trunk/Socket/Protocols/INet/INet4Address.cti
+   trunk/Socket/Protocols/INet/INet4Address.hh
+   trunk/Socket/Protocols/INet/INet4Address.test.cc
+   trunk/Socket/Protocols/INet/INet6Address.cc
+   trunk/Socket/Protocols/INet/INet6Address.cci
+   trunk/Socket/Protocols/INet/INet6Address.ct
+   trunk/Socket/Protocols/INet/INet6Address.cti
+   trunk/Socket/Protocols/INet/INet6Address.hh
+   trunk/Socket/Protocols/INet/INet6Address.ih
+   trunk/Socket/Protocols/INet/INet6Address.test.cc
+   trunk/Socket/Protocols/INet/INetAddressing.cc
+   trunk/Socket/Protocols/INet/INetAddressing.cci
+   trunk/Socket/Protocols/INet/INetAddressing.hh
+   trunk/Socket/Protocols/INet/INetAddressing.test.cc
+   trunk/Socket/Protocols/INet/INetProtocol.cc
+   trunk/Socket/Protocols/INet/INetProtocol.hh
+   trunk/Socket/Protocols/INet/RawInetProtocol.cc
+   trunk/Socket/Protocols/INet/RawInetProtocol.hh
+   trunk/Socket/Protocols/INet/RawInetSocketHandle.cc
+   trunk/Socket/Protocols/INet/RawInetSocketHandle.hh
+   trunk/Socket/Protocols/INet/RawInetSocketHandle.test.cc
+   trunk/Socket/Protocols/INet/TCPProtocol.cc
+   trunk/Socket/Protocols/INet/TCPProtocol.hh
+   trunk/Socket/Protocols/INet/TCPSocketHandle.cc
+   trunk/Socket/Protocols/INet/TCPSocketHandle.hh
+   trunk/Socket/Protocols/INet/TCPSocketHandle.test.cc
+   trunk/Socket/Protocols/INet/UDPProtocol.cc
+   trunk/Socket/Protocols/INet/UDPProtocol.hh
+   trunk/Socket/Protocols/INet/UDPSocketHandle.cc
+   trunk/Socket/Protocols/INet/UDPSocketHandle.hh
+   trunk/Socket/Protocols/INet/UDPSocketHandle.test.cc
+   trunk/Socket/Protocols/INet/main.test.cc
+   trunk/Socket/Protocols/Raw.hh
+   trunk/Socket/Protocols/Raw/LLAddressing.cc
+   trunk/Socket/Protocols/Raw/LLAddressing.cci
+   trunk/Socket/Protocols/Raw/LLAddressing.hh
+   trunk/Socket/Protocols/Raw/LLAddressing.test.cc
+   trunk/Socket/Protocols/Raw/MACAddress.cc
+   trunk/Socket/Protocols/Raw/MACAddress.cci
+   trunk/Socket/Protocols/Raw/MACAddress.ct
+   trunk/Socket/Protocols/Raw/MACAddress.hh
+   trunk/Socket/Protocols/Raw/MACAddress.test.cc
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.cc
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.hh
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.test.cc
+   trunk/Socket/Protocols/Raw/Raw.hh
+   trunk/Socket/Protocols/Raw/TunTapSocketHandle.cc
+   trunk/Socket/Protocols/Raw/TunTapSocketHandle.hh
+   trunk/Socket/Protocols/Raw/TunTapSocketHandle.test.cc
+   trunk/Socket/Protocols/Raw/main.test.cc
+   trunk/Socket/Protocols/UN/ConnectedUNDatagramSocketHandle.cc
+   trunk/Socket/Protocols/UN/ConnectedUNDatagramSocketHandle.hh
+   trunk/Socket/Protocols/UN/UN.hh
+   trunk/Socket/Protocols/UN/UNAddressing.cc
+   trunk/Socket/Protocols/UN/UNAddressing.hh
+   trunk/Socket/Protocols/UN/UNAddressing.test.cc
+   trunk/Socket/Protocols/UN/UNDatagramSocketHandle.cc
+   trunk/Socket/Protocols/UN/UNDatagramSocketHandle.hh
+   trunk/Socket/Protocols/UN/UNDatagramSocketHandle.test.cc
+   trunk/Socket/Protocols/UN/UNProtocol.cc
+   trunk/Socket/Protocols/UN/UNProtocol.hh
+   trunk/Socket/Protocols/UN/UNProtocol.test.cc
+   trunk/Socket/Protocols/UN/main.test.cc
+   trunk/Socket/ReadWritePolicy.cc
+   trunk/Socket/ReadWritePolicy.cti
+   trunk/Socket/ReadWritePolicy.hh
+   trunk/Socket/ServerSocketHandle.cti
+   trunk/Socket/ServerSocketHandle.hh
+   trunk/Socket/ServerSocketHandle.test.cc
+   trunk/Socket/Socket.hh
+   trunk/Socket/SocketHandle.cc
+   trunk/Socket/SocketHandle.cci
+   trunk/Socket/SocketHandle.ct
+   trunk/Socket/SocketHandle.cti
+   trunk/Socket/SocketHandle.hh
+   trunk/Socket/SocketHandle.ih
+   trunk/Socket/SocketHandle.test.cc
+   trunk/Socket/SocketPolicy.ct
+   trunk/Socket/SocketPolicy.hh
+   trunk/Socket/SocketPolicy.ih
+   trunk/Socket/SocketPolicy.test.cc
+   trunk/Socket/SocketPolicy.test.hh
+   trunk/Socket/SocketProtocol.cc
+   trunk/Socket/SocketProtocol.cci
+   trunk/Socket/SocketProtocol.cti
+   trunk/Socket/SocketProtocol.hh
+   trunk/Socket/SocketProtocol.test.cc
+   trunk/Socket/SocketProtocol.test.hh
+   trunk/Socket/main.test.cc
+   trunk/Utils/Buffer.hh
+   trunk/Utils/Buffer.test.cc
+   trunk/Utils/Daemon.hh
+   trunk/Utils/Daemon/Daemon.cc
+   trunk/Utils/Daemon/Daemon.hh
+   trunk/Utils/Daemon/Daemon.ih
+   trunk/Utils/Daemon/Daemon.test.cc
+   trunk/Utils/Daemon/Mainpage.dox
+   trunk/Utils/Daemon/main.test.cc
+   trunk/Utils/Exception.cc
+   trunk/Utils/Exception.cti
+   trunk/Utils/Exception.hh
+   trunk/Utils/Exception.test.cc
+   trunk/Utils/IpChecksum.cci
+   trunk/Utils/IpChecksum.cti
+   trunk/Utils/IpChecksum.hh
+   trunk/Utils/IpChecksum.test.cc
+   trunk/Utils/IteratorTraits.cti
+   trunk/Utils/IteratorTraits.hh
+   trunk/Utils/IteratorTraits.ih
+   trunk/Utils/IteratorTraits.test.cc
+   trunk/Utils/Logger.hh
+   trunk/Utils/Logger/AreaRegistry.cc
+   trunk/Utils/Logger/AreaRegistry.cci
+   trunk/Utils/Logger/AreaRegistry.hh
+   trunk/Utils/Logger/AreaRegistry.ih
+   trunk/Utils/Logger/AreaRegistry.test.cc
+   trunk/Utils/Logger/Config.hh
+   trunk/Utils/Logger/Config.ih
+   trunk/Utils/Logger/Config.test.cc
+   trunk/Utils/Logger/ConsoleTarget.cci
+   trunk/Utils/Logger/ConsoleTarget.hh
+   trunk/Utils/Logger/Definitions.hh
+   trunk/Utils/Logger/Definitions.ih
+   trunk/Utils/Logger/FileTarget.cc
+   trunk/Utils/Logger/FileTarget.hh
+   trunk/Utils/Logger/IOStreamTarget.cc
+   trunk/Utils/Logger/IOStreamTarget.hh
+   trunk/Utils/Logger/Levels.hh
+   trunk/Utils/Logger/Levels.ih
+   trunk/Utils/Logger/Log.hh
+   trunk/Utils/Logger/Log.ih
+   trunk/Utils/Logger/Log.test.cc
+   trunk/Utils/Logger/Logger.hh
+   trunk/Utils/Logger/Mainpage.dox
+   trunk/Utils/Logger/Parameters.hh
+   trunk/Utils/Logger/Parameters.ih
+   trunk/Utils/Logger/Parameters.test.cc
+   trunk/Utils/Logger/SenfLog.hh
+   trunk/Utils/Logger/StreamRegistry.cc
+   trunk/Utils/Logger/StreamRegistry.cci
+   trunk/Utils/Logger/StreamRegistry.hh
+   trunk/Utils/Logger/StreamRegistry.ih
+   trunk/Utils/Logger/StreamRegistry.test.cc
+   trunk/Utils/Logger/StringTarget.cti
+   trunk/Utils/Logger/StringTarget.hh
+   trunk/Utils/Logger/Target.cc
+   trunk/Utils/Logger/Target.cci
+   trunk/Utils/Logger/Target.cti
+   trunk/Utils/Logger/Target.hh
+   trunk/Utils/Logger/Target.ih
+   trunk/Utils/Logger/Target.test.cc
+   trunk/Utils/Logger/main.test.cc
+   trunk/Utils/Logger/main.test.hh
+   trunk/Utils/TypeIdValue.cci
+   trunk/Utils/TypeIdValue.cti
+   trunk/Utils/TypeIdValue.hh
+   trunk/Utils/TypeIdValue.test.cc
+   trunk/Utils/TypeInfo.cc
+   trunk/Utils/TypeInfo.hh
+   trunk/Utils/TypeInfo.test.cc
+   trunk/Utils/auto_unit_test.hh
+   trunk/Utils/hexdump.ct
+   trunk/Utils/hexdump.hh
+   trunk/Utils/hexdump.test.cc
+   trunk/Utils/impl/membind.hh
+   trunk/Utils/intrusive_refcount.cci
+   trunk/Utils/intrusive_refcount.cti
+   trunk/Utils/intrusive_refcount.hh
+   trunk/Utils/intrusive_refcount.test.cc
+   trunk/Utils/main.test.cc
+   trunk/Utils/membind.hh
+   trunk/Utils/membind.test.cc
+   trunk/Utils/mpl.hh
+   trunk/Utils/mpl.ih
+   trunk/Utils/mpl.test.cc
+   trunk/Utils/pool_alloc_mixin.cti
+   trunk/Utils/pool_alloc_mixin.hh
+   trunk/Utils/pool_alloc_mixin.test.cc
+   trunk/Utils/preprocessor.hh
+   trunk/Utils/preprocessor.test.cc
+   trunk/Utils/safe_bool.cci
+   trunk/Utils/safe_bool.cti
+   trunk/Utils/safe_bool.hh
+   trunk/Utils/safe_bool.test.cc
+   trunk/Utils/singleton.cti
+   trunk/Utils/singleton.hh
+   trunk/Utils/singleton.test.cc
+   trunk/config.hh
+   trunk/debian/copyright
+   trunk/senf.dict
+   trunk/senfscons/Doxygen.py
+   trunk/senfscons/Mainpage.dox
+
+Log:
+NEW FILE HEADER / COPYRIGHT FORMAT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000444.html">[Senf-svn] r584 - in branches/socket-cleanup/Socket: Protocols	Protocols/DVB Protocols/INet Protocols/UN
+</A></li>
+	<LI>Next message: <A HREF="000446.html">[Senf-svn] r586 - in trunk: . Examples Examples/RateStuffer	Examples/Sniffer PPI PPI/detail Packets Packets/DefaultBundle	Packets/MPEGDVBBundle Scheduler Socket Socket/Protocols/DVB	Socket/Protocols/INet Socket/Protocols/UN Utils Utils/Daemon	Utils/Logger senfscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#445">[ date ]</a>
+              <a href="thread.html#445">[ thread ]</a>
+              <a href="subject.html#445">[ subject ]</a>
+              <a href="author.html#445">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

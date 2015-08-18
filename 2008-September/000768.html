@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r911 - in trunk: Console Examples/MCSniffer	Examples/Sniffer Examples/TCPClientServer PPI Scheduler	Socket Utils/Daemon Utils/Logger
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r911%20-%20in%20trunk%3A%20Console%20Examples/MCSniffer%0A%09Examples/Sniffer%20Examples/TCPClientServer%20PPI%20Scheduler%0A%09Socket%20Utils/Daemon%20Utils/Logger&In-Reply-To=%3C200809191404.m8JE4C01027692%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000767.html">
+   <LINK REL="Next"  HREF="000769.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r911 - in trunk: Console Examples/MCSniffer	Examples/Sniffer Examples/TCPClientServer PPI Scheduler	Socket Utils/Daemon Utils/Logger</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r911%20-%20in%20trunk%3A%20Console%20Examples/MCSniffer%0A%09Examples/Sniffer%20Examples/TCPClientServer%20PPI%20Scheduler%0A%09Socket%20Utils/Daemon%20Utils/Logger&In-Reply-To=%3C200809191404.m8JE4C01027692%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r911 - in trunk: Console Examples/MCSniffer	Examples/Sniffer Examples/TCPClientServer PPI Scheduler	Socket Utils/Daemon Utils/Logger">subversion at senf.berlios.de
+       </A><BR>
+    <I>Fri Sep 19 16:04:12 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000767.html">[Senf-svn] r910 - trunk/Scheduler
+</A></li>
+        <LI>Next message: <A HREF="000769.html">[Senf-svn] r912 - trunk/Scheduler
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#768">[ date ]</a>
+              <a href="thread.html#768">[ thread ]</a>
+              <a href="subject.html#768">[ subject ]</a>
+              <a href="author.html#768">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Fri Sep 19 16:03:55 2008
+New Revision: 911
+
+Modified:
+   trunk/Console/Mainpage.dox
+   trunk/Console/Readline.cc
+   trunk/Console/Server.cc
+   trunk/Console/testServer.cc
+   trunk/Examples/MCSniffer/MCSniffer.cc
+   trunk/Examples/Sniffer/Sniffer.cc
+   trunk/Examples/TCPClientServer/server.cc
+   trunk/Examples/UDPClientServer/udpServer.cc
+   trunk/PPI/EventManager.cci
+   trunk/PPI/IOEvent.hh
+   trunk/PPI/ModuleManager.cc
+   trunk/PPI/SocketSink.test.cc
+   trunk/PPI/SocketSource.test.cc
+   trunk/Scheduler/FIFORunner.cc
+   trunk/Scheduler/FIFORunner.cci
+   trunk/Scheduler/FIFORunner.hh
+   trunk/Scheduler/FdEvent.cc
+   trunk/Scheduler/FdEvent.cci
+   trunk/Scheduler/FdEvent.cti
+   trunk/Scheduler/FdEvent.hh
+   trunk/Scheduler/FdEvent.ih
+   trunk/Scheduler/FdEvent.test.cc
+   trunk/Scheduler/FdManager.cc
+   trunk/Scheduler/FdManager.cci
+   trunk/Scheduler/FdManager.hh
+   trunk/Scheduler/Mainpage.dox
+   trunk/Scheduler/Poller.ct
+   trunk/Scheduler/Poller.cti
+   trunk/Scheduler/Poller.hh
+   trunk/Scheduler/ReadHelper.ct
+   trunk/Scheduler/Scheduler.cc
+   trunk/Scheduler/Scheduler.cci
+   trunk/Scheduler/Scheduler.hh
+   trunk/Scheduler/Scheduler.test.cc
+   trunk/Scheduler/SignalEvent.cc
+   trunk/Scheduler/SignalEvent.cci
+   trunk/Scheduler/SignalEvent.hh
+   trunk/Scheduler/SignalEvent.ih
+   trunk/Scheduler/SignalEvent.test.cc
+   trunk/Scheduler/TimerEvent.cc
+   trunk/Scheduler/TimerEvent.cci
+   trunk/Scheduler/TimerEvent.hh
+   trunk/Scheduler/TimerEvent.ih
+   trunk/Scheduler/TimerEvent.test.cc
+   trunk/Scheduler/WriteHelper.ct
+   trunk/Scheduler/WriteHelper.hh
+   trunk/Socket/FileHandle.hh
+   trunk/Utils/Daemon/Daemon.cc
+   trunk/Utils/Logger/Config.hh
+
+Log:
+Scheduler: Remove obsolete 'Scheduler' class
+Scheduler: Move remaining non-public implementation classes into 'detail' namespace
+Adjust rest of SENF accordingly
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000767.html">[Senf-svn] r910 - trunk/Scheduler
+</A></li>
+	<LI>Next message: <A HREF="000769.html">[Senf-svn] r912 - trunk/Scheduler
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#768">[ date ]</a>
+              <a href="thread.html#768">[ thread ]</a>
+              <a href="subject.html#768">[ subject ]</a>
+              <a href="author.html#768">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

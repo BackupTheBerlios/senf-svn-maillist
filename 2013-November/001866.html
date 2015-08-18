@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r2027 - in trunk/senf: PPI Packets Socket	Socket/Protocols/INet Socket/Protocols/Raw Utils	Utils/Console Utils/Cpp11Support Utils/Logger
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2013-November/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r2027%20-%20in%20trunk/senf%3A%20PPI%20Packets%20Socket%0A%09Socket/Protocols/INet%20Socket/Protocols/Raw%20Utils%0A%09Utils/Console%20Utils/Cpp11Support%20Utils/Logger&In-Reply-To=%3C20131127095348.5EEC355B0C%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001865.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r2027 - in trunk/senf: PPI Packets Socket	Socket/Protocols/INet Socket/Protocols/Raw Utils	Utils/Console Utils/Cpp11Support Utils/Logger</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r2027%20-%20in%20trunk/senf%3A%20PPI%20Packets%20Socket%0A%09Socket/Protocols/INet%20Socket/Protocols/Raw%20Utils%0A%09Utils/Console%20Utils/Cpp11Support%20Utils/Logger&In-Reply-To=%3C20131127095348.5EEC355B0C%40scm.berlios.de%3E"
+       TITLE="[Senf-svn] r2027 - in trunk/senf: PPI Packets Socket	Socket/Protocols/INet Socket/Protocols/Raw Utils	Utils/Console Utils/Cpp11Support Utils/Logger">subversion at senf.berlios.de
+       </A><BR>
+    <I>Wed Nov 27 10:53:48 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001865.html">[Senf-svn] r2026 - in trunk/senf: PPI Packets Socket/Protocols/DVB	Socket/Protocols/INet Socket/Protocols/Raw	Socket/Protocols/UN Utils Utils/Console
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1866">[ date ]</a>
+              <a href="thread.html#1866">[ thread ]</a>
+              <a href="subject.html#1866">[ subject ]</a>
+              <a href="author.html#1866">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tho
+Date: Wed Nov 27 10:53:47 2013
+New Revision: 2027
+
+Log:
+Socket: MACAddress is now std hashable
+Utils: split Cpp11Support file
+Socket: fixed unit test for ubuntu saucy
+
+Added:
+   trunk/senf/Utils/Cpp11Support/
+   trunk/senf/Utils/Cpp11Support/features.hh
+   trunk/senf/Utils/Cpp11Support/smart_ptr.hh
+      - copied, changed from r2026, trunk/senf/Utils/Cpp11Support.hh
+Deleted:
+   trunk/senf/Utils/Cpp11Support.hh
+Modified:
+   trunk/senf/PPI/Module.cc
+   trunk/senf/PPI/Module.hh
+   trunk/senf/Packets/ParseHelpers.ih
+   trunk/senf/Socket/ClientSocketHandle.cti
+   trunk/senf/Socket/ClientSocketHandle.hh
+   trunk/senf/Socket/FileHandle.cci
+   trunk/senf/Socket/FileHandle.hh
+   trunk/senf/Socket/ProtocolClientSocketHandle.mpp
+   trunk/senf/Socket/Protocols/INet/TCPSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/INet/UDPSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/Raw/MACAddress.cci
+   trunk/senf/Socket/Protocols/Raw/MACAddress.hh
+   trunk/senf/Socket/Protocols/Raw/MACAddress.test.cc
+   trunk/senf/Socket/ReadWritePolicy.cc
+   trunk/senf/Socket/ServerSocketHandle.cti
+   trunk/senf/Socket/ServerSocketHandle.hh
+   trunk/senf/Socket/SocketHandle.cci
+   trunk/senf/Socket/SocketHandle.cti
+   trunk/senf/Socket/SocketHandle.hh
+   trunk/senf/Socket/SocketHandle.ih
+   trunk/senf/Socket/SocketProtocol.cti
+   trunk/senf/Socket/SocketProtocol.hh
+   trunk/senf/Utils/Console/Traits.hh
+   trunk/senf/Utils/Logger/FileTarget.cc
+   trunk/senf/Utils/Logger/SyslogTarget.cc
+   trunk/senf/Utils/Logger/SyslogUDPTarget.cc
+   trunk/senf/Utils/Logger/Target.cc
+   trunk/senf/Utils/Logger/Target.ih
+   trunk/senf/Utils/Logger/TimeSource.cci
+   trunk/senf/Utils/Logger/TimeSource.hh
+   trunk/senf/Utils/Logger/TimeSource.ih
+   trunk/senf/Utils/Statistics.cti
+   trunk/senf/Utils/Statistics.hh
+   trunk/senf/Utils/StatisticsTargets.cci
+   trunk/senf/Utils/StatisticsTargets.cti
+   trunk/senf/Utils/StatisticsTargets.hh
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001865.html">[Senf-svn] r2026 - in trunk/senf: PPI Packets Socket/Protocols/DVB	Socket/Protocols/INet Socket/Protocols/Raw	Socket/Protocols/UN Utils Utils/Console
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1866">[ date ]</a>
+              <a href="thread.html#1866">[ thread ]</a>
+              <a href="subject.html#1866">[ subject ]</a>
+              <a href="author.html#1866">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

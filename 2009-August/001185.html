@@ -1,0 +1,2631 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1316 - in trunk: . Examples Examples/MCSniffer	Examples/RateStuffer Examples/Sniffer	Examples/UDPClientServer HowTos HowTos/NewPacket PPI	PPI/detail Packets Packets/80211Bundle Packets/80221Bundle	Packets/DefaultBundle Packets/DefaultBundle/extra_tests	Packets/MPEGDVBBundle Scheduler Socket Socket/Protocols	Socket/Protocols/DVB Socket/Protocols/INet	Socket/Protocols/Raw Socket/Protocols/UN Utils Utils/Console	Utils/Daemon Utils/Logger Utils/Termlib Utils/impl doclib	include/senf senf senf/PPI senf/PPI/detail senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/DefaultBundle senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Socket/Protocols/UN senf/Utils senf/Utils/Console	senf/Utils/Daemon senf/Utils/Logger senf/Utils/Termlib	senf/Utils/impl
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1316%20-%20in%20trunk%3A%20.%20Examples%20Examples/MCSniffer%0A%09Examples/RateStuffer%20Examples/Sniffer%0A%09Examples/UDPClientServer%20HowTos%20HowTos/NewPacket%20PPI%0A%09PPI/detail%20Packets%20Packets/80211Bundle%20Packets/80221Bundle%0A%09Packets/DefaultBundle%20Packets/DefaultBundle/extra_tests%0A%09Packets/MPEGDVBBundle%20Scheduler%20Socket%20Socket/Protocols%0A%09Socket/Protocols/DVB%20Socket/Protocols/INet%0A%09Socket/Protocols/Raw%20Socket/Protocols/UN%20Utils%20Utils/Console%0A%09Utils/Daemon%20Utils/Logger%20Utils/Termlib%20Utils/impl%20doclib%0A%09include/senf%20senf%20senf/PPI%20senf/PPI/detail%20senf/Packets%0A%09senf/Packets/80211Bundle%20senf/Packets/80221Bundle%0A%09senf/Packets/DefaultBundle%20senf/Packets/DefaultBundle/extra_tests%0A%09senf/Packets/MPEGDVBBundle%20senf/Scheduler%20senf/Socket%0A%09senf/Socket/Protocols%20senf/Socket/Protocols/DVB%0A%09senf/Socket/Protocols/INet%20senf/Socket/Protocols/Raw%0A%09senf/Socket/Protocols/UN%20senf/Utils%20senf/Utils/Console%0A%09senf/Utils/Daemon%20senf/Utils/Logger%20senf/Utils/Termlib%0A%09senf/Utils/impl&In-Reply-To=%3C200908211404.n7LE4mMs017172%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001172.html">
+   <LINK REL="Next"  HREF="001173.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1316 - in trunk: . Examples Examples/MCSniffer	Examples/RateStuffer Examples/Sniffer	Examples/UDPClientServer HowTos HowTos/NewPacket PPI	PPI/detail Packets Packets/80211Bundle Packets/80221Bundle	Packets/DefaultBundle Packets/DefaultBundle/extra_tests	Packets/MPEGDVBBundle Scheduler Socket Socket/Protocols	Socket/Protocols/DVB Socket/Protocols/INet	Socket/Protocols/Raw Socket/Protocols/UN Utils Utils/Console	Utils/Daemon Utils/Logger Utils/Termlib Utils/impl doclib	include/senf senf senf/PPI senf/PPI/detail senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/DefaultBundle senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Socket/Protocols/UN senf/Utils senf/Utils/Console	senf/Utils/Daemon senf/Utils/Logger senf/Utils/Termlib	senf/Utils/impl</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1316%20-%20in%20trunk%3A%20.%20Examples%20Examples/MCSniffer%0A%09Examples/RateStuffer%20Examples/Sniffer%0A%09Examples/UDPClientServer%20HowTos%20HowTos/NewPacket%20PPI%0A%09PPI/detail%20Packets%20Packets/80211Bundle%20Packets/80221Bundle%0A%09Packets/DefaultBundle%20Packets/DefaultBundle/extra_tests%0A%09Packets/MPEGDVBBundle%20Scheduler%20Socket%20Socket/Protocols%0A%09Socket/Protocols/DVB%20Socket/Protocols/INet%0A%09Socket/Protocols/Raw%20Socket/Protocols/UN%20Utils%20Utils/Console%0A%09Utils/Daemon%20Utils/Logger%20Utils/Termlib%20Utils/impl%20doclib%0A%09include/senf%20senf%20senf/PPI%20senf/PPI/detail%20senf/Packets%0A%09senf/Packets/80211Bundle%20senf/Packets/80221Bundle%0A%09senf/Packets/DefaultBundle%20senf/Packets/DefaultBundle/extra_tests%0A%09senf/Packets/MPEGDVBBundle%20senf/Scheduler%20senf/Socket%0A%09senf/Socket/Protocols%20senf/Socket/Protocols/DVB%0A%09senf/Socket/Protocols/INet%20senf/Socket/Protocols/Raw%0A%09senf/Socket/Protocols/UN%20senf/Utils%20senf/Utils/Console%0A%09senf/Utils/Daemon%20senf/Utils/Logger%20senf/Utils/Termlib%0A%09senf/Utils/impl&In-Reply-To=%3C200908211404.n7LE4mMs017172%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r1316 - in trunk: . Examples Examples/MCSniffer	Examples/RateStuffer Examples/Sniffer	Examples/UDPClientServer HowTos HowTos/NewPacket PPI	PPI/detail Packets Packets/80211Bundle Packets/80221Bundle	Packets/DefaultBundle Packets/DefaultBundle/extra_tests	Packets/MPEGDVBBundle Scheduler Socket Socket/Protocols	Socket/Protocols/DVB Socket/Protocols/INet	Socket/Protocols/Raw Socket/Protocols/UN Utils Utils/Console	Utils/Daemon Utils/Logger Utils/Termlib Utils/impl doclib	include/senf senf senf/PPI senf/PPI/detail senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/DefaultBundle senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Socket/Protocols/UN senf/Utils senf/Utils/Console	senf/Utils/Daemon senf/Utils/Logger senf/Utils/Termlib	senf/Utils/impl">subversion at senf.berlios.de
+       </A><BR>
+    <I>Fri Aug 21 16:04:48 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001172.html">[Senf-svn] r1315 - trunk/site_scons/site_tools
+</A></li>
+        <LI>Next message: <A HREF="001173.html">[Senf-svn] r1317 - in trunk: Examples/psi2tsModule _templates	doclib include include/senf senf senf/PPI senf/PPI/detail	senf/Packets senf/Packets/80211Bundle	senf/Packets/80221Bundle senf/Packets/DefaultBundle	senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Utils senf/Utils/Console senf/Utils/Daemon	senf/Utils/Logger senf/Utils/Termlib site_scons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1185">[ date ]</a>
+              <a href="thread.html#1185">[ thread ]</a>
+              <a href="subject.html#1185">[ subject ]</a>
+              <a href="author.html#1185">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Fri Aug 21 15:52:50 2009
+New Revision: 1316
+
+Added:
+   trunk/senf/
+   trunk/senf/.gitignore
+   trunk/senf/PPI/
+   trunk/senf/PPI.hh
+      - copied, changed from r1315, /trunk/include/senf/PPI.hh
+   trunk/senf/PPI/ActiveFeeder.cc
+      - copied, changed from r1315, /trunk/PPI/ActiveFeeder.cc
+   trunk/senf/PPI/ActiveFeeder.cci
+      - copied, changed from r1315, /trunk/PPI/ActiveFeeder.cci
+   trunk/senf/PPI/ActiveFeeder.hh
+      - copied, changed from r1315, /trunk/PPI/ActiveFeeder.hh
+   trunk/senf/PPI/ActiveFeeder.test.cc
+      - copied, changed from r1315, /trunk/PPI/ActiveFeeder.test.cc
+   trunk/senf/PPI/AnnotationRouter.ct
+      - copied, changed from r1315, /trunk/PPI/AnnotationRouter.ct
+   trunk/senf/PPI/AnnotationRouter.hh
+      - copied, changed from r1315, /trunk/PPI/AnnotationRouter.hh
+   trunk/senf/PPI/AnnotationRouter.test.cc
+      - copied, changed from r1315, /trunk/PPI/AnnotationRouter.test.cc
+   trunk/senf/PPI/CloneSource.cc
+      - copied, changed from r1315, /trunk/PPI/CloneSource.cc
+   trunk/senf/PPI/CloneSource.hh
+      - copied, changed from r1315, /trunk/PPI/CloneSource.hh
+   trunk/senf/PPI/CloneSource.test.cc
+      - copied, changed from r1315, /trunk/PPI/CloneSource.test.cc
+   trunk/senf/PPI/Connectors.cc
+      - copied, changed from r1315, /trunk/PPI/Connectors.cc
+   trunk/senf/PPI/Connectors.cci
+      - copied, changed from r1315, /trunk/PPI/Connectors.cci
+   trunk/senf/PPI/Connectors.cti
+      - copied, changed from r1315, /trunk/PPI/Connectors.cti
+   trunk/senf/PPI/Connectors.hh
+      - copied, changed from r1315, /trunk/PPI/Connectors.hh
+   trunk/senf/PPI/Connectors.ih
+      - copied, changed from r1315, /trunk/PPI/Connectors.ih
+   trunk/senf/PPI/Connectors.test.cc
+      - copied, changed from r1315, /trunk/PPI/Connectors.test.cc
+   trunk/senf/PPI/DebugEvent.cci
+      - copied, changed from r1315, /trunk/PPI/DebugEvent.cci
+   trunk/senf/PPI/DebugEvent.hh
+      - copied, changed from r1315, /trunk/PPI/DebugEvent.hh
+   trunk/senf/PPI/DebugEvent.test.cc
+      - copied, changed from r1315, /trunk/PPI/DebugEvent.test.cc
+   trunk/senf/PPI/DebugModules.cc
+      - copied, changed from r1315, /trunk/PPI/DebugModules.cc
+   trunk/senf/PPI/DebugModules.cci
+      - copied, changed from r1315, /trunk/PPI/DebugModules.cci
+   trunk/senf/PPI/DebugModules.cti
+      - copied, changed from r1315, /trunk/PPI/DebugModules.cti
+   trunk/senf/PPI/DebugModules.hh
+      - copied, changed from r1315, /trunk/PPI/DebugModules.hh
+   trunk/senf/PPI/DebugModules.test.cc
+      - copied, changed from r1315, /trunk/PPI/DebugModules.test.cc
+   trunk/senf/PPI/DiscardSink.cc
+      - copied, changed from r1315, /trunk/PPI/DiscardSink.cc
+   trunk/senf/PPI/DiscardSink.hh
+      - copied, changed from r1315, /trunk/PPI/DiscardSink.hh
+   trunk/senf/PPI/DiscardSink.test.cc
+      - copied, changed from r1315, /trunk/PPI/DiscardSink.test.cc
+   trunk/senf/PPI/Doxyfile
+      - copied, changed from r1315, /trunk/PPI/Doxyfile
+   trunk/senf/PPI/Duplicators.cc
+      - copied, changed from r1315, /trunk/PPI/Duplicators.cc
+   trunk/senf/PPI/Duplicators.cci
+      - copied, changed from r1315, /trunk/PPI/Duplicators.cci
+   trunk/senf/PPI/Duplicators.hh
+      - copied, changed from r1315, /trunk/PPI/Duplicators.hh
+   trunk/senf/PPI/Duplicators.test.cc
+      - copied, changed from r1315, /trunk/PPI/Duplicators.test.cc
+   trunk/senf/PPI/EventManager.cc
+      - copied, changed from r1315, /trunk/PPI/EventManager.cc
+   trunk/senf/PPI/EventManager.cci
+      - copied, changed from r1315, /trunk/PPI/EventManager.cci
+   trunk/senf/PPI/EventManager.ct
+      - copied, changed from r1315, /trunk/PPI/EventManager.ct
+   trunk/senf/PPI/EventManager.hh
+      - copied, changed from r1315, /trunk/PPI/EventManager.hh
+   trunk/senf/PPI/EventManager.test.cc
+      - copied, changed from r1315, /trunk/PPI/EventManager.test.cc
+   trunk/senf/PPI/Events.cc
+      - copied, changed from r1315, /trunk/PPI/Events.cc
+   trunk/senf/PPI/Events.cci
+      - copied, changed from r1315, /trunk/PPI/Events.cci
+   trunk/senf/PPI/Events.cti
+      - copied, changed from r1315, /trunk/PPI/Events.cti
+   trunk/senf/PPI/Events.hh
+      - copied, changed from r1315, /trunk/PPI/Events.hh
+   trunk/senf/PPI/Events.ih
+      - copied, changed from r1315, /trunk/PPI/Events.ih
+   trunk/senf/PPI/Events.test.cc
+      - copied, changed from r1315, /trunk/PPI/Events.test.cc
+   trunk/senf/PPI/IOEvent.cc
+      - copied, changed from r1315, /trunk/PPI/IOEvent.cc
+   trunk/senf/PPI/IOEvent.cci
+      - copied, changed from r1315, /trunk/PPI/IOEvent.cci
+   trunk/senf/PPI/IOEvent.ct
+      - copied, changed from r1315, /trunk/PPI/IOEvent.ct
+   trunk/senf/PPI/IOEvent.cti
+      - copied, changed from r1315, /trunk/PPI/IOEvent.cti
+   trunk/senf/PPI/IOEvent.hh
+      - copied, changed from r1315, /trunk/PPI/IOEvent.hh
+   trunk/senf/PPI/IOEvent.test.cc
+      - copied, changed from r1315, /trunk/PPI/IOEvent.test.cc
+   trunk/senf/PPI/IdleEvent.cc
+      - copied, changed from r1315, /trunk/PPI/IdleEvent.cc
+   trunk/senf/PPI/IdleEvent.cci
+      - copied, changed from r1315, /trunk/PPI/IdleEvent.cci
+   trunk/senf/PPI/IdleEvent.hh
+      - copied, changed from r1315, /trunk/PPI/IdleEvent.hh
+   trunk/senf/PPI/IdleEvent.test.cc
+      - copied, changed from r1315, /trunk/PPI/IdleEvent.test.cc
+   trunk/senf/PPI/IntervalTimer.cc
+      - copied, changed from r1315, /trunk/PPI/IntervalTimer.cc
+   trunk/senf/PPI/IntervalTimer.cci
+      - copied, changed from r1315, /trunk/PPI/IntervalTimer.cci
+   trunk/senf/PPI/IntervalTimer.hh
+      - copied, changed from r1315, /trunk/PPI/IntervalTimer.hh
+   trunk/senf/PPI/IntervalTimer.test.cc
+      - copied, changed from r1315, /trunk/PPI/IntervalTimer.test.cc
+   trunk/senf/PPI/Jack.cci
+      - copied, changed from r1315, /trunk/PPI/Jack.cci
+   trunk/senf/PPI/Jack.cti
+      - copied, changed from r1315, /trunk/PPI/Jack.cti
+   trunk/senf/PPI/Jack.hh
+      - copied, changed from r1315, /trunk/PPI/Jack.hh
+   trunk/senf/PPI/Jack.test.cc
+      - copied, changed from r1315, /trunk/PPI/Jack.test.cc
+   trunk/senf/PPI/Joins.cc
+      - copied, changed from r1315, /trunk/PPI/Joins.cc
+   trunk/senf/PPI/Joins.cci
+      - copied, changed from r1315, /trunk/PPI/Joins.cci
+   trunk/senf/PPI/Joins.hh
+      - copied, changed from r1315, /trunk/PPI/Joins.hh
+   trunk/senf/PPI/Joins.test.cc
+      - copied, changed from r1315, /trunk/PPI/Joins.test.cc
+   trunk/senf/PPI/Mainpage.dox
+      - copied, changed from r1315, /trunk/PPI/Mainpage.dox
+   trunk/senf/PPI/Module.cc
+      - copied, changed from r1315, /trunk/PPI/Module.cc
+   trunk/senf/PPI/Module.cci
+      - copied, changed from r1315, /trunk/PPI/Module.cci
+   trunk/senf/PPI/Module.ct
+      - copied, changed from r1315, /trunk/PPI/Module.ct
+   trunk/senf/PPI/Module.hh
+      - copied, changed from r1315, /trunk/PPI/Module.hh
+   trunk/senf/PPI/Module.ih
+      - copied, changed from r1315, /trunk/PPI/Module.ih
+   trunk/senf/PPI/Module.test.cc
+      - copied, changed from r1315, /trunk/PPI/Module.test.cc
+   trunk/senf/PPI/ModuleManager.cc
+      - copied, changed from r1315, /trunk/PPI/ModuleManager.cc
+   trunk/senf/PPI/ModuleManager.cci
+      - copied, changed from r1315, /trunk/PPI/ModuleManager.cci
+   trunk/senf/PPI/ModuleManager.hh
+      - copied, changed from r1315, /trunk/PPI/ModuleManager.hh
+   trunk/senf/PPI/ModuleManager.test.cc
+      - copied, changed from r1315, /trunk/PPI/ModuleManager.test.cc
+   trunk/senf/PPI/MonitorModule.ct
+      - copied, changed from r1315, /trunk/PPI/MonitorModule.ct
+   trunk/senf/PPI/MonitorModule.cti
+      - copied, changed from r1315, /trunk/PPI/MonitorModule.cti
+   trunk/senf/PPI/MonitorModule.hh
+      - copied, changed from r1315, /trunk/PPI/MonitorModule.hh
+   trunk/senf/PPI/MonitorModule.test.cc
+      - copied, changed from r1315, /trunk/PPI/MonitorModule.test.cc
+   trunk/senf/PPI/MultiConnectorMixin.cti
+      - copied, changed from r1315, /trunk/PPI/MultiConnectorMixin.cti
+   trunk/senf/PPI/MultiConnectorMixin.hh
+      - copied, changed from r1315, /trunk/PPI/MultiConnectorMixin.hh
+   trunk/senf/PPI/MultiConnectorMixin.ih
+      - copied, changed from r1315, /trunk/PPI/MultiConnectorMixin.ih
+   trunk/senf/PPI/MultiConnectorMixin.mpp
+      - copied, changed from r1315, /trunk/PPI/MultiConnectorMixin.mpp
+   trunk/senf/PPI/MultiConnectorMixin.test.cc
+      - copied, changed from r1315, /trunk/PPI/MultiConnectorMixin.test.cc
+   trunk/senf/PPI/PPI.hh
+      - copied, changed from r1315, /trunk/PPI/PPI.hh
+   trunk/senf/PPI/PassiveQueue.cc
+      - copied, changed from r1315, /trunk/PPI/PassiveQueue.cc
+   trunk/senf/PPI/PassiveQueue.cci
+      - copied, changed from r1315, /trunk/PPI/PassiveQueue.cci
+   trunk/senf/PPI/PassiveQueue.cti
+      - copied, changed from r1315, /trunk/PPI/PassiveQueue.cti
+   trunk/senf/PPI/PassiveQueue.hh
+      - copied, changed from r1315, /trunk/PPI/PassiveQueue.hh
+   trunk/senf/PPI/PassiveQueue.test.cc
+      - copied, changed from r1315, /trunk/PPI/PassiveQueue.test.cc
+   trunk/senf/PPI/Queueing.cc
+      - copied, changed from r1315, /trunk/PPI/Queueing.cc
+   trunk/senf/PPI/Queueing.cci
+      - copied, changed from r1315, /trunk/PPI/Queueing.cci
+   trunk/senf/PPI/Queueing.hh
+      - copied, changed from r1315, /trunk/PPI/Queueing.hh
+   trunk/senf/PPI/Queueing.test.cc
+      - copied, changed from r1315, /trunk/PPI/Queueing.test.cc
+   trunk/senf/PPI/RateAnalyzer.cc
+      - copied, changed from r1315, /trunk/PPI/RateAnalyzer.cc
+   trunk/senf/PPI/RateAnalyzer.hh
+      - copied, changed from r1315, /trunk/PPI/RateAnalyzer.hh
+   trunk/senf/PPI/RateAnalyzer.test.cc
+      - copied, changed from r1315, /trunk/PPI/RateAnalyzer.test.cc
+   trunk/senf/PPI/RateFilter.cc
+      - copied, changed from r1315, /trunk/PPI/RateFilter.cc
+   trunk/senf/PPI/RateFilter.hh
+      - copied, changed from r1315, /trunk/PPI/RateFilter.hh
+   trunk/senf/PPI/RateFilter.test.cc
+      - copied, changed from r1315, /trunk/PPI/RateFilter.test.cc
+   trunk/senf/PPI/Route.cci
+      - copied, changed from r1315, /trunk/PPI/Route.cci
+   trunk/senf/PPI/Route.ct
+      - copied, changed from r1315, /trunk/PPI/Route.ct
+   trunk/senf/PPI/Route.cti
+      - copied, changed from r1315, /trunk/PPI/Route.cti
+   trunk/senf/PPI/Route.hh
+      - copied, changed from r1315, /trunk/PPI/Route.hh
+   trunk/senf/PPI/Route.ih
+      - copied, changed from r1315, /trunk/PPI/Route.ih
+   trunk/senf/PPI/Route.test.cc
+      - copied, changed from r1315, /trunk/PPI/Route.test.cc
+   trunk/senf/PPI/SConscript
+      - copied, changed from r1315, /trunk/PPI/SConscript
+   trunk/senf/PPI/Setup.cci
+      - copied, changed from r1315, /trunk/PPI/Setup.cci
+   trunk/senf/PPI/Setup.cti
+      - copied, changed from r1315, /trunk/PPI/Setup.cti
+   trunk/senf/PPI/Setup.hh
+      - copied, changed from r1315, /trunk/PPI/Setup.hh
+   trunk/senf/PPI/Setup.test.cc
+      - copied, changed from r1315, /trunk/PPI/Setup.test.cc
+   trunk/senf/PPI/SocketSink.cc
+      - copied, changed from r1315, /trunk/PPI/SocketSink.cc
+   trunk/senf/PPI/SocketSink.cci
+      - copied, changed from r1315, /trunk/PPI/SocketSink.cci
+   trunk/senf/PPI/SocketSink.ct
+      - copied, changed from r1315, /trunk/PPI/SocketSink.ct
+   trunk/senf/PPI/SocketSink.cti
+      - copied, changed from r1315, /trunk/PPI/SocketSink.cti
+   trunk/senf/PPI/SocketSink.hh
+      - copied, changed from r1315, /trunk/PPI/SocketSink.hh
+   trunk/senf/PPI/SocketSink.test.cc
+      - copied, changed from r1315, /trunk/PPI/SocketSink.test.cc
+   trunk/senf/PPI/SocketSource.ct
+      - copied, changed from r1315, /trunk/PPI/SocketSource.ct
+   trunk/senf/PPI/SocketSource.cti
+      - copied, changed from r1315, /trunk/PPI/SocketSource.cti
+   trunk/senf/PPI/SocketSource.hh
+      - copied, changed from r1315, /trunk/PPI/SocketSource.hh
+   trunk/senf/PPI/SocketSource.test.cc
+      - copied, changed from r1315, /trunk/PPI/SocketSource.test.cc
+   trunk/senf/PPI/ThrottleBarrier.cc
+      - copied, changed from r1315, /trunk/PPI/ThrottleBarrier.cc
+   trunk/senf/PPI/ThrottleBarrier.hh
+      - copied, changed from r1315, /trunk/PPI/ThrottleBarrier.hh
+   trunk/senf/PPI/ThrottleBarrier.test.cc
+      - copied, changed from r1315, /trunk/PPI/ThrottleBarrier.test.cc
+   trunk/senf/PPI/classes.dia
+      - copied, changed from r1315, /trunk/PPI/classes.dia
+   trunk/senf/PPI/detail/
+   trunk/senf/PPI/detail/Callback.cti
+      - copied, changed from r1315, /trunk/PPI/detail/Callback.cti
+   trunk/senf/PPI/detail/Callback.hh
+      - copied, changed from r1315, /trunk/PPI/detail/Callback.hh
+   trunk/senf/PPI/detail/EventBinding.cc
+      - copied, changed from r1315, /trunk/PPI/detail/EventBinding.cc
+   trunk/senf/PPI/detail/EventBinding.cci
+      - copied, changed from r1315, /trunk/PPI/detail/EventBinding.cci
+   trunk/senf/PPI/detail/EventBinding.cti
+      - copied, changed from r1315, /trunk/PPI/detail/EventBinding.cti
+   trunk/senf/PPI/detail/EventBinding.hh
+      - copied, changed from r1315, /trunk/PPI/detail/EventBinding.hh
+   trunk/senf/PPI/drawmodules.py
+      - copied, changed from r1315, /trunk/PPI/drawmodules.py
+   trunk/senf/PPI/main.test.cc
+      - copied, changed from r1315, /trunk/PPI/main.test.cc
+   trunk/senf/PPI/predecl.hh
+      - copied, changed from r1315, /trunk/PPI/predecl.hh
+   trunk/senf/PPI/ratestuffer.dia
+      - copied, changed from r1315, /trunk/PPI/ratestuffer.dia
+   trunk/senf/PPI/scenario.dia
+      - copied, changed from r1315, /trunk/PPI/scenario.dia
+   trunk/senf/Packets/
+   trunk/senf/Packets.hh
+      - copied, changed from r1315, /trunk/include/senf/Packets.hh
+   trunk/senf/Packets/.dir.el
+      - copied, changed from r1315, /trunk/Packets/.dir.el
+   trunk/senf/Packets/80211Bundle/
+   trunk/senf/Packets/80211Bundle/Mainpage.dox
+      - copied, changed from r1315, /trunk/Packets/80211Bundle/Mainpage.dox
+   trunk/senf/Packets/80211Bundle/RadiotapPacket.cc
+      - copied, changed from r1315, /trunk/Packets/80211Bundle/RadiotapPacket.cc
+   trunk/senf/Packets/80211Bundle/RadiotapPacket.hh
+      - copied, changed from r1315, /trunk/Packets/80211Bundle/RadiotapPacket.hh
+   trunk/senf/Packets/80211Bundle/RadiotapPacket.test.cc
+      - copied, changed from r1315, /trunk/Packets/80211Bundle/RadiotapPacket.test.cc
+   trunk/senf/Packets/80211Bundle/SConscript
+      - copied, changed from r1315, /trunk/Packets/80211Bundle/SConscript
+   trunk/senf/Packets/80211Bundle/WLANPacket.cc
+      - copied, changed from r1315, /trunk/Packets/80211Bundle/WLANPacket.cc
+   trunk/senf/Packets/80211Bundle/WLANPacket.hh
+      - copied, changed from r1315, /trunk/Packets/80211Bundle/WLANPacket.hh
+   trunk/senf/Packets/80211Bundle/WLANPacket.test.cc
+      - copied, changed from r1315, /trunk/Packets/80211Bundle/WLANPacket.test.cc
+   trunk/senf/Packets/80211Bundle/main.test.cc
+      - copied, changed from r1315, /trunk/Packets/80211Bundle/main.test.cc
+   trunk/senf/Packets/80221Bundle/
+   trunk/senf/Packets/80221Bundle/MIHPacket.cc
+      - copied, changed from r1315, /trunk/Packets/80221Bundle/MIHPacket.cc
+   trunk/senf/Packets/80221Bundle/MIHPacket.cci
+      - copied, changed from r1315, /trunk/Packets/80221Bundle/MIHPacket.cci
+   trunk/senf/Packets/80221Bundle/MIHPacket.hh
+      - copied, changed from r1315, /trunk/Packets/80221Bundle/MIHPacket.hh
+   trunk/senf/Packets/80221Bundle/MIHPacket.test.cc
+      - copied, changed from r1315, /trunk/Packets/80221Bundle/MIHPacket.test.cc
+   trunk/senf/Packets/80221Bundle/Mainpage.dox
+      - copied, changed from r1315, /trunk/Packets/80221Bundle/Mainpage.dox
+   trunk/senf/Packets/80221Bundle/SConscript
+      - copied, changed from r1315, /trunk/Packets/80221Bundle/SConscript
+   trunk/senf/Packets/80221Bundle/TLV.dia
+      - copied, changed from r1315, /trunk/Packets/80221Bundle/TLV.dia
+   trunk/senf/Packets/80221Bundle/TLVPacket.cc
+      - copied, changed from r1315, /trunk/Packets/80221Bundle/TLVPacket.cc
+   trunk/senf/Packets/80221Bundle/TLVPacket.cci
+      - copied, changed from r1315, /trunk/Packets/80221Bundle/TLVPacket.cci
+   trunk/senf/Packets/80221Bundle/TLVPacket.ct
+      - copied, changed from r1315, /trunk/Packets/80221Bundle/TLVPacket.ct
+   trunk/senf/Packets/80221Bundle/TLVPacket.hh
+      - copied, changed from r1315, /trunk/Packets/80221Bundle/TLVPacket.hh
+   trunk/senf/Packets/80221Bundle/TLVPacket.test.cc
+      - copied, changed from r1315, /trunk/Packets/80221Bundle/TLVPacket.test.cc
+   trunk/senf/Packets/80221Bundle/main.test.cc
+      - copied, changed from r1315, /trunk/Packets/80221Bundle/main.test.cc
+   trunk/senf/Packets/ArrayParser.ct
+      - copied, changed from r1315, /trunk/Packets/ArrayParser.ct
+   trunk/senf/Packets/ArrayParser.cti
+      - copied, changed from r1315, /trunk/Packets/ArrayParser.cti
+   trunk/senf/Packets/ArrayParser.hh
+      - copied, changed from r1315, /trunk/Packets/ArrayParser.hh
+   trunk/senf/Packets/ArrayParser.ih
+      - copied, changed from r1315, /trunk/Packets/ArrayParser.ih
+   trunk/senf/Packets/ArrayParser.test.cc
+      - copied, changed from r1315, /trunk/Packets/ArrayParser.test.cc
+   trunk/senf/Packets/AuxParser.cci
+      - copied, changed from r1315, /trunk/Packets/AuxParser.cci
+   trunk/senf/Packets/AuxParser.cti
+      - copied, changed from r1315, /trunk/Packets/AuxParser.cti
+   trunk/senf/Packets/AuxParser.hh
+      - copied, changed from r1315, /trunk/Packets/AuxParser.hh
+   trunk/senf/Packets/AuxParser.test.cc
+      - copied, changed from r1315, /trunk/Packets/AuxParser.test.cc
+   trunk/senf/Packets/DataPacket.cc
+      - copied, changed from r1315, /trunk/Packets/DataPacket.cc
+   trunk/senf/Packets/DataPacket.hh
+      - copied, changed from r1315, /trunk/Packets/DataPacket.hh
+   trunk/senf/Packets/DefaultBundle/
+   trunk/senf/Packets/DefaultBundle/EthernetPacket.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/EthernetPacket.cc
+   trunk/senf/Packets/DefaultBundle/EthernetPacket.hh
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/EthernetPacket.hh
+   trunk/senf/Packets/DefaultBundle/EthernetPacket.test.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/EthernetPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/ICMPv6Packet.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/ICMPv6Packet.cc
+   trunk/senf/Packets/DefaultBundle/ICMPv6Packet.hh
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/ICMPv6Packet.hh
+   trunk/senf/Packets/DefaultBundle/ICMPv6Packet.test.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/ICMPv6Packet.test.cc
+   trunk/senf/Packets/DefaultBundle/ICMPv6TypePacket.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/ICMPv6TypePacket.cc
+   trunk/senf/Packets/DefaultBundle/ICMPv6TypePacket.hh
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/ICMPv6TypePacket.hh
+   trunk/senf/Packets/DefaultBundle/IPv4Packet.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/IPv4Packet.cc
+   trunk/senf/Packets/DefaultBundle/IPv4Packet.hh
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/IPv4Packet.hh
+   trunk/senf/Packets/DefaultBundle/IPv4Packet.test.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/IPv4Packet.test.cc
+   trunk/senf/Packets/DefaultBundle/IPv6Extensions.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/IPv6Extensions.cc
+   trunk/senf/Packets/DefaultBundle/IPv6Extensions.hh
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/IPv6Extensions.hh
+   trunk/senf/Packets/DefaultBundle/IPv6Extensions.test.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/IPv6Extensions.test.cc
+   trunk/senf/Packets/DefaultBundle/IPv6Packet.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/IPv6Packet.cc
+   trunk/senf/Packets/DefaultBundle/IPv6Packet.hh
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/IPv6Packet.hh
+   trunk/senf/Packets/DefaultBundle/IPv6Packet.test.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/IPv6Packet.test.cc
+   trunk/senf/Packets/DefaultBundle/LlcSnapPacket.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/LlcSnapPacket.cc
+   trunk/senf/Packets/DefaultBundle/LlcSnapPacket.hh
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/LlcSnapPacket.hh
+   trunk/senf/Packets/DefaultBundle/LlcSnapPacket.test.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/LlcSnapPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/Mainpage.dox
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/Mainpage.dox
+   trunk/senf/Packets/DefaultBundle/Mldv2Packet.test.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/Mldv2Packet.test.cc
+   trunk/senf/Packets/DefaultBundle/RTPPacket.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/RTPPacket.cc
+   trunk/senf/Packets/DefaultBundle/RTPPacket.hh
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/RTPPacket.hh
+   trunk/senf/Packets/DefaultBundle/RTPPacket.test.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/RTPPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/SConscript
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/SConscript
+   trunk/senf/Packets/DefaultBundle/TCPPacket.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/TCPPacket.cc
+   trunk/senf/Packets/DefaultBundle/TCPPacket.hh
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/TCPPacket.hh
+   trunk/senf/Packets/DefaultBundle/TCPPacket.test.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/TCPPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/UDPPacket.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/UDPPacket.cc
+   trunk/senf/Packets/DefaultBundle/UDPPacket.hh
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/UDPPacket.hh
+   trunk/senf/Packets/DefaultBundle/UDPPacket.test.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/UDPPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/extra_tests/
+   trunk/senf/Packets/DefaultBundle/extra_tests/PacketLink.test.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/extra_tests/PacketLink.test.cc
+   trunk/senf/Packets/DefaultBundle/extra_tests/SConscript
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/extra_tests/SConscript
+   trunk/senf/Packets/DefaultBundle/extra_tests/main.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/main.test.cc
+   trunk/senf/Packets/DefaultBundle/main.test.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/main.test.cc
+   trunk/senf/Packets/Doxyfile
+      - copied, changed from r1315, /trunk/Packets/Doxyfile
+   trunk/senf/Packets/IntParser.hh
+      - copied, changed from r1315, /trunk/Packets/IntParser.hh
+   trunk/senf/Packets/IntParser.ih
+      - copied, changed from r1315, /trunk/Packets/IntParser.ih
+   trunk/senf/Packets/IntParser.test.cc
+      - copied, changed from r1315, /trunk/Packets/IntParser.test.cc
+   trunk/senf/Packets/ListBParser.cti
+      - copied, changed from r1315, /trunk/Packets/ListBParser.cti
+   trunk/senf/Packets/ListBParser.hh
+      - copied, changed from r1315, /trunk/Packets/ListBParser.hh
+   trunk/senf/Packets/ListBParser.ih
+      - copied, changed from r1315, /trunk/Packets/ListBParser.ih
+   trunk/senf/Packets/ListBParser.test.cc
+      - copied, changed from r1315, /trunk/Packets/ListBParser.test.cc
+   trunk/senf/Packets/ListNParser.ct
+      - copied, changed from r1315, /trunk/Packets/ListNParser.ct
+   trunk/senf/Packets/ListNParser.cti
+      - copied, changed from r1315, /trunk/Packets/ListNParser.cti
+   trunk/senf/Packets/ListNParser.hh
+      - copied, changed from r1315, /trunk/Packets/ListNParser.hh
+   trunk/senf/Packets/ListNParser.ih
+      - copied, changed from r1315, /trunk/Packets/ListNParser.ih
+   trunk/senf/Packets/ListNParser.test.cc
+      - copied, changed from r1315, /trunk/Packets/ListNParser.test.cc
+   trunk/senf/Packets/ListParser.ct
+      - copied, changed from r1315, /trunk/Packets/ListParser.ct
+   trunk/senf/Packets/ListParser.cti
+      - copied, changed from r1315, /trunk/Packets/ListParser.cti
+   trunk/senf/Packets/ListParser.dox
+      - copied, changed from r1315, /trunk/Packets/ListParser.dox
+   trunk/senf/Packets/ListParser.hh
+      - copied, changed from r1315, /trunk/Packets/ListParser.hh
+   trunk/senf/Packets/ListParser.ih
+      - copied, changed from r1315, /trunk/Packets/ListParser.ih
+   trunk/senf/Packets/ListParser.test.cc
+      - copied, changed from r1315, /trunk/Packets/ListParser.test.cc
+   trunk/senf/Packets/MPEGDVBBundle/
+   trunk/senf/Packets/MPEGDVBBundle/DTCPPacket.cc
+      - copied, changed from r1315, /trunk/Packets/MPEGDVBBundle/DTCPPacket.cc
+   trunk/senf/Packets/MPEGDVBBundle/DTCPPacket.hh
+      - copied, changed from r1315, /trunk/Packets/MPEGDVBBundle/DTCPPacket.hh
+   trunk/senf/Packets/MPEGDVBBundle/DTCPPacket.test.cc
+      - copied, changed from r1315, /trunk/Packets/MPEGDVBBundle/DTCPPacket.test.cc
+   trunk/senf/Packets/MPEGDVBBundle/GREPacket.cc
+      - copied, changed from r1315, /trunk/Packets/MPEGDVBBundle/GREPacket.cc
+   trunk/senf/Packets/MPEGDVBBundle/GREPacket.hh
+      - copied, changed from r1315, /trunk/Packets/MPEGDVBBundle/GREPacket.hh
+   trunk/senf/Packets/MPEGDVBBundle/GREPacket.test.cc
+      - copied, changed from r1315, /trunk/Packets/MPEGDVBBundle/GREPacket.test.cc
+   trunk/senf/Packets/MPEGDVBBundle/MPEGDVBBundle.dox
+      - copied, changed from r1315, /trunk/Packets/MPEGDVBBundle/MPEGDVBBundle.dox
+   trunk/senf/Packets/MPEGDVBBundle/MPESection.cc
+      - copied, changed from r1315, /trunk/Packets/MPEGDVBBundle/MPESection.cc
+   trunk/senf/Packets/MPEGDVBBundle/MPESection.hh
+      - copied, changed from r1315, /trunk/Packets/MPEGDVBBundle/MPESection.hh
+   trunk/senf/Packets/MPEGDVBBundle/MPESection.test.cc
+      - copied, changed from r1315, /trunk/Packets/MPEGDVBBundle/MPESection.test.cc
+   trunk/senf/Packets/MPEGDVBBundle/SConscript
+      - copied, changed from r1315, /trunk/Packets/MPEGDVBBundle/SConscript
+   trunk/senf/Packets/MPEGDVBBundle/SNDUPacket.cc
+      - copied, changed from r1315, /trunk/Packets/MPEGDVBBundle/SNDUPacket.cc
+   trunk/senf/Packets/MPEGDVBBundle/SNDUPacket.hh
+      - copied, changed from r1315, /trunk/Packets/MPEGDVBBundle/SNDUPacket.hh
+   trunk/senf/Packets/MPEGDVBBundle/TransportPacket.cc
+      - copied, changed from r1315, /trunk/Packets/MPEGDVBBundle/TransportPacket.cc
+   trunk/senf/Packets/MPEGDVBBundle/TransportPacket.hh
+      - copied, changed from r1315, /trunk/Packets/MPEGDVBBundle/TransportPacket.hh
+   trunk/senf/Packets/MPEGDVBBundle/TransportPacket.test.cc
+      - copied, changed from r1315, /trunk/Packets/MPEGDVBBundle/TransportPacket.test.cc
+   trunk/senf/Packets/MPEGDVBBundle/main.test.cc
+      - copied, changed from r1315, /trunk/Packets/MPEGDVBBundle/main.test.cc
+   trunk/senf/Packets/Mainpage.dox
+      - copied, changed from r1315, /trunk/Packets/Mainpage.dox
+   trunk/senf/Packets/Packet.cc
+      - copied, changed from r1315, /trunk/Packets/Packet.cc
+   trunk/senf/Packets/Packet.cci
+      - copied, changed from r1315, /trunk/Packets/Packet.cci
+   trunk/senf/Packets/Packet.ct
+      - copied, changed from r1315, /trunk/Packets/Packet.ct
+   trunk/senf/Packets/Packet.cti
+      - copied, changed from r1315, /trunk/Packets/Packet.cti
+   trunk/senf/Packets/Packet.hh
+      - copied, changed from r1315, /trunk/Packets/Packet.hh
+   trunk/senf/Packets/Packet.test.cc
+      - copied, changed from r1315, /trunk/Packets/Packet.test.cc
+   trunk/senf/Packets/PacketData.cc
+      - copied, changed from r1315, /trunk/Packets/PacketData.cc
+   trunk/senf/Packets/PacketData.cci
+      - copied, changed from r1315, /trunk/Packets/PacketData.cci
+   trunk/senf/Packets/PacketData.cti
+      - copied, changed from r1315, /trunk/Packets/PacketData.cti
+   trunk/senf/Packets/PacketData.hh
+      - copied, changed from r1315, /trunk/Packets/PacketData.hh
+   trunk/senf/Packets/PacketData.test.cc
+      - copied, changed from r1315, /trunk/Packets/PacketData.test.cc
+   trunk/senf/Packets/PacketImpl.cc
+      - copied, changed from r1315, /trunk/Packets/PacketImpl.cc
+   trunk/senf/Packets/PacketImpl.cci
+      - copied, changed from r1315, /trunk/Packets/PacketImpl.cci
+   trunk/senf/Packets/PacketImpl.cti
+      - copied, changed from r1315, /trunk/Packets/PacketImpl.cti
+   trunk/senf/Packets/PacketImpl.hh
+      - copied, changed from r1315, /trunk/Packets/PacketImpl.hh
+   trunk/senf/Packets/PacketImpl.test.cc
+      - copied, changed from r1315, /trunk/Packets/PacketImpl.test.cc
+   trunk/senf/Packets/PacketInterpreter.cc
+      - copied, changed from r1315, /trunk/Packets/PacketInterpreter.cc
+   trunk/senf/Packets/PacketInterpreter.cci
+      - copied, changed from r1315, /trunk/Packets/PacketInterpreter.cci
+   trunk/senf/Packets/PacketInterpreter.ct
+      - copied, changed from r1315, /trunk/Packets/PacketInterpreter.ct
+   trunk/senf/Packets/PacketInterpreter.cti
+      - copied, changed from r1315, /trunk/Packets/PacketInterpreter.cti
+   trunk/senf/Packets/PacketInterpreter.hh
+      - copied, changed from r1315, /trunk/Packets/PacketInterpreter.hh
+   trunk/senf/Packets/PacketInterpreter.test.cc
+      - copied, changed from r1315, /trunk/Packets/PacketInterpreter.test.cc
+   trunk/senf/Packets/PacketParser.cc
+      - copied, changed from r1315, /trunk/Packets/PacketParser.cc
+   trunk/senf/Packets/PacketParser.cci
+      - copied, changed from r1315, /trunk/Packets/PacketParser.cci
+   trunk/senf/Packets/PacketParser.ct
+      - copied, changed from r1315, /trunk/Packets/PacketParser.ct
+   trunk/senf/Packets/PacketParser.cti
+      - copied, changed from r1315, /trunk/Packets/PacketParser.cti
+   trunk/senf/Packets/PacketParser.hh
+      - copied, changed from r1315, /trunk/Packets/PacketParser.hh
+   trunk/senf/Packets/PacketParser.ih
+      - copied, changed from r1315, /trunk/Packets/PacketParser.ih
+   trunk/senf/Packets/PacketParser.test.cc
+      - copied, changed from r1315, /trunk/Packets/PacketParser.test.cc
+   trunk/senf/Packets/PacketRegistry.cc
+      - copied, changed from r1315, /trunk/Packets/PacketRegistry.cc
+   trunk/senf/Packets/PacketRegistry.cci
+      - copied, changed from r1315, /trunk/Packets/PacketRegistry.cci
+   trunk/senf/Packets/PacketRegistry.ct
+      - copied, changed from r1315, /trunk/Packets/PacketRegistry.ct
+   trunk/senf/Packets/PacketRegistry.cti
+      - copied, changed from r1315, /trunk/Packets/PacketRegistry.cti
+   trunk/senf/Packets/PacketRegistry.hh
+      - copied, changed from r1315, /trunk/Packets/PacketRegistry.hh
+   trunk/senf/Packets/PacketRegistry.ih
+      - copied, changed from r1315, /trunk/Packets/PacketRegistry.ih
+   trunk/senf/Packets/PacketRegistry.test.cc
+      - copied, changed from r1315, /trunk/Packets/PacketRegistry.test.cc
+   trunk/senf/Packets/PacketType.cci
+      - copied, changed from r1315, /trunk/Packets/PacketType.cci
+   trunk/senf/Packets/PacketType.ct
+      - copied, changed from r1315, /trunk/Packets/PacketType.ct
+   trunk/senf/Packets/PacketType.cti
+      - copied, changed from r1315, /trunk/Packets/PacketType.cti
+   trunk/senf/Packets/PacketType.hh
+      - copied, changed from r1315, /trunk/Packets/PacketType.hh
+   trunk/senf/Packets/PacketTypes.hh
+      - copied, changed from r1315, /trunk/Packets/PacketTypes.hh
+   trunk/senf/Packets/Packets.hh
+      - copied, changed from r1315, /trunk/Packets/Packets.hh
+   trunk/senf/Packets/ParseHelpers.dox
+      - copied, changed from r1315, /trunk/Packets/ParseHelpers.dox
+   trunk/senf/Packets/ParseHelpers.hh
+      - copied, changed from r1315, /trunk/Packets/ParseHelpers.hh
+   trunk/senf/Packets/ParseHelpers.ih
+      - copied, changed from r1315, /trunk/Packets/ParseHelpers.ih
+   trunk/senf/Packets/ParseHelpers.test.cc
+      - copied, changed from r1315, /trunk/Packets/ParseHelpers.test.cc
+   trunk/senf/Packets/SConscript
+      - copied, changed from r1315, /trunk/Packets/SConscript
+   trunk/senf/Packets/SafeIterator.cci
+      - copied, changed from r1315, /trunk/Packets/SafeIterator.cci
+   trunk/senf/Packets/SafeIterator.cti
+      - copied, changed from r1315, /trunk/Packets/SafeIterator.cti
+   trunk/senf/Packets/SafeIterator.hh
+      - copied, changed from r1315, /trunk/Packets/SafeIterator.hh
+   trunk/senf/Packets/SafeIterator.test.cc
+      - copied, changed from r1315, /trunk/Packets/SafeIterator.test.cc
+   trunk/senf/Packets/StringParser.cci
+      - copied, changed from r1315, /trunk/Packets/StringParser.cci
+   trunk/senf/Packets/StringParser.hh
+      - copied, changed from r1315, /trunk/Packets/StringParser.hh
+   trunk/senf/Packets/StringParser.test.cc
+      - copied, changed from r1315, /trunk/Packets/StringParser.test.cc
+   trunk/senf/Packets/VariantParser.ct
+      - copied, changed from r1315, /trunk/Packets/VariantParser.ct
+   trunk/senf/Packets/VariantParser.cti
+      - copied, changed from r1315, /trunk/Packets/VariantParser.cti
+   trunk/senf/Packets/VariantParser.hh
+      - copied, changed from r1315, /trunk/Packets/VariantParser.hh
+   trunk/senf/Packets/VariantParser.ih
+      - copied, changed from r1315, /trunk/Packets/VariantParser.ih
+   trunk/senf/Packets/VariantParser.test.cc
+      - copied, changed from r1315, /trunk/Packets/VariantParser.test.cc
+   trunk/senf/Packets/VectorParser.ct
+      - copied, changed from r1315, /trunk/Packets/VectorParser.ct
+   trunk/senf/Packets/VectorParser.cti
+      - copied, changed from r1315, /trunk/Packets/VectorParser.cti
+   trunk/senf/Packets/VectorParser.hh
+      - copied, changed from r1315, /trunk/Packets/VectorParser.hh
+   trunk/senf/Packets/VectorParser.ih
+      - copied, changed from r1315, /trunk/Packets/VectorParser.ih
+   trunk/senf/Packets/VectorParser.test.cc
+      - copied, changed from r1315, /trunk/Packets/VectorParser.test.cc
+   trunk/senf/Packets/main.test.cc
+      - copied, changed from r1315, /trunk/Packets/main.test.cc
+   trunk/senf/Packets/main.test.hh
+      - copied, changed from r1315, /trunk/Packets/main.test.hh
+   trunk/senf/Packets/parse_fixed_setup.hh
+      - copied, changed from r1315, /trunk/Packets/parse_fixed_setup.hh
+   trunk/senf/Packets/parse_setup.hh
+      - copied, changed from r1315, /trunk/Packets/parse_setup.hh
+   trunk/senf/Packets/structure.dia
+      - copied, changed from r1315, /trunk/Packets/structure.dia
+   trunk/senf/SConscript
+   trunk/senf/Scheduler/
+   trunk/senf/Scheduler/ClockService.cc
+      - copied, changed from r1315, /trunk/Scheduler/ClockService.cc
+   trunk/senf/Scheduler/ClockService.cci
+      - copied, changed from r1315, /trunk/Scheduler/ClockService.cci
+   trunk/senf/Scheduler/ClockService.hh
+      - copied, changed from r1315, /trunk/Scheduler/ClockService.hh
+   trunk/senf/Scheduler/ClockService.test.cc
+      - copied, changed from r1315, /trunk/Scheduler/ClockService.test.cc
+   trunk/senf/Scheduler/Doxyfile
+      - copied, changed from r1315, /trunk/Utils/Daemon/Doxyfile
+   trunk/senf/Scheduler/EventHook.cc
+      - copied, changed from r1315, /trunk/Scheduler/EventHook.cc
+   trunk/senf/Scheduler/EventHook.cci
+      - copied, changed from r1315, /trunk/Scheduler/EventHook.cci
+   trunk/senf/Scheduler/EventHook.hh
+      - copied, changed from r1315, /trunk/Scheduler/EventHook.hh
+   trunk/senf/Scheduler/EventHook.ih
+      - copied, changed from r1315, /trunk/Scheduler/EventHook.ih
+   trunk/senf/Scheduler/EventManager.cc
+      - copied, changed from r1315, /trunk/Scheduler/EventManager.cc
+   trunk/senf/Scheduler/EventManager.cci
+      - copied, changed from r1315, /trunk/Scheduler/EventManager.cci
+   trunk/senf/Scheduler/EventManager.hh
+      - copied, changed from r1315, /trunk/Scheduler/EventManager.hh
+   trunk/senf/Scheduler/EventManager.test.cc
+      - copied, changed from r1315, /trunk/Scheduler/EventManager.test.cc
+   trunk/senf/Scheduler/FIFORunner.cc
+      - copied, changed from r1315, /trunk/Scheduler/FIFORunner.cc
+   trunk/senf/Scheduler/FIFORunner.cci
+      - copied, changed from r1315, /trunk/Scheduler/FIFORunner.cci
+   trunk/senf/Scheduler/FIFORunner.hh
+      - copied, changed from r1315, /trunk/Scheduler/FIFORunner.hh
+   trunk/senf/Scheduler/FdEvent.cc
+      - copied, changed from r1315, /trunk/Scheduler/FdEvent.cc
+   trunk/senf/Scheduler/FdEvent.cci
+      - copied, changed from r1315, /trunk/Scheduler/FdEvent.cci
+   trunk/senf/Scheduler/FdEvent.ct
+      - copied, changed from r1315, /trunk/Scheduler/FdEvent.ct
+   trunk/senf/Scheduler/FdEvent.cti
+      - copied, changed from r1315, /trunk/Scheduler/FdEvent.cti
+   trunk/senf/Scheduler/FdEvent.hh
+      - copied, changed from r1315, /trunk/Scheduler/FdEvent.hh
+   trunk/senf/Scheduler/FdEvent.ih
+      - copied, changed from r1315, /trunk/Scheduler/FdEvent.ih
+   trunk/senf/Scheduler/FdEvent.test.cc
+      - copied, changed from r1315, /trunk/Scheduler/FdEvent.test.cc
+   trunk/senf/Scheduler/FdManager.cc
+      - copied, changed from r1315, /trunk/Scheduler/FdManager.cc
+   trunk/senf/Scheduler/FdManager.cci
+      - copied, changed from r1315, /trunk/Scheduler/FdManager.cci
+   trunk/senf/Scheduler/FdManager.hh
+      - copied, changed from r1315, /trunk/Scheduler/FdManager.hh
+   trunk/senf/Scheduler/IdleEvent.cc
+      - copied, changed from r1315, /trunk/Scheduler/IdleEvent.cc
+   trunk/senf/Scheduler/IdleEvent.cci
+      - copied, changed from r1315, /trunk/Scheduler/IdleEvent.cci
+   trunk/senf/Scheduler/IdleEvent.hh
+      - copied, changed from r1315, /trunk/Scheduler/IdleEvent.hh
+   trunk/senf/Scheduler/IdleEvent.ih
+      - copied, changed from r1315, /trunk/Scheduler/IdleEvent.ih
+   trunk/senf/Scheduler/IdleEvent.test.cc
+      - copied, changed from r1315, /trunk/Scheduler/IdleEvent.test.cc
+   trunk/senf/Scheduler/Mainpage.dox
+      - copied, changed from r1315, /trunk/Scheduler/Mainpage.dox
+   trunk/senf/Scheduler/Poller.ct
+      - copied, changed from r1315, /trunk/Scheduler/Poller.ct
+   trunk/senf/Scheduler/Poller.cti
+      - copied, changed from r1315, /trunk/Scheduler/Poller.cti
+   trunk/senf/Scheduler/Poller.hh
+      - copied, changed from r1315, /trunk/Scheduler/Poller.hh
+   trunk/senf/Scheduler/Poller.test.cc
+      - copied, changed from r1315, /trunk/Scheduler/Poller.test.cc
+   trunk/senf/Scheduler/ReadHelper.cci
+      - copied, changed from r1315, /trunk/Scheduler/ReadHelper.cci
+   trunk/senf/Scheduler/ReadHelper.ct
+      - copied, changed from r1315, /trunk/Scheduler/ReadHelper.ct
+   trunk/senf/Scheduler/ReadHelper.cti
+      - copied, changed from r1315, /trunk/Scheduler/ReadHelper.cti
+   trunk/senf/Scheduler/ReadHelper.hh
+      - copied, changed from r1315, /trunk/Scheduler/ReadHelper.hh
+   trunk/senf/Scheduler/ReadHelper.ih
+      - copied, changed from r1315, /trunk/Scheduler/ReadHelper.ih
+   trunk/senf/Scheduler/ReadHelper.test.cc
+      - copied, changed from r1315, /trunk/Scheduler/ReadHelper.test.cc
+   trunk/senf/Scheduler/SConscript
+      - copied, changed from r1315, /trunk/Scheduler/SConscript
+   trunk/senf/Scheduler/Scheduler.cc
+      - copied, changed from r1315, /trunk/Scheduler/Scheduler.cc
+   trunk/senf/Scheduler/Scheduler.cci
+      - copied, changed from r1315, /trunk/Scheduler/Scheduler.cci
+   trunk/senf/Scheduler/Scheduler.hh
+      - copied, changed from r1315, /trunk/Scheduler/Scheduler.hh
+   trunk/senf/Scheduler/Scheduler.test.cc
+      - copied, changed from r1315, /trunk/Scheduler/Scheduler.test.cc
+   trunk/senf/Scheduler/SignalEvent.cc
+      - copied, changed from r1315, /trunk/Scheduler/SignalEvent.cc
+   trunk/senf/Scheduler/SignalEvent.cci
+      - copied, changed from r1315, /trunk/Scheduler/SignalEvent.cci
+   trunk/senf/Scheduler/SignalEvent.hh
+      - copied, changed from r1315, /trunk/Scheduler/SignalEvent.hh
+   trunk/senf/Scheduler/SignalEvent.ih
+      - copied, changed from r1315, /trunk/Scheduler/SignalEvent.ih
+   trunk/senf/Scheduler/SignalEvent.test.cc
+      - copied, changed from r1315, /trunk/Scheduler/SignalEvent.test.cc
+   trunk/senf/Scheduler/TimerEvent.cc
+      - copied, changed from r1315, /trunk/Scheduler/TimerEvent.cc
+   trunk/senf/Scheduler/TimerEvent.cci
+      - copied, changed from r1315, /trunk/Scheduler/TimerEvent.cci
+   trunk/senf/Scheduler/TimerEvent.hh
+      - copied, changed from r1315, /trunk/Scheduler/TimerEvent.hh
+   trunk/senf/Scheduler/TimerEvent.ih
+      - copied, changed from r1315, /trunk/Scheduler/TimerEvent.ih
+   trunk/senf/Scheduler/TimerEvent.test.cc
+      - copied, changed from r1315, /trunk/Scheduler/TimerEvent.test.cc
+   trunk/senf/Scheduler/TimerSource.cc
+      - copied, changed from r1315, /trunk/Scheduler/TimerSource.cc
+   trunk/senf/Scheduler/TimerSource.cci
+      - copied, changed from r1315, /trunk/Scheduler/TimerSource.cci
+   trunk/senf/Scheduler/TimerSource.hh
+      - copied, changed from r1315, /trunk/Scheduler/TimerSource.hh
+   trunk/senf/Scheduler/WriteHelper.ct
+      - copied, changed from r1315, /trunk/Scheduler/WriteHelper.ct
+   trunk/senf/Scheduler/WriteHelper.cti
+      - copied, changed from r1315, /trunk/Scheduler/WriteHelper.cti
+   trunk/senf/Scheduler/WriteHelper.hh
+      - copied, changed from r1315, /trunk/Scheduler/WriteHelper.hh
+   trunk/senf/Scheduler/WriteHelper.test.cc
+      - copied, changed from r1315, /trunk/Scheduler/WriteHelper.test.cc
+   trunk/senf/Scheduler/main.test.cc
+      - copied, changed from r1315, /trunk/Packets/DefaultBundle/extra_tests/main.test.cc
+   trunk/senf/Socket/
+   trunk/senf/Socket.hh
+      - copied, changed from r1315, /trunk/include/senf/Socket.hh
+   trunk/senf/Socket/AddressingPolicy.hh
+      - copied, changed from r1315, /trunk/Socket/AddressingPolicy.hh
+   trunk/senf/Socket/ClientSocketHandle.ct
+      - copied, changed from r1315, /trunk/Socket/ClientSocketHandle.ct
+   trunk/senf/Socket/ClientSocketHandle.cti
+      - copied, changed from r1315, /trunk/Socket/ClientSocketHandle.cti
+   trunk/senf/Socket/ClientSocketHandle.hh
+      - copied, changed from r1315, /trunk/Socket/ClientSocketHandle.hh
+   trunk/senf/Socket/ClientSocketHandle.ih
+      - copied, changed from r1315, /trunk/Socket/ClientSocketHandle.ih
+   trunk/senf/Socket/ClientSocketHandle.test.cc
+      - copied, changed from r1315, /trunk/Socket/ClientSocketHandle.test.cc
+   trunk/senf/Socket/CommunicationPolicy.cc
+      - copied, changed from r1315, /trunk/Socket/CommunicationPolicy.cc
+   trunk/senf/Socket/CommunicationPolicy.cci
+      - copied, changed from r1315, /trunk/Socket/CommunicationPolicy.cci
+   trunk/senf/Socket/CommunicationPolicy.cti
+      - copied, changed from r1315, /trunk/Socket/CommunicationPolicy.cti
+   trunk/senf/Socket/CommunicationPolicy.hh
+      - copied, changed from r1315, /trunk/Socket/CommunicationPolicy.hh
+   trunk/senf/Socket/Doxyfile
+      - copied, changed from r1315, /trunk/Socket/Doxyfile
+   trunk/senf/Socket/FhHierarchy.dia
+      - copied, changed from r1315, /trunk/Socket/FhHierarchy.dia
+   trunk/senf/Socket/FileHandle.cc
+      - copied, changed from r1315, /trunk/Socket/FileHandle.cc
+   trunk/senf/Socket/FileHandle.cci
+      - copied, changed from r1315, /trunk/Socket/FileHandle.cci
+   trunk/senf/Socket/FileHandle.hh
+      - copied, changed from r1315, /trunk/Socket/FileHandle.hh
+   trunk/senf/Socket/FileHandle.ih
+      - copied, changed from r1315, /trunk/Socket/FileHandle.ih
+   trunk/senf/Socket/FileHandle.test.cc
+      - copied, changed from r1315, /trunk/Socket/FileHandle.test.cc
+   trunk/senf/Socket/FramingPolicy.hh
+      - copied, changed from r1315, /trunk/Socket/FramingPolicy.hh
+   trunk/senf/Socket/Handle.dia
+      - copied, changed from r1315, /trunk/Socket/Handle.dia
+   trunk/senf/Socket/Mainpage.dox
+      - copied, changed from r1315, /trunk/Socket/Mainpage.dox
+   trunk/senf/Socket/NetdeviceController.cc
+      - copied, changed from r1315, /trunk/Socket/NetdeviceController.cc
+   trunk/senf/Socket/NetdeviceController.hh
+      - copied, changed from r1315, /trunk/Socket/NetdeviceController.hh
+   trunk/senf/Socket/NetdeviceController.test.cc
+      - copied, changed from r1315, /trunk/Socket/NetdeviceController.test.cc
+   trunk/senf/Socket/ProtocolClientSocketHandle.cti
+      - copied, changed from r1315, /trunk/Socket/ProtocolClientSocketHandle.cti
+   trunk/senf/Socket/ProtocolClientSocketHandle.hh
+      - copied, changed from r1315, /trunk/Socket/ProtocolClientSocketHandle.hh
+   trunk/senf/Socket/ProtocolClientSocketHandle.mpp
+      - copied, changed from r1315, /trunk/Socket/ProtocolClientSocketHandle.mpp
+   trunk/senf/Socket/ProtocolClientSocketHandle.test.cc
+      - copied, changed from r1315, /trunk/Socket/ProtocolClientSocketHandle.test.cc
+   trunk/senf/Socket/ProtocolServerSocketHandle.cti
+      - copied, changed from r1315, /trunk/Socket/ProtocolServerSocketHandle.cti
+   trunk/senf/Socket/ProtocolServerSocketHandle.hh
+      - copied, changed from r1315, /trunk/Socket/ProtocolServerSocketHandle.hh
+   trunk/senf/Socket/ProtocolServerSocketHandle.mpp
+      - copied, changed from r1315, /trunk/Socket/ProtocolServerSocketHandle.mpp
+   trunk/senf/Socket/ProtocolServerSocketHandle.test.cc
+      - copied, changed from r1315, /trunk/Socket/ProtocolServerSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/
+   trunk/senf/Socket/Protocols.dia
+      - copied, changed from r1315, /trunk/Socket/Protocols.dia
+   trunk/senf/Socket/Protocols/AddressExceptions.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/AddressExceptions.hh
+   trunk/senf/Socket/Protocols/BSDAddressingPolicy.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/BSDAddressingPolicy.cc
+   trunk/senf/Socket/Protocols/BSDAddressingPolicy.cti
+      - copied, changed from r1315, /trunk/Socket/Protocols/BSDAddressingPolicy.cti
+   trunk/senf/Socket/Protocols/BSDAddressingPolicy.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/BSDAddressingPolicy.hh
+   trunk/senf/Socket/Protocols/BSDAddressingPolicy.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/BSDAddressingPolicy.test.cc
+   trunk/senf/Socket/Protocols/BSDSocketAddress.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/BSDSocketAddress.cc
+   trunk/senf/Socket/Protocols/BSDSocketAddress.cci
+      - copied, changed from r1315, /trunk/Socket/Protocols/BSDSocketAddress.cci
+   trunk/senf/Socket/Protocols/BSDSocketAddress.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/BSDSocketAddress.hh
+   trunk/senf/Socket/Protocols/BSDSocketAddress.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/BSDSocketAddress.test.cc
+   trunk/senf/Socket/Protocols/BSDSocketProtocol.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/BSDSocketProtocol.cc
+   trunk/senf/Socket/Protocols/BSDSocketProtocol.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/BSDSocketProtocol.hh
+   trunk/senf/Socket/Protocols/DVB/
+   trunk/senf/Socket/Protocols/DVB.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/DVB.hh
+   trunk/senf/Socket/Protocols/DVB/DVB.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/DVB/DVB.hh
+   trunk/senf/Socket/Protocols/DVB/DVBConfigParser.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/DVB/DVBConfigParser.cc
+   trunk/senf/Socket/Protocols/DVB/DVBConfigParser.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/DVB/DVBConfigParser.hh
+   trunk/senf/Socket/Protocols/DVB/DVBDemuxHandles.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/DVB/DVBDemuxHandles.cc
+   trunk/senf/Socket/Protocols/DVB/DVBDemuxHandles.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/DVB/DVBDemuxHandles.hh
+   trunk/senf/Socket/Protocols/DVB/DVBDemuxSocketProtocol.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/DVB/DVBDemuxSocketProtocol.cc
+   trunk/senf/Socket/Protocols/DVB/DVBDemuxSocketProtocol.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/DVB/DVBDemuxSocketProtocol.hh
+   trunk/senf/Socket/Protocols/DVB/DVBFrontendHandle.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/DVB/DVBFrontendHandle.cc
+   trunk/senf/Socket/Protocols/DVB/DVBFrontendHandle.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/DVB/DVBFrontendHandle.hh
+   trunk/senf/Socket/Protocols/DVB/DVBProtocolWrapper.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/DVB/DVBProtocolWrapper.cc
+   trunk/senf/Socket/Protocols/DVB/DVBProtocolWrapper.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/DVB/DVBProtocolWrapper.hh
+   trunk/senf/Socket/Protocols/DVB/DVBSocketController.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/DVB/DVBSocketController.cc
+   trunk/senf/Socket/Protocols/DVB/DVBSocketController.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/DVB/DVBSocketController.hh
+   trunk/senf/Socket/Protocols/DVB/SConscript
+      - copied, changed from r1315, /trunk/Socket/Protocols/DVB/SConscript
+   trunk/senf/Socket/Protocols/DVB/main.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/DVB/main.test.cc
+   trunk/senf/Socket/Protocols/DatagramSocketProtocol.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/DatagramSocketProtocol.cc
+   trunk/senf/Socket/Protocols/DatagramSocketProtocol.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/DatagramSocketProtocol.hh
+   trunk/senf/Socket/Protocols/INet/
+   trunk/senf/Socket/Protocols/INet.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet.hh
+   trunk/senf/Socket/Protocols/INet/ConnectedRawINetSocketHandle.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/ConnectedRawINetSocketHandle.cc
+   trunk/senf/Socket/Protocols/INet/ConnectedRawINetSocketHandle.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/ConnectedRawINetSocketHandle.hh
+   trunk/senf/Socket/Protocols/INet/ConnectedUDPSocketHandle.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/ConnectedUDPSocketHandle.cc
+   trunk/senf/Socket/Protocols/INet/ConnectedUDPSocketHandle.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/ConnectedUDPSocketHandle.hh
+   trunk/senf/Socket/Protocols/INet/INet.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INet.hh
+   trunk/senf/Socket/Protocols/INet/INet4Address.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INet4Address.cc
+   trunk/senf/Socket/Protocols/INet/INet4Address.cci
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INet4Address.cci
+   trunk/senf/Socket/Protocols/INet/INet4Address.ct
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INet4Address.ct
+   trunk/senf/Socket/Protocols/INet/INet4Address.cti
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INet4Address.cti
+   trunk/senf/Socket/Protocols/INet/INet4Address.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INet4Address.hh
+   trunk/senf/Socket/Protocols/INet/INet4Address.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INet4Address.test.cc
+   trunk/senf/Socket/Protocols/INet/INet6Address.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INet6Address.cc
+   trunk/senf/Socket/Protocols/INet/INet6Address.cci
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INet6Address.cci
+   trunk/senf/Socket/Protocols/INet/INet6Address.ct
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INet6Address.ct
+   trunk/senf/Socket/Protocols/INet/INet6Address.cti
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INet6Address.cti
+   trunk/senf/Socket/Protocols/INet/INet6Address.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INet6Address.hh
+   trunk/senf/Socket/Protocols/INet/INet6Address.ih
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INet6Address.ih
+   trunk/senf/Socket/Protocols/INet/INet6Address.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INet6Address.test.cc
+   trunk/senf/Socket/Protocols/INet/INetAddressing.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INetAddressing.cc
+   trunk/senf/Socket/Protocols/INet/INetAddressing.cci
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INetAddressing.cci
+   trunk/senf/Socket/Protocols/INet/INetAddressing.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INetAddressing.hh
+   trunk/senf/Socket/Protocols/INet/INetAddressing.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INetAddressing.test.cc
+   trunk/senf/Socket/Protocols/INet/INetSocketProtocol.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INetSocketProtocol.cc
+   trunk/senf/Socket/Protocols/INet/INetSocketProtocol.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/INetSocketProtocol.hh
+   trunk/senf/Socket/Protocols/INet/MulticastSocketProtocol.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/MulticastSocketProtocol.cc
+   trunk/senf/Socket/Protocols/INet/MulticastSocketProtocol.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/MulticastSocketProtocol.hh
+   trunk/senf/Socket/Protocols/INet/MulticastSocketProtocol.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/MulticastSocketProtocol.test.cc
+   trunk/senf/Socket/Protocols/INet/RawINetSocketHandle.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/RawINetSocketHandle.cc
+   trunk/senf/Socket/Protocols/INet/RawINetSocketHandle.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/RawINetSocketHandle.hh
+   trunk/senf/Socket/Protocols/INet/RawINetSocketHandle.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/RawINetSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/INet/RawINetSocketProtocol.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/RawINetSocketProtocol.cc
+   trunk/senf/Socket/Protocols/INet/RawINetSocketProtocol.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/RawINetSocketProtocol.hh
+   trunk/senf/Socket/Protocols/INet/SConscript
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/SConscript
+   trunk/senf/Socket/Protocols/INet/TCPSocketHandle.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/TCPSocketHandle.cc
+   trunk/senf/Socket/Protocols/INet/TCPSocketHandle.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/TCPSocketHandle.hh
+   trunk/senf/Socket/Protocols/INet/TCPSocketHandle.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/TCPSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/INet/TCPSocketProtocol.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/TCPSocketProtocol.cc
+   trunk/senf/Socket/Protocols/INet/TCPSocketProtocol.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/TCPSocketProtocol.hh
+   trunk/senf/Socket/Protocols/INet/UDPSocketHandle.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/UDPSocketHandle.cc
+   trunk/senf/Socket/Protocols/INet/UDPSocketHandle.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/UDPSocketHandle.hh
+   trunk/senf/Socket/Protocols/INet/UDPSocketHandle.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/UDPSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/INet/UDPSocketProtocol.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/UDPSocketProtocol.cc
+   trunk/senf/Socket/Protocols/INet/UDPSocketProtocol.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/UDPSocketProtocol.hh
+   trunk/senf/Socket/Protocols/INet/main.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/main.test.cc
+   trunk/senf/Socket/Protocols/Raw/
+   trunk/senf/Socket/Protocols/Raw.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw.hh
+   trunk/senf/Socket/Protocols/Raw/EUI64.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/EUI64.cc
+   trunk/senf/Socket/Protocols/Raw/EUI64.cci
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/EUI64.cci
+   trunk/senf/Socket/Protocols/Raw/EUI64.cti
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/EUI64.cti
+   trunk/senf/Socket/Protocols/Raw/EUI64.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/EUI64.hh
+   trunk/senf/Socket/Protocols/Raw/EUI64.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/EUI64.test.cc
+   trunk/senf/Socket/Protocols/Raw/LLAddressing.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/LLAddressing.cc
+   trunk/senf/Socket/Protocols/Raw/LLAddressing.cci
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/LLAddressing.cci
+   trunk/senf/Socket/Protocols/Raw/LLAddressing.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/LLAddressing.hh
+   trunk/senf/Socket/Protocols/Raw/LLAddressing.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/LLAddressing.test.cc
+   trunk/senf/Socket/Protocols/Raw/MACAddress.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/MACAddress.cc
+   trunk/senf/Socket/Protocols/Raw/MACAddress.cci
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/MACAddress.cci
+   trunk/senf/Socket/Protocols/Raw/MACAddress.ct
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/MACAddress.ct
+   trunk/senf/Socket/Protocols/Raw/MACAddress.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/MACAddress.hh
+   trunk/senf/Socket/Protocols/Raw/MACAddress.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/MACAddress.test.cc
+   trunk/senf/Socket/Protocols/Raw/PacketSocketHandle.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/PacketSocketHandle.cc
+   trunk/senf/Socket/Protocols/Raw/PacketSocketHandle.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/PacketSocketHandle.hh
+   trunk/senf/Socket/Protocols/Raw/PacketSocketHandle.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/PacketSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/Raw/ParseString.ct
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/ParseString.ct
+   trunk/senf/Socket/Protocols/Raw/ParseString.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/ParseString.hh
+   trunk/senf/Socket/Protocols/Raw/Raw.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/Raw.hh
+   trunk/senf/Socket/Protocols/Raw/SConscript
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/SConscript
+   trunk/senf/Socket/Protocols/Raw/TunTapSocketHandle.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/TunTapSocketHandle.cc
+   trunk/senf/Socket/Protocols/Raw/TunTapSocketHandle.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/TunTapSocketHandle.hh
+   trunk/senf/Socket/Protocols/Raw/TunTapSocketHandle.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/Raw/TunTapSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/Raw/main.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/UN/main.test.cc
+   trunk/senf/Socket/Protocols/SConscript
+      - copied, changed from r1315, /trunk/Socket/Protocols/SConscript
+   trunk/senf/Socket/Protocols/UN/
+   trunk/senf/Socket/Protocols/UN.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/UN.hh
+   trunk/senf/Socket/Protocols/UN/ConnectedUNDatagramSocketHandle.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/UN/ConnectedUNDatagramSocketHandle.cc
+   trunk/senf/Socket/Protocols/UN/ConnectedUNDatagramSocketHandle.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/UN/ConnectedUNDatagramSocketHandle.hh
+   trunk/senf/Socket/Protocols/UN/SConscript
+      - copied, changed from r1315, /trunk/Socket/Protocols/UN/SConscript
+   trunk/senf/Socket/Protocols/UN/UN.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/UN/UN.hh
+   trunk/senf/Socket/Protocols/UN/UNAddressing.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/UN/UNAddressing.cc
+   trunk/senf/Socket/Protocols/UN/UNAddressing.cci
+      - copied, changed from r1315, /trunk/Socket/Protocols/UN/UNAddressing.cci
+   trunk/senf/Socket/Protocols/UN/UNAddressing.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/UN/UNAddressing.hh
+   trunk/senf/Socket/Protocols/UN/UNAddressing.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/UN/UNAddressing.test.cc
+   trunk/senf/Socket/Protocols/UN/UNDatagramSocketHandle.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/UN/UNDatagramSocketHandle.cc
+   trunk/senf/Socket/Protocols/UN/UNDatagramSocketHandle.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/UN/UNDatagramSocketHandle.hh
+   trunk/senf/Socket/Protocols/UN/UNDatagramSocketHandle.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/UN/UNDatagramSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/UN/UNSocketProtocol.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/UN/UNSocketProtocol.cc
+   trunk/senf/Socket/Protocols/UN/UNSocketProtocol.hh
+      - copied, changed from r1315, /trunk/Socket/Protocols/UN/UNSocketProtocol.hh
+   trunk/senf/Socket/Protocols/UN/UNSocketProtocol.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/UN/UNSocketProtocol.test.cc
+   trunk/senf/Socket/Protocols/UN/main.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/INet/main.test.cc
+   trunk/senf/Socket/Protocols/main.test.cc
+      - copied, changed from r1315, /trunk/Socket/Protocols/main.test.cc
+   trunk/senf/Socket/ReadWritePolicy.cc
+      - copied, changed from r1315, /trunk/Socket/ReadWritePolicy.cc
+   trunk/senf/Socket/ReadWritePolicy.cti
+      - copied, changed from r1315, /trunk/Socket/ReadWritePolicy.cti
+   trunk/senf/Socket/ReadWritePolicy.hh
+      - copied, changed from r1315, /trunk/Socket/ReadWritePolicy.hh
+   trunk/senf/Socket/SConscript
+      - copied, changed from r1315, /trunk/Socket/SConscript
+   trunk/senf/Socket/ServerSocketHandle.cti
+      - copied, changed from r1315, /trunk/Socket/ServerSocketHandle.cti
+   trunk/senf/Socket/ServerSocketHandle.hh
+      - copied, changed from r1315, /trunk/Socket/ServerSocketHandle.hh
+   trunk/senf/Socket/ServerSocketHandle.test.cc
+      - copied, changed from r1315, /trunk/Socket/ServerSocketHandle.test.cc
+   trunk/senf/Socket/Socket.hh
+      - copied, changed from r1315, /trunk/Socket/Socket.hh
+   trunk/senf/Socket/SocketHandle.cc
+      - copied, changed from r1315, /trunk/Socket/SocketHandle.cc
+   trunk/senf/Socket/SocketHandle.cci
+      - copied, changed from r1315, /trunk/Socket/SocketHandle.cci
+   trunk/senf/Socket/SocketHandle.ct
+      - copied, changed from r1315, /trunk/Socket/SocketHandle.ct
+   trunk/senf/Socket/SocketHandle.cti
+      - copied, changed from r1315, /trunk/Socket/SocketHandle.cti
+   trunk/senf/Socket/SocketHandle.hh
+      - copied, changed from r1315, /trunk/Socket/SocketHandle.hh
+   trunk/senf/Socket/SocketHandle.ih
+      - copied, changed from r1315, /trunk/Socket/SocketHandle.ih
+   trunk/senf/Socket/SocketHandle.test.cc
+      - copied, changed from r1315, /trunk/Socket/SocketHandle.test.cc
+   trunk/senf/Socket/SocketLibrary-classes.dia
+      - copied, changed from r1315, /trunk/Socket/SocketLibrary-classes.dia
+   trunk/senf/Socket/SocketPolicy.cc
+      - copied, changed from r1315, /trunk/Socket/SocketPolicy.cc
+   trunk/senf/Socket/SocketPolicy.ct
+      - copied, changed from r1315, /trunk/Socket/SocketPolicy.ct
+   trunk/senf/Socket/SocketPolicy.dia
+      - copied, changed from r1315, /trunk/Socket/SocketPolicy.dia
+   trunk/senf/Socket/SocketPolicy.hh
+      - copied, changed from r1315, /trunk/Socket/SocketPolicy.hh
+   trunk/senf/Socket/SocketPolicy.ih
+      - copied, changed from r1315, /trunk/Socket/SocketPolicy.ih
+   trunk/senf/Socket/SocketPolicy.test.cc
+      - copied, changed from r1315, /trunk/Socket/SocketPolicy.test.cc
+   trunk/senf/Socket/SocketPolicy.test.hh
+      - copied, changed from r1315, /trunk/Socket/SocketPolicy.test.hh
+   trunk/senf/Socket/SocketProtocol.cc
+      - copied, changed from r1315, /trunk/Socket/SocketProtocol.cc
+   trunk/senf/Socket/SocketProtocol.cci
+      - copied, changed from r1315, /trunk/Socket/SocketProtocol.cci
+   trunk/senf/Socket/SocketProtocol.cti
+      - copied, changed from r1315, /trunk/Socket/SocketProtocol.cti
+   trunk/senf/Socket/SocketProtocol.hh
+      - copied, changed from r1315, /trunk/Socket/SocketProtocol.hh
+   trunk/senf/Socket/SocketProtocol.test.cc
+      - copied, changed from r1315, /trunk/Socket/SocketProtocol.test.cc
+   trunk/senf/Socket/SocketProtocol.test.hh
+      - copied, changed from r1315, /trunk/Socket/SocketProtocol.test.hh
+   trunk/senf/Socket/main.test.cc
+      - copied, changed from r1315, /trunk/Scheduler/main.test.cc
+   trunk/senf/Utils/
+   trunk/senf/Utils/Backtrace.cc
+      - copied, changed from r1315, /trunk/Utils/Backtrace.cc
+   trunk/senf/Utils/Backtrace.hh
+      - copied, changed from r1315, /trunk/Utils/Backtrace.hh
+   trunk/senf/Utils/Buffer.hh
+      - copied, changed from r1315, /trunk/Utils/Buffer.hh
+   trunk/senf/Utils/Buffer.test.cc
+      - copied, changed from r1315, /trunk/Utils/Buffer.test.cc
+   trunk/senf/Utils/Console/
+   trunk/senf/Utils/Console/.gitignore
+      - copied, changed from r1315, /trunk/Utils/Console/.gitignore
+   trunk/senf/Utils/Console/Config.cc
+      - copied, changed from r1315, /trunk/Utils/Console/Config.cc
+   trunk/senf/Utils/Console/Config.cci
+      - copied, changed from r1315, /trunk/Utils/Console/Config.cci
+   trunk/senf/Utils/Console/Config.cti
+      - copied, changed from r1315, /trunk/Utils/Console/Config.cti
+   trunk/senf/Utils/Console/Config.hh
+      - copied, changed from r1315, /trunk/Utils/Console/Config.hh
+   trunk/senf/Utils/Console/Config.ih
+      - copied, changed from r1315, /trunk/Utils/Console/Config.ih
+   trunk/senf/Utils/Console/Config.test.cc
+      - copied, changed from r1315, /trunk/Utils/Console/Config.test.cc
+   trunk/senf/Utils/Console/ConfigFile.cc
+      - copied, changed from r1315, /trunk/Utils/Console/ConfigFile.cc
+   trunk/senf/Utils/Console/ConfigFile.cci
+      - copied, changed from r1315, /trunk/Utils/Console/ConfigFile.cci
+   trunk/senf/Utils/Console/ConfigFile.hh
+      - copied, changed from r1315, /trunk/Utils/Console/ConfigFile.hh
+   trunk/senf/Utils/Console/ConfigFile.ih
+      - copied, changed from r1315, /trunk/Utils/Console/ConfigFile.ih
+   trunk/senf/Utils/Console/ConfigFile.test.cc
+      - copied, changed from r1315, /trunk/Utils/Console/ConfigFile.test.cc
+   trunk/senf/Utils/Console/Console.hh
+      - copied, changed from r1315, /trunk/Utils/Console/Console.hh
+   trunk/senf/Utils/Console/Doxyfile
+      - copied, changed from r1315, /trunk/Utils/Console/Doxyfile
+   trunk/senf/Utils/Console/Example.dox
+      - copied, changed from r1315, /trunk/Utils/Console/Example.dox
+   trunk/senf/Utils/Console/Executor.cc
+      - copied, changed from r1315, /trunk/Utils/Console/Executor.cc
+   trunk/senf/Utils/Console/Executor.cci
+      - copied, changed from r1315, /trunk/Utils/Console/Executor.cci
+   trunk/senf/Utils/Console/Executor.hh
+      - copied, changed from r1315, /trunk/Utils/Console/Executor.hh
+   trunk/senf/Utils/Console/Executor.test.cc
+      - copied, changed from r1315, /trunk/Utils/Console/Executor.test.cc
+   trunk/senf/Utils/Console/FancyReader.hh
+      - copied, changed from r1315, /trunk/Utils/Console/FancyReader.hh
+   trunk/senf/Utils/Console/LazyDirectory.cc
+      - copied, changed from r1315, /trunk/Utils/Console/LazyDirectory.cc
+   trunk/senf/Utils/Console/LazyDirectory.hh
+      - copied, changed from r1315, /trunk/Utils/Console/LazyDirectory.hh
+   trunk/senf/Utils/Console/LineEditor.cc
+      - copied, changed from r1315, /trunk/Utils/Console/LineEditor.cc
+   trunk/senf/Utils/Console/LineEditor.hh
+      - copied, changed from r1315, /trunk/Utils/Console/LineEditor.hh
+   trunk/senf/Utils/Console/Mainpage.dox
+      - copied, changed from r1315, /trunk/Utils/Console/Mainpage.dox
+   trunk/senf/Utils/Console/Node.cc
+      - copied, changed from r1315, /trunk/Utils/Console/Node.cc
+   trunk/senf/Utils/Console/Node.cci
+      - copied, changed from r1315, /trunk/Utils/Console/Node.cci
+   trunk/senf/Utils/Console/Node.cti
+      - copied, changed from r1315, /trunk/Utils/Console/Node.cti
+   trunk/senf/Utils/Console/Node.hh
+      - copied, changed from r1315, /trunk/Utils/Console/Node.hh
+   trunk/senf/Utils/Console/Node.ih
+      - copied, changed from r1315, /trunk/Utils/Console/Node.ih
+   trunk/senf/Utils/Console/Node.test.cc
+      - copied, changed from r1315, /trunk/Utils/Console/Node.test.cc
+   trunk/senf/Utils/Console/OverloadedCommand.cc
+      - copied, changed from r1315, /trunk/Utils/Console/OverloadedCommand.cc
+   trunk/senf/Utils/Console/OverloadedCommand.cci
+      - copied, changed from r1315, /trunk/Utils/Console/OverloadedCommand.cci
+   trunk/senf/Utils/Console/OverloadedCommand.cti
+      - copied, changed from r1315, /trunk/Utils/Console/OverloadedCommand.cti
+   trunk/senf/Utils/Console/OverloadedCommand.hh
+      - copied, changed from r1315, /trunk/Utils/Console/OverloadedCommand.hh
+   trunk/senf/Utils/Console/OverloadedCommand.test.cc
+      - copied, changed from r1315, /trunk/Utils/Console/OverloadedCommand.test.cc
+   trunk/senf/Utils/Console/Parse.cc
+      - copied, changed from r1315, /trunk/Utils/Console/Parse.cc
+   trunk/senf/Utils/Console/Parse.cci
+      - copied, changed from r1315, /trunk/Utils/Console/Parse.cci
+   trunk/senf/Utils/Console/Parse.hh
+      - copied, changed from r1315, /trunk/Utils/Console/Parse.hh
+   trunk/senf/Utils/Console/Parse.ih
+      - copied, changed from r1315, /trunk/Utils/Console/Parse.ih
+   trunk/senf/Utils/Console/Parse.test.cc
+      - copied, changed from r1315, /trunk/Utils/Console/Parse.test.cc
+   trunk/senf/Utils/Console/ParsedCommand.cc
+      - copied, changed from r1315, /trunk/Utils/Console/ParsedCommand.cc
+   trunk/senf/Utils/Console/ParsedCommand.cci
+      - copied, changed from r1315, /trunk/Utils/Console/ParsedCommand.cci
+   trunk/senf/Utils/Console/ParsedCommand.ct
+      - copied, changed from r1315, /trunk/Utils/Console/ParsedCommand.ct
+   trunk/senf/Utils/Console/ParsedCommand.cti
+      - copied, changed from r1315, /trunk/Utils/Console/ParsedCommand.cti
+   trunk/senf/Utils/Console/ParsedCommand.hh
+      - copied, changed from r1315, /trunk/Utils/Console/ParsedCommand.hh
+   trunk/senf/Utils/Console/ParsedCommand.ih
+      - copied, changed from r1315, /trunk/Utils/Console/ParsedCommand.ih
+   trunk/senf/Utils/Console/ParsedCommand.mpp
+      - copied, changed from r1315, /trunk/Utils/Console/ParsedCommand.mpp
+   trunk/senf/Utils/Console/ParsedCommand.test.cc
+      - copied, changed from r1315, /trunk/Utils/Console/ParsedCommand.test.cc
+   trunk/senf/Utils/Console/ProgramOptions.cc
+      - copied, changed from r1315, /trunk/Utils/Console/ProgramOptions.cc
+   trunk/senf/Utils/Console/ProgramOptions.cci
+      - copied, changed from r1315, /trunk/Utils/Console/ProgramOptions.cci
+   trunk/senf/Utils/Console/ProgramOptions.cti
+      - copied, changed from r1315, /trunk/Utils/Console/ProgramOptions.cti
+   trunk/senf/Utils/Console/ProgramOptions.hh
+      - copied, changed from r1315, /trunk/Utils/Console/ProgramOptions.hh
+   trunk/senf/Utils/Console/ProgramOptions.ih
+      - copied, changed from r1315, /trunk/Utils/Console/ProgramOptions.ih
+   trunk/senf/Utils/Console/ProgramOptions.test.cc
+      - copied, changed from r1315, /trunk/Utils/Console/ProgramOptions.test.cc
+   trunk/senf/Utils/Console/SConscript
+      - copied, changed from r1315, /trunk/Utils/Console/SConscript
+   trunk/senf/Utils/Console/STLSupport.ct
+      - copied, changed from r1315, /trunk/Utils/Console/STLSupport.ct
+   trunk/senf/Utils/Console/STLSupport.hh
+      - copied, changed from r1315, /trunk/Utils/Console/STLSupport.hh
+   trunk/senf/Utils/Console/STLSupport.test.cc
+      - copied, changed from r1315, /trunk/Utils/Console/STLSupport.test.cc
+   trunk/senf/Utils/Console/ScopedDirectory.cci
+      - copied, changed from r1315, /trunk/Utils/Console/ScopedDirectory.cci
+   trunk/senf/Utils/Console/ScopedDirectory.cti
+      - copied, changed from r1315, /trunk/Utils/Console/ScopedDirectory.cti
+   trunk/senf/Utils/Console/ScopedDirectory.hh
+      - copied, changed from r1315, /trunk/Utils/Console/ScopedDirectory.hh
+   trunk/senf/Utils/Console/ScopedDirectory.test.cc
+      - copied, changed from r1315, /trunk/Utils/Console/ScopedDirectory.test.cc
+   trunk/senf/Utils/Console/Server.cc
+      - copied, changed from r1315, /trunk/Utils/Console/Server.cc
+   trunk/senf/Utils/Console/Server.cci
+      - copied, changed from r1315, /trunk/Utils/Console/Server.cci
+   trunk/senf/Utils/Console/Server.hh
+      - copied, changed from r1315, /trunk/Utils/Console/Server.hh
+   trunk/senf/Utils/Console/Server.ih
+      - copied, changed from r1315, /trunk/Utils/Console/Server.ih
+   trunk/senf/Utils/Console/Server.test.cc
+      - copied, changed from r1315, /trunk/Utils/Console/Server.test.cc
+   trunk/senf/Utils/Console/Sysdir.cci
+      - copied, changed from r1315, /trunk/Utils/Console/Sysdir.cci
+   trunk/senf/Utils/Console/Sysdir.hh
+      - copied, changed from r1315, /trunk/Utils/Console/Sysdir.hh
+   trunk/senf/Utils/Console/Sysdir.ih
+      - copied, changed from r1315, /trunk/Utils/Console/Sysdir.ih
+   trunk/senf/Utils/Console/Traits.cc
+      - copied, changed from r1315, /trunk/Utils/Console/Traits.cc
+   trunk/senf/Utils/Console/Traits.cci
+      - copied, changed from r1315, /trunk/Utils/Console/Traits.cci
+   trunk/senf/Utils/Console/Traits.ct
+      - copied, changed from r1315, /trunk/Utils/Console/Traits.ct
+   trunk/senf/Utils/Console/Traits.cti
+      - copied, changed from r1315, /trunk/Utils/Console/Traits.cti
+   trunk/senf/Utils/Console/Traits.hh
+      - copied, changed from r1315, /trunk/Utils/Console/Traits.hh
+   trunk/senf/Utils/Console/Traits.ih
+      - copied, changed from r1315, /trunk/Utils/Console/Traits.ih
+   trunk/senf/Utils/Console/Traits.test.cc
+      - copied, changed from r1315, /trunk/Utils/Console/Traits.test.cc
+   trunk/senf/Utils/Console/UDPServer.cc
+      - copied, changed from r1315, /trunk/Utils/Console/UDPServer.cc
+   trunk/senf/Utils/Console/UDPServer.hh
+      - copied, changed from r1315, /trunk/Utils/Console/UDPServer.hh
+   trunk/senf/Utils/Console/UDPServer.test.cc
+      - copied, changed from r1315, /trunk/Utils/Console/UDPServer.test.cc
+   trunk/senf/Utils/Console/Utility.ct
+      - copied, changed from r1315, /trunk/Utils/Console/Utility.ct
+   trunk/senf/Utils/Console/Utility.hh
+      - copied, changed from r1315, /trunk/Utils/Console/Utility.hh
+   trunk/senf/Utils/Console/Variables.cti
+      - copied, changed from r1315, /trunk/Utils/Console/Variables.cti
+   trunk/senf/Utils/Console/Variables.hh
+      - copied, changed from r1315, /trunk/Utils/Console/Variables.hh
+   trunk/senf/Utils/Console/Variables.ih
+      - copied, changed from r1315, /trunk/Utils/Console/Variables.ih
+   trunk/senf/Utils/Console/Variables.test.cc
+      - copied, changed from r1315, /trunk/Utils/Console/Variables.test.cc
+   trunk/senf/Utils/Console/main.test.cc
+      - copied, changed from r1315, /trunk/Utils/Console/main.test.cc
+   trunk/senf/Utils/Console/testServer.cc
+      - copied, changed from r1315, /trunk/Utils/Console/testServer.cc
+   trunk/senf/Utils/Daemon/
+   trunk/senf/Utils/Daemon.hh
+      - copied, changed from r1315, /trunk/Utils/Daemon.hh
+   trunk/senf/Utils/Daemon/Daemon.cc
+      - copied, changed from r1315, /trunk/Utils/Daemon/Daemon.cc
+   trunk/senf/Utils/Daemon/Daemon.cci
+      - copied, changed from r1315, /trunk/Utils/Daemon/Daemon.cci
+   trunk/senf/Utils/Daemon/Daemon.hh
+      - copied, changed from r1315, /trunk/Utils/Daemon/Daemon.hh
+   trunk/senf/Utils/Daemon/Daemon.ih
+      - copied, changed from r1315, /trunk/Utils/Daemon/Daemon.ih
+   trunk/senf/Utils/Daemon/Daemon.test.cc
+      - copied, changed from r1315, /trunk/Utils/Daemon/Daemon.test.cc
+   trunk/senf/Utils/Daemon/Doxyfile
+      - copied, changed from r1315, /trunk/Utils/Doxyfile
+   trunk/senf/Utils/Daemon/Mainpage.dox
+      - copied, changed from r1315, /trunk/Utils/Daemon/Mainpage.dox
+   trunk/senf/Utils/Daemon/SConscript
+      - copied, changed from r1315, /trunk/Utils/Daemon/SConscript
+   trunk/senf/Utils/Daemon/main.test.cc
+      - copied, changed from r1315, /trunk/Utils/Daemon/main.test.cc
+   trunk/senf/Utils/DiscardStream.cci
+      - copied, changed from r1315, /trunk/Utils/DiscardStream.cci
+   trunk/senf/Utils/DiscardStream.hh
+      - copied, changed from r1315, /trunk/Utils/DiscardStream.hh
+   trunk/senf/Utils/DiscardStream.test.cc
+      - copied, changed from r1315, /trunk/Utils/DiscardStream.test.cc
+   trunk/senf/Utils/Doxyfile
+      - copied, changed from r1315, /trunk/Utils/Logger/Doxyfile
+   trunk/senf/Utils/Exception.cc
+      - copied, changed from r1315, /trunk/Utils/Exception.cc
+   trunk/senf/Utils/Exception.cci
+      - copied, changed from r1315, /trunk/Utils/Exception.cci
+   trunk/senf/Utils/Exception.cti
+      - copied, changed from r1315, /trunk/Utils/Exception.cti
+   trunk/senf/Utils/Exception.hh
+      - copied, changed from r1315, /trunk/Utils/Exception.hh
+   trunk/senf/Utils/Exception.test.cc
+      - copied, changed from r1315, /trunk/Utils/Exception.test.cc
+   trunk/senf/Utils/Externals.dox
+      - copied, changed from r1315, /trunk/Utils/Externals.dox
+   trunk/senf/Utils/IpChecksum.cci
+      - copied, changed from r1315, /trunk/Utils/IpChecksum.cci
+   trunk/senf/Utils/IpChecksum.cti
+      - copied, changed from r1315, /trunk/Utils/IpChecksum.cti
+   trunk/senf/Utils/IpChecksum.hh
+      - copied, changed from r1315, /trunk/Utils/IpChecksum.hh
+   trunk/senf/Utils/IpChecksum.test.cc
+      - copied, changed from r1315, /trunk/Utils/IpChecksum.test.cc
+   trunk/senf/Utils/IteratorTraits.cti
+      - copied, changed from r1315, /trunk/Utils/IteratorTraits.cti
+   trunk/senf/Utils/IteratorTraits.hh
+      - copied, changed from r1315, /trunk/Utils/IteratorTraits.hh
+   trunk/senf/Utils/IteratorTraits.ih
+      - copied, changed from r1315, /trunk/Utils/IteratorTraits.ih
+   trunk/senf/Utils/IteratorTraits.test.cc
+      - copied, changed from r1315, /trunk/Utils/IteratorTraits.test.cc
+   trunk/senf/Utils/Logger/
+   trunk/senf/Utils/Logger.hh
+      - copied, changed from r1315, /trunk/Utils/Logger.hh
+   trunk/senf/Utils/Logger/AreaRegistry.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/AreaRegistry.cc
+   trunk/senf/Utils/Logger/AreaRegistry.cci
+      - copied, changed from r1315, /trunk/Utils/Logger/AreaRegistry.cci
+   trunk/senf/Utils/Logger/AreaRegistry.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/AreaRegistry.hh
+   trunk/senf/Utils/Logger/AreaRegistry.ih
+      - copied, changed from r1315, /trunk/Utils/Logger/AreaRegistry.ih
+   trunk/senf/Utils/Logger/AreaRegistry.test.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/AreaRegistry.test.cc
+   trunk/senf/Utils/Logger/Config.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/Config.hh
+   trunk/senf/Utils/Logger/Config.ih
+      - copied, changed from r1315, /trunk/Utils/Logger/Config.ih
+   trunk/senf/Utils/Logger/Config.test.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/Config.test.cc
+   trunk/senf/Utils/Logger/ConsoleTarget.cci
+      - copied, changed from r1315, /trunk/Utils/Logger/ConsoleTarget.cci
+   trunk/senf/Utils/Logger/ConsoleTarget.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/ConsoleTarget.hh
+   trunk/senf/Utils/Logger/Definitions.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/Definitions.hh
+   trunk/senf/Utils/Logger/Definitions.ih
+      - copied, changed from r1315, /trunk/Utils/Logger/Definitions.ih
+   trunk/senf/Utils/Logger/Doxyfile
+      - copied, changed from r1315, /trunk/Scheduler/Doxyfile
+   trunk/senf/Utils/Logger/FileTarget.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/FileTarget.cc
+   trunk/senf/Utils/Logger/FileTarget.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/FileTarget.hh
+   trunk/senf/Utils/Logger/FileTarget.test.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/FileTarget.test.cc
+   trunk/senf/Utils/Logger/IOStreamTarget.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/IOStreamTarget.cc
+   trunk/senf/Utils/Logger/IOStreamTarget.cci
+      - copied, changed from r1315, /trunk/Utils/Logger/IOStreamTarget.cci
+   trunk/senf/Utils/Logger/IOStreamTarget.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/IOStreamTarget.hh
+   trunk/senf/Utils/Logger/Levels.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/Levels.hh
+   trunk/senf/Utils/Logger/Levels.ih
+      - copied, changed from r1315, /trunk/Utils/Logger/Levels.ih
+   trunk/senf/Utils/Logger/Log.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/Log.hh
+   trunk/senf/Utils/Logger/Log.ih
+      - copied, changed from r1315, /trunk/Utils/Logger/Log.ih
+   trunk/senf/Utils/Logger/Log.test.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/Log.test.cc
+   trunk/senf/Utils/Logger/LogFormat.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/LogFormat.cc
+   trunk/senf/Utils/Logger/LogFormat.cci
+      - copied, changed from r1315, /trunk/Utils/Logger/LogFormat.cci
+   trunk/senf/Utils/Logger/LogFormat.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/LogFormat.hh
+   trunk/senf/Utils/Logger/Logger.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/Logger.hh
+   trunk/senf/Utils/Logger/Mainpage.dox
+      - copied, changed from r1315, /trunk/Utils/Logger/Mainpage.dox
+   trunk/senf/Utils/Logger/Parameters.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/Parameters.hh
+   trunk/senf/Utils/Logger/Parameters.ih
+      - copied, changed from r1315, /trunk/Utils/Logger/Parameters.ih
+   trunk/senf/Utils/Logger/Parameters.test.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/Parameters.test.cc
+   trunk/senf/Utils/Logger/SConscript
+      - copied, changed from r1315, /trunk/Utils/Logger/SConscript
+   trunk/senf/Utils/Logger/SenfLog.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/SenfLog.hh
+   trunk/senf/Utils/Logger/StreamRegistry.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/StreamRegistry.cc
+   trunk/senf/Utils/Logger/StreamRegistry.cci
+      - copied, changed from r1315, /trunk/Utils/Logger/StreamRegistry.cci
+   trunk/senf/Utils/Logger/StreamRegistry.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/StreamRegistry.hh
+   trunk/senf/Utils/Logger/StreamRegistry.ih
+      - copied, changed from r1315, /trunk/Utils/Logger/StreamRegistry.ih
+   trunk/senf/Utils/Logger/StreamRegistry.test.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/StreamRegistry.test.cc
+   trunk/senf/Utils/Logger/StringTarget.cti
+      - copied, changed from r1315, /trunk/Utils/Logger/StringTarget.cti
+   trunk/senf/Utils/Logger/StringTarget.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/StringTarget.hh
+   trunk/senf/Utils/Logger/SyslogTarget.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/SyslogTarget.cc
+   trunk/senf/Utils/Logger/SyslogTarget.cci
+      - copied, changed from r1315, /trunk/Utils/Logger/SyslogTarget.cci
+   trunk/senf/Utils/Logger/SyslogTarget.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/SyslogTarget.hh
+   trunk/senf/Utils/Logger/SyslogTarget.test.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/SyslogTarget.test.cc
+   trunk/senf/Utils/Logger/SyslogUDPTarget.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/SyslogUDPTarget.cc
+   trunk/senf/Utils/Logger/SyslogUDPTarget.cci
+      - copied, changed from r1315, /trunk/Utils/Logger/SyslogUDPTarget.cci
+   trunk/senf/Utils/Logger/SyslogUDPTarget.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/SyslogUDPTarget.hh
+   trunk/senf/Utils/Logger/SyslogUDPTarget.test.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/SyslogUDPTarget.test.cc
+   trunk/senf/Utils/Logger/Target.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/Target.cc
+   trunk/senf/Utils/Logger/Target.cci
+      - copied, changed from r1315, /trunk/Utils/Logger/Target.cci
+   trunk/senf/Utils/Logger/Target.cti
+      - copied, changed from r1315, /trunk/Utils/Logger/Target.cti
+   trunk/senf/Utils/Logger/Target.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/Target.hh
+   trunk/senf/Utils/Logger/Target.ih
+      - copied, changed from r1315, /trunk/Utils/Logger/Target.ih
+   trunk/senf/Utils/Logger/Target.test.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/Target.test.cc
+   trunk/senf/Utils/Logger/TimeSource.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/TimeSource.cc
+   trunk/senf/Utils/Logger/TimeSource.cci
+      - copied, changed from r1315, /trunk/Utils/Logger/TimeSource.cci
+   trunk/senf/Utils/Logger/TimeSource.cti
+      - copied, changed from r1315, /trunk/Utils/Logger/TimeSource.cti
+   trunk/senf/Utils/Logger/TimeSource.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/TimeSource.hh
+   trunk/senf/Utils/Logger/TimeSource.ih
+      - copied, changed from r1315, /trunk/Utils/Logger/TimeSource.ih
+   trunk/senf/Utils/Logger/main.test.cc
+      - copied, changed from r1315, /trunk/Utils/Logger/main.test.cc
+   trunk/senf/Utils/Logger/main.test.hh
+      - copied, changed from r1315, /trunk/Utils/Logger/main.test.hh
+   trunk/senf/Utils/Mainpage.dox
+      - copied, changed from r1315, /trunk/Utils/Mainpage.dox
+   trunk/senf/Utils/Phoenix.hh
+      - copied, changed from r1315, /trunk/Utils/Phoenix.hh
+   trunk/senf/Utils/Phoenix.ih
+      - copied, changed from r1315, /trunk/Utils/Phoenix.ih
+   trunk/senf/Utils/Range.cti
+      - copied, changed from r1315, /trunk/Utils/Range.cti
+   trunk/senf/Utils/Range.hh
+      - copied, changed from r1315, /trunk/Utils/Range.hh
+   trunk/senf/Utils/SConscript
+      - copied, changed from r1315, /trunk/Utils/SConscript
+   trunk/senf/Utils/ScopeExit.cci
+      - copied, changed from r1315, /trunk/Utils/ScopeExit.cci
+   trunk/senf/Utils/ScopeExit.hh
+      - copied, changed from r1315, /trunk/Utils/ScopeExit.hh
+   trunk/senf/Utils/Statistics.cc
+      - copied, changed from r1315, /trunk/Utils/Statistics.cc
+   trunk/senf/Utils/Statistics.cci
+      - copied, changed from r1315, /trunk/Utils/Statistics.cci
+   trunk/senf/Utils/Statistics.cti
+      - copied, changed from r1315, /trunk/Utils/Statistics.cti
+   trunk/senf/Utils/Statistics.hh
+      - copied, changed from r1315, /trunk/Utils/Statistics.hh
+   trunk/senf/Utils/Statistics.test.cc
+      - copied, changed from r1315, /trunk/Utils/Statistics.test.cc
+   trunk/senf/Utils/StatisticsTargets.cc
+      - copied, changed from r1315, /trunk/Utils/StatisticsTargets.cc
+   trunk/senf/Utils/StatisticsTargets.cci
+      - copied, changed from r1315, /trunk/Utils/StatisticsTargets.cci
+   trunk/senf/Utils/StatisticsTargets.ct
+      - copied, changed from r1315, /trunk/Utils/StatisticsTargets.ct
+   trunk/senf/Utils/StatisticsTargets.cti
+      - copied, changed from r1315, /trunk/Utils/StatisticsTargets.cti
+   trunk/senf/Utils/StatisticsTargets.hh
+      - copied, changed from r1315, /trunk/Utils/StatisticsTargets.hh
+   trunk/senf/Utils/StatisticsTargets.ih
+      - copied, changed from r1315, /trunk/Utils/StatisticsTargets.ih
+   trunk/senf/Utils/String.ct
+      - copied, changed from r1315, /trunk/Utils/String.ct
+   trunk/senf/Utils/String.cti
+      - copied, changed from r1315, /trunk/Utils/String.cti
+   trunk/senf/Utils/String.hh
+      - copied, changed from r1315, /trunk/Utils/String.hh
+   trunk/senf/Utils/String.test.cc
+      - copied, changed from r1315, /trunk/Utils/String.test.cc
+   trunk/senf/Utils/Tags.hh
+      - copied, changed from r1315, /trunk/Utils/Tags.hh
+   trunk/senf/Utils/Tags.test.cc
+      - copied, changed from r1315, /trunk/Utils/Tags.test.cc
+   trunk/senf/Utils/Termlib/
+   trunk/senf/Utils/Termlib/.gitignore
+      - copied, changed from r1315, /trunk/Utils/Termlib/.gitignore
+   trunk/senf/Utils/Termlib/AbstractTerminal.hh
+      - copied, changed from r1315, /trunk/Utils/Termlib/AbstractTerminal.hh
+   trunk/senf/Utils/Termlib/Doxyfile
+      - copied, changed from r1315, /trunk/Utils/Termlib/Doxyfile
+   trunk/senf/Utils/Termlib/Editor.cc
+      - copied, changed from r1315, /trunk/Utils/Termlib/Editor.cc
+   trunk/senf/Utils/Termlib/Editor.hh
+      - copied, changed from r1315, /trunk/Utils/Termlib/Editor.hh
+   trunk/senf/Utils/Termlib/Mainpage.dox
+      - copied, changed from r1315, /trunk/Utils/Termlib/Mainpage.dox
+   trunk/senf/Utils/Termlib/SConscript
+      - copied, changed from r1315, /trunk/Utils/Termlib/SConscript
+   trunk/senf/Utils/Termlib/Telnet.cc
+      - copied, changed from r1315, /trunk/Utils/Termlib/Telnet.cc
+   trunk/senf/Utils/Termlib/Telnet.cci
+      - copied, changed from r1315, /trunk/Utils/Termlib/Telnet.cci
+   trunk/senf/Utils/Termlib/Telnet.cti
+      - copied, changed from r1315, /trunk/Utils/Termlib/Telnet.cti
+   trunk/senf/Utils/Termlib/Telnet.hh
+      - copied, changed from r1315, /trunk/Utils/Termlib/Telnet.hh
+   trunk/senf/Utils/Termlib/Telnet.test.cc
+      - copied, changed from r1315, /trunk/Utils/Termlib/Telnet.test.cc
+   trunk/senf/Utils/Termlib/TelnetTerminal.cc
+      - copied, changed from r1315, /trunk/Utils/Termlib/TelnetTerminal.cc
+   trunk/senf/Utils/Termlib/TelnetTerminal.hh
+      - copied, changed from r1315, /trunk/Utils/Termlib/TelnetTerminal.hh
+   trunk/senf/Utils/Termlib/Terminfo.cc
+      - copied, changed from r1315, /trunk/Utils/Termlib/Terminfo.cc
+   trunk/senf/Utils/Termlib/Terminfo.hh
+      - copied, changed from r1315, /trunk/Utils/Termlib/Terminfo.hh
+   trunk/senf/Utils/Termlib/Terminfo.test.cc
+      - copied, changed from r1315, /trunk/Utils/Termlib/Terminfo.test.cc
+   trunk/senf/Utils/Termlib/main.test.cc
+      - copied, changed from r1315, /trunk/Utils/Termlib/main.test.cc
+   trunk/senf/Utils/Termlib/telnetServer.cc
+      - copied, changed from r1315, /trunk/Utils/Termlib/telnetServer.cc
+   trunk/senf/Utils/TypeIdValue.cc
+      - copied, changed from r1315, /trunk/Utils/TypeIdValue.cc
+   trunk/senf/Utils/TypeIdValue.cci
+      - copied, changed from r1315, /trunk/Utils/TypeIdValue.cci
+   trunk/senf/Utils/TypeIdValue.cti
+      - copied, changed from r1315, /trunk/Utils/TypeIdValue.cti
+   trunk/senf/Utils/TypeIdValue.hh
+      - copied, changed from r1315, /trunk/Utils/TypeIdValue.hh
+   trunk/senf/Utils/TypeIdValue.test.cc
+      - copied, changed from r1315, /trunk/Utils/TypeIdValue.test.cc
+   trunk/senf/Utils/TypeInfo.cc
+      - copied, changed from r1315, /trunk/Utils/TypeInfo.cc
+   trunk/senf/Utils/TypeInfo.hh
+      - copied, changed from r1315, /trunk/Utils/TypeInfo.hh
+   trunk/senf/Utils/TypeInfo.test.cc
+      - copied, changed from r1315, /trunk/Utils/TypeInfo.test.cc
+   trunk/senf/Utils/auto_unit_test.hh
+      - copied, changed from r1315, /trunk/Utils/auto_unit_test.hh
+   trunk/senf/Utils/hexdump.cc
+      - copied, changed from r1315, /trunk/Utils/hexdump.cc
+   trunk/senf/Utils/hexdump.cci
+      - copied, changed from r1315, /trunk/Utils/hexdump.cci
+   trunk/senf/Utils/hexdump.ct
+      - copied, changed from r1315, /trunk/Utils/hexdump.ct
+   trunk/senf/Utils/hexdump.hh
+      - copied, changed from r1315, /trunk/Utils/hexdump.hh
+   trunk/senf/Utils/hexdump.ih
+      - copied, changed from r1315, /trunk/Utils/hexdump.ih
+   trunk/senf/Utils/hexdump.test.cc
+      - copied, changed from r1315, /trunk/Utils/hexdump.test.cc
+   trunk/senf/Utils/impl/
+   trunk/senf/Utils/impl/membind.hh
+      - copied, changed from r1315, /trunk/Utils/impl/membind.hh
+   trunk/senf/Utils/intrusive_refcount.cc
+      - copied, changed from r1315, /trunk/Utils/intrusive_refcount.cc
+   trunk/senf/Utils/intrusive_refcount.cci
+      - copied, changed from r1315, /trunk/Utils/intrusive_refcount.cci
+   trunk/senf/Utils/intrusive_refcount.cti
+      - copied, changed from r1315, /trunk/Utils/intrusive_refcount.cti
+   trunk/senf/Utils/intrusive_refcount.hh
+      - copied, changed from r1315, /trunk/Utils/intrusive_refcount.hh
+   trunk/senf/Utils/intrusive_refcount.test.cc
+      - copied, changed from r1315, /trunk/Utils/intrusive_refcount.test.cc
+   trunk/senf/Utils/main.test.cc
+      - copied, changed from r1315, /trunk/Socket/main.test.cc
+   trunk/senf/Utils/membind.hh
+      - copied, changed from r1315, /trunk/Utils/membind.hh
+   trunk/senf/Utils/membind.test.cc
+      - copied, changed from r1315, /trunk/Utils/membind.test.cc
+   trunk/senf/Utils/mpl.hh
+      - copied, changed from r1315, /trunk/Utils/mpl.hh
+   trunk/senf/Utils/mpl.ih
+      - copied, changed from r1315, /trunk/Utils/mpl.ih
+   trunk/senf/Utils/mpl.test.cc
+      - copied, changed from r1315, /trunk/Utils/mpl.test.cc
+   trunk/senf/Utils/parameter.hh
+      - copied, changed from r1315, /trunk/Utils/parameter.hh
+   trunk/senf/Utils/parameter.test.cc
+      - copied, changed from r1315, /trunk/Utils/parameter.test.cc
+   trunk/senf/Utils/pool_alloc_mixin.cti
+      - copied, changed from r1315, /trunk/Utils/pool_alloc_mixin.cti
+   trunk/senf/Utils/pool_alloc_mixin.hh
+      - copied, changed from r1315, /trunk/Utils/pool_alloc_mixin.hh
+   trunk/senf/Utils/pool_alloc_mixin.test.cc
+      - copied, changed from r1315, /trunk/Utils/pool_alloc_mixin.test.cc
+   trunk/senf/Utils/preprocessor.hh
+      - copied, changed from r1315, /trunk/Utils/preprocessor.hh
+   trunk/senf/Utils/preprocessor.test.cc
+      - copied, changed from r1315, /trunk/Utils/preprocessor.test.cc
+   trunk/senf/Utils/range.cti
+      - copied, changed from r1315, /trunk/Utils/range.cti
+   trunk/senf/Utils/range.hh
+      - copied, changed from r1315, /trunk/Utils/range.hh
+   trunk/senf/Utils/safe_bool.cci
+      - copied, changed from r1315, /trunk/Utils/safe_bool.cci
+   trunk/senf/Utils/safe_bool.cti
+      - copied, changed from r1315, /trunk/Utils/safe_bool.cti
+   trunk/senf/Utils/safe_bool.hh
+      - copied, changed from r1315, /trunk/Utils/safe_bool.hh
+   trunk/senf/Utils/safe_bool.test.cc
+      - copied, changed from r1315, /trunk/Utils/safe_bool.test.cc
+   trunk/senf/Utils/senfassert.hh
+      - copied, changed from r1315, /trunk/Utils/senfassert.hh
+   trunk/senf/Utils/signalnames.cc
+      - copied, changed from r1315, /trunk/Utils/signalnames.cc
+   trunk/senf/Utils/signalnames.hh
+      - copied, changed from r1315, /trunk/Utils/signalnames.hh
+   trunk/senf/Utils/singleton.cti
+      - copied, changed from r1315, /trunk/Utils/singleton.cti
+   trunk/senf/Utils/singleton.hh
+      - copied, changed from r1315, /trunk/Utils/singleton.hh
+   trunk/senf/Utils/singleton.test.cc
+      - copied, changed from r1315, /trunk/Utils/singleton.test.cc
+   trunk/senf/Utils/type_traits.hh
+      - copied, changed from r1315, /trunk/Utils/type_traits.hh
+   trunk/senf/Utils/type_traits.mpp
+      - copied, changed from r1315, /trunk/Utils/type_traits.mpp
+   trunk/senf/Utils/type_traits.test.cc
+      - copied, changed from r1315, /trunk/Utils/type_traits.test.cc
+   trunk/senf/config.hh
+      - copied, changed from r1315, /trunk/config.hh
+Removed:
+   trunk/PPI/ActiveFeeder.cc
+   trunk/PPI/ActiveFeeder.cci
+   trunk/PPI/ActiveFeeder.hh
+   trunk/PPI/ActiveFeeder.test.cc
+   trunk/PPI/AnnotationRouter.ct
+   trunk/PPI/AnnotationRouter.hh
+   trunk/PPI/AnnotationRouter.test.cc
+   trunk/PPI/CloneSource.cc
+   trunk/PPI/CloneSource.hh
+   trunk/PPI/CloneSource.test.cc
+   trunk/PPI/Connectors.cc
+   trunk/PPI/Connectors.cci
+   trunk/PPI/Connectors.cti
+   trunk/PPI/Connectors.hh
+   trunk/PPI/Connectors.ih
+   trunk/PPI/Connectors.test.cc
+   trunk/PPI/DebugEvent.cci
+   trunk/PPI/DebugEvent.hh
+   trunk/PPI/DebugEvent.test.cc
+   trunk/PPI/DebugModules.cc
+   trunk/PPI/DebugModules.cci
+   trunk/PPI/DebugModules.cti
+   trunk/PPI/DebugModules.hh
+   trunk/PPI/DebugModules.test.cc
+   trunk/PPI/DiscardSink.cc
+   trunk/PPI/DiscardSink.hh
+   trunk/PPI/DiscardSink.test.cc
+   trunk/PPI/Doxyfile
+   trunk/PPI/Duplicators.cc
+   trunk/PPI/Duplicators.cci
+   trunk/PPI/Duplicators.hh
+   trunk/PPI/Duplicators.test.cc
+   trunk/PPI/EventManager.cc
+   trunk/PPI/EventManager.cci
+   trunk/PPI/EventManager.ct
+   trunk/PPI/EventManager.hh
+   trunk/PPI/EventManager.test.cc
+   trunk/PPI/Events.cc
+   trunk/PPI/Events.cci
+   trunk/PPI/Events.cti
+   trunk/PPI/Events.hh
+   trunk/PPI/Events.ih
+   trunk/PPI/Events.test.cc
+   trunk/PPI/IOEvent.cc
+   trunk/PPI/IOEvent.cci
+   trunk/PPI/IOEvent.ct
+   trunk/PPI/IOEvent.cti
+   trunk/PPI/IOEvent.hh
+   trunk/PPI/IOEvent.test.cc
+   trunk/PPI/IdleEvent.cc
+   trunk/PPI/IdleEvent.cci
+   trunk/PPI/IdleEvent.hh
+   trunk/PPI/IdleEvent.test.cc
+   trunk/PPI/IntervalTimer.cc
+   trunk/PPI/IntervalTimer.cci
+   trunk/PPI/IntervalTimer.hh
+   trunk/PPI/IntervalTimer.test.cc
+   trunk/PPI/Jack.cci
+   trunk/PPI/Jack.cti
+   trunk/PPI/Jack.hh
+   trunk/PPI/Jack.test.cc
+   trunk/PPI/Joins.cc
+   trunk/PPI/Joins.cci
+   trunk/PPI/Joins.hh
+   trunk/PPI/Joins.test.cc
+   trunk/PPI/Mainpage.dox
+   trunk/PPI/Module.cc
+   trunk/PPI/Module.cci
+   trunk/PPI/Module.ct
+   trunk/PPI/Module.hh
+   trunk/PPI/Module.ih
+   trunk/PPI/Module.test.cc
+   trunk/PPI/ModuleManager.cc
+   trunk/PPI/ModuleManager.cci
+   trunk/PPI/ModuleManager.hh
+   trunk/PPI/ModuleManager.test.cc
+   trunk/PPI/MonitorModule.ct
+   trunk/PPI/MonitorModule.cti
+   trunk/PPI/MonitorModule.hh
+   trunk/PPI/MonitorModule.test.cc
+   trunk/PPI/MultiConnectorMixin.cti
+   trunk/PPI/MultiConnectorMixin.hh
+   trunk/PPI/MultiConnectorMixin.ih
+   trunk/PPI/MultiConnectorMixin.mpp
+   trunk/PPI/MultiConnectorMixin.test.cc
+   trunk/PPI/PPI.hh
+   trunk/PPI/PassiveQueue.cc
+   trunk/PPI/PassiveQueue.cci
+   trunk/PPI/PassiveQueue.cti
+   trunk/PPI/PassiveQueue.hh
+   trunk/PPI/PassiveQueue.test.cc
+   trunk/PPI/Queueing.cc
+   trunk/PPI/Queueing.cci
+   trunk/PPI/Queueing.hh
+   trunk/PPI/Queueing.test.cc
+   trunk/PPI/RateAnalyzer.cc
+   trunk/PPI/RateAnalyzer.hh
+   trunk/PPI/RateAnalyzer.test.cc
+   trunk/PPI/RateFilter.cc
+   trunk/PPI/RateFilter.hh
+   trunk/PPI/RateFilter.test.cc
+   trunk/PPI/Route.cci
+   trunk/PPI/Route.ct
+   trunk/PPI/Route.cti
+   trunk/PPI/Route.hh
+   trunk/PPI/Route.ih
+   trunk/PPI/Route.test.cc
+   trunk/PPI/SConscript
+   trunk/PPI/Setup.cci
+   trunk/PPI/Setup.cti
+   trunk/PPI/Setup.hh
+   trunk/PPI/Setup.test.cc
+   trunk/PPI/SocketSink.cc
+   trunk/PPI/SocketSink.cci
+   trunk/PPI/SocketSink.ct
+   trunk/PPI/SocketSink.cti
+   trunk/PPI/SocketSink.hh
+   trunk/PPI/SocketSink.test.cc
+   trunk/PPI/SocketSource.ct
+   trunk/PPI/SocketSource.cti
+   trunk/PPI/SocketSource.hh
+   trunk/PPI/SocketSource.test.cc
+   trunk/PPI/ThrottleBarrier.cc
+   trunk/PPI/ThrottleBarrier.hh
+   trunk/PPI/ThrottleBarrier.test.cc
+   trunk/PPI/classes.dia
+   trunk/PPI/detail/Callback.cti
+   trunk/PPI/detail/Callback.hh
+   trunk/PPI/detail/EventBinding.cc
+   trunk/PPI/detail/EventBinding.cci
+   trunk/PPI/detail/EventBinding.cti
+   trunk/PPI/detail/EventBinding.hh
+   trunk/PPI/drawmodules.py
+   trunk/PPI/main.test.cc
+   trunk/PPI/predecl.hh
+   trunk/PPI/ratestuffer.dia
+   trunk/PPI/scenario.dia
+   trunk/Packets/.dir.el
+   trunk/Packets/80211Bundle/Mainpage.dox
+   trunk/Packets/80211Bundle/RadiotapPacket.cc
+   trunk/Packets/80211Bundle/RadiotapPacket.hh
+   trunk/Packets/80211Bundle/RadiotapPacket.test.cc
+   trunk/Packets/80211Bundle/SConscript
+   trunk/Packets/80211Bundle/WLANPacket.cc
+   trunk/Packets/80211Bundle/WLANPacket.hh
+   trunk/Packets/80211Bundle/WLANPacket.test.cc
+   trunk/Packets/80211Bundle/main.test.cc
+   trunk/Packets/80221Bundle/MIHPacket.cc
+   trunk/Packets/80221Bundle/MIHPacket.cci
+   trunk/Packets/80221Bundle/MIHPacket.hh
+   trunk/Packets/80221Bundle/MIHPacket.test.cc
+   trunk/Packets/80221Bundle/Mainpage.dox
+   trunk/Packets/80221Bundle/SConscript
+   trunk/Packets/80221Bundle/TLV.dia
+   trunk/Packets/80221Bundle/TLVPacket.cc
+   trunk/Packets/80221Bundle/TLVPacket.cci
+   trunk/Packets/80221Bundle/TLVPacket.ct
+   trunk/Packets/80221Bundle/TLVPacket.hh
+   trunk/Packets/80221Bundle/TLVPacket.test.cc
+   trunk/Packets/80221Bundle/main.test.cc
+   trunk/Packets/ArrayParser.ct
+   trunk/Packets/ArrayParser.cti
+   trunk/Packets/ArrayParser.hh
+   trunk/Packets/ArrayParser.ih
+   trunk/Packets/ArrayParser.test.cc
+   trunk/Packets/AuxParser.cci
+   trunk/Packets/AuxParser.cti
+   trunk/Packets/AuxParser.hh
+   trunk/Packets/AuxParser.test.cc
+   trunk/Packets/DataPacket.cc
+   trunk/Packets/DataPacket.hh
+   trunk/Packets/DefaultBundle/EthernetPacket.cc
+   trunk/Packets/DefaultBundle/EthernetPacket.hh
+   trunk/Packets/DefaultBundle/EthernetPacket.test.cc
+   trunk/Packets/DefaultBundle/ICMPv6Packet.cc
+   trunk/Packets/DefaultBundle/ICMPv6Packet.hh
+   trunk/Packets/DefaultBundle/ICMPv6Packet.test.cc
+   trunk/Packets/DefaultBundle/ICMPv6TypePacket.cc
+   trunk/Packets/DefaultBundle/ICMPv6TypePacket.hh
+   trunk/Packets/DefaultBundle/IPv4Packet.cc
+   trunk/Packets/DefaultBundle/IPv4Packet.hh
+   trunk/Packets/DefaultBundle/IPv4Packet.test.cc
+   trunk/Packets/DefaultBundle/IPv6Extensions.cc
+   trunk/Packets/DefaultBundle/IPv6Extensions.hh
+   trunk/Packets/DefaultBundle/IPv6Extensions.test.cc
+   trunk/Packets/DefaultBundle/IPv6Packet.cc
+   trunk/Packets/DefaultBundle/IPv6Packet.hh
+   trunk/Packets/DefaultBundle/IPv6Packet.test.cc
+   trunk/Packets/DefaultBundle/LlcSnapPacket.cc
+   trunk/Packets/DefaultBundle/LlcSnapPacket.hh
+   trunk/Packets/DefaultBundle/LlcSnapPacket.test.cc
+   trunk/Packets/DefaultBundle/Mainpage.dox
+   trunk/Packets/DefaultBundle/Mldv2Packet.test.cc
+   trunk/Packets/DefaultBundle/RTPPacket.cc
+   trunk/Packets/DefaultBundle/RTPPacket.hh
+   trunk/Packets/DefaultBundle/RTPPacket.test.cc
+   trunk/Packets/DefaultBundle/SConscript
+   trunk/Packets/DefaultBundle/TCPPacket.cc
+   trunk/Packets/DefaultBundle/TCPPacket.hh
+   trunk/Packets/DefaultBundle/TCPPacket.test.cc
+   trunk/Packets/DefaultBundle/UDPPacket.cc
+   trunk/Packets/DefaultBundle/UDPPacket.hh
+   trunk/Packets/DefaultBundle/UDPPacket.test.cc
+   trunk/Packets/DefaultBundle/extra_tests/PacketLink.test.cc
+   trunk/Packets/DefaultBundle/extra_tests/SConscript
+   trunk/Packets/DefaultBundle/extra_tests/main.test.cc
+   trunk/Packets/DefaultBundle/main.test.cc
+   trunk/Packets/Doxyfile
+   trunk/Packets/IntParser.hh
+   trunk/Packets/IntParser.ih
+   trunk/Packets/IntParser.test.cc
+   trunk/Packets/ListBParser.cti
+   trunk/Packets/ListBParser.hh
+   trunk/Packets/ListBParser.ih
+   trunk/Packets/ListBParser.test.cc
+   trunk/Packets/ListNParser.ct
+   trunk/Packets/ListNParser.cti
+   trunk/Packets/ListNParser.hh
+   trunk/Packets/ListNParser.ih
+   trunk/Packets/ListNParser.test.cc
+   trunk/Packets/ListParser.ct
+   trunk/Packets/ListParser.cti
+   trunk/Packets/ListParser.dox
+   trunk/Packets/ListParser.hh
+   trunk/Packets/ListParser.ih
+   trunk/Packets/ListParser.test.cc
+   trunk/Packets/MPEGDVBBundle/DTCPPacket.cc
+   trunk/Packets/MPEGDVBBundle/DTCPPacket.hh
+   trunk/Packets/MPEGDVBBundle/DTCPPacket.test.cc
+   trunk/Packets/MPEGDVBBundle/GREPacket.cc
+   trunk/Packets/MPEGDVBBundle/GREPacket.hh
+   trunk/Packets/MPEGDVBBundle/GREPacket.test.cc
+   trunk/Packets/MPEGDVBBundle/MPEGDVBBundle.dox
+   trunk/Packets/MPEGDVBBundle/MPESection.cc
+   trunk/Packets/MPEGDVBBundle/MPESection.hh
+   trunk/Packets/MPEGDVBBundle/MPESection.test.cc
+   trunk/Packets/MPEGDVBBundle/SConscript
+   trunk/Packets/MPEGDVBBundle/SNDUPacket.cc
+   trunk/Packets/MPEGDVBBundle/SNDUPacket.hh
+   trunk/Packets/MPEGDVBBundle/TransportPacket.cc
+   trunk/Packets/MPEGDVBBundle/TransportPacket.hh
+   trunk/Packets/MPEGDVBBundle/TransportPacket.test.cc
+   trunk/Packets/MPEGDVBBundle/main.test.cc
+   trunk/Packets/Mainpage.dox
+   trunk/Packets/Packet.cc
+   trunk/Packets/Packet.cci
+   trunk/Packets/Packet.ct
+   trunk/Packets/Packet.cti
+   trunk/Packets/Packet.hh
+   trunk/Packets/Packet.test.cc
+   trunk/Packets/PacketData.cc
+   trunk/Packets/PacketData.cci
+   trunk/Packets/PacketData.cti
+   trunk/Packets/PacketData.hh
+   trunk/Packets/PacketData.test.cc
+   trunk/Packets/PacketImpl.cc
+   trunk/Packets/PacketImpl.cci
+   trunk/Packets/PacketImpl.cti
+   trunk/Packets/PacketImpl.hh
+   trunk/Packets/PacketImpl.test.cc
+   trunk/Packets/PacketInterpreter.cc
+   trunk/Packets/PacketInterpreter.cci
+   trunk/Packets/PacketInterpreter.ct
+   trunk/Packets/PacketInterpreter.cti
+   trunk/Packets/PacketInterpreter.hh
+   trunk/Packets/PacketInterpreter.test.cc
+   trunk/Packets/PacketParser.cc
+   trunk/Packets/PacketParser.cci
+   trunk/Packets/PacketParser.ct
+   trunk/Packets/PacketParser.cti
+   trunk/Packets/PacketParser.hh
+   trunk/Packets/PacketParser.ih
+   trunk/Packets/PacketParser.test.cc
+   trunk/Packets/PacketRegistry.cc
+   trunk/Packets/PacketRegistry.cci
+   trunk/Packets/PacketRegistry.ct
+   trunk/Packets/PacketRegistry.cti
+   trunk/Packets/PacketRegistry.hh
+   trunk/Packets/PacketRegistry.ih
+   trunk/Packets/PacketRegistry.test.cc
+   trunk/Packets/PacketType.cci
+   trunk/Packets/PacketType.ct
+   trunk/Packets/PacketType.cti
+   trunk/Packets/PacketType.hh
+   trunk/Packets/PacketTypes.hh
+   trunk/Packets/Packets.hh
+   trunk/Packets/ParseHelpers.dox
+   trunk/Packets/ParseHelpers.hh
+   trunk/Packets/ParseHelpers.ih
+   trunk/Packets/ParseHelpers.test.cc
+   trunk/Packets/SConscript
+   trunk/Packets/SafeIterator.cci
+   trunk/Packets/SafeIterator.cti
+   trunk/Packets/SafeIterator.hh
+   trunk/Packets/SafeIterator.test.cc
+   trunk/Packets/StringParser.cci
+   trunk/Packets/StringParser.hh
+   trunk/Packets/StringParser.test.cc
+   trunk/Packets/VariantParser.ct
+   trunk/Packets/VariantParser.cti
+   trunk/Packets/VariantParser.hh
+   trunk/Packets/VariantParser.ih
+   trunk/Packets/VariantParser.test.cc
+   trunk/Packets/VectorParser.ct
+   trunk/Packets/VectorParser.cti
+   trunk/Packets/VectorParser.hh
+   trunk/Packets/VectorParser.ih
+   trunk/Packets/VectorParser.test.cc
+   trunk/Packets/main.test.cc
+   trunk/Packets/main.test.hh
+   trunk/Packets/parse_fixed_setup.hh
+   trunk/Packets/parse_setup.hh
+   trunk/Packets/structure.dia
+   trunk/Scheduler/ClockService.cc
+   trunk/Scheduler/ClockService.cci
+   trunk/Scheduler/ClockService.hh
+   trunk/Scheduler/ClockService.test.cc
+   trunk/Scheduler/Doxyfile
+   trunk/Scheduler/EventHook.cc
+   trunk/Scheduler/EventHook.cci
+   trunk/Scheduler/EventHook.hh
+   trunk/Scheduler/EventHook.ih
+   trunk/Scheduler/EventManager.cc
+   trunk/Scheduler/EventManager.cci
+   trunk/Scheduler/EventManager.hh
+   trunk/Scheduler/EventManager.test.cc
+   trunk/Scheduler/FIFORunner.cc
+   trunk/Scheduler/FIFORunner.cci
+   trunk/Scheduler/FIFORunner.hh
+   trunk/Scheduler/FdEvent.cc
+   trunk/Scheduler/FdEvent.cci
+   trunk/Scheduler/FdEvent.ct
+   trunk/Scheduler/FdEvent.cti
+   trunk/Scheduler/FdEvent.hh
+   trunk/Scheduler/FdEvent.ih
+   trunk/Scheduler/FdEvent.test.cc
+   trunk/Scheduler/FdManager.cc
+   trunk/Scheduler/FdManager.cci
+   trunk/Scheduler/FdManager.hh
+   trunk/Scheduler/IdleEvent.cc
+   trunk/Scheduler/IdleEvent.cci
+   trunk/Scheduler/IdleEvent.hh
+   trunk/Scheduler/IdleEvent.ih
+   trunk/Scheduler/IdleEvent.test.cc
+   trunk/Scheduler/Mainpage.dox
+   trunk/Scheduler/Poller.ct
+   trunk/Scheduler/Poller.cti
+   trunk/Scheduler/Poller.hh
+   trunk/Scheduler/Poller.test.cc
+   trunk/Scheduler/ReadHelper.cci
+   trunk/Scheduler/ReadHelper.ct
+   trunk/Scheduler/ReadHelper.cti
+   trunk/Scheduler/ReadHelper.hh
+   trunk/Scheduler/ReadHelper.ih
+   trunk/Scheduler/ReadHelper.test.cc
+   trunk/Scheduler/SConscript
+   trunk/Scheduler/Scheduler.cc
+   trunk/Scheduler/Scheduler.cci
+   trunk/Scheduler/Scheduler.hh
+   trunk/Scheduler/Scheduler.test.cc
+   trunk/Scheduler/SignalEvent.cc
+   trunk/Scheduler/SignalEvent.cci
+   trunk/Scheduler/SignalEvent.hh
+   trunk/Scheduler/SignalEvent.ih
+   trunk/Scheduler/SignalEvent.test.cc
+   trunk/Scheduler/TimerEvent.cc
+   trunk/Scheduler/TimerEvent.cci
+   trunk/Scheduler/TimerEvent.hh
+   trunk/Scheduler/TimerEvent.ih
+   trunk/Scheduler/TimerEvent.test.cc
+   trunk/Scheduler/TimerSource.cc
+   trunk/Scheduler/TimerSource.cci
+   trunk/Scheduler/TimerSource.hh
+   trunk/Scheduler/WriteHelper.ct
+   trunk/Scheduler/WriteHelper.cti
+   trunk/Scheduler/WriteHelper.hh
+   trunk/Scheduler/WriteHelper.test.cc
+   trunk/Scheduler/main.test.cc
+   trunk/Socket/AddressingPolicy.hh
+   trunk/Socket/ClientSocketHandle.ct
+   trunk/Socket/ClientSocketHandle.cti
+   trunk/Socket/ClientSocketHandle.hh
+   trunk/Socket/ClientSocketHandle.ih
+   trunk/Socket/ClientSocketHandle.test.cc
+   trunk/Socket/CommunicationPolicy.cc
+   trunk/Socket/CommunicationPolicy.cci
+   trunk/Socket/CommunicationPolicy.cti
+   trunk/Socket/CommunicationPolicy.hh
+   trunk/Socket/Doxyfile
+   trunk/Socket/FhHierarchy.dia
+   trunk/Socket/FileHandle.cc
+   trunk/Socket/FileHandle.cci
+   trunk/Socket/FileHandle.hh
+   trunk/Socket/FileHandle.ih
+   trunk/Socket/FileHandle.test.cc
+   trunk/Socket/FramingPolicy.hh
+   trunk/Socket/Handle.dia
+   trunk/Socket/Mainpage.dox
+   trunk/Socket/NetdeviceController.cc
+   trunk/Socket/NetdeviceController.hh
+   trunk/Socket/NetdeviceController.test.cc
+   trunk/Socket/ProtocolClientSocketHandle.cti
+   trunk/Socket/ProtocolClientSocketHandle.hh
+   trunk/Socket/ProtocolClientSocketHandle.mpp
+   trunk/Socket/ProtocolClientSocketHandle.test.cc
+   trunk/Socket/ProtocolServerSocketHandle.cti
+   trunk/Socket/ProtocolServerSocketHandle.hh
+   trunk/Socket/ProtocolServerSocketHandle.mpp
+   trunk/Socket/ProtocolServerSocketHandle.test.cc
+   trunk/Socket/Protocols.dia
+   trunk/Socket/Protocols/AddressExceptions.hh
+   trunk/Socket/Protocols/BSDAddressingPolicy.cc
+   trunk/Socket/Protocols/BSDAddressingPolicy.cti
+   trunk/Socket/Protocols/BSDAddressingPolicy.hh
+   trunk/Socket/Protocols/BSDAddressingPolicy.test.cc
+   trunk/Socket/Protocols/BSDSocketAddress.cc
+   trunk/Socket/Protocols/BSDSocketAddress.cci
+   trunk/Socket/Protocols/BSDSocketAddress.hh
+   trunk/Socket/Protocols/BSDSocketAddress.test.cc
+   trunk/Socket/Protocols/BSDSocketProtocol.cc
+   trunk/Socket/Protocols/BSDSocketProtocol.hh
+   trunk/Socket/Protocols/DVB.hh
+   trunk/Socket/Protocols/DVB/DVB.hh
+   trunk/Socket/Protocols/DVB/DVBConfigParser.cc
+   trunk/Socket/Protocols/DVB/DVBConfigParser.hh
+   trunk/Socket/Protocols/DVB/DVBDemuxHandles.cc
+   trunk/Socket/Protocols/DVB/DVBDemuxHandles.hh
+   trunk/Socket/Protocols/DVB/DVBDemuxSocketProtocol.cc
+   trunk/Socket/Protocols/DVB/DVBDemuxSocketProtocol.hh
+   trunk/Socket/Protocols/DVB/DVBFrontendHandle.cc
+   trunk/Socket/Protocols/DVB/DVBFrontendHandle.hh
+   trunk/Socket/Protocols/DVB/DVBProtocolWrapper.cc
+   trunk/Socket/Protocols/DVB/DVBProtocolWrapper.hh
+   trunk/Socket/Protocols/DVB/DVBSocketController.cc
+   trunk/Socket/Protocols/DVB/DVBSocketController.hh
+   trunk/Socket/Protocols/DVB/SConscript
+   trunk/Socket/Protocols/DVB/main.test.cc
+   trunk/Socket/Protocols/DatagramSocketProtocol.cc
+   trunk/Socket/Protocols/DatagramSocketProtocol.hh
+   trunk/Socket/Protocols/INet.hh
+   trunk/Socket/Protocols/INet/ConnectedRawINetSocketHandle.cc
+   trunk/Socket/Protocols/INet/ConnectedRawINetSocketHandle.hh
+   trunk/Socket/Protocols/INet/ConnectedUDPSocketHandle.cc
+   trunk/Socket/Protocols/INet/ConnectedUDPSocketHandle.hh
+   trunk/Socket/Protocols/INet/INet.hh
+   trunk/Socket/Protocols/INet/INet4Address.cc
+   trunk/Socket/Protocols/INet/INet4Address.cci
+   trunk/Socket/Protocols/INet/INet4Address.ct
+   trunk/Socket/Protocols/INet/INet4Address.cti
+   trunk/Socket/Protocols/INet/INet4Address.hh
+   trunk/Socket/Protocols/INet/INet4Address.test.cc
+   trunk/Socket/Protocols/INet/INet6Address.cc
+   trunk/Socket/Protocols/INet/INet6Address.cci
+   trunk/Socket/Protocols/INet/INet6Address.ct
+   trunk/Socket/Protocols/INet/INet6Address.cti
+   trunk/Socket/Protocols/INet/INet6Address.hh
+   trunk/Socket/Protocols/INet/INet6Address.ih
+   trunk/Socket/Protocols/INet/INet6Address.test.cc
+   trunk/Socket/Protocols/INet/INetAddressing.cc
+   trunk/Socket/Protocols/INet/INetAddressing.cci
+   trunk/Socket/Protocols/INet/INetAddressing.hh
+   trunk/Socket/Protocols/INet/INetAddressing.test.cc
+   trunk/Socket/Protocols/INet/INetSocketProtocol.cc
+   trunk/Socket/Protocols/INet/INetSocketProtocol.hh
+   trunk/Socket/Protocols/INet/MulticastSocketProtocol.cc
+   trunk/Socket/Protocols/INet/MulticastSocketProtocol.hh
+   trunk/Socket/Protocols/INet/MulticastSocketProtocol.test.cc
+   trunk/Socket/Protocols/INet/RawINetSocketHandle.cc
+   trunk/Socket/Protocols/INet/RawINetSocketHandle.hh
+   trunk/Socket/Protocols/INet/RawINetSocketHandle.test.cc
+   trunk/Socket/Protocols/INet/RawINetSocketProtocol.cc
+   trunk/Socket/Protocols/INet/RawINetSocketProtocol.hh
+   trunk/Socket/Protocols/INet/SConscript
+   trunk/Socket/Protocols/INet/TCPSocketHandle.cc
+   trunk/Socket/Protocols/INet/TCPSocketHandle.hh
+   trunk/Socket/Protocols/INet/TCPSocketHandle.test.cc
+   trunk/Socket/Protocols/INet/TCPSocketProtocol.cc
+   trunk/Socket/Protocols/INet/TCPSocketProtocol.hh
+   trunk/Socket/Protocols/INet/UDPSocketHandle.cc
+   trunk/Socket/Protocols/INet/UDPSocketHandle.hh
+   trunk/Socket/Protocols/INet/UDPSocketHandle.test.cc
+   trunk/Socket/Protocols/INet/UDPSocketProtocol.cc
+   trunk/Socket/Protocols/INet/UDPSocketProtocol.hh
+   trunk/Socket/Protocols/INet/main.test.cc
+   trunk/Socket/Protocols/Raw.hh
+   trunk/Socket/Protocols/Raw/EUI64.cc
+   trunk/Socket/Protocols/Raw/EUI64.cci
+   trunk/Socket/Protocols/Raw/EUI64.cti
+   trunk/Socket/Protocols/Raw/EUI64.hh
+   trunk/Socket/Protocols/Raw/EUI64.test.cc
+   trunk/Socket/Protocols/Raw/LLAddressing.cc
+   trunk/Socket/Protocols/Raw/LLAddressing.cci
+   trunk/Socket/Protocols/Raw/LLAddressing.hh
+   trunk/Socket/Protocols/Raw/LLAddressing.test.cc
+   trunk/Socket/Protocols/Raw/MACAddress.cc
+   trunk/Socket/Protocols/Raw/MACAddress.cci
+   trunk/Socket/Protocols/Raw/MACAddress.ct
+   trunk/Socket/Protocols/Raw/MACAddress.hh
+   trunk/Socket/Protocols/Raw/MACAddress.test.cc
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.cc
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.hh
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.test.cc
+   trunk/Socket/Protocols/Raw/ParseString.ct
+   trunk/Socket/Protocols/Raw/ParseString.hh
+   trunk/Socket/Protocols/Raw/Raw.hh
+   trunk/Socket/Protocols/Raw/SConscript
+   trunk/Socket/Protocols/Raw/TunTapSocketHandle.cc
+   trunk/Socket/Protocols/Raw/TunTapSocketHandle.hh
+   trunk/Socket/Protocols/Raw/TunTapSocketHandle.test.cc
+   trunk/Socket/Protocols/Raw/main.test.cc
+   trunk/Socket/Protocols/SConscript
+   trunk/Socket/Protocols/UN.hh
+   trunk/Socket/Protocols/UN/ConnectedUNDatagramSocketHandle.cc
+   trunk/Socket/Protocols/UN/ConnectedUNDatagramSocketHandle.hh
+   trunk/Socket/Protocols/UN/SConscript
+   trunk/Socket/Protocols/UN/UN.hh
+   trunk/Socket/Protocols/UN/UNAddressing.cc
+   trunk/Socket/Protocols/UN/UNAddressing.cci
+   trunk/Socket/Protocols/UN/UNAddressing.hh
+   trunk/Socket/Protocols/UN/UNAddressing.test.cc
+   trunk/Socket/Protocols/UN/UNDatagramSocketHandle.cc
+   trunk/Socket/Protocols/UN/UNDatagramSocketHandle.hh
+   trunk/Socket/Protocols/UN/UNDatagramSocketHandle.test.cc
+   trunk/Socket/Protocols/UN/UNSocketProtocol.cc
+   trunk/Socket/Protocols/UN/UNSocketProtocol.hh
+   trunk/Socket/Protocols/UN/UNSocketProtocol.test.cc
+   trunk/Socket/Protocols/UN/main.test.cc
+   trunk/Socket/Protocols/main.test.cc
+   trunk/Socket/ReadWritePolicy.cc
+   trunk/Socket/ReadWritePolicy.cti
+   trunk/Socket/ReadWritePolicy.hh
+   trunk/Socket/SConscript
+   trunk/Socket/ServerSocketHandle.cti
+   trunk/Socket/ServerSocketHandle.hh
+   trunk/Socket/ServerSocketHandle.test.cc
+   trunk/Socket/Socket.hh
+   trunk/Socket/SocketHandle.cc
+   trunk/Socket/SocketHandle.cci
+   trunk/Socket/SocketHandle.ct
+   trunk/Socket/SocketHandle.cti
+   trunk/Socket/SocketHandle.hh
+   trunk/Socket/SocketHandle.ih
+   trunk/Socket/SocketHandle.test.cc
+   trunk/Socket/SocketLibrary-classes.dia
+   trunk/Socket/SocketPolicy.cc
+   trunk/Socket/SocketPolicy.ct
+   trunk/Socket/SocketPolicy.dia
+   trunk/Socket/SocketPolicy.hh
+   trunk/Socket/SocketPolicy.ih
+   trunk/Socket/SocketPolicy.test.cc
+   trunk/Socket/SocketPolicy.test.hh
+   trunk/Socket/SocketProtocol.cc
+   trunk/Socket/SocketProtocol.cci
+   trunk/Socket/SocketProtocol.cti
+   trunk/Socket/SocketProtocol.hh
+   trunk/Socket/SocketProtocol.test.cc
+   trunk/Socket/SocketProtocol.test.hh
+   trunk/Socket/main.test.cc
+   trunk/Utils/Backtrace.cc
+   trunk/Utils/Backtrace.hh
+   trunk/Utils/Buffer.hh
+   trunk/Utils/Buffer.test.cc
+   trunk/Utils/Console/.gitignore
+   trunk/Utils/Console/Config.cc
+   trunk/Utils/Console/Config.cci
+   trunk/Utils/Console/Config.cti
+   trunk/Utils/Console/Config.hh
+   trunk/Utils/Console/Config.ih
+   trunk/Utils/Console/Config.test.cc
+   trunk/Utils/Console/ConfigFile.cc
+   trunk/Utils/Console/ConfigFile.cci
+   trunk/Utils/Console/ConfigFile.hh
+   trunk/Utils/Console/ConfigFile.ih
+   trunk/Utils/Console/ConfigFile.test.cc
+   trunk/Utils/Console/Console.hh
+   trunk/Utils/Console/Doxyfile
+   trunk/Utils/Console/Example.dox
+   trunk/Utils/Console/Executor.cc
+   trunk/Utils/Console/Executor.cci
+   trunk/Utils/Console/Executor.hh
+   trunk/Utils/Console/Executor.test.cc
+   trunk/Utils/Console/FancyReader.hh
+   trunk/Utils/Console/LazyDirectory.cc
+   trunk/Utils/Console/LazyDirectory.hh
+   trunk/Utils/Console/LineEditor.cc
+   trunk/Utils/Console/LineEditor.hh
+   trunk/Utils/Console/Mainpage.dox
+   trunk/Utils/Console/Node.cc
+   trunk/Utils/Console/Node.cci
+   trunk/Utils/Console/Node.cti
+   trunk/Utils/Console/Node.hh
+   trunk/Utils/Console/Node.ih
+   trunk/Utils/Console/Node.test.cc
+   trunk/Utils/Console/OverloadedCommand.cc
+   trunk/Utils/Console/OverloadedCommand.cci
+   trunk/Utils/Console/OverloadedCommand.cti
+   trunk/Utils/Console/OverloadedCommand.hh
+   trunk/Utils/Console/OverloadedCommand.test.cc
+   trunk/Utils/Console/Parse.cc
+   trunk/Utils/Console/Parse.cci
+   trunk/Utils/Console/Parse.hh
+   trunk/Utils/Console/Parse.ih
+   trunk/Utils/Console/Parse.test.cc
+   trunk/Utils/Console/ParsedCommand.cc
+   trunk/Utils/Console/ParsedCommand.cci
+   trunk/Utils/Console/ParsedCommand.ct
+   trunk/Utils/Console/ParsedCommand.cti
+   trunk/Utils/Console/ParsedCommand.hh
+   trunk/Utils/Console/ParsedCommand.ih
+   trunk/Utils/Console/ParsedCommand.mpp
+   trunk/Utils/Console/ParsedCommand.test.cc
+   trunk/Utils/Console/ProgramOptions.cc
+   trunk/Utils/Console/ProgramOptions.cci
+   trunk/Utils/Console/ProgramOptions.cti
+   trunk/Utils/Console/ProgramOptions.hh
+   trunk/Utils/Console/ProgramOptions.ih
+   trunk/Utils/Console/ProgramOptions.test.cc
+   trunk/Utils/Console/SConscript
+   trunk/Utils/Console/STLSupport.ct
+   trunk/Utils/Console/STLSupport.hh
+   trunk/Utils/Console/STLSupport.test.cc
+   trunk/Utils/Console/ScopedDirectory.cci
+   trunk/Utils/Console/ScopedDirectory.cti
+   trunk/Utils/Console/ScopedDirectory.hh
+   trunk/Utils/Console/ScopedDirectory.test.cc
+   trunk/Utils/Console/Server.cc
+   trunk/Utils/Console/Server.cci
+   trunk/Utils/Console/Server.hh
+   trunk/Utils/Console/Server.ih
+   trunk/Utils/Console/Server.test.cc
+   trunk/Utils/Console/Sysdir.cci
+   trunk/Utils/Console/Sysdir.hh
+   trunk/Utils/Console/Sysdir.ih
+   trunk/Utils/Console/Traits.cc
+   trunk/Utils/Console/Traits.cci
+   trunk/Utils/Console/Traits.ct
+   trunk/Utils/Console/Traits.cti
+   trunk/Utils/Console/Traits.hh
+   trunk/Utils/Console/Traits.ih
+   trunk/Utils/Console/Traits.test.cc
+   trunk/Utils/Console/UDPServer.cc
+   trunk/Utils/Console/UDPServer.hh
+   trunk/Utils/Console/UDPServer.test.cc
+   trunk/Utils/Console/Utility.ct
+   trunk/Utils/Console/Utility.hh
+   trunk/Utils/Console/Variables.cti
+   trunk/Utils/Console/Variables.hh
+   trunk/Utils/Console/Variables.ih
+   trunk/Utils/Console/Variables.test.cc
+   trunk/Utils/Console/main.test.cc
+   trunk/Utils/Console/testServer.cc
+   trunk/Utils/Daemon.hh
+   trunk/Utils/Daemon/Daemon.cc
+   trunk/Utils/Daemon/Daemon.cci
+   trunk/Utils/Daemon/Daemon.hh
+   trunk/Utils/Daemon/Daemon.ih
+   trunk/Utils/Daemon/Daemon.test.cc
+   trunk/Utils/Daemon/Doxyfile
+   trunk/Utils/Daemon/Mainpage.dox
+   trunk/Utils/Daemon/SConscript
+   trunk/Utils/Daemon/main.test.cc
+   trunk/Utils/DiscardStream.cci
+   trunk/Utils/DiscardStream.hh
+   trunk/Utils/DiscardStream.test.cc
+   trunk/Utils/Doxyfile
+   trunk/Utils/Exception.cc
+   trunk/Utils/Exception.cci
+   trunk/Utils/Exception.cti
+   trunk/Utils/Exception.hh
+   trunk/Utils/Exception.test.cc
+   trunk/Utils/Externals.dox
+   trunk/Utils/IpChecksum.cci
+   trunk/Utils/IpChecksum.cti
+   trunk/Utils/IpChecksum.hh
+   trunk/Utils/IpChecksum.test.cc
+   trunk/Utils/IteratorTraits.cti
+   trunk/Utils/IteratorTraits.hh
+   trunk/Utils/IteratorTraits.ih
+   trunk/Utils/IteratorTraits.test.cc
+   trunk/Utils/Logger.hh
+   trunk/Utils/Logger/AreaRegistry.cc
+   trunk/Utils/Logger/AreaRegistry.cci
+   trunk/Utils/Logger/AreaRegistry.hh
+   trunk/Utils/Logger/AreaRegistry.ih
+   trunk/Utils/Logger/AreaRegistry.test.cc
+   trunk/Utils/Logger/Config.hh
+   trunk/Utils/Logger/Config.ih
+   trunk/Utils/Logger/Config.test.cc
+   trunk/Utils/Logger/ConsoleTarget.cci
+   trunk/Utils/Logger/ConsoleTarget.hh
+   trunk/Utils/Logger/Definitions.hh
+   trunk/Utils/Logger/Definitions.ih
+   trunk/Utils/Logger/Doxyfile
+   trunk/Utils/Logger/FileTarget.cc
+   trunk/Utils/Logger/FileTarget.hh
+   trunk/Utils/Logger/FileTarget.test.cc
+   trunk/Utils/Logger/IOStreamTarget.cc
+   trunk/Utils/Logger/IOStreamTarget.cci
+   trunk/Utils/Logger/IOStreamTarget.hh
+   trunk/Utils/Logger/Levels.hh
+   trunk/Utils/Logger/Levels.ih
+   trunk/Utils/Logger/Log.hh
+   trunk/Utils/Logger/Log.ih
+   trunk/Utils/Logger/Log.test.cc
+   trunk/Utils/Logger/LogFormat.cc
+   trunk/Utils/Logger/LogFormat.cci
+   trunk/Utils/Logger/LogFormat.hh
+   trunk/Utils/Logger/Logger.hh
+   trunk/Utils/Logger/Mainpage.dox
+   trunk/Utils/Logger/Parameters.hh
+   trunk/Utils/Logger/Parameters.ih
+   trunk/Utils/Logger/Parameters.test.cc
+   trunk/Utils/Logger/SConscript
+   trunk/Utils/Logger/SenfLog.hh
+   trunk/Utils/Logger/StreamRegistry.cc
+   trunk/Utils/Logger/StreamRegistry.cci
+   trunk/Utils/Logger/StreamRegistry.hh
+   trunk/Utils/Logger/StreamRegistry.ih
+   trunk/Utils/Logger/StreamRegistry.test.cc
+   trunk/Utils/Logger/StringTarget.cti
+   trunk/Utils/Logger/StringTarget.hh
+   trunk/Utils/Logger/SyslogTarget.cc
+   trunk/Utils/Logger/SyslogTarget.cci
+   trunk/Utils/Logger/SyslogTarget.hh
+   trunk/Utils/Logger/SyslogTarget.test.cc
+   trunk/Utils/Logger/SyslogUDPTarget.cc
+   trunk/Utils/Logger/SyslogUDPTarget.cci
+   trunk/Utils/Logger/SyslogUDPTarget.hh
+   trunk/Utils/Logger/SyslogUDPTarget.test.cc
+   trunk/Utils/Logger/Target.cc
+   trunk/Utils/Logger/Target.cci
+   trunk/Utils/Logger/Target.cti
+   trunk/Utils/Logger/Target.hh
+   trunk/Utils/Logger/Target.ih
+   trunk/Utils/Logger/Target.test.cc
+   trunk/Utils/Logger/TimeSource.cc
+   trunk/Utils/Logger/TimeSource.cci
+   trunk/Utils/Logger/TimeSource.cti
+   trunk/Utils/Logger/TimeSource.hh
+   trunk/Utils/Logger/TimeSource.ih
+   trunk/Utils/Logger/main.test.cc
+   trunk/Utils/Logger/main.test.hh
+   trunk/Utils/Mainpage.dox
+   trunk/Utils/Phoenix.hh
+   trunk/Utils/Phoenix.ih
+   trunk/Utils/Range.cti
+   trunk/Utils/Range.hh
+   trunk/Utils/SConscript
+   trunk/Utils/ScopeExit.cci
+   trunk/Utils/ScopeExit.hh
+   trunk/Utils/Statistics.cc
+   trunk/Utils/Statistics.cci
+   trunk/Utils/Statistics.cti
+   trunk/Utils/Statistics.hh
+   trunk/Utils/Statistics.test.cc
+   trunk/Utils/StatisticsTargets.cc
+   trunk/Utils/StatisticsTargets.cci
+   trunk/Utils/StatisticsTargets.ct
+   trunk/Utils/StatisticsTargets.cti
+   trunk/Utils/StatisticsTargets.hh
+   trunk/Utils/StatisticsTargets.ih
+   trunk/Utils/String.ct
+   trunk/Utils/String.cti
+   trunk/Utils/String.hh
+   trunk/Utils/String.test.cc
+   trunk/Utils/Tags.hh
+   trunk/Utils/Tags.test.cc
+   trunk/Utils/Termlib/.gitignore
+   trunk/Utils/Termlib/AbstractTerminal.hh
+   trunk/Utils/Termlib/Doxyfile
+   trunk/Utils/Termlib/Editor.cc
+   trunk/Utils/Termlib/Editor.hh
+   trunk/Utils/Termlib/Mainpage.dox
+   trunk/Utils/Termlib/SConscript
+   trunk/Utils/Termlib/Telnet.cc
+   trunk/Utils/Termlib/Telnet.cci
+   trunk/Utils/Termlib/Telnet.cti
+   trunk/Utils/Termlib/Telnet.hh
+   trunk/Utils/Termlib/Telnet.test.cc
+   trunk/Utils/Termlib/TelnetTerminal.cc
+   trunk/Utils/Termlib/TelnetTerminal.hh
+   trunk/Utils/Termlib/Terminfo.cc
+   trunk/Utils/Termlib/Terminfo.hh
+   trunk/Utils/Termlib/Terminfo.test.cc
+   trunk/Utils/Termlib/main.test.cc
+   trunk/Utils/Termlib/telnetServer.cc
+   trunk/Utils/TypeIdValue.cc
+   trunk/Utils/TypeIdValue.cci
+   trunk/Utils/TypeIdValue.cti
+   trunk/Utils/TypeIdValue.hh
+   trunk/Utils/TypeIdValue.test.cc
+   trunk/Utils/TypeInfo.cc
+   trunk/Utils/TypeInfo.hh
+   trunk/Utils/TypeInfo.test.cc
+   trunk/Utils/auto_unit_test.hh
+   trunk/Utils/hexdump.cc
+   trunk/Utils/hexdump.cci
+   trunk/Utils/hexdump.ct
+   trunk/Utils/hexdump.hh
+   trunk/Utils/hexdump.ih
+   trunk/Utils/hexdump.test.cc
+   trunk/Utils/impl/membind.hh
+   trunk/Utils/intrusive_refcount.cc
+   trunk/Utils/intrusive_refcount.cci
+   trunk/Utils/intrusive_refcount.cti
+   trunk/Utils/intrusive_refcount.hh
+   trunk/Utils/intrusive_refcount.test.cc
+   trunk/Utils/main.test.cc
+   trunk/Utils/membind.hh
+   trunk/Utils/membind.test.cc
+   trunk/Utils/mpl.hh
+   trunk/Utils/mpl.ih
+   trunk/Utils/mpl.test.cc
+   trunk/Utils/parameter.hh
+   trunk/Utils/parameter.test.cc
+   trunk/Utils/pool_alloc_mixin.cti
+   trunk/Utils/pool_alloc_mixin.hh
+   trunk/Utils/pool_alloc_mixin.test.cc
+   trunk/Utils/preprocessor.hh
+   trunk/Utils/preprocessor.test.cc
+   trunk/Utils/range.cti
+   trunk/Utils/range.hh
+   trunk/Utils/safe_bool.cci
+   trunk/Utils/safe_bool.cti
+   trunk/Utils/safe_bool.hh
+   trunk/Utils/safe_bool.test.cc
+   trunk/Utils/senfassert.hh
+   trunk/Utils/signalnames.cc
+   trunk/Utils/signalnames.hh
+   trunk/Utils/singleton.cti
+   trunk/Utils/singleton.hh
+   trunk/Utils/singleton.test.cc
+   trunk/Utils/type_traits.hh
+   trunk/Utils/type_traits.mpp
+   trunk/Utils/type_traits.test.cc
+   trunk/config.hh
+   trunk/include/senf/PPI.hh
+   trunk/include/senf/Packets.hh
+   trunk/include/senf/Socket.hh
+   trunk/site_scons/Doxyfile
+   trunk/site_scons/Mainpage.dox
+   trunk/site_scons/SConscript
+Modified:
+   trunk/.gitignore
+   trunk/Examples/MCSniffer/SConscript
+   trunk/Examples/RateStuffer/Doxyfile
+   trunk/Examples/SConscript
+   trunk/Examples/Sniffer/Doxyfile
+   trunk/Examples/Sniffer/SConscript
+   trunk/Examples/UDPClientServer/Doxyfile
+   trunk/HowTos/Doxyfile
+   trunk/HowTos/NewPacket/Doxyfile
+   trunk/HowTos/SConscript
+   trunk/Mainpage.dox
+   trunk/SConstruct
+   trunk/doclib/SConscript
+
+Log:
+Move sourcecode into 'senf/' directory
+Add PACKET_BUNDLES environment variable
+Fix doumentation build process
+Remove 'include/' directory
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001172.html">[Senf-svn] r1315 - trunk/site_scons/site_tools
+</A></li>
+	<LI>Next message: <A HREF="001173.html">[Senf-svn] r1317 - in trunk: Examples/psi2tsModule _templates	doclib include include/senf senf senf/PPI senf/PPI/detail	senf/Packets senf/Packets/80211Bundle	senf/Packets/80221Bundle senf/Packets/DefaultBundle	senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Utils senf/Utils/Console senf/Utils/Daemon	senf/Utils/Logger senf/Utils/Termlib site_scons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1185">[ date ]</a>
+              <a href="thread.html#1185">[ thread ]</a>
+              <a href="subject.html#1185">[ subject ]</a>
+              <a href="author.html#1185">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

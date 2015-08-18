@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1869 - in trunk: boost_ext/boost/intrusive	boost_ext/boost/intrusive/detail senf/Packets	senf/Packets/80211Bundle senf/Packets/DefaultBundle	senf/Scheduler senf/Utils/Daemon senf/Utils/Termlib	senf/boost_intrusive senf/boost_intrusive/detail
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2012-April/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1869%20-%20in%20trunk%3A%20boost_ext/boost/intrusive%0A%09boost_ext/boost/intrusive/detail%20senf/Packets%0A%09senf/Packets/80211Bundle%20senf/Packets/DefaultBundle%0A%09senf/Scheduler%20senf/Utils/Daemon%20senf/Utils/Termlib%0A%09senf/boost_intrusive%20senf/boost_intrusive/detail&In-Reply-To=%3C20120418123734.37DD555B0C%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001709.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1869 - in trunk: boost_ext/boost/intrusive	boost_ext/boost/intrusive/detail senf/Packets	senf/Packets/80211Bundle senf/Packets/DefaultBundle	senf/Scheduler senf/Utils/Daemon senf/Utils/Termlib	senf/boost_intrusive senf/boost_intrusive/detail</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1869%20-%20in%20trunk%3A%20boost_ext/boost/intrusive%0A%09boost_ext/boost/intrusive/detail%20senf/Packets%0A%09senf/Packets/80211Bundle%20senf/Packets/DefaultBundle%0A%09senf/Scheduler%20senf/Utils/Daemon%20senf/Utils/Termlib%0A%09senf/boost_intrusive%20senf/boost_intrusive/detail&In-Reply-To=%3C20120418123734.37DD555B0C%40scm.berlios.de%3E"
+       TITLE="[Senf-svn] r1869 - in trunk: boost_ext/boost/intrusive	boost_ext/boost/intrusive/detail senf/Packets	senf/Packets/80211Bundle senf/Packets/DefaultBundle	senf/Scheduler senf/Utils/Daemon senf/Utils/Termlib	senf/boost_intrusive senf/boost_intrusive/detail">subversion at senf.berlios.de
+       </A><BR>
+    <I>Wed Apr 18 14:37:34 CEST 2012</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001709.html">[Senf-svn] r1870 - trunk/senf/PPI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1708">[ date ]</a>
+              <a href="thread.html#1708">[ thread ]</a>
+              <a href="subject.html#1708">[ subject ]</a>
+              <a href="author.html#1708">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tho
+Date: Wed Apr 18 14:37:32 2012
+New Revision: 1869
+
+Log:
+use boost intrusive container library from system if available; added
+version 1.42 to boost_ext (for hardy)
+
+Added:
+   trunk/boost_ext/boost/intrusive/
+   trunk/boost_ext/boost/intrusive/any_hook.hpp
+   trunk/boost_ext/boost/intrusive/avl_set.hpp
+      - copied, changed from r1868, trunk/senf/boost_intrusive/iset.hpp
+   trunk/boost_ext/boost/intrusive/avl_set_hook.hpp
+   trunk/boost_ext/boost/intrusive/avltree.hpp
+   trunk/boost_ext/boost/intrusive/avltree_algorithms.hpp
+   trunk/boost_ext/boost/intrusive/bs_set_hook.hpp
+   trunk/boost_ext/boost/intrusive/circular_list_algorithms.hpp
+      - copied, changed from r1868, trunk/senf/boost_intrusive/list_algorithms.hpp
+   trunk/boost_ext/boost/intrusive/circular_slist_algorithms.hpp
+   trunk/boost_ext/boost/intrusive/derivation_value_traits.hpp
+   trunk/boost_ext/boost/intrusive/detail/
+   trunk/boost_ext/boost/intrusive/detail/any_node_and_algorithms.hpp
+   trunk/boost_ext/boost/intrusive/detail/assert.hpp
+   trunk/boost_ext/boost/intrusive/detail/avltree_node.hpp
+   trunk/boost_ext/boost/intrusive/detail/clear_on_destructor_base.hpp
+   trunk/boost_ext/boost/intrusive/detail/common_slist_algorithms.hpp
+   trunk/boost_ext/boost/intrusive/detail/config_begin.hpp
+      - copied, changed from r1868, trunk/senf/boost_intrusive/detail/config_begin.hpp
+   trunk/boost_ext/boost/intrusive/detail/config_end.hpp
+      - copied, changed from r1868, trunk/senf/boost_intrusive/detail/config_end.hpp
+   trunk/boost_ext/boost/intrusive/detail/ebo_functor_holder.hpp
+   trunk/boost_ext/boost/intrusive/detail/function_detector.hpp
+   trunk/boost_ext/boost/intrusive/detail/generic_hook.hpp
+   trunk/boost_ext/boost/intrusive/detail/hashtable_node.hpp
+   trunk/boost_ext/boost/intrusive/detail/is_stateful_value_traits.hpp
+   trunk/boost_ext/boost/intrusive/detail/list_node.hpp
+   trunk/boost_ext/boost/intrusive/detail/mpl.hpp
+   trunk/boost_ext/boost/intrusive/detail/parent_from_member.hpp
+   trunk/boost_ext/boost/intrusive/detail/pointer_to_other.hpp
+      - copied, changed from r1868, trunk/senf/boost_intrusive/detail/pointer_to_other.hpp
+   trunk/boost_ext/boost/intrusive/detail/rbtree_node.hpp
+   trunk/boost_ext/boost/intrusive/detail/slist_node.hpp
+   trunk/boost_ext/boost/intrusive/detail/transform_iterator.hpp
+   trunk/boost_ext/boost/intrusive/detail/tree_algorithms.hpp
+   trunk/boost_ext/boost/intrusive/detail/tree_node.hpp
+   trunk/boost_ext/boost/intrusive/detail/utilities.hpp
+   trunk/boost_ext/boost/intrusive/detail/workaround.hpp
+   trunk/boost_ext/boost/intrusive/hashtable.hpp
+   trunk/boost_ext/boost/intrusive/intrusive_fwd.hpp
+   trunk/boost_ext/boost/intrusive/linear_slist_algorithms.hpp
+   trunk/boost_ext/boost/intrusive/link_mode.hpp
+      - copied, changed from r1868, trunk/senf/boost_intrusive/linking_policy.hpp
+   trunk/boost_ext/boost/intrusive/list.hpp
+   trunk/boost_ext/boost/intrusive/list_hook.hpp
+   trunk/boost_ext/boost/intrusive/member_value_traits.hpp
+   trunk/boost_ext/boost/intrusive/options.hpp
+   trunk/boost_ext/boost/intrusive/pointer_plus_bits.hpp
+   trunk/boost_ext/boost/intrusive/priority_compare.hpp
+   trunk/boost_ext/boost/intrusive/rbtree.hpp
+   trunk/boost_ext/boost/intrusive/rbtree_algorithms.hpp
+   trunk/boost_ext/boost/intrusive/set.hpp
+      - copied, changed from r1868, trunk/senf/boost_intrusive/iset.hpp
+   trunk/boost_ext/boost/intrusive/set_hook.hpp
+   trunk/boost_ext/boost/intrusive/sg_set.hpp
+      - copied, changed from r1868, trunk/senf/boost_intrusive/iset.hpp
+   trunk/boost_ext/boost/intrusive/sgtree.hpp
+   trunk/boost_ext/boost/intrusive/sgtree_algorithms.hpp
+   trunk/boost_ext/boost/intrusive/slist.hpp
+   trunk/boost_ext/boost/intrusive/slist_hook.hpp
+   trunk/boost_ext/boost/intrusive/splay_set.hpp
+   trunk/boost_ext/boost/intrusive/splay_set_hook.hpp
+   trunk/boost_ext/boost/intrusive/splaytree.hpp
+   trunk/boost_ext/boost/intrusive/splaytree_algorithms.hpp
+   trunk/boost_ext/boost/intrusive/treap.hpp
+   trunk/boost_ext/boost/intrusive/treap_algorithms.hpp
+   trunk/boost_ext/boost/intrusive/treap_set.hpp
+   trunk/boost_ext/boost/intrusive/trivial_value_traits.hpp
+   trunk/boost_ext/boost/intrusive/unordered_set.hpp
+      - copied, changed from r1868, trunk/senf/boost_intrusive/iunordered_set.hpp
+   trunk/boost_ext/boost/intrusive/unordered_set_hook.hpp
+Deleted:
+   trunk/senf/boost_intrusive/detail/config_begin.hpp
+   trunk/senf/boost_intrusive/detail/config_end.hpp
+   trunk/senf/boost_intrusive/detail/ebo_holder.hpp
+   trunk/senf/boost_intrusive/detail/ihashtable.hpp
+   trunk/senf/boost_intrusive/detail/irbtree.hpp
+   trunk/senf/boost_intrusive/detail/list_node.hpp
+   trunk/senf/boost_intrusive/detail/pointer_to_other.hpp
+   trunk/senf/boost_intrusive/detail/pointer_type.hpp
+   trunk/senf/boost_intrusive/detail/rbtree_node.hpp
+   trunk/senf/boost_intrusive/detail/slist_node.hpp
+   trunk/senf/boost_intrusive/detail/utilities.hpp
+   trunk/senf/boost_intrusive/ilist.hpp
+   trunk/senf/boost_intrusive/ilist_hook.hpp
+   trunk/senf/boost_intrusive/iset.hpp
+   trunk/senf/boost_intrusive/iset_hook.hpp
+   trunk/senf/boost_intrusive/islist.hpp
+   trunk/senf/boost_intrusive/islist_hook.hpp
+   trunk/senf/boost_intrusive/iunordered_set.hpp
+   trunk/senf/boost_intrusive/iunordered_set_hook.hpp
+   trunk/senf/boost_intrusive/linking_policy.hpp
+   trunk/senf/boost_intrusive/list_algorithms.hpp
+   trunk/senf/boost_intrusive/rbtree_algorithms.hpp
+   trunk/senf/boost_intrusive/slist_algorithms.hpp
+Modified:
+   trunk/senf/Packets/80211Bundle/RadiotapPacket.cc
+   trunk/senf/Packets/DefaultBundle/EthernetPacket.cc
+   trunk/senf/Packets/DefaultBundle/EthernetPacket.hh
+   trunk/senf/Packets/PacketImpl.cc
+   trunk/senf/Packets/PacketImpl.cci
+   trunk/senf/Packets/PacketInterpreter.cc
+   trunk/senf/Packets/PacketInterpreter.cci
+   trunk/senf/Packets/PacketInterpreter.hh
+   trunk/senf/Packets/PacketTypes.hh
+   trunk/senf/Scheduler/EventHook.cc
+   trunk/senf/Scheduler/EventHook.hh
+   trunk/senf/Scheduler/EventHook.ih
+   trunk/senf/Scheduler/EventManager.cci
+   trunk/senf/Scheduler/EventManager.hh
+   trunk/senf/Scheduler/FIFORunner.cc
+   trunk/senf/Scheduler/FIFORunner.cci
+   trunk/senf/Scheduler/FIFORunner.hh
+   trunk/senf/Scheduler/FdEvent.cc
+   trunk/senf/Scheduler/FdEvent.hh
+   trunk/senf/Scheduler/FdEvent.ih
+   trunk/senf/Scheduler/IdleEvent.cc
+   trunk/senf/Scheduler/IdleEvent.hh
+   trunk/senf/Scheduler/IdleEvent.ih
+   trunk/senf/Scheduler/SignalEvent.cci
+   trunk/senf/Scheduler/SignalEvent.hh
+   trunk/senf/Scheduler/SignalEvent.ih
+   trunk/senf/Scheduler/TimerEvent.cc
+   trunk/senf/Scheduler/TimerEvent.cci
+   trunk/senf/Scheduler/TimerEvent.hh
+   trunk/senf/Scheduler/TimerEvent.ih
+   trunk/senf/Utils/Daemon/Daemon.cc
+   trunk/senf/Utils/Daemon/Daemon.ih
+   trunk/senf/Utils/Termlib/Terminfo.cc
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001709.html">[Senf-svn] r1870 - trunk/senf/PPI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1708">[ date ]</a>
+              <a href="thread.html#1708">[ thread ]</a>
+              <a href="subject.html#1708">[ subject ]</a>
+              <a href="author.html#1708">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

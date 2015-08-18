@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r144 - in trunk: Packets Sniffer satscons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r144%20-%20in%20trunk%3A%20Packets%20Sniffer%20satscons&In-Reply-To=%3C200610170737.k9H7bcha022927%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000004.html">
+   <LINK REL="Next"  HREF="000006.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r144 - in trunk: Packets Sniffer satscons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r144%20-%20in%20trunk%3A%20Packets%20Sniffer%20satscons&In-Reply-To=%3C200610170737.k9H7bcha022927%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r144 - in trunk: Packets Sniffer satscons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Oct 17 09:37:38 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000004.html">[Senf-svn] r143 - trunk/Packets
+</A></li>
+        <LI>Next message: <A HREF="000006.html">[Senf-svn] r145 - trunk/Socket
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#5">[ date ]</a>
+              <a href="thread.html#5">[ thread ]</a>
+              <a href="subject.html#5">[ subject ]</a>
+              <a href="author.html#5">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Oct 17 09:37:35 2006
+New Revision: 144
+
+Added:
+   trunk/satscons/imgconvert.mak
+      - copied unchanged from r142, /trunk/Packets/imgconvert.mak
+Removed:
+   trunk/Packets/imgconvert.mak
+Modified:
+   trunk/   (props changed)
+   trunk/Packets/SConscript
+   trunk/Sniffer/   (props changed)
+   trunk/satscons/Doxygen.py
+   trunk/satscons/SatSCons.py
+
+Log:
+Fix image conversion
+
+Modified: trunk/Packets/SConscript
+==============================================================================
+--- trunk/Packets/SConscript	(original)
++++ trunk/Packets/SConscript	Tue Oct 17 09:37:35 2006
+@@ -5,8 +5,6 @@
+ 
+ sources = SatSCons.GlobSources()
+ SatSCons.StandardTargets(env)
+-SatSCons.Lib(env, 'Packets',  sources)
+-env.AddPreAction(
+-    SatSCons.Doxygen(env,sources),
+-    env.Action(&quot;make -f imgconvert.mak structure.png&quot;))
++SatSCons.Lib(env, 'Packets',  sources, )
++SatSCons.Doxygen(env,sources, image = [ &quot;structure.dia&quot; ])
+     
+
+Modified: trunk/satscons/Doxygen.py
+==============================================================================
+--- trunk/satscons/Doxygen.py	(original)
++++ trunk/satscons/Doxygen.py	Tue Oct 17 09:37:35 2006
+@@ -8,17 +8,19 @@
+     return base+ext
+ 
+ def Doxygen(env, target, source, image=[]):
++    global __file__
+     path, name = os.path.split(str(target))
+     stamp = os.path.join(path, '.'+name+'.stamp')
+     dir = env.Dir(target)
++    mak = os.path.join(os.path.split(__file__)[0],'imgconvert.mak')
+     env.Depends(dir,
+                 [ env.Command(os.path.splitext(img)[0]+&quot;.png&quot;, img,
+-                              [ 'TERM=dumb make -f imgconvert.mak $TARGET' ])
++                              [ 'TERM=dumb make -f %s $TARGET' % mak ])
+                   for img in image ] +
+                 [ env.Command(stamp, source,
+                               [ 'cd $TARGET.dir &amp;&amp; $DOXYGENCOM',
+-                                'cd $TARGET.dir/doc/html &amp;&amp; (sed -ne \'1,/&lt;table&gt;/p\' &lt;annotated.html &amp;&amp; grep -F \'&lt;tr&gt;\' &lt;annotated.html | sort -ft\'&gt;\' -k4 &amp;&amp; sed -ne \'/&lt;\\/table&gt;/,$$p\' &lt;annotated.html) &gt;annotated.html.new &amp;&amp; mv annotated.html.new annotated.html',
+-                                'touch $TARGET' ],
++                                # 'cd $TARGET.dir/doc/html &amp;&amp; (sed -ne \'1,/&lt;table&gt;/p\' &lt;annotated.html &amp;&amp; grep -F \'&lt;tr&gt;\' &lt;annotated.html | sort -ft\'&gt;\' -k4 &amp;&amp; sed -ne \'/&lt;\\/table&gt;/,$$p\' &lt;annotated.html) &gt;annotated.html.new &amp;&amp; mv annotated.html.new annotated.html',
++                                &quot;touch $TARGET&quot; ],
+                               source_scanner = SCons.Defaults.ObjSourceScan) ])
+     env.Clean(stamp, dir)
+     return dir
+
+Modified: trunk/satscons/SatSCons.py
+==============================================================================
+--- trunk/satscons/SatSCons.py	(original)
++++ trunk/satscons/SatSCons.py	Tue Oct 17 09:37:35 2006
+@@ -139,14 +139,15 @@
+ 
+     return objects
+ 
+-def Doxygen(env, sources, testSources = None):
++def Doxygen(env, sources, testSources = None, image = []):
+     if type(sources) == type(()):
+         testSources = sources[1]
+         sources = sources[0]
+ 
+     doc = env.Doxygen(
+         target = 'doc',
+-        source = sources )
++        source = sources,
++        image = image)
+ 
+     env.Alias('all_docs', doc)
+     return doc
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000004.html">[Senf-svn] r143 - trunk/Packets
+</A></li>
+	<LI>Next message: <A HREF="000006.html">[Senf-svn] r145 - trunk/Socket
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#5">[ date ]</a>
+              <a href="thread.html#5">[ thread ]</a>
+              <a href="subject.html#5">[ subject ]</a>
+              <a href="author.html#5">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

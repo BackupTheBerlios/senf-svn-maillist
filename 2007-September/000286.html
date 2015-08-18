@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r425 - in trunk: . Examples/DVBAdapter	Examples/MCSniffer Examples/RateStuffer Examples/Sniffer	Examples/TCPClientServer Socket/Protocols/DVB	Socket/Protocols/INet Socket/Protocols/Raw debian include	include/senf senfscons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r425%20-%20in%20trunk%3A%20.%20Examples/DVBAdapter%0A%09Examples/MCSniffer%20Examples/RateStuffer%20Examples/Sniffer%0A%09Examples/TCPClientServer%20Socket/Protocols/DVB%0A%09Socket/Protocols/INet%20Socket/Protocols/Raw%20debian%20include%0A%09include/senf%20senfscons&In-Reply-To=%3C200709031523.l83FNe3c032201%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000285.html">
+   <LINK REL="Next"  HREF="000287.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r425 - in trunk: . Examples/DVBAdapter	Examples/MCSniffer Examples/RateStuffer Examples/Sniffer	Examples/TCPClientServer Socket/Protocols/DVB	Socket/Protocols/INet Socket/Protocols/Raw debian include	include/senf senfscons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r425%20-%20in%20trunk%3A%20.%20Examples/DVBAdapter%0A%09Examples/MCSniffer%20Examples/RateStuffer%20Examples/Sniffer%0A%09Examples/TCPClientServer%20Socket/Protocols/DVB%0A%09Socket/Protocols/INet%20Socket/Protocols/Raw%20debian%20include%0A%09include/senf%20senfscons&In-Reply-To=%3C200709031523.l83FNe3c032201%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r425 - in trunk: . Examples/DVBAdapter	Examples/MCSniffer Examples/RateStuffer Examples/Sniffer	Examples/TCPClientServer Socket/Protocols/DVB	Socket/Protocols/INet Socket/Protocols/Raw debian include	include/senf senfscons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Mon Sep  3 17:23:40 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000285.html">[Senf-svn] r424 - in trunk: . Packets Scheduler Socket Utils	Utils/impl senfscons
+</A></li>
+        <LI>Next message: <A HREF="000287.html">[Senf-svn] r426 - trunk/Socket/Protocols/DVB
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#286">[ date ]</a>
+              <a href="thread.html#286">[ thread ]</a>
+              <a href="subject.html#286">[ subject ]</a>
+              <a href="author.html#286">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Mon Sep  3 17:23:17 2007
+New Revision: 425
+
+Added:
+   trunk/Socket/Protocols/DVB.hh   (contents, props changed)
+   trunk/Socket/Protocols/INet.hh   (contents, props changed)
+   trunk/Socket/Protocols/INet/INet.hh   (contents, props changed)
+   trunk/Socket/Protocols/Raw.hh   (contents, props changed)
+   trunk/Socket/Protocols/Raw/Raw.hh   (contents, props changed)
+   trunk/include/
+   trunk/include/senf/
+   trunk/include/senf/PPI   (contents, props changed)
+   trunk/include/senf/PPI.hh   (contents, props changed)
+   trunk/include/senf/Packets   (contents, props changed)
+   trunk/include/senf/Packets.hh   (contents, props changed)
+   trunk/include/senf/Scheduler   (contents, props changed)
+   trunk/include/senf/Socket   (contents, props changed)
+   trunk/include/senf/Socket.hh   (contents, props changed)
+   trunk/include/senf/Utils   (contents, props changed)
+   trunk/include/senf/config.hh   (contents, props changed)
+   trunk/include/senf/local_config.hh   (contents, props changed)
+Removed:
+   trunk/debian/PPI.hh
+   trunk/debian/Packets.hh
+   trunk/debian/Socket.hh
+   trunk/debian/local_config.hh
+Modified:
+   trunk/Examples/DVBAdapter/MPEdec.cc
+   trunk/Examples/DVBAdapter/ULEdec.cc
+   trunk/Examples/DVBAdapter/ULEdec.hh
+   trunk/Examples/DVBAdapter/frontend.cc
+   trunk/Examples/MCSniffer/MCSniffer.cc
+   trunk/Examples/RateStuffer/Mainpage.dox
+   trunk/Examples/RateStuffer/ratestuffer.cc
+   trunk/Examples/RateStuffer/ratestuffer.dia
+   trunk/Examples/Sniffer/Sniffer.cc
+   trunk/Examples/TCPClientServer/client.cc
+   trunk/Examples/TCPClientServer/server.cc
+   trunk/SConstruct
+   trunk/Socket/Protocols/DVB/SConscript
+   trunk/Socket/Protocols/INet/   (props changed)
+   trunk/Socket/Protocols/INet/SConscript
+   trunk/Socket/Protocols/INet/UDPSocketHandle.cc
+   trunk/Socket/Protocols/INet/UDPSocketHandle.hh
+   trunk/Socket/Protocols/Raw/   (props changed)
+   trunk/Socket/Protocols/Raw/SConscript
+   trunk/Socket/Protocols/SConscript
+   trunk/config.hh
+   trunk/debian/libsenf-dev.install
+   trunk/debian/rules
+   trunk/senf.dict
+   trunk/senfscons/SENFSCons.py
+
+Log:
+Add 'include/senf' directory
+Provide additional include files for socket protocols
+Socket: Change UDP socket handle to bind instead of connect if given an address argument.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000285.html">[Senf-svn] r424 - in trunk: . Packets Scheduler Socket Utils	Utils/impl senfscons
+</A></li>
+	<LI>Next message: <A HREF="000287.html">[Senf-svn] r426 - trunk/Socket/Protocols/DVB
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#286">[ date ]</a>
+              <a href="thread.html#286">[ thread ]</a>
+              <a href="subject.html#286">[ subject ]</a>
+              <a href="author.html#286">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

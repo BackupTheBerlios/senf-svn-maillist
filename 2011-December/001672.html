@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1833 - in trunk: . senf/PPI senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Utils senf/Utils/Console senf/Utils/Logger	senf/Utils/Termlib site_scons site_scons/site_tools
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2011-December/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1833%20-%20in%20trunk%3A%20.%20senf/PPI%20senf/Packets%0A%09senf/Packets/80211Bundle%20senf/Packets/80221Bundle%0A%09senf/Packets/MPEGDVBBundle%20senf/Scheduler%20senf/Socket%0A%09senf/Socket/Protocols/INet%20senf/Socket/Protocols/Raw%0A%09senf/Utils%20senf/Utils/Console%20senf/Utils/Logger%0A%09senf/Utils/Termlib%20site_scons%20site_scons/site_tools&In-Reply-To=%3C20111207130020.663D8481457%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001673.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1833 - in trunk: . senf/PPI senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Utils senf/Utils/Console senf/Utils/Logger	senf/Utils/Termlib site_scons site_scons/site_tools</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1833%20-%20in%20trunk%3A%20.%20senf/PPI%20senf/Packets%0A%09senf/Packets/80211Bundle%20senf/Packets/80221Bundle%0A%09senf/Packets/MPEGDVBBundle%20senf/Scheduler%20senf/Socket%0A%09senf/Socket/Protocols/INet%20senf/Socket/Protocols/Raw%0A%09senf/Utils%20senf/Utils/Console%20senf/Utils/Logger%0A%09senf/Utils/Termlib%20site_scons%20site_scons/site_tools&In-Reply-To=%3C20111207130020.663D8481457%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r1833 - in trunk: . senf/PPI senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Utils senf/Utils/Console senf/Utils/Logger	senf/Utils/Termlib site_scons site_scons/site_tools">subversion at senf.berlios.de
+       </A><BR>
+    <I>Wed Dec  7 14:00:20 CET 2011</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001673.html">[Senf-svn] r1834 - in trunk: senf/Utils site_scons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1672">[ date ]</a>
+              <a href="thread.html#1672">[ thread ]</a>
+              <a href="subject.html#1672">[ subject ]</a>
+              <a href="author.html#1672">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tho
+Date: Wed Dec  7 14:00:19 2011
+New Revision: 1833
+
+Log:
+several fixes for clang/llvm
+
+Added:
+   trunk/senf/Socket/Protocols/INet/net.test.cc   (contents, props changed)
+Modified:
+   trunk/SConfigure
+   trunk/SConstruct
+   trunk/senf/PPI/Module.hh
+   trunk/senf/PPI/ModuleManager.hh
+   trunk/senf/PPI/MultiConnectorMixin.hh
+   trunk/senf/PPI/QueueingSocketSink.test.cc
+   trunk/senf/PPI/RateAnalyzer.test.cc
+   trunk/senf/PPI/Route.cti
+   trunk/senf/PPI/SocketSink.test.cc
+   trunk/senf/PPI/SocketSource.test.cc
+   trunk/senf/PPI/predecl.hh
+   trunk/senf/Packets/80211Bundle/RadiotapPacket.hh
+   trunk/senf/Packets/80211Bundle/WLANPacket.hh
+   trunk/senf/Packets/80221Bundle/MIHPacket.hh
+   trunk/senf/Packets/GenericTLV.ct
+   trunk/senf/Packets/ListBParser.cti
+   trunk/senf/Packets/ListParser.ih
+   trunk/senf/Packets/MPEGDVBBundle/MPESection.hh
+   trunk/senf/Packets/Packet.test.cc
+   trunk/senf/Packets/PacketInterpreter.ct
+   trunk/senf/Packets/PacketInterpreter.cti
+   trunk/senf/Packets/PacketInterpreter.hh
+   trunk/senf/Packets/PacketParser.hh
+   trunk/senf/Packets/PacketRegistry.ih
+   trunk/senf/Packets/PacketTypes.hh
+   trunk/senf/Packets/VariantParser.ct
+   trunk/senf/Packets/VariantParser.ih
+   trunk/senf/Packets/VectorParser.ct
+   trunk/senf/Packets/VectorParser.cti
+   trunk/senf/Scheduler/FIFORunner.hh
+   trunk/senf/Scheduler/FdEvent.hh
+   trunk/senf/Scheduler/SignalEvent.hh
+   trunk/senf/Scheduler/TimerEvent.hh
+   trunk/senf/Scheduler/TimerEvent.test.cc
+   trunk/senf/Socket/ClientSocketHandle.cti
+   trunk/senf/Socket/ClientSocketHandle.hh
+   trunk/senf/Socket/NetdeviceController.hh
+   trunk/senf/Socket/ProtocolClientSocketHandle.cti
+   trunk/senf/Socket/ProtocolServerSocketHandle.cti
+   trunk/senf/Socket/Protocols/INet/INet6Address.hh
+   trunk/senf/Socket/Protocols/INet/RawINetSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/INet/TCPSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/INet/UDPSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/INet/net.test.hh
+   trunk/senf/Socket/Protocols/Raw/EUI64.hh
+   trunk/senf/Socket/Protocols/Raw/MACAddress.hh
+   trunk/senf/Socket/SocketHandle.cc
+   trunk/senf/Socket/SocketHandle.cti
+   trunk/senf/Socket/SocketProtocol.hh
+   trunk/senf/Utils/Console/ConfigFile.hh
+   trunk/senf/Utils/Console/OverloadedCommand.cc
+   trunk/senf/Utils/Console/Parse.cc
+   trunk/senf/Utils/Console/Parse.hh
+   trunk/senf/Utils/Console/Parse.ih
+   trunk/senf/Utils/Console/ParsedCommand.hh
+   trunk/senf/Utils/Console/ProgramOptions.hh
+   trunk/senf/Utils/Console/SysInfo.cc
+   trunk/senf/Utils/Console/SysInfo.hh
+   trunk/senf/Utils/Console/UDPServer.test.cc
+   trunk/senf/Utils/Logger/AreaRegistry.hh
+   trunk/senf/Utils/Logger/AreaRegistry.ih
+   trunk/senf/Utils/Logger/Config.ih
+   trunk/senf/Utils/Logger/Parameters.ih
+   trunk/senf/Utils/Logger/StreamRegistry.hh
+   trunk/senf/Utils/Logger/SyslogUDPTarget.test.cc
+   trunk/senf/Utils/Logger/Target.hh
+   trunk/senf/Utils/Termlib/Telnet.hh
+   trunk/senf/Utils/intrusive_refcount.hh
+   trunk/senf/Utils/mpl.test.cc
+   trunk/senf/Utils/senfassert.hh
+   trunk/site_scons/SparseTestHack.py
+   trunk/site_scons/senfutil.py
+   trunk/site_scons/site_tools/Boost.py
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001673.html">[Senf-svn] r1834 - in trunk: senf/Utils site_scons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1672">[ date ]</a>
+              <a href="thread.html#1672">[ thread ]</a>
+              <a href="subject.html#1672">[ subject ]</a>
+              <a href="author.html#1672">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

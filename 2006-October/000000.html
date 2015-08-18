@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r139 - trunk/Utils
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r139%20-%20trunk/Utils&In-Reply-To=%3C200610131508.k9DF8Muc023655%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000001.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r139 - trunk/Utils</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r139%20-%20trunk/Utils&In-Reply-To=%3C200610131508.k9DF8Muc023655%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r139 - trunk/Utils">subversion at senf.berlios.de
+       </A><BR>
+    <I>Fri Oct 13 17:08:22 CEST 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000001.html">[Senf-svn] r140 - trunk/Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#0">[ date ]</a>
+              <a href="thread.html#0">[ thread ]</a>
+              <a href="subject.html#0">[ subject ]</a>
+              <a href="author.html#0">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Fri Oct 13 16:12:28 2006
+New Revision: 139
+
+Modified:
+   trunk/Utils/TypeInfo.test.cc
+
+Log:
+Disable unreliable test
+
+Modified: trunk/Utils/TypeInfo.test.cc
+==============================================================================
+--- trunk/Utils/TypeInfo.test.cc	(original)
++++ trunk/Utils/TypeInfo.test.cc	Fri Oct 13 16:12:28 2006
+@@ -51,10 +51,11 @@
+ {
+     typedef test::Foo&lt; test::Foo&lt;test::Blub, 1&gt;, 10&gt; TestType;
+     TestType ob;
+-    test::Base const &amp; baseOb(ob);
++    // test::Base const &amp; baseOb(ob);
+ 
+     BOOST_CHECK_EQUAL( satcom::lib::prettyName(typeid(int)), &quot;int&quot;);
+-    BOOST_CHECK_EQUAL( satcom::lib::prettyName(typeid(baseOb)), &quot;test::Foo&lt;test::Foo&lt;test::Blub, 1&gt;, 10&gt;&quot; );
++    // The exact representation is compiler version dependent ... 
++    // BOOST_CHECK_EQUAL( satcom::lib::prettyName(typeid(baseOb)), &quot;test::Foo&lt;test::Foo&lt;test::Blub, 1&gt;, 10&gt;&quot; );
+ }
+ 
+ ///////////////////////////////cc.e////////////////////////////////////////
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000001.html">[Senf-svn] r140 - trunk/Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#0">[ date ]</a>
+              <a href="thread.html#0">[ thread ]</a>
+              <a href="subject.html#0">[ subject ]</a>
+              <a href="author.html#0">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

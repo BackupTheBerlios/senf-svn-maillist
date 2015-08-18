@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1933 - in trunk: . senf/Packets	senf/Packets/DefaultBundle senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Utils senf/Utils/Console	senf/Utils/Termlib tools
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2012-November/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1933%20-%20in%20trunk%3A%20.%20senf/Packets%0A%09senf/Packets/DefaultBundle%20senf/Socket/Protocols/DVB%0A%09senf/Socket/Protocols/INet%20senf/Utils%20senf/Utils/Console%0A%09senf/Utils/Termlib%20tools&In-Reply-To=%3C20121128104614.C363455B0C%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001771.html">
+   <LINK REL="Next"  HREF="001773.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1933 - in trunk: . senf/Packets	senf/Packets/DefaultBundle senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Utils senf/Utils/Console	senf/Utils/Termlib tools</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1933%20-%20in%20trunk%3A%20.%20senf/Packets%0A%09senf/Packets/DefaultBundle%20senf/Socket/Protocols/DVB%0A%09senf/Socket/Protocols/INet%20senf/Utils%20senf/Utils/Console%0A%09senf/Utils/Termlib%20tools&In-Reply-To=%3C20121128104614.C363455B0C%40scm.berlios.de%3E"
+       TITLE="[Senf-svn] r1933 - in trunk: . senf/Packets	senf/Packets/DefaultBundle senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Utils senf/Utils/Console	senf/Utils/Termlib tools">subversion at senf.berlios.de
+       </A><BR>
+    <I>Wed Nov 28 11:46:14 CET 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001771.html">[Senf-svn] r1932 - in trunk/senf: Packets Socket Utils
+</A></li>
+        <LI>Next message: <A HREF="001773.html">[Senf-svn] r1934 - trunk/tools
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1772">[ date ]</a>
+              <a href="thread.html#1772">[ thread ]</a>
+              <a href="subject.html#1772">[ subject ]</a>
+              <a href="author.html#1772">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tho
+Date: Wed Nov 28 11:46:13 2012
+New Revision: 1933
+
+Log:
+Packets: added some more handy members to MACAddressParser
+tools: added checkIncludeGuards script
+all: fixed #include guards
+
+Added:
+   trunk/tools/checkIncludeGuards.py   (contents, props changed)
+Modified:
+   trunk/SConscript
+   trunk/senf/Packets/DefaultBundle/EthernetPacket.cci
+   trunk/senf/Packets/DefaultBundle/EthernetPacket.hh
+   trunk/senf/Packets/DefaultBundle/EthernetPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/IPv6ExtOptions.hh
+   trunk/senf/Packets/DefaultBundle/ListOptionTypeParser.hh
+   trunk/senf/Packets/DumpFormat.hh
+   trunk/senf/Packets/PacketConsoleSysDir.hh
+   trunk/senf/Packets/PacketVector.hh
+   trunk/senf/Packets/main.test.hh
+   trunk/senf/Socket/Protocols/DVB/DVBConfigParser.cc
+   trunk/senf/Socket/Protocols/INet/RawINetSocketHandle.hh
+   trunk/senf/Socket/Protocols/INet/RawINetSocketProtocol.hh
+   trunk/senf/Socket/Protocols/INet/net.test.hh
+   trunk/senf/Utils/Console/Config.hh
+   trunk/senf/Utils/Console/ConfigFile.hh
+   trunk/senf/Utils/Console/Console.hh
+   trunk/senf/Utils/Console/Executor.hh
+   trunk/senf/Utils/Console/LazyDirectory.hh
+   trunk/senf/Utils/Console/Node.hh
+   trunk/senf/Utils/Console/OverloadedCommand.hh
+   trunk/senf/Utils/Console/Parse.hh
+   trunk/senf/Utils/Console/ParsedCommand.hh
+   trunk/senf/Utils/Console/ProgramOptions.hh
+   trunk/senf/Utils/Console/ScopedDirectory.hh
+   trunk/senf/Utils/Console/Server.hh
+   trunk/senf/Utils/Console/SysInfo.hh
+   trunk/senf/Utils/Console/Sysdir.hh
+   trunk/senf/Utils/Console/Traits.hh
+   trunk/senf/Utils/Console/Variables.hh
+   trunk/senf/Utils/CpuStat.hh
+   trunk/senf/Utils/Format.hh
+   trunk/senf/Utils/IgnoreValue.hh
+   trunk/senf/Utils/Operators.hh
+   trunk/senf/Utils/RestrictedInt.hh
+   trunk/senf/Utils/StatisticsTargets.hh
+   trunk/senf/Utils/Termlib/Telnet.hh
+   trunk/senf/Utils/pimpl_ptr.hh
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001771.html">[Senf-svn] r1932 - in trunk/senf: Packets Socket Utils
+</A></li>
+	<LI>Next message: <A HREF="001773.html">[Senf-svn] r1934 - trunk/tools
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1772">[ date ]</a>
+              <a href="thread.html#1772">[ thread ]</a>
+              <a href="subject.html#1772">[ subject ]</a>
+              <a href="author.html#1772">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

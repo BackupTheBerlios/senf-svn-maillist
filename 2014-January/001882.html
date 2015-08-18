@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r2043 - in trunk/senf: Packets Packets/80211Bundle	Packets/80221Bundle Packets/DefaultBundle Utils
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r2043%20-%20in%20trunk/senf%3A%20Packets%20Packets/80211Bundle%0A%09Packets/80221Bundle%20Packets/DefaultBundle%20Utils&In-Reply-To=%3C20140106094646.322B755B0C%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001883.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r2043 - in trunk/senf: Packets Packets/80211Bundle	Packets/80221Bundle Packets/DefaultBundle Utils</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r2043%20-%20in%20trunk/senf%3A%20Packets%20Packets/80211Bundle%0A%09Packets/80221Bundle%20Packets/DefaultBundle%20Utils&In-Reply-To=%3C20140106094646.322B755B0C%40scm.berlios.de%3E"
+       TITLE="[Senf-svn] r2043 - in trunk/senf: Packets Packets/80211Bundle	Packets/80221Bundle Packets/DefaultBundle Utils">subversion at senf.berlios.de
+       </A><BR>
+    <I>Mon Jan  6 10:46:46 CET 2014</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001883.html">[Senf-svn] r2044 - trunk/senf/Socket/Protocols/Raw
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1882">[ date ]</a>
+              <a href="thread.html#1882">[ thread ]</a>
+              <a href="subject.html#1882">[ subject ]</a>
+              <a href="author.html#1882">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tho
+Date: Mon Jan  6 10:46:45 2014
+New Revision: 2043
+
+Log:
+Packets: use TLVListParser when inheriting from GenericTLVParserBase as well
+Packets: added operator== for StringParser
+Packets: added SENF_PARSER_TLV_LIST alias
+
+Modified:
+   trunk/senf/Packets/80211Bundle/WLANBeaconPacket.hh
+   trunk/senf/Packets/80221Bundle/MIHPacket.hh
+   trunk/senf/Packets/DefaultBundle/ICMPv6TypePacket.hh
+   trunk/senf/Packets/GenericTLV.ct
+   trunk/senf/Packets/GenericTLV.cti
+   trunk/senf/Packets/GenericTLV.hh
+   trunk/senf/Packets/GenericTLV.ih
+   trunk/senf/Packets/GenericTLV.test.cc
+   trunk/senf/Packets/ListParser.ih
+   trunk/senf/Packets/StringParser.cti
+   trunk/senf/Packets/StringParser.hh
+   trunk/senf/Packets/StringParser.test.cc
+   trunk/senf/Utils/auto_unit_test.hh
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001883.html">[Senf-svn] r2044 - trunk/senf/Socket/Protocols/Raw
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1882">[ date ]</a>
+              <a href="thread.html#1882">[ thread ]</a>
+              <a href="subject.html#1882">[ subject ]</a>
+              <a href="author.html#1882">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

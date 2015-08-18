@@ -1,0 +1,312 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r965 - in trunk: . Examples/MultiMCLoop	Examples/psi2tsModule PPI PPI/detail Packets	Packets/DefaultBundle Packets/MPEGDVBBundle Scheduler	Scheduler/Console Socket Socket/Protocols/DVB	Socket/Protocols/INet Socket/Protocols/Raw	Socket/Protocols/UN Utils Utils/Daemon Utils/Logger
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r965%20-%20in%20trunk%3A%20.%20Examples/MultiMCLoop%0A%09Examples/psi2tsModule%20PPI%20PPI/detail%20Packets%0A%09Packets/DefaultBundle%20Packets/MPEGDVBBundle%20Scheduler%0A%09Scheduler/Console%20Socket%20Socket/Protocols/DVB%0A%09Socket/Protocols/INet%20Socket/Protocols/Raw%0A%09Socket/Protocols/UN%20Utils%20Utils/Daemon%20Utils/Logger&In-Reply-To=%3C200811181605.mAIG5WeW025022%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000821.html">
+   <LINK REL="Next"  HREF="000823.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r965 - in trunk: . Examples/MultiMCLoop	Examples/psi2tsModule PPI PPI/detail Packets	Packets/DefaultBundle Packets/MPEGDVBBundle Scheduler	Scheduler/Console Socket Socket/Protocols/DVB	Socket/Protocols/INet Socket/Protocols/Raw	Socket/Protocols/UN Utils Utils/Daemon Utils/Logger</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r965%20-%20in%20trunk%3A%20.%20Examples/MultiMCLoop%0A%09Examples/psi2tsModule%20PPI%20PPI/detail%20Packets%0A%09Packets/DefaultBundle%20Packets/MPEGDVBBundle%20Scheduler%0A%09Scheduler/Console%20Socket%20Socket/Protocols/DVB%0A%09Socket/Protocols/INet%20Socket/Protocols/Raw%0A%09Socket/Protocols/UN%20Utils%20Utils/Daemon%20Utils/Logger&In-Reply-To=%3C200811181605.mAIG5WeW025022%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r965 - in trunk: . Examples/MultiMCLoop	Examples/psi2tsModule PPI PPI/detail Packets	Packets/DefaultBundle Packets/MPEGDVBBundle Scheduler	Scheduler/Console Socket Socket/Protocols/DVB	Socket/Protocols/INet Socket/Protocols/Raw	Socket/Protocols/UN Utils Utils/Daemon Utils/Logger">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Nov 18 17:05:32 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000821.html">[Senf-svn] r964 - trunk/Packets
+</A></li>
+        <LI>Next message: <A HREF="000823.html">[Senf-svn] r966 - trunk/PPI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#822">[ date ]</a>
+              <a href="thread.html#822">[ thread ]</a>
+              <a href="subject.html#822">[ subject ]</a>
+              <a href="author.html#822">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Nov 18 17:04:20 2008
+New Revision: 965
+
+Modified:
+   trunk/Examples/MultiMCLoop/MultiMCLoop.cc
+   trunk/Examples/psi2tsModule/psi2ts.hh
+   trunk/PPI/ActiveFeeder.hh
+   trunk/PPI/AnnotationRouter.hh
+   trunk/PPI/CloneSource.hh
+   trunk/PPI/Connectors.hh
+   trunk/PPI/Connectors.ih
+   trunk/PPI/DebugEvent.hh
+   trunk/PPI/DebugModules.hh
+   trunk/PPI/DiscardSink.hh
+   trunk/PPI/EventManager.hh
+   trunk/PPI/Events.hh
+   trunk/PPI/Events.ih
+   trunk/PPI/ForwardSwitch.hh
+   trunk/PPI/IOEvent.hh
+   trunk/PPI/IdleEvent.hh
+   trunk/PPI/IntervalTimer.hh
+   trunk/PPI/Joins.hh
+   trunk/PPI/Module.hh
+   trunk/PPI/Module.ih
+   trunk/PPI/ModuleManager.hh
+   trunk/PPI/PPI.hh
+   trunk/PPI/PassiveQueue.hh
+   trunk/PPI/Queueing.hh
+   trunk/PPI/RateFilter.hh
+   trunk/PPI/Route.hh
+   trunk/PPI/Route.ih
+   trunk/PPI/Setup.hh
+   trunk/PPI/SocketSink.hh
+   trunk/PPI/SocketSource.hh
+   trunk/PPI/ThrottleBarrier.hh
+   trunk/PPI/detail/Callback.hh
+   trunk/PPI/detail/EventBinding.hh
+   trunk/PPI/predecl.hh
+   trunk/Packets/ArrayParser.hh
+   trunk/Packets/ArrayParser.ih
+   trunk/Packets/AuxParser.hh
+   trunk/Packets/DataPacket.hh
+   trunk/Packets/DefaultBundle/EthernetPacket.hh
+   trunk/Packets/DefaultBundle/IPv4Packet.hh
+   trunk/Packets/DefaultBundle/IPv6Extensions.hh
+   trunk/Packets/DefaultBundle/IPv6Packet.hh
+   trunk/Packets/DefaultBundle/LlcSnapPacket.hh
+   trunk/Packets/DefaultBundle/RTPPacket.hh
+   trunk/Packets/DefaultBundle/UDPPacket.hh
+   trunk/Packets/IntParser.hh
+   trunk/Packets/IntParser.ih
+   trunk/Packets/ListBParser.hh
+   trunk/Packets/ListBParser.ih
+   trunk/Packets/ListNParser.hh
+   trunk/Packets/ListNParser.ih
+   trunk/Packets/ListParser.hh
+   trunk/Packets/ListParser.ih
+   trunk/Packets/MPEGDVBBundle/DTCPPacket.hh
+   trunk/Packets/MPEGDVBBundle/MPESection.hh
+   trunk/Packets/MPEGDVBBundle/SNDUPacket.hh
+   trunk/Packets/MPEGDVBBundle/TLVPacket.hh
+   trunk/Packets/MPEGDVBBundle/TransportPacket.hh
+   trunk/Packets/Packet.hh
+   trunk/Packets/PacketData.hh
+   trunk/Packets/PacketImpl.hh
+   trunk/Packets/PacketInterpreter.hh
+   trunk/Packets/PacketParser.hh
+   trunk/Packets/PacketParser.ih
+   trunk/Packets/PacketRegistry.hh
+   trunk/Packets/PacketRegistry.ih
+   trunk/Packets/PacketType.hh
+   trunk/Packets/PacketTypes.hh
+   trunk/Packets/Packets.hh
+   trunk/Packets/ParseHelpers.hh
+   trunk/Packets/ParseHelpers.ih
+   trunk/Packets/SafeIterator.cti
+   trunk/Packets/SafeIterator.hh
+   trunk/Packets/VariantParser.ct
+   trunk/Packets/VariantParser.hh
+   trunk/Packets/VariantParser.ih
+   trunk/Packets/VariantParser.test.cc
+   trunk/Packets/VectorParser.hh
+   trunk/Packets/VectorParser.ih
+   trunk/Packets/main.test.hh
+   trunk/Scheduler/ClockService.hh
+   trunk/Scheduler/Console/Config.hh
+   trunk/Scheduler/Console/Config.ih
+   trunk/Scheduler/Console/ConfigFile.hh
+   trunk/Scheduler/Console/ConfigFile.ih
+   trunk/Scheduler/Console/Console.hh
+   trunk/Scheduler/Console/Executor.hh
+   trunk/Scheduler/Console/LazyDirectory.hh
+   trunk/Scheduler/Console/Node.hh
+   trunk/Scheduler/Console/Node.ih
+   trunk/Scheduler/Console/OverloadedCommand.hh
+   trunk/Scheduler/Console/Parse.hh
+   trunk/Scheduler/Console/Parse.ih
+   trunk/Scheduler/Console/ParsedCommand.hh
+   trunk/Scheduler/Console/ParsedCommand.ih
+   trunk/Scheduler/Console/ProgramOptions.hh
+   trunk/Scheduler/Console/ProgramOptions.ih
+   trunk/Scheduler/Console/Readline.hh
+   trunk/Scheduler/Console/ScopedDirectory.hh
+   trunk/Scheduler/Console/Server.hh
+   trunk/Scheduler/Console/Server.ih
+   trunk/Scheduler/Console/Sysdir.hh
+   trunk/Scheduler/Console/Sysdir.ih
+   trunk/Scheduler/Console/Traits.hh
+   trunk/Scheduler/Console/Traits.ih
+   trunk/Scheduler/Console/Variables.hh
+   trunk/Scheduler/Console/Variables.ih
+   trunk/Scheduler/EventHook.hh
+   trunk/Scheduler/EventHook.ih
+   trunk/Scheduler/EventManager.hh
+   trunk/Scheduler/FIFORunner.hh
+   trunk/Scheduler/FdEvent.cc
+   trunk/Scheduler/FdEvent.cci
+   trunk/Scheduler/FdEvent.cti
+   trunk/Scheduler/FdEvent.hh
+   trunk/Scheduler/FdEvent.ih
+   trunk/Scheduler/FdManager.hh
+   trunk/Scheduler/Poller.hh
+   trunk/Scheduler/ReadHelper.hh
+   trunk/Scheduler/ReadHelper.ih
+   trunk/Scheduler/Scheduler.hh
+   trunk/Scheduler/SignalEvent.hh
+   trunk/Scheduler/SignalEvent.ih
+   trunk/Scheduler/TimerEvent.hh
+   trunk/Scheduler/TimerEvent.ih
+   trunk/Scheduler/WriteHelper.hh
+   trunk/Socket/AddressingPolicy.hh
+   trunk/Socket/ClientSocketHandle.hh
+   trunk/Socket/ClientSocketHandle.ih
+   trunk/Socket/CommunicationPolicy.hh
+   trunk/Socket/FileHandle.hh
+   trunk/Socket/FileHandle.ih
+   trunk/Socket/FramingPolicy.hh
+   trunk/Socket/NetdeviceController.hh
+   trunk/Socket/ProtocolClientSocketHandle.hh
+   trunk/Socket/ProtocolServerSocketHandle.hh
+   trunk/Socket/ProtocolServerSocketHandle.mpp
+   trunk/Socket/Protocols/AddressExceptions.hh
+   trunk/Socket/Protocols/BSDAddressingPolicy.hh
+   trunk/Socket/Protocols/BSDSocketAddress.hh
+   trunk/Socket/Protocols/BSDSocketProtocol.hh
+   trunk/Socket/Protocols/DVB/DVB.hh
+   trunk/Socket/Protocols/DVB/DVBDemuxHandles.hh
+   trunk/Socket/Protocols/DVB/DVBDemuxSocketProtocol.hh
+   trunk/Socket/Protocols/DVB/DVBFrontendHandle.cc
+   trunk/Socket/Protocols/DVB/DVBFrontendHandle.hh
+   trunk/Socket/Protocols/DatagramSocketProtocol.hh
+   trunk/Socket/Protocols/INet/ConnectedRawINetSocketHandle.hh
+   trunk/Socket/Protocols/INet/ConnectedUDPSocketHandle.hh
+   trunk/Socket/Protocols/INet/INet.hh
+   trunk/Socket/Protocols/INet/INet4Address.hh
+   trunk/Socket/Protocols/INet/INet6Address.hh
+   trunk/Socket/Protocols/INet/INet6Address.ih
+   trunk/Socket/Protocols/INet/INetAddressing.hh
+   trunk/Socket/Protocols/INet/INetSocketProtocol.hh
+   trunk/Socket/Protocols/INet/MulticastSocketProtocol.hh
+   trunk/Socket/Protocols/INet/RawINetSocketHandle.hh
+   trunk/Socket/Protocols/INet/RawINetSocketProtocol.hh
+   trunk/Socket/Protocols/INet/TCPSocketHandle.hh
+   trunk/Socket/Protocols/INet/TCPSocketProtocol.hh
+   trunk/Socket/Protocols/INet/UDPSocketHandle.hh
+   trunk/Socket/Protocols/INet/UDPSocketProtocol.hh
+   trunk/Socket/Protocols/Raw/LLAddressing.hh
+   trunk/Socket/Protocols/Raw/MACAddress.cc
+   trunk/Socket/Protocols/Raw/MACAddress.hh
+   trunk/Socket/Protocols/Raw/MACAddress.test.cc
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.hh
+   trunk/Socket/Protocols/Raw/Raw.hh
+   trunk/Socket/Protocols/Raw/TunTapSocketHandle.hh
+   trunk/Socket/Protocols/UN/ConnectedUNDatagramSocketHandle.hh
+   trunk/Socket/Protocols/UN/UN.hh
+   trunk/Socket/Protocols/UN/UNAddressing.hh
+   trunk/Socket/Protocols/UN/UNDatagramSocketHandle.hh
+   trunk/Socket/Protocols/UN/UNSocketProtocol.hh
+   trunk/Socket/ReadWritePolicy.hh
+   trunk/Socket/ServerSocketHandle.hh
+   trunk/Socket/Socket.hh
+   trunk/Socket/SocketHandle.hh
+   trunk/Socket/SocketHandle.ih
+   trunk/Socket/SocketPolicy.hh
+   trunk/Socket/SocketPolicy.ih
+   trunk/Socket/SocketPolicy.test.hh
+   trunk/Socket/SocketProtocol.hh
+   trunk/Socket/SocketProtocol.test.hh
+   trunk/Utils/Backtrace.hh
+   trunk/Utils/Buffer.hh
+   trunk/Utils/Daemon/Daemon.hh
+   trunk/Utils/Daemon/Daemon.ih
+   trunk/Utils/Exception.hh
+   trunk/Utils/IpChecksum.hh
+   trunk/Utils/IteratorTraits.hh
+   trunk/Utils/IteratorTraits.ih
+   trunk/Utils/Logger/AreaRegistry.hh
+   trunk/Utils/Logger/AreaRegistry.ih
+   trunk/Utils/Logger/Config.hh
+   trunk/Utils/Logger/Config.ih
+   trunk/Utils/Logger/ConsoleTarget.hh
+   trunk/Utils/Logger/Definitions.hh
+   trunk/Utils/Logger/Definitions.ih
+   trunk/Utils/Logger/FileTarget.hh
+   trunk/Utils/Logger/IOStreamTarget.hh
+   trunk/Utils/Logger/Levels.hh
+   trunk/Utils/Logger/Levels.ih
+   trunk/Utils/Logger/Log.hh
+   trunk/Utils/Logger/Log.ih
+   trunk/Utils/Logger/Logger.hh
+   trunk/Utils/Logger/Parameters.hh
+   trunk/Utils/Logger/Parameters.ih
+   trunk/Utils/Logger/SenfLog.hh
+   trunk/Utils/Logger/StreamRegistry.hh
+   trunk/Utils/Logger/StreamRegistry.ih
+   trunk/Utils/Logger/StringTarget.hh
+   trunk/Utils/Logger/SyslogTarget.hh
+   trunk/Utils/Logger/Target.hh
+   trunk/Utils/Logger/Target.ih
+   trunk/Utils/Logger/TimeSource.hh
+   trunk/Utils/Logger/TimeSource.ih
+   trunk/Utils/Logger/main.test.hh
+   trunk/Utils/Phoenix.hh
+   trunk/Utils/Phoenix.ih
+   trunk/Utils/Range.hh
+   trunk/Utils/String.hh
+   trunk/Utils/Tags.hh
+   trunk/Utils/TypeIdValue.hh
+   trunk/Utils/TypeInfo.hh
+   trunk/Utils/auto_unit_test.hh
+   trunk/Utils/hexdump.hh
+   trunk/Utils/hexdump.ih
+   trunk/Utils/intrusive_refcount.hh
+   trunk/Utils/membind.hh
+   trunk/Utils/mpl.hh
+   trunk/Utils/mpl.ih
+   trunk/Utils/parameter.hh
+   trunk/Utils/pool_alloc_mixin.hh
+   trunk/Utils/preprocessor.hh
+   trunk/Utils/range.hh
+   trunk/Utils/safe_bool.hh
+   trunk/Utils/senfassert.hh
+   trunk/Utils/signalnames.hh
+   trunk/Utils/singleton.hh
+   trunk/Utils/type_traits.hh
+   trunk/project.el
+
+Log:
+Packets: Fix VariantParser invalid parser access bug
+Clean up all file-defines and remove all tabs
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000821.html">[Senf-svn] r964 - trunk/Packets
+</A></li>
+	<LI>Next message: <A HREF="000823.html">[Senf-svn] r966 - trunk/PPI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#822">[ date ]</a>
+              <a href="thread.html#822">[ thread ]</a>
+              <a href="subject.html#822">[ subject ]</a>
+              <a href="author.html#822">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

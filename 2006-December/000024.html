@@ -1,0 +1,734 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r163 - in trunk: doclib satscons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r163%20-%20in%20trunk%3A%20doclib%20satscons&In-Reply-To=%3C200612141733.kBEHXhno024513%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000023.html">
+   <LINK REL="Next"  HREF="000025.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r163 - in trunk: doclib satscons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r163%20-%20in%20trunk%3A%20doclib%20satscons&In-Reply-To=%3C200612141733.kBEHXhno024513%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r163 - in trunk: doclib satscons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Thu Dec 14 18:33:43 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000023.html">[Senf-svn] r162 - in trunk: doclib
+</A></li>
+        <LI>Next message: <A HREF="000025.html">[Senf-svn] r164 - in trunk: Sniffer doclib satscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Thu Dec 14 18:33:31 2006
+New Revision: 163
+
+Added:
+   trunk/satscons/Doxyfile
+   trunk/satscons/SConscript
+Modified:
+   trunk/Doxyfile
+   trunk/Mainpage.dox
+   trunk/SConstruct
+   trunk/doclib/Doxyfile.global
+   trunk/doclib/doxy-footer.html
+   trunk/doclib/doxy-header-overview.html
+   trunk/doclib/doxy-header.html
+   trunk/doclib/senf.css
+   trunk/satscons/   (props changed)
+   trunk/satscons/Doxygen.py
+   trunk/satscons/SatSCons.py
+
+Log:
+Documentation updates
+
+Modified: trunk/Doxyfile
+==============================================================================
+--- trunk/Doxyfile	(original)
++++ trunk/Doxyfile	Thu Dec 14 18:33:31 2006
+@@ -1,5 +1,5 @@
+ PROJECT_NAME           = Overview
+-PROJECT_NUMBER         = &quot;Version 0.0.1&quot;
++PROJECT_NUMBER         = 
+ 
+ OUTPUT_DIRECTORY       = doc
+ CREATE_SUBDIRS         = NO
+@@ -71,7 +71,7 @@
+ RECURSIVE              = NO
+ EXCLUDE                = doc
+ EXCLUDE_SYMLINKS       = NO
+-EXCLUDE_PATTERNS       = *~ .#*
++EXCLUDE_PATTERNS       = .*
+ EXAMPLE_PATH           = 
+ EXAMPLE_PATTERNS       = 
+ EXAMPLE_RECURSIVE      = NO
+
+Modified: trunk/Mainpage.dox
+==============================================================================
+--- trunk/Mainpage.dox	(original)
++++ trunk/Mainpage.dox	Thu Dec 14 18:33:31 2006
+@@ -9,7 +9,7 @@
+ 
+     \section Goals
+ 
+-    The main goals where (in no particular order)
++    The main goals of this library are (in no particular order):
+ 
+     \li modular framework design
+     \li utilizing the power of modern C++
+@@ -17,13 +17,124 @@
+     \li extensible design    
+     \li concise interface
+ 
+-    \section Components
++    \section start Getting started
++
++    To get started using this library, begin by checking out the code
++    from the &lt;a
++    href=&quot;<A HREF="http://developer.berlios.de/svn/?group_id=7489">http://developer.berlios.de/svn/?group_id=7489</A>&quot;&gt;BerliOS SVN
++    repository&lt;/a&gt;. You may find help on using the library at '\ref
++    usage'. If you are interested in SENF, feel free to subscribe
++    to the &lt;a
++    href=&quot;<A HREF="http://developer.berlios.de/mail/?group_id=7489">http://developer.berlios.de/mail/?group_id=7489</A>&quot;&gt;SENF
++    mailing lists&lt;/a&gt;.
++
++    \see \ref usage\n
++         \ref example\n
++         &lt;a href=&quot;<A HREF="http://developer.berlios.de/projects/senf">http://developer.berlios.de/projects/senf</A>&quot;&gt;&lt;b&gt;&lt;i&gt;The BerliOS project page&lt;/i&gt;&lt;/b&gt;&lt;/a&gt;\n
++         &lt;a href=&quot;<A HREF="http://openfacts.berlios.de/index-en.phtml?title=SENF+Network+Framework">http://openfacts.berlios.de/index-en.phtml?title=SENF+Network+Framework</A>&quot;&gt;&lt;b&gt;&lt;i&gt;The SENF Wiki at BerliOS&lt;/i&gt;&lt;/b&gt;&lt;/a&gt;
++*/
++
++/** \page usage Using the SENF framework
++
++    The SENF Framework is a collection of lossly coupled
++    modules. The libraries are heavily object oriented and template
++    based. For compatibility reasons, the libraries are therefore
++    built together with every project making use of the framework.
++
++    When starting a new Projekt based on the SENF framework, it is
++    advisable, to make use of the SENFSCons build environment and use
++    SVN to manage the code repository. This is the configuration,
++    described in this documentation.
++
++    \see \ref build \n
++         \ref components \n
++         \ref svnsetup
++
++    \section Preliminaries
++
++    Before starting the devlopment, make sure to fulfill the following
++    requirements:
++
++    \li GNU g++, version at least 3.4
++    \li The Boost libraries (<A HREF="http://www.boost.org">http://www.boost.org</A>)
++    \li The SCons build tool (<A HREF="http://www.scons.org">http://www.scons.org</A>)
++
++    If you want to build the documentation, you additionally need
++
++    \li Doxygen (<A HREF="http://www.doxygen.org">http://www.doxygen.org</A>)
++    \li The \c dia diagram editor (<A HREF="http://www.gnome.org/projects/dia/">http://www.gnome.org/projects/dia/</A>)
++
++
++    The library is only tested with gcc-3.4 and 4.0 on Linux. On other
++    POSIX platforms with a BSD Socket API, the library should be
++    usable, possibly with some tweaking (except for the Scheduler,
++    which relies on \c epoll)
++    
++    \todo
++    \li Preliminaries: SVN access, Dependencies
++    \li Building the library -&gt; Configuration
++    \li Setting up a project using this library (svn:externals)
++    \li Library components
++    \li coding standards and patterns
++ */
++
++/** \page build Building the framework
++    
++    This procedure will test building the complete framework
++    including the unit tests and the Sniffer test application. This
++    build is \e not needed to use the framework since every project
++    will include the full SENF source code itself (via Subversion).
++
++    After you have successfully built the library tests, you can
++    continue to setup your own project using SENF.
++
++    \see \ref components \n
++	 \ref svnsetup
++
++    \section checkout Getting the code
++
++    To access the code, check out the code from the BerliOS
++    repository. Change to your development directory and use the
++    following subversion command
++
++    &lt;pre class=&quot;fragment&quot;&gt;
++      $ svn checkout <A HREF="http://svn.berlios.de/svnroot/repos/senf/trunk">http://svn.berlios.de/svnroot/repos/senf/trunk</A> senf&lt;/pre&gt;
++
++    This will create a new directory \c senf within the current
++    directory. For further documentation on the use of Subversion, see
++    the \c svn manpage or the subversion homepage at
++    <A HREF="http://subversion.tigris.org.">http://subversion.tigris.org.</A> A very good introduction and
++    reference to subversion is available at
++    <A HREF="http://svnbook.red-bean.com.">http://svnbook.red-bean.com.</A>
++
++    \section compile Building
++
++    To build the library, execute all unit tests and build the Sniffer
++    test application, use
++
++    &lt;pre class=&quot;fragment&quot;&gt;
++      $ scons
++      $ scons all_tests&lt;/pre&gt;
++
++    in the \c senf directory. This assumes, that you want to build the
++    library with your default gcc and requires the boost libraries to
++    be available in the system include paths. If this is not the case,
++    you can take a look at &lt;tt&gt;SConfig.template&lt;/tt&gt; file. Copy this
++    file to &lt;tt&gt;SConfig&lt;/tt&gt; and comment out all the variables you
++    don't want to change (The \e values in the template file are just
++    arbitrary examples).
++ */
++
++/** \page components The SENF modules
+ 
+     The framework is made up of several modular components. When using
+     the library, it is possible to selectively choose to use only a
+-    subset of the implemented modules. The modules are
++    subset of the implemented modules.
++
++    \see \ref build \n
++         \ref svnsetup
+     
+-    \subsection libSocket libSocket: C++ abstraction of the BSD socket API
++    \section libSocket libSocket: C++ abstraction of the BSD socket API
+ 
+     This library provides a high performance and object oriented
+     abstraction of the standard socket API. It utilizes a flexible and
+@@ -34,7 +145,7 @@
+     \see &lt;a href=&quot;../../Socket/doc/html/index.html&quot;&gt;libSocket API
+     reference&lt;/a&gt;
+ 
+-    \subsection libPackets libPackets: Network packet manipulation
++    \section libPackets libPackets: Network packet manipulation
+ 
+     This libarary provides a very flexible infrastructure to
+     parse, create and otherwise manipulate packetized network
+@@ -45,7 +156,7 @@
+     \see &lt;a href=&quot;../../Packets/doc/html/index.html&quot;&gt;libPackets API
+     reference&lt;/a&gt;
+ 
+-    \subsection libScheduler libScheduler: Asynchronous event handling
++    \section libScheduler libScheduler: Asynchronous event handling
+ 
+     The scheduler library provides an object oriented interface to the
+     standard UNIX \c select type event dispatcher. It is based on the
+@@ -55,7 +166,7 @@
+     \see &lt;a href=&quot;../../Scheduler/doc/html/index.html&quot;&gt;libScheduler API
+     reference&lt;/a&gt;
+ 
+-    \subsection libUtils libUtils: Collection of arbitrary utilities
++    \section libUtils libUtils: Collection of arbitrary utilities
+ 
+     This library is used be most all of the other modules for
+     miscellaneous tools and utilities. We have
+@@ -72,6 +183,80 @@
+     \see &lt;a href=&quot;../../Utils/doc/html/index.html&quot;&gt;libUtils API
+     reference&lt;/a&gt;
+ 
++    \section senfscons SENFSCons, the SENF build environment
++
++    SENF relies on SCons (<A HREF="http://www.scons.org">http://www.scons.org</A>) to build. To further
++    simplify the common tasks, SENF includes a library of custom
++    routines and builders comprising a very concise build
++    environment. Included are a number of templates to help
++    bootstrapping a new project or component.
++
++    \see &lt;a href=&quot;../../satscons/doc/html/index.html&quot;&gt;SENFSCons
++    reference&lt;/a&gt;
++ */
++
++/** \page svnsetup Setting up a new project using SENF via SVN
++    
++    The preferred way to use SENF in a new project is to rely on
++    Subversion and make use of the SENFSCons build environment. The
++    following sections will describe, how this setup works.
++
++    \section svnext Setting up the project repository
++
++    The most seamless integration is possible if you rely on
++    Subversion to manage the new project. Subversion does support
++    'external repositories'. This allows to import code from a foreign
++    repository into the checkout without importing it into your
++    repository. The code will always stay at the remote repository,
++    updates are automatically available.
++
++    First setup a new empty repository as described for example in the
++    Subversion book at <A HREF="http://svnbook.red-bean.com">http://svnbook.red-bean.com</A> or as mandated by
++    your site policy. We will call the project 'Foo' and assume, that
++    the project has been checked out into the 'Foo' directory.
++
++    You now have to decide, which modules you want to use. Every
++    module resides in it's own subdirectory in the SENF
++    repository. Instead of directly checking out the code, we will use
++    \c svn:externals. This will instruct \c svn to auutomatically
++    check out the needed directories from the BerliOS SENF
++    repository. Change to the 'Foo' directory and type
++    
++      &lt;pre class=&quot;fragment&quot;&gt;
++        $ svn propedit svn:externals .&lt;/pre&gt;
++
++    The default editor (probably VI) will be started with the current
++    value of the svn:externals property (which will probably be
++    empty). Now add all the modules you want plus \c satscons and
++    possibly \c doclib (if you want to build the documentation). You
++    will almost certainly neeed the \c Utils module, since all other
++    modules depend on it.
++
++    For example, if you want to use the \c Scheduler and \c Socket
++    module, the file will look like
++
++      &lt;pre class=&quot;fragment&quot;&gt;
++        satscons <A HREF="http://svn.berlios.de/svnroot/repos/senf/trunk/satscons">http://svn.berlios.de/svnroot/repos/senf/trunk/satscons</A>
++        Utils <A HREF="http://svn.berlios.de/svnroot/repos/senf/trunk/Utils">http://svn.berlios.de/svnroot/repos/senf/trunk/Utils</A>
++        Scheduler <A HREF="http://svn.berlios.de/svnroot/repos/senf/trunk/Scheduler">http://svn.berlios.de/svnroot/repos/senf/trunk/Scheduler</A>
++        Socket <A HREF="http://svn.berlios.de/svnroot/repos/senf/trunk/Socket&lt;/pre">http://svn.berlios.de/svnroot/repos/senf/trunk/Socket&lt;/pre</A>&gt;
++
++    exit the editor and the property will be set. Now run
++
++      &lt;pre class=&quot;fragment&quot;&gt;
++        $ svn update&lt;/pre&gt;
++
++    and the code will be checked out into the corresponding
++    directories. 
++
++    \todo \li Configuring and building -&gt; reference to the SENFSCons
++              dok
++ */
++
++/** \page example Sniffer: A simple Example application
++
++ */
++
+     \section code Coding practices
+ 
+     The library heavily depends on the features of modern C++. As
+@@ -90,20 +275,8 @@
+     designed with standardization in mind. Many of the libraries are
+     already in queue to be part of the next generation C++ standard.
+    
+-    \section Dependencies
+-
+-    \li A standards compliant, modern C++ compiler. The library as
+-        such is developed under Linux using \c gcc with Version
+-        above 3.4
+-    \li The Boost libraries from <A HREF="http://www.boost.org">http://www.boost.org</A>
+-    \li The SCons build tool (see <A HREF="http://www.scons.org">http://www.scons.org</A>)
+-    \li Linux. The library only makes use of the POSIX API's, however
+-        it has not been tested beyond Linux, so if you are somewhere
+-        else, you are on your own. However, we will greatly appreciate
+-        feedback and patches for other platforms.
+-*/
+-
+ 
+ // Local Variables:
+ // mode: c++
+ // End:
++
+
+Modified: trunk/SConstruct
+==============================================================================
+--- trunk/SConstruct	(original)
++++ trunk/SConstruct	Thu Dec 14 18:33:31 2006
+@@ -8,9 +8,7 @@
+ 
+ SatSCons.UseBoost()
+ SatSCons.UseSTLPort()
+-SatSCons.UseDoxygen()
+ env = SatSCons.MakeEnvironment()
+-env.Tool('Dia2Png', [ 'satscons' ])
+ 
+ env.Append(
+    CPPPATH = [ '#' ],
+
+Modified: trunk/doclib/Doxyfile.global
+==============================================================================
+--- trunk/doclib/Doxyfile.global	(original)
++++ trunk/doclib/Doxyfile.global	Thu Dec 14 18:33:31 2006
+@@ -83,7 +83,7 @@
+ RECURSIVE              = NO
+ EXCLUDE                = doc
+ EXCLUDE_SYMLINKS       = NO
+-EXCLUDE_PATTERNS       = *.test.cc *~ .#*
++EXCLUDE_PATTERNS       = *.test.cc *~ .*
+ EXAMPLE_PATH           = 
+ EXAMPLE_PATTERNS       = *
+ EXAMPLE_RECURSIVE      = NO
+
+Modified: trunk/doclib/doxy-footer.html
+==============================================================================
+--- trunk/doclib/doxy-footer.html	(original)
++++ trunk/doclib/doxy-footer.html	Thu Dec 14 18:33:31 2006
+@@ -1 +1,11 @@
+-&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;
++    &lt;hr style=&quot;border: none; clear: both&quot; /&gt;
++  &lt;/div&gt;
++&lt;/div&gt;
++&lt;div id=&quot;footer&quot;&gt;
++  &lt;span&gt;
++    &lt;a href=&quot;todo.html&quot;&gt;Todo&lt;/a&gt; |
++    &lt;a href=&quot;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/senf-svn">senf-dev at lists.berlios.de</A>&quot;&gt;Contact: <A HREF="https://lists.berlios.de/mailman/listinfo/senf-svn">senf-dev at lists.berlios.de</A>&lt;/a&gt; |
++    Copyright &copy; 2006 Fraunhofer Gesellschft, SatCom, Stefan Bund
++  &lt;/span&gt;
++&lt;/div&gt;
++&lt;/body&gt;&lt;/html&gt;
+
+Modified: trunk/doclib/doxy-header-overview.html
+==============================================================================
+--- trunk/doclib/doxy-header-overview.html	(original)
++++ trunk/doclib/doxy-header-overview.html	Thu Dec 14 18:33:31 2006
+@@ -12,18 +12,20 @@
+ 
+ &lt;div id=&quot;head&quot;&gt;
+   &lt;h1&gt;SENF Extensible Network Framework&lt;/h1&gt;
+-  &lt;h2&gt;SENF Framework API reference&lt;/h2&gt;
++  &lt;h2&gt;Introduction and Overview&lt;/h2&gt;
+ &lt;/div&gt;
+ 
+-&lt;div id=&quot;content&quot;&gt;
+-  &lt;div class=&quot;tabs&quot;&gt;
+-    &lt;ul&gt;
+-      &lt;li class=&quot;Overview&quot;&gt;&lt;a href=&quot;../../doc/html/index.html&quot;&gt;&lt;i&gt;Overview&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+-      &lt;li&gt;&lt;a href=&quot;<A HREF="http://senf.berlios.de">http://senf.berlios.de</A>&quot;&gt;&lt;i&gt;SENF @ BerliOS&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
++&lt;div id=&quot;content1&quot;&gt;
++  &lt;div id=&quot;content2&quot;&gt;
++    &lt;div class=&quot;tabs&quot;&gt;
++      &lt;ul&gt;
++        &lt;li class=&quot;Overview&quot;&gt;&lt;a href=&quot;../../doc/html/index.html&quot;&gt;&lt;i&gt;Overview&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
++        &lt;li&gt;&lt;a href=&quot;<A HREF="http://developer.berlios.de/projects/senf">http://developer.berlios.de/projects/senf</A>&quot;&gt;&lt;i&gt;SENF @ BerliOS&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+ 
+-      &lt;li class=&quot;libSocket&quot;&gt;&lt;a href=&quot;../../Socket/doc/html/index.html&quot;&gt;libSocket&lt;/a&gt;&lt;/li&gt;
+-      &lt;li class=&quot;libPackets&quot;&gt;&lt;a href=&quot;../../Packets/doc/html/index.html&quot;&gt;libPackets&lt;/a&gt;&lt;/li&gt;
+-      &lt;li class=&quot;libScheduler&quot;&gt;&lt;a href=&quot;../../Scheduler/doc/html/index.html&quot;&gt;libScheduler&lt;/a&gt;&lt;/li&gt;
+-      &lt;li class=&quot;libUtils&quot;&gt;&lt;a href=&quot;../../Utils/doc/html/index.html&quot;&gt;libUtils&lt;/a&gt;&lt;/li&gt;
+-    &lt;/ul&gt;
+-  &lt;/div&gt;
++        &lt;li class=&quot;libSocket&quot;&gt;&lt;a href=&quot;../../Socket/doc/html/index.html&quot;&gt;libSocket&lt;/a&gt;&lt;/li&gt;
++        &lt;li class=&quot;libPackets&quot;&gt;&lt;a href=&quot;../../Packets/doc/html/index.html&quot;&gt;libPackets&lt;/a&gt;&lt;/li&gt;
++        &lt;li class=&quot;libScheduler&quot;&gt;&lt;a href=&quot;../../Scheduler/doc/html/index.html&quot;&gt;libScheduler&lt;/a&gt;&lt;/li&gt;
++        &lt;li class=&quot;libUtils&quot;&gt;&lt;a href=&quot;../../Utils/doc/html/index.html&quot;&gt;libUtils&lt;/a&gt;&lt;/li&gt;
++        &lt;li class=&quot;SENFSCons&quot;&gt;&lt;a href=&quot;../../satscons/doc/html/index.html&quot;&gt;SENFSCons&lt;/a&gt;&lt;/li&gt;
++      &lt;/ul&gt;
++    &lt;/div&gt;
+
+Modified: trunk/doclib/doxy-header.html
+==============================================================================
+--- trunk/doclib/doxy-header.html	(original)
++++ trunk/doclib/doxy-header.html	Thu Dec 14 18:33:31 2006
+@@ -12,18 +12,20 @@
+ 
+ &lt;div id=&quot;head&quot;&gt;
+   &lt;h1&gt;SENF Extensible Network Framework&lt;/h1&gt;
+-  &lt;h2&gt;SENF Framework API reference&lt;/h2&gt;
++  &lt;h2&gt;Documentation and API reference&lt;/h2&gt;
+ &lt;/div&gt;
+ 
+-&lt;div id=&quot;content&quot;&gt;
+-  &lt;div class=&quot;tabs&quot;&gt;
+-    &lt;ul&gt;
+-      &lt;li class=&quot;Overview&quot;&gt;&lt;a href=&quot;../../../doc/html/index.html&quot;&gt;&lt;i&gt;Overview&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+-      &lt;li&gt;&lt;a href=&quot;<A HREF="http://senf.berlios.de">http://senf.berlios.de</A>&quot;&gt;&lt;i&gt;SENF @ BerliOS&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
++&lt;div id=&quot;content1&quot;&gt;
++  &lt;div id=&quot;content2&quot;&gt;
++    &lt;div class=&quot;tabs&quot;&gt;
++      &lt;ul&gt;
++        &lt;li class=&quot;Overview&quot;&gt;&lt;a href=&quot;../../../doc/html/index.html&quot;&gt;&lt;i&gt;Overview&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
++        &lt;li&gt;&lt;a href=&quot;<A HREF="http://developer.berlios.de/projects/senf">http://developer.berlios.de/projects/senf</A>&quot;&gt;&lt;i&gt;SENF @ BerliOS&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+ 
+-      &lt;li class=&quot;libSocket&quot;&gt;&lt;a href=&quot;../../../Socket/doc/html/index.html&quot;&gt;libSocket&lt;/a&gt;&lt;/li&gt;
+-      &lt;li class=&quot;libPackets&quot;&gt;&lt;a href=&quot;../../../Packets/doc/html/index.html&quot;&gt;libPackets&lt;/a&gt;&lt;/li&gt;
+-      &lt;li class=&quot;libScheduler&quot;&gt;&lt;a href=&quot;../../../Scheduler/doc/html/index.html&quot;&gt;libScheduler&lt;/a&gt;&lt;/li&gt;
+-      &lt;li class=&quot;libUtils&quot;&gt;&lt;a href=&quot;../../../Utils/doc/html/index.html&quot;&gt;libUtils&lt;/a&gt;&lt;/li&gt;
+-    &lt;/ul&gt;
+-  &lt;/div&gt;
++        &lt;li class=&quot;libSocket&quot;&gt;&lt;a href=&quot;../../../Socket/doc/html/index.html&quot;&gt;libSocket&lt;/a&gt;&lt;/li&gt;
++        &lt;li class=&quot;libPackets&quot;&gt;&lt;a href=&quot;../../../Packets/doc/html/index.html&quot;&gt;libPackets&lt;/a&gt;&lt;/li&gt;
++        &lt;li class=&quot;libScheduler&quot;&gt;&lt;a href=&quot;../../../Scheduler/doc/html/index.html&quot;&gt;libScheduler&lt;/a&gt;&lt;/li&gt;
++        &lt;li class=&quot;libUtils&quot;&gt;&lt;a href=&quot;../../../Utils/doc/html/index.html&quot;&gt;libUtils&lt;/a&gt;&lt;/li&gt;
++        &lt;li class=&quot;SENFSCons&quot;&gt;&lt;a href=&quot;../../../satscons/doc/html/index.html&quot;&gt;SENFSCons&lt;/a&gt;&lt;/li&gt;
++      &lt;/ul&gt;
++    &lt;/div&gt;
+
+Modified: trunk/doclib/senf.css
+==============================================================================
+--- trunk/doclib/senf.css	(original)
++++ trunk/doclib/senf.css	Thu Dec 14 18:33:31 2006
+@@ -30,15 +30,20 @@
+ 	padding: 4px 0 0 0;
+ 	height: 18px;
+ 	background-color: #EDE497;
++	color: #726921;
+         font-size: 13px;
+ 	font-weight: normal;
+-	color: #726921;
+ 	white-space: nowrap;
+ }
+ 
+-#content { 
+-	/* Non-0 top padding to fix margin inhertance from first non-float elt */
+-	padding: 1px 10px 10px 142px;
++#content1 { 
++	padding: 0 10px 10px 142px;
++	border-bottom: 1px solid #AF9D00;
++}
++
++#content2 { 
++        /* need non-zero top padding here to prevent margin propagation */
++	padding: 10px 0 0 0;
+ 	max-width: 60em;
+ }
+ 
+@@ -48,7 +53,7 @@
+ 	clear: left;
+ 	background-color: #FDF7C3;
+ 	border: 1px solid #AF9D00;
+-        margin: 10px 0 0 -132px;
++        margin: 0 0 10px -132px;
+ 	width: 120px; 
+ 	overflow: hidden;
+ }
+@@ -101,3 +106,26 @@
+ 	padding: 2px;
+ 	line-height: 140%;
+ }
++
++#footer { 
++	clear: both;
++	padding: 4px 10px 4px 142px;
++	color: #726921;
++	white-space: nowrap;
++	text-align: right;
++	max-width: 60em;
++}
++
++#footer span { 
++        font-size: 10px;
++}
++
++#footer a, #footer a:active, #footer a:visited { 
++	color: #726921;
++	text-decoration: none;
++}
++
++#footer a:hover { 
++	background-color: inherit;
++	text-decoration: underline;
++}
+\ No newline at end of file
+
+Added: trunk/satscons/Doxyfile
+==============================================================================
+--- (empty file)
++++ trunk/satscons/Doxyfile	Thu Dec 14 18:33:31 2006
+@@ -0,0 +1,4 @@
++PROJECT_NAME           = SENFSCons
++PROJECT_NUMBER         = &quot;Version 0.0.1&quot;
++
+<A HREF="https://lists.berlios.de/mailman/listinfo/senf-svn">+ at INCLUDE</A> = ../doclib/Doxyfile.global
+\ No newline at end of file
+
+Modified: trunk/satscons/Doxygen.py
+==============================================================================
+--- trunk/satscons/Doxygen.py	(original)
++++ trunk/satscons/Doxygen.py	Thu Dec 14 18:33:31 2006
+@@ -81,12 +81,11 @@
+ 
+       # compress lists of len 1 into single strings
+       for (k, v) in data.items():
+-         if k == &quot;@INCLUDE&quot; : continue
+          if len(v) == 0:
+             data.pop(k)
+ 
+          # items in the following list will be kept as lists and not converted to strings
+-         if k in [&quot;INPUT&quot;, &quot;FILE_PATTERNS&quot;, &quot;EXCLUDE_PATTERNS&quot;]:
++         if k in [&quot;INPUT&quot;, &quot;FILE_PATTERNS&quot;, &quot;EXCLUDE_PATTERNS&quot;, &quot;@INCLUDE&quot;, &quot;TAGFILES&quot;]:
+             continue
+ 
+          if len(v) == 1:
+@@ -101,6 +100,10 @@
+    Doxygen Doxyfile source scanner.  This should scan the Doxygen file and add
+    any files used to generate docs to the list of source files.
+    &quot;&quot;&quot;
++   dep_add_keys = [
++      '@INCLUDE', 'HTML_HEADER', 'HTML_FOOTER', 'TAGFILES'
++   ]
++   
+    default_file_patterns = [
+       '*.c', '*.cc', '*.cxx', '*.cpp', '*.c++', '*.java', '*.ii', '*.ixx',
+       '*.ipp', '*.i++', '*.inl', '*.h', '*.hh ', '*.hxx', '*.hpp', '*.h++',
+@@ -112,45 +115,34 @@
+       '*~',
+    ]
+ 
+-   sources = []
+-
+-   data = DoxyfileParse(node.get_contents(), str(node.dir))
+-
+-   if data.get(&quot;RECURSIVE&quot;, &quot;NO&quot;) == &quot;YES&quot;:
+-      recursive = True
+-   else:
+-      recursive = False
+-
+-   file_patterns = data.get(&quot;FILE_PATTERNS&quot;, default_file_patterns)
++   sources          = []
++   basedir          = str(node.dir)
++   data             = DoxyfileParse(node.get_contents(), basedir)
++   recursive        = ( data.get(&quot;RECURSIVE&quot;, &quot;NO&quot;) == &quot;YES&quot; )
++   file_patterns    = data.get(&quot;FILE_PATTERNS&quot;, default_file_patterns)
+    exclude_patterns = data.get(&quot;EXCLUDE_PATTERNS&quot;, default_exclude_patterns)
+ 
+    for i in data.get(&quot;INPUT&quot;, [ &quot;.&quot; ]):
+-      input = os.path.normpath(os.path.join(str(node.dir),i))
++      input = os.path.normpath(os.path.join(basedir,i))
+       if os.path.isfile(input):
+          sources.append(input)
+       elif os.path.isdir(input):
+-         if recursive:
+-            entries = os.walk(input)
+-         else:
+-            entries = [ (input, [], os.listdir(input)) ]
++         if recursive : entries = os.walk(input)
++         else         : entries = [ (input, [], os.listdir(input)) ]
+          for root, dirs, files in entries:
+             for f in files:
+-               filename = os.path.join(root, f)
+-
+-               pattern_check = reduce(lambda x, y: x or bool(fnmatch(filename, y)), file_patterns, False)
+-               exclude_check = reduce(lambda x, y: x and fnmatch(filename, y), exclude_patterns, True)
+-
+-               if pattern_check and not exclude_check:
++               filename = os.path.normpath(os.path.join(root, f))
++               if ( reduce(lambda x, y: x or fnmatch(filename, y),
++                           file_patterns, False) 
++                    and not reduce(lambda x, y: x or fnmatch(filename, y),
++                                   exclude_patterns, False) ):
+                   sources.append(filename)
+ 
+-   sources.extend([ os.path.normpath(os.path.join(str(node.dir),x))
+-                    for x in data.get(&quot;@INCLUDE&quot;,[]) ])
+-
+-   for key in ('HTML_HEADER','HTML_FOOTER','TAGFILES'):
++   for key in dep_add_keys:
+       if data.has_key(key):
+          elt = data[key]
+          if type(elt) is type (&quot;&quot;) : elt = [ elt ]
+-         sources.extend([ os.path.normpath(os.path.join(str(node.dir),f))
++         sources.extend([ os.path.normpath(os.path.join(basedir,f))
+                           for f in elt ])
+ 
+    sources = map( lambda path: env.File(path), sources )
+
+Added: trunk/satscons/SConscript
+==============================================================================
+--- (empty file)
++++ trunk/satscons/SConscript	Thu Dec 14 18:33:31 2006
+@@ -0,0 +1,7 @@
++Import('env')
++import SatSCons
++
++###########################################################################
++
++SatSCons.StandardTargets(env)
++SatSCons.Doxygen(env)
+
+Modified: trunk/satscons/SatSCons.py
+==============================================================================
+--- trunk/satscons/SatSCons.py	(original)
++++ trunk/satscons/SatSCons.py	Thu Dec 14 18:33:31 2006
+@@ -1,8 +1,15 @@
+ import os.path, SCons.Options, SCons.Environment, SCons.Script.SConscript, glob
+ 
++SCONS_TOOLS = [
++    &quot;Doxygen&quot;,
++    &quot;Dia2Png&quot;,
++]
++
+ opts = None
+ finalizers = []
+ 
++basedir = os.path.split(__file__)[0]
++
+ def InitOpts():
+     global opts
+     if opts is not None: return
+@@ -28,7 +35,7 @@
+     Finalizer(FinalizeBoost)
+ 
+ def FinalizeBoost(env):
+-    env.Tool('BoostUnitTests', [os.path.split(__file__)[0]])
++    env.Tool('BoostUnitTests', [basedir])
+ 
+     if env['BOOST_TOOLSET']:
+         runtime = &quot;&quot;
+@@ -64,12 +71,6 @@
+             env.Append(LIBS = [ '$STLPORT_DEBUGLIB' ],
+                        CPPDEFINES = [ '_STLP_DEBUG' ])
+ 
+-def UseDoxygen():
+-    Finalizer(FinalizeDoxygen)
+-
+-def FinalizeDoxygen(env):
+-    env.Tool('Doxygen', [os.path.split(__file__)[0]])
+-    
+ def MakeEnvironment():
+     global opts, finalizers
+     InitOpts()
+@@ -85,6 +86,9 @@
+     for finalizer in finalizers:
+         finalizer(env)
+ 
++    for tool in SCONS_TOOLS:
++        env.Tool(tool, [basedir])
++
+     env.Append(CXXFLAGS = [ '-Wall', '-Woverloaded-virtual', '-Wno-long-long' ],
+                LOCALLIBDIR = [ '#' ],
+                LIBPATH = [ '$LOCALLIBDIR' ])
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000023.html">[Senf-svn] r162 - in trunk: doclib
+</A></li>
+	<LI>Next message: <A HREF="000025.html">[Senf-svn] r164 - in trunk: Sniffer doclib satscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

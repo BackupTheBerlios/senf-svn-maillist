@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r145 - trunk/Socket
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r145%20-%20trunk/Socket&In-Reply-To=%3C200610170812.k9H8CMGc026582%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000005.html">
+   <LINK REL="Next"  HREF="000007.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r145 - trunk/Socket</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r145%20-%20trunk/Socket&In-Reply-To=%3C200610170812.k9H8CMGc026582%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r145 - trunk/Socket">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Oct 17 10:12:22 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000005.html">[Senf-svn] r144 - in trunk: Packets Sniffer satscons
+</A></li>
+        <LI>Next message: <A HREF="000007.html">[Senf-svn] r146 - in trunk: Socket
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#6">[ date ]</a>
+              <a href="thread.html#6">[ thread ]</a>
+              <a href="subject.html#6">[ subject ]</a>
+              <a href="author.html#6">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Oct 17 10:12:20 2006
+New Revision: 145
+
+Modified:
+   trunk/Socket/INetAddressing.cc
+   trunk/Socket/SocketPolicy.ct
+
+Log:
+Fix g++-4 warnings
+
+Modified: trunk/Socket/INetAddressing.cc
+==============================================================================
+--- trunk/Socket/INetAddressing.cc	(original)
++++ trunk/Socket/INetAddressing.cc	Tue Oct 17 10:12:20 2006
+@@ -26,7 +26,7 @@
+ //#include &quot;INetAddressing.ih&quot;
+ 
+ // Custom includes
+-#include &lt;strstream&gt;
++#include &lt;sstream&gt;
+ #include &lt;string.h&gt;
+ #include &lt;sys/socket.h&gt;
+ #include &lt;boost/lexical_cast.hpp&gt;
+
+Modified: trunk/Socket/SocketPolicy.ct
+==============================================================================
+--- trunk/Socket/SocketPolicy.ct	(original)
++++ trunk/Socket/SocketPolicy.ct	Tue Oct 17 10:12:20 2006
+@@ -36,7 +36,7 @@
+ prefix_ void satcom::lib::SocketPolicy&lt; BOOST_PP_SEQ_FOR_EACH_I( SP_TemplateParams, , SATLIB_SOCKET_POLICIES ) &gt;::
+ checkBaseOf(SocketPolicyBase const &amp; other)
+ {
+-#   define SP_CheckPolicy(x1,x2,SomePolicy) dynamic_cast&lt;SomePolicy const &amp;&gt;(other.BOOST_PP_CAT(the,SomePolicy)());
++#   define SP_CheckPolicy(x1,x2,SomePolicy) (void) dynamic_cast&lt;SomePolicy const &amp;&gt;(other.BOOST_PP_CAT(the,SomePolicy)());
+     BOOST_PP_SEQ_FOR_EACH( SP_CheckPolicy, , SATLIB_SOCKET_POLICIES )
+ #   undef SP_CheckPolicy
+ }
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000005.html">[Senf-svn] r144 - in trunk: Packets Sniffer satscons
+</A></li>
+	<LI>Next message: <A HREF="000007.html">[Senf-svn] r146 - in trunk: Socket
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#6">[ date ]</a>
+              <a href="thread.html#6">[ thread ]</a>
+              <a href="subject.html#6">[ subject ]</a>
+              <a href="author.html#6">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

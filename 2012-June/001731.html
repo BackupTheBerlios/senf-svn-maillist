@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1892 - in trunk/senf: Packets boost boost/icl	boost/icl/concept boost/icl/detail boost/icl/predicates	boost/icl/type_traits
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2012-June/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1892%20-%20in%20trunk/senf%3A%20Packets%20boost%20boost/icl%0A%09boost/icl/concept%20boost/icl/detail%20boost/icl/predicates%0A%09boost/icl/type_traits&In-Reply-To=%3C20120627105303.A6C8955B10%40scm.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001730.html">
+   <LINK REL="Next"  HREF="001732.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1892 - in trunk/senf: Packets boost boost/icl	boost/icl/concept boost/icl/detail boost/icl/predicates	boost/icl/type_traits</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1892%20-%20in%20trunk/senf%3A%20Packets%20boost%20boost/icl%0A%09boost/icl/concept%20boost/icl/detail%20boost/icl/predicates%0A%09boost/icl/type_traits&In-Reply-To=%3C20120627105303.A6C8955B10%40scm.berlios.de%3E"
+       TITLE="[Senf-svn] r1892 - in trunk/senf: Packets boost boost/icl	boost/icl/concept boost/icl/detail boost/icl/predicates	boost/icl/type_traits">subversion at senf.berlios.de
+       </A><BR>
+    <I>Wed Jun 27 12:53:03 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001730.html">[Senf-svn] r1891 - in trunk: . senf/PPI senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/DefaultBundle senf/Packets/MPEGDVBBundle	senf/Scheduler senf/Socket senf/Socket/Protocols/DVB	senf/Socket/Protocols/Raw senf/Utils senf/Utils/Console	senf/Utils/Daemon senf/Utils/Logger site_scons
+</A></li>
+        <LI>Next message: <A HREF="001732.html">[Senf-svn] r1893 - in trunk/senf/boost/icl: . concept detail	predicates type_traits
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1731">[ date ]</a>
+              <a href="thread.html#1731">[ thread ]</a>
+              <a href="subject.html#1731">[ subject ]</a>
+              <a href="author.html#1731">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: tho
+Date: Wed Jun 27 12:53:01 2012
+New Revision: 1892
+
+Log:
+added boost::icl
+
+Added:
+   trunk/senf/boost/
+   trunk/senf/boost/icl/
+   trunk/senf/boost/icl/associative_element_container.hpp
+   trunk/senf/boost/icl/associative_interval_container.hpp
+   trunk/senf/boost/icl/closed_interval.hpp
+   trunk/senf/boost/icl/concept/
+   trunk/senf/boost/icl/concept/comparable.hpp
+   trunk/senf/boost/icl/concept/container.hpp
+   trunk/senf/boost/icl/concept/element_associator.hpp
+   trunk/senf/boost/icl/concept/element_map.hpp
+   trunk/senf/boost/icl/concept/element_set.hpp
+   trunk/senf/boost/icl/concept/element_set_value.hpp
+   trunk/senf/boost/icl/concept/interval.hpp
+   trunk/senf/boost/icl/concept/interval_associator.hpp
+   trunk/senf/boost/icl/concept/interval_associator_base.hpp
+   trunk/senf/boost/icl/concept/interval_bounds.hpp
+   trunk/senf/boost/icl/concept/interval_map.hpp
+   trunk/senf/boost/icl/concept/interval_set.hpp
+   trunk/senf/boost/icl/concept/interval_set_value.hpp
+   trunk/senf/boost/icl/concept/joinable.hpp
+   trunk/senf/boost/icl/concept/map_value.hpp
+   trunk/senf/boost/icl/concept/set_value.hpp
+   trunk/senf/boost/icl/continuous_interval.hpp
+   trunk/senf/boost/icl/detail/
+   trunk/senf/boost/icl/detail/associated_value.hpp
+   trunk/senf/boost/icl/detail/boost_config.hpp
+   trunk/senf/boost/icl/detail/concept_check.hpp
+   trunk/senf/boost/icl/detail/design_config.hpp
+   trunk/senf/boost/icl/detail/element_comparer.hpp
+   trunk/senf/boost/icl/detail/element_iterator.hpp
+   trunk/senf/boost/icl/detail/exclusive_less_than.hpp
+   trunk/senf/boost/icl/detail/interval_map_algo.hpp
+   trunk/senf/boost/icl/detail/interval_morphism.hpp
+   trunk/senf/boost/icl/detail/interval_set_algo.hpp
+   trunk/senf/boost/icl/detail/interval_subset_comparer.hpp
+   trunk/senf/boost/icl/detail/map_algo.hpp
+   trunk/senf/boost/icl/detail/mapped_reference.hpp
+   trunk/senf/boost/icl/detail/notate.hpp
+   trunk/senf/boost/icl/detail/on_absorbtion.hpp
+   trunk/senf/boost/icl/detail/relation_state.hpp
+   trunk/senf/boost/icl/detail/set_algo.hpp
+   trunk/senf/boost/icl/detail/std_set.hpp
+   trunk/senf/boost/icl/detail/subset_comparer.hpp
+   trunk/senf/boost/icl/discrete_interval.hpp
+   trunk/senf/boost/icl/dynamic_interval_traits.hpp
+   trunk/senf/boost/icl/functors.hpp
+   trunk/senf/boost/icl/gregorian.hpp
+   trunk/senf/boost/icl/impl_config.hpp
+   trunk/senf/boost/icl/interval.hpp
+   trunk/senf/boost/icl/interval_base_map.hpp
+   trunk/senf/boost/icl/interval_base_set.hpp
+   trunk/senf/boost/icl/interval_bounds.hpp
+   trunk/senf/boost/icl/interval_combining_style.hpp
+   trunk/senf/boost/icl/interval_map.hpp
+   trunk/senf/boost/icl/interval_set.hpp
+   trunk/senf/boost/icl/interval_traits.hpp
+   trunk/senf/boost/icl/iterator.hpp
+   trunk/senf/boost/icl/left_open_interval.hpp
+   trunk/senf/boost/icl/map.hpp
+   trunk/senf/boost/icl/open_interval.hpp
+   trunk/senf/boost/icl/predicates/
+   trunk/senf/boost/icl/predicates/distinct_equal.hpp
+   trunk/senf/boost/icl/predicates/element_equal.hpp
+   trunk/senf/boost/icl/predicates/std_equal.hpp
+   trunk/senf/boost/icl/predicates/sub_super_set.hpp
+   trunk/senf/boost/icl/ptime.hpp
+   trunk/senf/boost/icl/rational.hpp
+   trunk/senf/boost/icl/right_open_interval.hpp
+   trunk/senf/boost/icl/separate_interval_set.hpp
+   trunk/senf/boost/icl/set.hpp
+   trunk/senf/boost/icl/split_interval_map.hpp
+   trunk/senf/boost/icl/split_interval_set.hpp
+   trunk/senf/boost/icl/type_traits/
+   trunk/senf/boost/icl/type_traits/absorbs_identities.hpp
+   trunk/senf/boost/icl/type_traits/adds_inversely.hpp
+   trunk/senf/boost/icl/type_traits/codomain_type_of.hpp
+   trunk/senf/boost/icl/type_traits/difference.hpp
+   trunk/senf/boost/icl/type_traits/difference_type_of.hpp
+   trunk/senf/boost/icl/type_traits/domain_type_of.hpp
+   trunk/senf/boost/icl/type_traits/element_type_of.hpp
+   trunk/senf/boost/icl/type_traits/has_inverse.hpp
+   trunk/senf/boost/icl/type_traits/has_set_semantics.hpp
+   trunk/senf/boost/icl/type_traits/identity_element.hpp
+   trunk/senf/boost/icl/type_traits/infinity.hpp
+   trunk/senf/boost/icl/type_traits/interval_type_default.hpp
+   trunk/senf/boost/icl/type_traits/interval_type_of.hpp
+   trunk/senf/boost/icl/type_traits/is_associative_element_container.hpp
+   trunk/senf/boost/icl/type_traits/is_asymmetric_interval.hpp
+   trunk/senf/boost/icl/type_traits/is_combinable.hpp
+   trunk/senf/boost/icl/type_traits/is_concept_equivalent.hpp
+   trunk/senf/boost/icl/type_traits/is_container.hpp
+   trunk/senf/boost/icl/type_traits/is_continuous.hpp
+   trunk/senf/boost/icl/type_traits/is_continuous_interval.hpp
+   trunk/senf/boost/icl/type_traits/is_discrete.hpp
+   trunk/senf/boost/icl/type_traits/is_discrete_interval.hpp
+   trunk/senf/boost/icl/type_traits/is_element_container.hpp
+   trunk/senf/boost/icl/type_traits/is_icl_container.hpp
+   trunk/senf/boost/icl/type_traits/is_interval.hpp
+   trunk/senf/boost/icl/type_traits/is_interval_container.hpp
+   trunk/senf/boost/icl/type_traits/is_interval_joiner.hpp
+   trunk/senf/boost/icl/type_traits/is_interval_separator.hpp
+   trunk/senf/boost/icl/type_traits/is_interval_splitter.hpp
+   trunk/senf/boost/icl/type_traits/is_key_container_of.hpp
+   trunk/senf/boost/icl/type_traits/is_map.hpp
+   trunk/senf/boost/icl/type_traits/is_numeric.hpp
+   trunk/senf/boost/icl/type_traits/is_set.hpp
+   trunk/senf/boost/icl/type_traits/is_total.hpp
+   trunk/senf/boost/icl/type_traits/no_type.hpp
+   trunk/senf/boost/icl/type_traits/predicate.hpp
+   trunk/senf/boost/icl/type_traits/segment_type_of.hpp
+   trunk/senf/boost/icl/type_traits/size.hpp
+   trunk/senf/boost/icl/type_traits/size_type_of.hpp
+   trunk/senf/boost/icl/type_traits/succ_pred.hpp
+   trunk/senf/boost/icl/type_traits/to_string.hpp
+   trunk/senf/boost/icl/type_traits/type_to_string.hpp
+   trunk/senf/boost/icl/type_traits/unit_element.hpp
+   trunk/senf/boost/icl/type_traits/value_size.hpp
+Modified:
+   trunk/senf/Packets/PacketData.hh
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001730.html">[Senf-svn] r1891 - in trunk: . senf/PPI senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/DefaultBundle senf/Packets/MPEGDVBBundle	senf/Scheduler senf/Socket senf/Socket/Protocols/DVB	senf/Socket/Protocols/Raw senf/Utils senf/Utils/Console	senf/Utils/Daemon senf/Utils/Logger site_scons
+</A></li>
+	<LI>Next message: <A HREF="001732.html">[Senf-svn] r1893 - in trunk/senf/boost/icl: . concept detail	predicates type_traits
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1731">[ date ]</a>
+              <a href="thread.html#1731">[ thread ]</a>
+              <a href="subject.html#1731">[ subject ]</a>
+              <a href="author.html#1731">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

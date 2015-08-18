@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r149 - in trunk: Packets Scheduler
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r149%20-%20in%20trunk%3A%20Packets%20Scheduler&In-Reply-To=%3C200611061153.kA6Braid013310%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000011.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r149 - in trunk: Packets Scheduler</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r149%20-%20in%20trunk%3A%20Packets%20Scheduler&In-Reply-To=%3C200611061153.kA6Braid013310%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r149 - in trunk: Packets Scheduler">subversion at senf.berlios.de
+       </A><BR>
+    <I>Mon Nov  6 12:53:36 CET 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000011.html">[Senf-svn] r150 - in trunk: Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Mon Nov  6 12:53:26 2006
+New Revision: 149
+
+Modified:
+   trunk/   (props changed)
+   trunk/Packets/ParseInt.ih
+   trunk/Packets/ParserBase.cti
+   trunk/Packets/ParserBase.hh
+   trunk/Scheduler/Scheduler.cc
+   trunk/Scheduler/Scheduler.cci
+   trunk/Scheduler/Scheduler.cti
+   trunk/Scheduler/Scheduler.hh
+
+Log:
+Restructure internal Scheduler callback representation
+Add missing operators to integer Parsers
+Fix satcom::pkf::nil to be a valid iterator
+
+Modified: trunk/Packets/ParseInt.ih
+==============================================================================
+--- trunk/Packets/ParseInt.ih	(original)
++++ trunk/Packets/ParseInt.ih	Mon Nov  6 12:53:26 2006
+@@ -71,6 +71,11 @@
+         Derived const &amp; operator -- ()
+             { derived().value( derived.value()-1 ); return derived(); }
+ 
++        Derived const &amp; operator ++ (int)
++            { Value v (derived.value()); derived().value( v+1 ); return v; }
++        Derived const &amp; operator -- (int)
++            { Value v (derived.value()); derived().value( v-1 ); return v; }
++
+     private:
+         Derived &amp; derived() { return *static_cast&lt;Derived *&gt;(this); }
+         Derived const &amp; derived() const { return *static_cast&lt;Derived const *&gt;(this); };
+
+Modified: trunk/Packets/ParserBase.cti
+==============================================================================
+--- trunk/Packets/ParserBase.cti	(original)
++++ trunk/Packets/ParserBase.cti	Mon Nov  6 12:53:26 2006
+@@ -22,7 +22,7 @@
+ 
+ // Definition of inline template functions
+ 
+-//#include &quot;ParserBase.ih&quot;
++#include &quot;ParserBase.ih&quot;
+ 
+ // Custom includes
+ 
+
+Modified: trunk/Packets/ParserBase.hh
+==============================================================================
+--- trunk/Packets/ParserBase.hh	(original)
++++ trunk/Packets/ParserBase.hh	Mon Nov  6 12:53:26 2006
+@@ -29,6 +29,7 @@
+ 
+ // Custom includes
+ #include &lt;utility&gt;
++#include &lt;boost/iterator/iterator_facade.hpp&gt;
+ #include &lt;boost/type_traits/is_member_function_pointer.hpp&gt;
+ 
+ #include &quot;ParserBase.ih&quot;
+@@ -39,7 +40,19 @@
+     
+     namespace impl { struct ParserBase; }
+ 
+-    struct nil {};
++    struct nil 
++	: public boost::iterator_facade&lt;nil,char,boost::random_access_traversal_tag&gt;
++    {
++	// Theese are declared to make nil a valid iterator. All
++	// access to an instance of this iterator however is invalid
++	// (these members are not implemented only declared)
++	char &amp; dereference() const;
++	bool equal(nil other) const;
++	void increment();
++	void decrement();
++	void advance(int n);
++	int distance_to(nil other) const;
++    };
+ 
+     /** \brief Parser framework
+ 
+
+Modified: trunk/Scheduler/Scheduler.cc
+==============================================================================
+--- trunk/Scheduler/Scheduler.cc	(original)
++++ trunk/Scheduler/Scheduler.cc	Mon Nov  6 12:53:26 2006
+@@ -90,7 +90,7 @@
+         throw SystemException(errno);
+ }
+ 
+-prefix_ void satcom::lib::Scheduler::add(int fd, Callback const &amp; cb, EventId eventMask)
++prefix_ void satcom::lib::Scheduler::do_add(int fd, InternalCallback const &amp; cb, EventId eventMask)
+ {
+     FdTable::iterator i (fdTable_.find(fd));
+     int action (EPOLL_CTL_MOD);
+@@ -114,7 +114,7 @@
+         throw SystemException(errno);
+ }
+ 
+-prefix_ void satcom::lib::Scheduler::remove(int fd, EventId eventMask)
++prefix_ void satcom::lib::Scheduler::do_remove(int fd, EventId eventMask)
+ {
+     FdTable::iterator i (fdTable_.find(fd));
+     if (i == fdTable_.end()) 
+@@ -171,24 +171,24 @@
+ 
+         if (ev.events &amp; EPOLLIN) {
+             BOOST_ASSERT(spec.cb_read); 
+-            spec.cb_read(ev.data.fd, EV_READ);
++            spec.cb_read(EV_READ);
+         }
+         else if (ev.events &amp; EPOLLPRI) {
+             BOOST_ASSERT(spec.cb_prio);
+-            spec.cb_prio (ev.data.fd, EV_PRIO);
++            spec.cb_prio(EV_PRIO);
+         }
+         else if (ev.events &amp; EPOLLOUT) {
+             BOOST_ASSERT(spec.cb_write);
+-            spec.cb_write(ev.data.fd, EV_WRITE);
++            spec.cb_write(EV_WRITE);
+         }
+ 
+         else if (ev.events &amp; EPOLLHUP) {
+             BOOST_ASSERT(spec.cb_hup);
+-            spec.cb_hup(ev.data.fd, EV_HUP);
++            spec.cb_hup(EV_HUP);
+         }
+         else if (ev.events &amp; EPOLLERR) {
+             BOOST_ASSERT(spec.cb_err);
+-            spec.cb_err(ev.data.fd, EV_ERR);
++            spec.cb_err(EV_ERR);
+         }
+     }
+ }
+
+Modified: trunk/Scheduler/Scheduler.cci
+==============================================================================
+--- trunk/Scheduler/Scheduler.cci	(original)
++++ trunk/Scheduler/Scheduler.cci	Mon Nov  6 12:53:26 2006
+@@ -34,6 +34,11 @@
+     terminate_ = true;
+ }
+ 
++prefix_ int satcom::lib::retrieve_filehandle(int fd)
++{
++    return fd;
++}
++
+ ///////////////////////////////cci.e///////////////////////////////////////
+ #undef prefix_
+ 
+
+Modified: trunk/Scheduler/Scheduler.cti
+==============================================================================
+--- trunk/Scheduler/Scheduler.cti	(original)
++++ trunk/Scheduler/Scheduler.cti	Mon Nov  6 12:53:26 2006
+@@ -35,14 +35,15 @@
+                                          typename GenericCallback&lt;Handle&gt;::Callback const &amp; cb,
+                                          EventId eventMask)
+ {
+-    add(retrieve_filehandle(handle),boost::bind(cb,handle,_2),eventMask);
++    // retrieve_filehandle is found via ADL
++    do_add(retrieve_filehandle(handle),boost::bind(cb,handle,_1),eventMask);
+ }
+ 
+ template &lt;class Handle&gt;
+ prefix_ void satcom::lib::Scheduler::remove(Handle const &amp; handle, EventId eventMask)
+ {
+     // retrieve_filehandle is found via ADL
+-    remove(retrieve_filehandle(handle),eventMask);
++    do_remove(retrieve_filehandle(handle),eventMask);
+ }
+ 
+ ///////////////////////////////cti.e///////////////////////////////////////
+
+Modified: trunk/Scheduler/Scheduler.hh
+==============================================================================
+--- trunk/Scheduler/Scheduler.hh	(original)
++++ trunk/Scheduler/Scheduler.hh	Mon Nov  6 12:53:26 2006
+@@ -59,7 +59,6 @@
+             typedef boost::function&lt;void (typename boost::call_traits&lt;Handle&gt;::param_type,
+                                           EventId) &gt; Callback;
+         };
+-        typedef GenericCallback&lt;int&gt;::Callback Callback;
+ 
+         ///////////////////////////////////////////////////////////////////////////
+         ///\name Structors and default members
+@@ -76,9 +75,6 @@
+         ///@}
+         ///////////////////////////////////////////////////////////////////////////
+ 
+-        void add(int fd, Callback const &amp; cb, EventId eventMask = EV_ALL);
+-        void remove(int fd, EventId eventMask = EV_ALL);
+-
+         template &lt;class Handle&gt;
+         void add(Handle const &amp; handle, 
+                  typename GenericCallback&lt;Handle&gt;::Callback const &amp; cb,
+@@ -94,14 +90,19 @@
+ 
+     private:
+         Scheduler();
+-
+-        struct EventSpec 
++ 
++	typedef boost::function&lt;void (EventId)&gt; InternalCallback;
++	
++        void do_add(int fd, InternalCallback const &amp; cb, EventId eventMask = EV_ALL);
++        void do_remove(int fd, EventId eventMask = EV_ALL);
++	
++	struct EventSpec 
+         {
+-            Callback cb_read;
+-            Callback cb_prio;
+-            Callback cb_write;
+-            Callback cb_hup;
+-            Callback cb_err;
++            InternalCallback cb_read;
++            InternalCallback cb_prio;
++            InternalCallback cb_write;
++            InternalCallback cb_hup;
++            InternalCallback cb_err;
+ 
+             int epollMask() const;
+         };
+@@ -113,6 +114,8 @@
+         bool terminate_;
+     };
+ 
++    int retrieve_filehandle(int fd);
++
+ }}
+ 
+ ///////////////////////////////hh.e////////////////////////////////////////
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000011.html">[Senf-svn] r150 - in trunk: Utils
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

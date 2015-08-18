@@ -1,0 +1,505 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r1317 - in trunk: Examples/psi2tsModule _templates	doclib include include/senf senf senf/PPI senf/PPI/detail	senf/Packets senf/Packets/80211Bundle	senf/Packets/80221Bundle senf/Packets/DefaultBundle	senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Utils senf/Utils/Console senf/Utils/Daemon	senf/Utils/Logger senf/Utils/Termlib site_scons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1317%20-%20in%20trunk%3A%20Examples/psi2tsModule%20_templates%0A%09doclib%20include%20include/senf%20senf%20senf/PPI%20senf/PPI/detail%0A%09senf/Packets%20senf/Packets/80211Bundle%0A%09senf/Packets/80221Bundle%20senf/Packets/DefaultBundle%0A%09senf/Packets/DefaultBundle/extra_tests%0A%09senf/Packets/MPEGDVBBundle%20senf/Scheduler%20senf/Socket%0A%09senf/Socket/Protocols%20senf/Socket/Protocols/DVB%0A%09senf/Socket/Protocols/INet%20senf/Socket/Protocols/Raw%0A%09senf/Utils%20senf/Utils/Console%20senf/Utils/Daemon%0A%09senf/Utils/Logger%20senf/Utils/Termlib%20site_scons&In-Reply-To=%3C200908211409.n7LE9b4v017882%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001185.html">
+   <LINK REL="Next"  HREF="001174.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r1317 - in trunk: Examples/psi2tsModule _templates	doclib include include/senf senf senf/PPI senf/PPI/detail	senf/Packets senf/Packets/80211Bundle	senf/Packets/80221Bundle senf/Packets/DefaultBundle	senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Utils senf/Utils/Console senf/Utils/Daemon	senf/Utils/Logger senf/Utils/Termlib site_scons</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r1317%20-%20in%20trunk%3A%20Examples/psi2tsModule%20_templates%0A%09doclib%20include%20include/senf%20senf%20senf/PPI%20senf/PPI/detail%0A%09senf/Packets%20senf/Packets/80211Bundle%0A%09senf/Packets/80221Bundle%20senf/Packets/DefaultBundle%0A%09senf/Packets/DefaultBundle/extra_tests%0A%09senf/Packets/MPEGDVBBundle%20senf/Scheduler%20senf/Socket%0A%09senf/Socket/Protocols%20senf/Socket/Protocols/DVB%0A%09senf/Socket/Protocols/INet%20senf/Socket/Protocols/Raw%0A%09senf/Utils%20senf/Utils/Console%20senf/Utils/Daemon%0A%09senf/Utils/Logger%20senf/Utils/Termlib%20site_scons&In-Reply-To=%3C200908211409.n7LE9b4v017882%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r1317 - in trunk: Examples/psi2tsModule _templates	doclib include include/senf senf senf/PPI senf/PPI/detail	senf/Packets senf/Packets/80211Bundle	senf/Packets/80221Bundle senf/Packets/DefaultBundle	senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Utils senf/Utils/Console senf/Utils/Daemon	senf/Utils/Logger senf/Utils/Termlib site_scons">subversion at senf.berlios.de
+       </A><BR>
+    <I>Fri Aug 21 16:09:37 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001185.html">[Senf-svn] r1316 - in trunk: . Examples Examples/MCSniffer	Examples/RateStuffer Examples/Sniffer	Examples/UDPClientServer HowTos HowTos/NewPacket PPI	PPI/detail Packets Packets/80211Bundle Packets/80221Bundle	Packets/DefaultBundle Packets/DefaultBundle/extra_tests	Packets/MPEGDVBBundle Scheduler Socket Socket/Protocols	Socket/Protocols/DVB Socket/Protocols/INet	Socket/Protocols/Raw Socket/Protocols/UN Utils Utils/Console	Utils/Daemon Utils/Logger Utils/Termlib Utils/impl doclib	include/senf senf senf/PPI senf/PPI/detail senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/DefaultBundle senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Socket/Protocols/UN senf/Utils senf/Utils/Console	senf/Utils/Daemon senf/Utils/Logger senf/Utils/Termlib	senf/Utils/impl
+</A></li>
+        <LI>Next message: <A HREF="001174.html">[Senf-svn] r1318 - in trunk/site_scons: .
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1173">[ date ]</a>
+              <a href="thread.html#1173">[ thread ]</a>
+              <a href="subject.html#1173">[ subject ]</a>
+              <a href="author.html#1173">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Fri Aug 21 16:07:47 2009
+New Revision: 1317
+
+Removed:
+   trunk/include/boost
+   trunk/include/senf/Console
+   trunk/include/senf/Console.hh
+   trunk/include/senf/PPI
+   trunk/include/senf/Packets
+   trunk/include/senf/Scheduler
+   trunk/include/senf/Socket
+   trunk/include/senf/Utils
+   trunk/include/senf/config.hh
+   trunk/include/senf/local_config.hh
+   trunk/site_scons/Doxyfile.template
+   trunk/site_scons/SConfig.template
+Modified:
+   trunk/Examples/psi2tsModule/main.test.cc
+   trunk/Examples/psi2tsModule/psi2ts.test.cc
+   trunk/_templates/Example.test.cc
+   trunk/doclib/html-munge.xsl
+   trunk/senf/PPI.hh
+   trunk/senf/PPI/ActiveFeeder.test.cc
+   trunk/senf/PPI/AnnotationRouter.hh
+   trunk/senf/PPI/AnnotationRouter.test.cc
+   trunk/senf/PPI/CloneSource.hh
+   trunk/senf/PPI/CloneSource.test.cc
+   trunk/senf/PPI/Connectors.cc
+   trunk/senf/PPI/Connectors.cci
+   trunk/senf/PPI/Connectors.hh
+   trunk/senf/PPI/Connectors.test.cc
+   trunk/senf/PPI/DebugEvent.test.cc
+   trunk/senf/PPI/DebugModules.cci
+   trunk/senf/PPI/DebugModules.cti
+   trunk/senf/PPI/DebugModules.hh
+   trunk/senf/PPI/DebugModules.test.cc
+   trunk/senf/PPI/DiscardSink.test.cc
+   trunk/senf/PPI/Duplicators.test.cc
+   trunk/senf/PPI/EventManager.cci
+   trunk/senf/PPI/EventManager.hh
+   trunk/senf/PPI/EventManager.test.cc
+   trunk/senf/PPI/Events.cci
+   trunk/senf/PPI/Events.cti
+   trunk/senf/PPI/Events.hh
+   trunk/senf/PPI/Events.test.cc
+   trunk/senf/PPI/IOEvent.cc
+   trunk/senf/PPI/IOEvent.hh
+   trunk/senf/PPI/IOEvent.test.cc
+   trunk/senf/PPI/IdleEvent.cc
+   trunk/senf/PPI/IdleEvent.test.cc
+   trunk/senf/PPI/IntervalTimer.cc
+   trunk/senf/PPI/IntervalTimer.hh
+   trunk/senf/PPI/IntervalTimer.test.cc
+   trunk/senf/PPI/Jack.test.cc
+   trunk/senf/PPI/Joins.test.cc
+   trunk/senf/PPI/Module.hh
+   trunk/senf/PPI/Module.test.cc
+   trunk/senf/PPI/ModuleManager.cc
+   trunk/senf/PPI/ModuleManager.hh
+   trunk/senf/PPI/ModuleManager.test.cc
+   trunk/senf/PPI/MonitorModule.test.cc
+   trunk/senf/PPI/MultiConnectorMixin.hh
+   trunk/senf/PPI/MultiConnectorMixin.test.cc
+   trunk/senf/PPI/PassiveQueue.test.cc
+   trunk/senf/PPI/Queueing.test.cc
+   trunk/senf/PPI/RateAnalyzer.test.cc
+   trunk/senf/PPI/RateFilter.test.cc
+   trunk/senf/PPI/Route.test.cc
+   trunk/senf/PPI/Setup.test.cc
+   trunk/senf/PPI/SocketSink.cc
+   trunk/senf/PPI/SocketSink.cci
+   trunk/senf/PPI/SocketSink.hh
+   trunk/senf/PPI/SocketSink.test.cc
+   trunk/senf/PPI/SocketSource.hh
+   trunk/senf/PPI/SocketSource.test.cc
+   trunk/senf/PPI/ThrottleBarrier.test.cc
+   trunk/senf/PPI/detail/EventBinding.cc
+   trunk/senf/PPI/detail/EventBinding.cci
+   trunk/senf/PPI/detail/EventBinding.cti
+   trunk/senf/PPI/detail/EventBinding.hh
+   trunk/senf/PPI/main.test.cc
+   trunk/senf/Packets.hh
+   trunk/senf/Packets/80211Bundle/RadiotapPacket.cc
+   trunk/senf/Packets/80211Bundle/RadiotapPacket.hh
+   trunk/senf/Packets/80211Bundle/RadiotapPacket.test.cc
+   trunk/senf/Packets/80211Bundle/WLANPacket.cc
+   trunk/senf/Packets/80211Bundle/WLANPacket.hh
+   trunk/senf/Packets/80211Bundle/WLANPacket.test.cc
+   trunk/senf/Packets/80211Bundle/main.test.cc
+   trunk/senf/Packets/80221Bundle/MIHPacket.cc
+   trunk/senf/Packets/80221Bundle/MIHPacket.hh
+   trunk/senf/Packets/80221Bundle/MIHPacket.test.cc
+   trunk/senf/Packets/80221Bundle/TLVPacket.cc
+   trunk/senf/Packets/80221Bundle/TLVPacket.hh
+   trunk/senf/Packets/80221Bundle/TLVPacket.test.cc
+   trunk/senf/Packets/80221Bundle/main.test.cc
+   trunk/senf/Packets/ArrayParser.cti
+   trunk/senf/Packets/ArrayParser.test.cc
+   trunk/senf/Packets/AuxParser.test.cc
+   trunk/senf/Packets/DefaultBundle/EthernetPacket.hh
+   trunk/senf/Packets/DefaultBundle/EthernetPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/ICMPv6Packet.cc
+   trunk/senf/Packets/DefaultBundle/ICMPv6Packet.hh
+   trunk/senf/Packets/DefaultBundle/ICMPv6Packet.test.cc
+   trunk/senf/Packets/DefaultBundle/ICMPv6TypePacket.cc
+   trunk/senf/Packets/DefaultBundle/ICMPv6TypePacket.hh
+   trunk/senf/Packets/DefaultBundle/IPv4Packet.cc
+   trunk/senf/Packets/DefaultBundle/IPv4Packet.hh
+   trunk/senf/Packets/DefaultBundle/IPv4Packet.test.cc
+   trunk/senf/Packets/DefaultBundle/IPv6Extensions.test.cc
+   trunk/senf/Packets/DefaultBundle/IPv6Packet.hh
+   trunk/senf/Packets/DefaultBundle/IPv6Packet.test.cc
+   trunk/senf/Packets/DefaultBundle/LlcSnapPacket.hh
+   trunk/senf/Packets/DefaultBundle/LlcSnapPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/Mldv2Packet.test.cc
+   trunk/senf/Packets/DefaultBundle/RTPPacket.hh
+   trunk/senf/Packets/DefaultBundle/RTPPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/TCPPacket.cc
+   trunk/senf/Packets/DefaultBundle/TCPPacket.hh
+   trunk/senf/Packets/DefaultBundle/TCPPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/UDPPacket.cc
+   trunk/senf/Packets/DefaultBundle/UDPPacket.hh
+   trunk/senf/Packets/DefaultBundle/UDPPacket.test.cc
+   trunk/senf/Packets/DefaultBundle/extra_tests/PacketLink.test.cc
+   trunk/senf/Packets/DefaultBundle/extra_tests/main.test.cc
+   trunk/senf/Packets/DefaultBundle/main.test.cc
+   trunk/senf/Packets/IntParser.test.cc
+   trunk/senf/Packets/ListBParser.test.cc
+   trunk/senf/Packets/ListNParser.ct
+   trunk/senf/Packets/ListNParser.test.cc
+   trunk/senf/Packets/ListParser.ct
+   trunk/senf/Packets/ListParser.cti
+   trunk/senf/Packets/ListParser.test.cc
+   trunk/senf/Packets/MPEGDVBBundle/DTCPPacket.hh
+   trunk/senf/Packets/MPEGDVBBundle/DTCPPacket.test.cc
+   trunk/senf/Packets/MPEGDVBBundle/GREPacket.hh
+   trunk/senf/Packets/MPEGDVBBundle/GREPacket.test.cc
+   trunk/senf/Packets/MPEGDVBBundle/MPESection.cc
+   trunk/senf/Packets/MPEGDVBBundle/MPESection.hh
+   trunk/senf/Packets/MPEGDVBBundle/MPESection.test.cc
+   trunk/senf/Packets/MPEGDVBBundle/SNDUPacket.cc
+   trunk/senf/Packets/MPEGDVBBundle/SNDUPacket.hh
+   trunk/senf/Packets/MPEGDVBBundle/TransportPacket.hh
+   trunk/senf/Packets/MPEGDVBBundle/TransportPacket.test.cc
+   trunk/senf/Packets/MPEGDVBBundle/main.test.cc
+   trunk/senf/Packets/Packet.cci
+   trunk/senf/Packets/Packet.cti
+   trunk/senf/Packets/Packet.hh
+   trunk/senf/Packets/Packet.test.cc
+   trunk/senf/Packets/PacketData.cci
+   trunk/senf/Packets/PacketData.hh
+   trunk/senf/Packets/PacketData.test.cc
+   trunk/senf/Packets/PacketImpl.cci
+   trunk/senf/Packets/PacketImpl.hh
+   trunk/senf/Packets/PacketImpl.test.cc
+   trunk/senf/Packets/PacketInterpreter.cci
+   trunk/senf/Packets/PacketInterpreter.hh
+   trunk/senf/Packets/PacketInterpreter.test.cc
+   trunk/senf/Packets/PacketParser.cti
+   trunk/senf/Packets/PacketParser.hh
+   trunk/senf/Packets/PacketParser.ih
+   trunk/senf/Packets/PacketParser.test.cc
+   trunk/senf/Packets/PacketRegistry.ct
+   trunk/senf/Packets/PacketRegistry.hh
+   trunk/senf/Packets/PacketRegistry.ih
+   trunk/senf/Packets/PacketRegistry.test.cc
+   trunk/senf/Packets/ParseHelpers.test.cc
+   trunk/senf/Packets/SafeIterator.test.cc
+   trunk/senf/Packets/StringParser.test.cc
+   trunk/senf/Packets/VariantParser.cti
+   trunk/senf/Packets/VariantParser.test.cc
+   trunk/senf/Packets/VectorParser.test.cc
+   trunk/senf/Packets/main.test.cc
+   trunk/senf/Scheduler/ClockService.cc
+   trunk/senf/Scheduler/ClockService.cci
+   trunk/senf/Scheduler/ClockService.hh
+   trunk/senf/Scheduler/ClockService.test.cc
+   trunk/senf/Scheduler/EventHook.ih
+   trunk/senf/Scheduler/EventManager.cc
+   trunk/senf/Scheduler/EventManager.hh
+   trunk/senf/Scheduler/EventManager.test.cc
+   trunk/senf/Scheduler/FIFORunner.cc
+   trunk/senf/Scheduler/FIFORunner.cci
+   trunk/senf/Scheduler/FIFORunner.hh
+   trunk/senf/Scheduler/FdEvent.cc
+   trunk/senf/Scheduler/FdEvent.cci
+   trunk/senf/Scheduler/FdEvent.hh
+   trunk/senf/Scheduler/FdEvent.test.cc
+   trunk/senf/Scheduler/FdManager.hh
+   trunk/senf/Scheduler/IdleEvent.ih
+   trunk/senf/Scheduler/IdleEvent.test.cc
+   trunk/senf/Scheduler/Poller.ct
+   trunk/senf/Scheduler/Poller.test.cc
+   trunk/senf/Scheduler/ReadHelper.ct
+   trunk/senf/Scheduler/ReadHelper.cti
+   trunk/senf/Scheduler/ReadHelper.hh
+   trunk/senf/Scheduler/ReadHelper.test.cc
+   trunk/senf/Scheduler/Scheduler.hh
+   trunk/senf/Scheduler/Scheduler.test.cc
+   trunk/senf/Scheduler/SignalEvent.cc
+   trunk/senf/Scheduler/SignalEvent.cci
+   trunk/senf/Scheduler/SignalEvent.ih
+   trunk/senf/Scheduler/SignalEvent.test.cc
+   trunk/senf/Scheduler/TimerEvent.hh
+   trunk/senf/Scheduler/TimerEvent.test.cc
+   trunk/senf/Scheduler/WriteHelper.ct
+   trunk/senf/Scheduler/WriteHelper.cti
+   trunk/senf/Scheduler/WriteHelper.hh
+   trunk/senf/Scheduler/WriteHelper.test.cc
+   trunk/senf/Scheduler/main.test.cc
+   trunk/senf/Socket.hh
+   trunk/senf/Socket/ClientSocketHandle.ct
+   trunk/senf/Socket/ClientSocketHandle.ih
+   trunk/senf/Socket/ClientSocketHandle.test.cc
+   trunk/senf/Socket/CommunicationPolicy.cc
+   trunk/senf/Socket/FileHandle.cc
+   trunk/senf/Socket/FileHandle.cci
+   trunk/senf/Socket/FileHandle.hh
+   trunk/senf/Socket/FileHandle.ih
+   trunk/senf/Socket/FileHandle.test.cc
+   trunk/senf/Socket/NetdeviceController.cc
+   trunk/senf/Socket/NetdeviceController.hh
+   trunk/senf/Socket/NetdeviceController.test.cc
+   trunk/senf/Socket/ProtocolClientSocketHandle.cti
+   trunk/senf/Socket/ProtocolClientSocketHandle.hh
+   trunk/senf/Socket/ProtocolClientSocketHandle.test.cc
+   trunk/senf/Socket/ProtocolServerSocketHandle.cti
+   trunk/senf/Socket/ProtocolServerSocketHandle.hh
+   trunk/senf/Socket/ProtocolServerSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/AddressExceptions.hh
+   trunk/senf/Socket/Protocols/BSDAddressingPolicy.cc
+   trunk/senf/Socket/Protocols/BSDAddressingPolicy.hh
+   trunk/senf/Socket/Protocols/BSDAddressingPolicy.test.cc
+   trunk/senf/Socket/Protocols/BSDSocketAddress.cc
+   trunk/senf/Socket/Protocols/BSDSocketAddress.hh
+   trunk/senf/Socket/Protocols/BSDSocketAddress.test.cc
+   trunk/senf/Socket/Protocols/BSDSocketProtocol.cc
+   trunk/senf/Socket/Protocols/BSDSocketProtocol.hh
+   trunk/senf/Socket/Protocols/DVB.hh
+   trunk/senf/Socket/Protocols/DVB/DVBConfigParser.cc
+   trunk/senf/Socket/Protocols/DVB/DVBDemuxHandles.cc
+   trunk/senf/Socket/Protocols/DVB/DVBDemuxHandles.hh
+   trunk/senf/Socket/Protocols/DVB/DVBDemuxSocketProtocol.cc
+   trunk/senf/Socket/Protocols/DVB/DVBDemuxSocketProtocol.hh
+   trunk/senf/Socket/Protocols/DVB/DVBFrontendHandle.cc
+   trunk/senf/Socket/Protocols/DVB/DVBFrontendHandle.hh
+   trunk/senf/Socket/Protocols/DVB/DVBProtocolWrapper.hh
+   trunk/senf/Socket/Protocols/DVB/DVBSocketController.cc
+   trunk/senf/Socket/Protocols/DVB/DVBSocketController.hh
+   trunk/senf/Socket/Protocols/DVB/main.test.cc
+   trunk/senf/Socket/Protocols/DatagramSocketProtocol.hh
+   trunk/senf/Socket/Protocols/INet.hh
+   trunk/senf/Socket/Protocols/INet/ConnectedRawINetSocketHandle.cc
+   trunk/senf/Socket/Protocols/INet/ConnectedRawINetSocketHandle.hh
+   trunk/senf/Socket/Protocols/INet/ConnectedUDPSocketHandle.cc
+   trunk/senf/Socket/Protocols/INet/ConnectedUDPSocketHandle.hh
+   trunk/senf/Socket/Protocols/INet/INet4Address.hh
+   trunk/senf/Socket/Protocols/INet/INet4Address.test.cc
+   trunk/senf/Socket/Protocols/INet/INet6Address.hh
+   trunk/senf/Socket/Protocols/INet/INet6Address.test.cc
+   trunk/senf/Socket/Protocols/INet/INetAddressing.cc
+   trunk/senf/Socket/Protocols/INet/INetAddressing.hh
+   trunk/senf/Socket/Protocols/INet/INetAddressing.test.cc
+   trunk/senf/Socket/Protocols/INet/INetSocketProtocol.cc
+   trunk/senf/Socket/Protocols/INet/INetSocketProtocol.hh
+   trunk/senf/Socket/Protocols/INet/MulticastSocketProtocol.cc
+   trunk/senf/Socket/Protocols/INet/MulticastSocketProtocol.hh
+   trunk/senf/Socket/Protocols/INet/MulticastSocketProtocol.test.cc
+   trunk/senf/Socket/Protocols/INet/RawINetSocketHandle.cc
+   trunk/senf/Socket/Protocols/INet/RawINetSocketHandle.hh
+   trunk/senf/Socket/Protocols/INet/RawINetSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/INet/RawINetSocketProtocol.cc
+   trunk/senf/Socket/Protocols/INet/RawINetSocketProtocol.hh
+   trunk/senf/Socket/Protocols/INet/TCPSocketHandle.cc
+   trunk/senf/Socket/Protocols/INet/TCPSocketHandle.hh
+   trunk/senf/Socket/Protocols/INet/TCPSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/INet/TCPSocketProtocol.cc
+   trunk/senf/Socket/Protocols/INet/TCPSocketProtocol.hh
+   trunk/senf/Socket/Protocols/INet/UDPSocketHandle.cc
+   trunk/senf/Socket/Protocols/INet/UDPSocketHandle.hh
+   trunk/senf/Socket/Protocols/INet/UDPSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/INet/UDPSocketProtocol.cc
+   trunk/senf/Socket/Protocols/INet/UDPSocketProtocol.hh
+   trunk/senf/Socket/Protocols/INet/main.test.cc
+   trunk/senf/Socket/Protocols/Raw.hh
+   trunk/senf/Socket/Protocols/Raw/EUI64.cti
+   trunk/senf/Socket/Protocols/Raw/EUI64.hh
+   trunk/senf/Socket/Protocols/Raw/EUI64.test.cc
+   trunk/senf/Socket/Protocols/Raw/LLAddressing.cc
+   trunk/senf/Socket/Protocols/Raw/LLAddressing.hh
+   trunk/senf/Socket/Protocols/Raw/LLAddressing.test.cc
+   trunk/senf/Socket/Protocols/Raw/MACAddress.ct
+   trunk/senf/Socket/Protocols/Raw/MACAddress.hh
+   trunk/senf/Socket/Protocols/Raw/MACAddress.test.cc
+   trunk/senf/Socket/Protocols/Raw/PacketSocketHandle.hh
+   trunk/senf/Socket/Protocols/Raw/PacketSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/Raw/ParseString.ct
+   trunk/senf/Socket/Protocols/Raw/TunTapSocketHandle.hh
+   trunk/senf/Socket/Protocols/Raw/TunTapSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/Raw/main.test.cc
+   trunk/senf/Socket/Protocols/UN.hh
+   trunk/senf/Socket/Protocols/UN/ConnectedUNDatagramSocketHandle.cc
+   trunk/senf/Socket/Protocols/UN/ConnectedUNDatagramSocketHandle.hh
+   trunk/senf/Socket/Protocols/UN/UNAddressing.cc
+   trunk/senf/Socket/Protocols/UN/UNAddressing.hh
+   trunk/senf/Socket/Protocols/UN/UNAddressing.test.cc
+   trunk/senf/Socket/Protocols/UN/UNDatagramSocketHandle.cc
+   trunk/senf/Socket/Protocols/UN/UNDatagramSocketHandle.hh
+   trunk/senf/Socket/Protocols/UN/UNDatagramSocketHandle.test.cc
+   trunk/senf/Socket/Protocols/UN/UNSocketProtocol.cc
+   trunk/senf/Socket/Protocols/UN/UNSocketProtocol.hh
+   trunk/senf/Socket/Protocols/UN/UNSocketProtocol.test.cc
+   trunk/senf/Socket/Protocols/UN/main.test.cc
+   trunk/senf/Socket/Protocols/main.test.cc
+   trunk/senf/Socket/ServerSocketHandle.test.cc
+   trunk/senf/Socket/SocketHandle.cc
+   trunk/senf/Socket/SocketHandle.cci
+   trunk/senf/Socket/SocketHandle.ct
+   trunk/senf/Socket/SocketHandle.cti
+   trunk/senf/Socket/SocketHandle.test.cc
+   trunk/senf/Socket/SocketPolicy.ct
+   trunk/senf/Socket/SocketPolicy.ih
+   trunk/senf/Socket/SocketPolicy.test.cc
+   trunk/senf/Socket/SocketProtocol.cci
+   trunk/senf/Socket/SocketProtocol.test.cc
+   trunk/senf/Socket/main.test.cc
+   trunk/senf/Utils/Buffer.hh
+   trunk/senf/Utils/Buffer.test.cc
+   trunk/senf/Utils/Console/Config.cc
+   trunk/senf/Utils/Console/Config.cci
+   trunk/senf/Utils/Console/Config.ih
+   trunk/senf/Utils/Console/Config.test.cc
+   trunk/senf/Utils/Console/ConfigFile.test.cc
+   trunk/senf/Utils/Console/Executor.cc
+   trunk/senf/Utils/Console/Executor.hh
+   trunk/senf/Utils/Console/Executor.test.cc
+   trunk/senf/Utils/Console/LineEditor.cc
+   trunk/senf/Utils/Console/LineEditor.hh
+   trunk/senf/Utils/Console/Node.cc
+   trunk/senf/Utils/Console/Node.cci
+   trunk/senf/Utils/Console/Node.hh
+   trunk/senf/Utils/Console/Node.test.cc
+   trunk/senf/Utils/Console/OverloadedCommand.hh
+   trunk/senf/Utils/Console/OverloadedCommand.test.cc
+   trunk/senf/Utils/Console/Parse.cc
+   trunk/senf/Utils/Console/Parse.cci
+   trunk/senf/Utils/Console/Parse.hh
+   trunk/senf/Utils/Console/Parse.ih
+   trunk/senf/Utils/Console/Parse.test.cc
+   trunk/senf/Utils/Console/ParsedCommand.cti
+   trunk/senf/Utils/Console/ParsedCommand.hh
+   trunk/senf/Utils/Console/ParsedCommand.test.cc
+   trunk/senf/Utils/Console/ProgramOptions.cc
+   trunk/senf/Utils/Console/ProgramOptions.test.cc
+   trunk/senf/Utils/Console/STLSupport.test.cc
+   trunk/senf/Utils/Console/ScopedDirectory.test.cc
+   trunk/senf/Utils/Console/Server.cc
+   trunk/senf/Utils/Console/Server.hh
+   trunk/senf/Utils/Console/Server.test.cc
+   trunk/senf/Utils/Console/Traits.cc
+   trunk/senf/Utils/Console/Traits.cti
+   trunk/senf/Utils/Console/Traits.hh
+   trunk/senf/Utils/Console/Traits.ih
+   trunk/senf/Utils/Console/Traits.test.cc
+   trunk/senf/Utils/Console/UDPServer.cc
+   trunk/senf/Utils/Console/UDPServer.hh
+   trunk/senf/Utils/Console/UDPServer.test.cc
+   trunk/senf/Utils/Console/Variables.test.cc
+   trunk/senf/Utils/Console/main.test.cc
+   trunk/senf/Utils/Daemon.hh
+   trunk/senf/Utils/Daemon/Daemon.cc
+   trunk/senf/Utils/Daemon/Daemon.hh
+   trunk/senf/Utils/Daemon/Daemon.ih
+   trunk/senf/Utils/Daemon/Daemon.test.cc
+   trunk/senf/Utils/Daemon/main.test.cc
+   trunk/senf/Utils/DiscardStream.test.cc
+   trunk/senf/Utils/Exception.cc
+   trunk/senf/Utils/Exception.test.cc
+   trunk/senf/Utils/IpChecksum.test.cc
+   trunk/senf/Utils/IteratorTraits.test.cc
+   trunk/senf/Utils/Logger.hh
+   trunk/senf/Utils/Logger/AreaRegistry.cci
+   trunk/senf/Utils/Logger/AreaRegistry.hh
+   trunk/senf/Utils/Logger/AreaRegistry.test.cc
+   trunk/senf/Utils/Logger/Config.ih
+   trunk/senf/Utils/Logger/Config.test.cc
+   trunk/senf/Utils/Logger/FileTarget.cc
+   trunk/senf/Utils/Logger/FileTarget.test.cc
+   trunk/senf/Utils/Logger/Log.test.cc
+   trunk/senf/Utils/Logger/LogFormat.cc
+   trunk/senf/Utils/Logger/LogFormat.hh
+   trunk/senf/Utils/Logger/Parameters.ih
+   trunk/senf/Utils/Logger/Parameters.test.cc
+   trunk/senf/Utils/Logger/SenfLog.hh
+   trunk/senf/Utils/Logger/StreamRegistry.cci
+   trunk/senf/Utils/Logger/StreamRegistry.hh
+   trunk/senf/Utils/Logger/StreamRegistry.test.cc
+   trunk/senf/Utils/Logger/SyslogTarget.cc
+   trunk/senf/Utils/Logger/SyslogTarget.test.cc
+   trunk/senf/Utils/Logger/SyslogUDPTarget.cc
+   trunk/senf/Utils/Logger/SyslogUDPTarget.cci
+   trunk/senf/Utils/Logger/SyslogUDPTarget.hh
+   trunk/senf/Utils/Logger/SyslogUDPTarget.test.cc
+   trunk/senf/Utils/Logger/Target.cc
+   trunk/senf/Utils/Logger/Target.hh
+   trunk/senf/Utils/Logger/Target.ih
+   trunk/senf/Utils/Logger/Target.test.cc
+   trunk/senf/Utils/Logger/TimeSource.cc
+   trunk/senf/Utils/Logger/TimeSource.hh
+   trunk/senf/Utils/Logger/TimeSource.ih
+   trunk/senf/Utils/Logger/main.test.cc
+   trunk/senf/Utils/Statistics.cc
+   trunk/senf/Utils/Statistics.hh
+   trunk/senf/Utils/StatisticsTargets.cc
+   trunk/senf/Utils/StatisticsTargets.hh
+   trunk/senf/Utils/Tags.test.cc
+   trunk/senf/Utils/Termlib/Telnet.cc
+   trunk/senf/Utils/Termlib/Telnet.test.cc
+   trunk/senf/Utils/Termlib/TelnetTerminal.hh
+   trunk/senf/Utils/Termlib/Terminfo.test.cc
+   trunk/senf/Utils/Termlib/main.test.cc
+   trunk/senf/Utils/Termlib/telnetServer.cc
+   trunk/senf/Utils/TypeIdValue.test.cc
+   trunk/senf/Utils/TypeInfo.test.cc
+   trunk/senf/Utils/hexdump.test.cc
+   trunk/senf/Utils/intrusive_refcount.test.cc
+   trunk/senf/Utils/main.test.cc
+   trunk/senf/Utils/membind.hh
+   trunk/senf/Utils/membind.test.cc
+   trunk/senf/Utils/mpl.hh
+   trunk/senf/Utils/mpl.test.cc
+   trunk/senf/Utils/parameter.test.cc
+   trunk/senf/Utils/pool_alloc_mixin.cti
+   trunk/senf/Utils/pool_alloc_mixin.test.cc
+   trunk/senf/Utils/preprocessor.test.cc
+   trunk/senf/Utils/safe_bool.test.cc
+   trunk/senf/Utils/senfassert.hh
+   trunk/senf/Utils/singleton.test.cc
+   trunk/senf/Utils/type_traits.hh
+   trunk/senf/Utils/type_traits.test.cc
+
+Log:
+Replace all relative includes with abolute ones
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001185.html">[Senf-svn] r1316 - in trunk: . Examples Examples/MCSniffer	Examples/RateStuffer Examples/Sniffer	Examples/UDPClientServer HowTos HowTos/NewPacket PPI	PPI/detail Packets Packets/80211Bundle Packets/80221Bundle	Packets/DefaultBundle Packets/DefaultBundle/extra_tests	Packets/MPEGDVBBundle Scheduler Socket Socket/Protocols	Socket/Protocols/DVB Socket/Protocols/INet	Socket/Protocols/Raw Socket/Protocols/UN Utils Utils/Console	Utils/Daemon Utils/Logger Utils/Termlib Utils/impl doclib	include/senf senf senf/PPI senf/PPI/detail senf/Packets	senf/Packets/80211Bundle senf/Packets/80221Bundle	senf/Packets/DefaultBundle senf/Packets/DefaultBundle/extra_tests	senf/Packets/MPEGDVBBundle senf/Scheduler senf/Socket	senf/Socket/Protocols senf/Socket/Protocols/DVB	senf/Socket/Protocols/INet senf/Socket/Protocols/Raw	senf/Socket/Protocols/UN senf/Utils senf/Utils/Console	senf/Utils/Daemon senf/Utils/Logger senf/Utils/Termlib	senf/Utils/impl
+</A></li>
+	<LI>Next message: <A HREF="001174.html">[Senf-svn] r1318 - in trunk/site_scons: .
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1173">[ date ]</a>
+              <a href="thread.html#1173">[ thread ]</a>
+              <a href="subject.html#1173">[ subject ]</a>
+              <a href="author.html#1173">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

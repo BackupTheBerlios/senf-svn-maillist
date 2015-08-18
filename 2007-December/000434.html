@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r573 - in branches/socket-cleanup/Socket: Protocols	Protocols/DVB Protocols/INet Protocols/Raw Protocols/UN
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-December/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r573%20-%20in%20branches/socket-cleanup/Socket%3A%20Protocols%0A%09Protocols/DVB%20Protocols/INet%20Protocols/Raw%20Protocols/UN&In-Reply-To=%3C200712181115.lBIBFsNg030366%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000433.html">
+   <LINK REL="Next"  HREF="000435.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r573 - in branches/socket-cleanup/Socket: Protocols	Protocols/DVB Protocols/INet Protocols/Raw Protocols/UN</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r573%20-%20in%20branches/socket-cleanup/Socket%3A%20Protocols%0A%09Protocols/DVB%20Protocols/INet%20Protocols/Raw%20Protocols/UN&In-Reply-To=%3C200712181115.lBIBFsNg030366%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r573 - in branches/socket-cleanup/Socket: Protocols	Protocols/DVB Protocols/INet Protocols/Raw Protocols/UN">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Dec 18 12:15:54 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000433.html">[Senf-svn] r572 - trunk/Socket
+</A></li>
+        <LI>Next message: <A HREF="000435.html">[Senf-svn] r574 - trunk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#434">[ date ]</a>
+              <a href="thread.html#434">[ thread ]</a>
+              <a href="subject.html#434">[ subject ]</a>
+              <a href="author.html#434">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Dec 18 12:15:23 2007
+New Revision: 573
+
+Removed:
+   branches/socket-cleanup/Socket/Protocols/UN/UNAddress.cc
+   branches/socket-cleanup/Socket/Protocols/UN/UNAddress.hh
+   branches/socket-cleanup/Socket/Protocols/UN/UNAddress.test.cc
+   branches/socket-cleanup/Socket/Protocols/UN/all_includes.hh
+Modified:
+   branches/socket-cleanup/Socket/FileHandle.cci
+   branches/socket-cleanup/Socket/FileHandle.hh
+   branches/socket-cleanup/Socket/FileHandle.ih
+   branches/socket-cleanup/Socket/Protocols/BSDSocketProtocol.cc
+   branches/socket-cleanup/Socket/Protocols/DVB/DVBDemuxHandles.cc
+   branches/socket-cleanup/Socket/Protocols/DVB/DVBDemuxProtocol.cc
+   branches/socket-cleanup/Socket/Protocols/DVB/DVBFrontendHandle.cc
+   branches/socket-cleanup/Socket/Protocols/INet/ConnectedRawInetSocketHandle.cc
+   branches/socket-cleanup/Socket/Protocols/INet/ConnectedUDPSocketHandle.cc
+   branches/socket-cleanup/Socket/Protocols/INet/INetAddressing.hh
+   branches/socket-cleanup/Socket/Protocols/INet/INetProtocol.cc
+   branches/socket-cleanup/Socket/Protocols/INet/RawInetProtocol.cc
+   branches/socket-cleanup/Socket/Protocols/INet/RawInetSocketHandle.cc
+   branches/socket-cleanup/Socket/Protocols/INet/TCPProtocol.cc
+   branches/socket-cleanup/Socket/Protocols/INet/TCPSocketHandle.cc
+   branches/socket-cleanup/Socket/Protocols/INet/TCPSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/INet/UDPProtocol.cc
+   branches/socket-cleanup/Socket/Protocols/INet/UDPSocketHandle.cc
+   branches/socket-cleanup/Socket/Protocols/Raw/PacketSocketHandle.cc
+   branches/socket-cleanup/Socket/Protocols/Raw/TunTapSocketHandle.cc
+   branches/socket-cleanup/Socket/Protocols/UN/UNAddressing.cc
+   branches/socket-cleanup/Socket/Protocols/UN/UNAddressing.hh
+   branches/socket-cleanup/Socket/Protocols/UN/UNDatagramSocketHandle.cc
+   branches/socket-cleanup/Socket/Protocols/UN/UNDatagramSocketHandle.hh
+   branches/socket-cleanup/Socket/Protocols/UN/UNProtocol.cc
+   branches/socket-cleanup/Socket/SocketHandle.cc
+   branches/socket-cleanup/Socket/SocketHandle.cci
+   branches/socket-cleanup/Socket/SocketHandle.ct
+   branches/socket-cleanup/Socket/SocketHandle.cti
+   branches/socket-cleanup/Socket/SocketHandle.hh
+   branches/socket-cleanup/Socket/SocketHandle.ih
+   branches/socket-cleanup/Socket/SocketPolicy.ct
+   branches/socket-cleanup/Socket/SocketPolicy.hh
+   branches/socket-cleanup/Socket/SocketProtocol.cci
+   branches/socket-cleanup/Socket/SocketProtocol.cti
+   branches/socket-cleanup/Socket/SocketProtocol.hh
+
+Log:
+Socket: Replace 'SocketProtocol::body()' member with 'fh()' and 'fd()' members
+Socket: Rename ConvertibleString to StreamableString and use 'operator&lt;&lt;' instead of 'operator='
+Socket: some minor documentation clarifications
+Socket/Protocols/UN: Removed unneeded UNAddress
+Socket/Protocols/UN: Fixed UNSocketAddress to adhere to the GenericAddressingPolicy requirements
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000433.html">[Senf-svn] r572 - trunk/Socket
+</A></li>
+	<LI>Next message: <A HREF="000435.html">[Senf-svn] r574 - trunk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#434">[ date ]</a>
+              <a href="thread.html#434">[ thread ]</a>
+              <a href="subject.html#434">[ subject ]</a>
+              <a href="author.html#434">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

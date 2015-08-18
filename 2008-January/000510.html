@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r650 - in trunk/Socket: . Protocols/INet Protocols/Raw	Protocols/UN
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r650%20-%20in%20trunk/Socket%3A%20.%20Protocols/INet%20Protocols/Raw%0A%09Protocols/UN&In-Reply-To=%3C200801310816.m0V8GF84008565%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000509.html">
+   <LINK REL="Next"  HREF="000511.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r650 - in trunk/Socket: . Protocols/INet Protocols/Raw	Protocols/UN</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r650%20-%20in%20trunk/Socket%3A%20.%20Protocols/INet%20Protocols/Raw%0A%09Protocols/UN&In-Reply-To=%3C200801310816.m0V8GF84008565%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r650 - in trunk/Socket: . Protocols/INet Protocols/Raw	Protocols/UN">subversion at senf.berlios.de
+       </A><BR>
+    <I>Thu Jan 31 09:16:15 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000509.html">[Senf-svn] r649 - branches/2008-01-TW/PPI
+</A></li>
+        <LI>Next message: <A HREF="000511.html">[Senf-svn] r651 - trunk/Socket
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#510">[ date ]</a>
+              <a href="thread.html#510">[ thread ]</a>
+              <a href="subject.html#510">[ subject ]</a>
+              <a href="author.html#510">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Thu Jan 31 09:16:02 2008
+New Revision: 650
+
+Modified:
+   trunk/Socket/ClientSocketHandle.cti
+   trunk/Socket/ClientSocketHandle.hh
+   trunk/Socket/ClientSocketHandle.test.cc
+   trunk/Socket/ProtocolClientSocketHandle.cti
+   trunk/Socket/ProtocolClientSocketHandle.mpp
+   trunk/Socket/ProtocolServerSocketHandle.cti
+   trunk/Socket/ProtocolServerSocketHandle.mpp
+   trunk/Socket/ProtocolServerSocketHandle.test.cc
+   trunk/Socket/Protocols/DVB/DVBDemuxHandles.cc
+   trunk/Socket/Protocols/DVB/DVBDemuxHandles.hh
+   trunk/Socket/Protocols/DVB/DVBFrontendHandle.cc
+   trunk/Socket/Protocols/DVB/DVBFrontendHandle.hh
+   trunk/Socket/Protocols/INet/ConnectedRawINetSocketHandle.cc
+   trunk/Socket/Protocols/INet/ConnectedRawINetSocketHandle.hh
+   trunk/Socket/Protocols/INet/ConnectedUDPSocketHandle.cc
+   trunk/Socket/Protocols/INet/ConnectedUDPSocketHandle.hh
+   trunk/Socket/Protocols/INet/RawINetSocketHandle.cc
+   trunk/Socket/Protocols/INet/RawINetSocketHandle.hh
+   trunk/Socket/Protocols/INet/TCPSocketHandle.cc
+   trunk/Socket/Protocols/INet/TCPSocketHandle.hh
+   trunk/Socket/Protocols/INet/UDPSocketHandle.cc
+   trunk/Socket/Protocols/INet/UDPSocketHandle.hh
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.cc
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.hh
+   trunk/Socket/Protocols/Raw/TunTapSocketHandle.cc
+   trunk/Socket/Protocols/Raw/TunTapSocketHandle.hh
+   trunk/Socket/Protocols/UN/ConnectedUNDatagramSocketHandle.cc
+   trunk/Socket/Protocols/UN/ConnectedUNDatagramSocketHandle.hh
+   trunk/Socket/Protocols/UN/UNDatagramSocketHandle.cc
+   trunk/Socket/Protocols/UN/UNDatagramSocketHandle.hh
+   trunk/Socket/Protocols/UN/UNDatagramSocketHandle.test.cc
+   trunk/Socket/ServerSocketHandle.cti
+   trunk/Socket/ServerSocketHandle.hh
+   trunk/Socket/ServerSocketHandle.test.cc
+   trunk/Socket/SocketHandle.cc
+   trunk/Socket/SocketHandle.cci
+   trunk/Socket/SocketHandle.ct
+   trunk/Socket/SocketHandle.cti
+   trunk/Socket/SocketHandle.hh
+   trunk/Socket/SocketHandle.ih
+   trunk/Socket/SocketHandle.test.cc
+   trunk/Socket/SocketProtocol.cci
+   trunk/Socket/SocketProtocol.cti
+   trunk/Socket/SocketProtocol.hh
+   trunk/Socket/SocketProtocol.test.hh
+
+Log:
+Socket: Move protocol into the socket body (as private base class) and allow non-const protocol access
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000509.html">[Senf-svn] r649 - branches/2008-01-TW/PPI
+</A></li>
+	<LI>Next message: <A HREF="000511.html">[Senf-svn] r651 - trunk/Socket
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#510">[ date ]</a>
+              <a href="thread.html#510">[ thread ]</a>
+              <a href="subject.html#510">[ subject ]</a>
+              <a href="author.html#510">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>

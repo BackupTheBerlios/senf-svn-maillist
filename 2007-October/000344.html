@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Senf-svn] r483 - in trunk: PPI Packets Packets/DefaultBundle	Packets/MPEGDVBBundle Scheduler Socket Socket/Protocols	Socket/Protocols/DVB Socket/Protocols/Raw Socket/Protocols/UN	Utils Utils/Logger
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/senf-svn/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r483%20-%20in%20trunk%3A%20PPI%20Packets%20Packets/DefaultBundle%0A%09Packets/MPEGDVBBundle%20Scheduler%20Socket%20Socket/Protocols%0A%09Socket/Protocols/DVB%20Socket/Protocols/Raw%20Socket/Protocols/UN%0A%09Utils%20Utils/Logger&In-Reply-To=%3C200710301449.l9UEnK1N022001%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000343.html">
+   <LINK REL="Next"  HREF="000345.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Senf-svn] r483 - in trunk: PPI Packets Packets/DefaultBundle	Packets/MPEGDVBBundle Scheduler Socket Socket/Protocols	Socket/Protocols/DVB Socket/Protocols/Raw Socket/Protocols/UN	Utils Utils/Logger</H1>
+    <B>subversion at senf.berlios.de</B> 
+    <A HREF="mailto:senf-svn%40lists.berlios.de?Subject=Re%3A%20%5BSenf-svn%5D%20r483%20-%20in%20trunk%3A%20PPI%20Packets%20Packets/DefaultBundle%0A%09Packets/MPEGDVBBundle%20Scheduler%20Socket%20Socket/Protocols%0A%09Socket/Protocols/DVB%20Socket/Protocols/Raw%20Socket/Protocols/UN%0A%09Utils%20Utils/Logger&In-Reply-To=%3C200710301449.l9UEnK1N022001%40sheep.berlios.de%3E"
+       TITLE="[Senf-svn] r483 - in trunk: PPI Packets Packets/DefaultBundle	Packets/MPEGDVBBundle Scheduler Socket Socket/Protocols	Socket/Protocols/DVB Socket/Protocols/Raw Socket/Protocols/UN	Utils Utils/Logger">subversion at senf.berlios.de
+       </A><BR>
+    <I>Tue Oct 30 15:49:20 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000343.html">[Senf-svn] r482 - trunk/Utils/Logger
+</A></li>
+        <LI>Next message: <A HREF="000345.html">[Senf-svn] r484 - in trunk: senfscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#344">[ date ]</a>
+              <a href="thread.html#344">[ thread ]</a>
+              <a href="subject.html#344">[ subject ]</a>
+              <a href="author.html#344">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: g0dil
+Date: Tue Oct 30 15:48:42 2007
+New Revision: 483
+
+Added:
+   trunk/Utils/auto_unit_test.hh   (contents, props changed)
+Modified:
+   trunk/PPI/ActiveFeeder.test.cc
+   trunk/PPI/CloneSource.test.cc
+   trunk/PPI/Connectors.test.cc
+   trunk/PPI/DebugEvent.test.cc
+   trunk/PPI/DebugModules.test.cc
+   trunk/PPI/DiscardSink.test.cc
+   trunk/PPI/EventManager.test.cc
+   trunk/PPI/Events.test.cc
+   trunk/PPI/IOEvent.test.cc
+   trunk/PPI/IdleEvent.test.cc
+   trunk/PPI/IntervalTimer.test.cc
+   trunk/PPI/Joins.test.cc
+   trunk/PPI/Module.test.cc
+   trunk/PPI/ModuleManager.test.cc
+   trunk/PPI/PassiveQueue.test.cc
+   trunk/PPI/Queueing.test.cc
+   trunk/PPI/Route.test.cc
+   trunk/PPI/Setup.test.cc
+   trunk/PPI/SocketSink.test.cc
+   trunk/PPI/SocketSource.test.cc
+   trunk/PPI/ThrottleBarrier.test.cc
+   trunk/PPI/main.test.cc
+   trunk/Packets/DefaultBundle/EthernetPacket.test.cc
+   trunk/Packets/DefaultBundle/IpV4Packet.test.cc
+   trunk/Packets/DefaultBundle/IpV6Extensions.test.cc
+   trunk/Packets/DefaultBundle/IpV6Packet.test.cc
+   trunk/Packets/DefaultBundle/UDPPacket.test.cc
+   trunk/Packets/DefaultBundle/main.test.cc
+   trunk/Packets/MPEGDVBBundle/TLVPacket.test.cc
+   trunk/Packets/MPEGDVBBundle/TransportPacket.test.cc
+   trunk/Packets/MPEGDVBBundle/main.test.cc
+   trunk/Packets/Packet.test.cc
+   trunk/Packets/PacketData.test.cc
+   trunk/Packets/PacketImpl.test.cc
+   trunk/Packets/PacketInterpreter.test.cc
+   trunk/Packets/PacketParser.test.cc
+   trunk/Packets/PacketRegistry.test.cc
+   trunk/Packets/ParseArray.test.cc
+   trunk/Packets/ParseHelpers.test.cc
+   trunk/Packets/ParseInt.test.cc
+   trunk/Packets/ParseList.test.cc
+   trunk/Packets/ParseListB.test.cc
+   trunk/Packets/ParseListN.test.cc
+   trunk/Packets/ParseVariant.test.cc
+   trunk/Packets/ParseVec.test.cc
+   trunk/Packets/main.test.cc
+   trunk/Scheduler/ClockService.test.cc
+   trunk/Scheduler/ReadHelper.test.cc
+   trunk/Scheduler/Scheduler.test.cc
+   trunk/Scheduler/WriteHelper.test.cc
+   trunk/Scheduler/main.test.cc
+   trunk/Socket/ClientSocketHandle.test.cc
+   trunk/Socket/FileHandle.test.cc
+   trunk/Socket/ProtocolClientSocketHandle.test.cc
+   trunk/Socket/ProtocolServerSocketHandle.test.cc
+   trunk/Socket/Protocols/DVB/main.test.cc
+   trunk/Socket/Protocols/INet/INet4Address.test.cc
+   trunk/Socket/Protocols/INet/INet6Address.test.cc
+   trunk/Socket/Protocols/INet/INetAddressing.test.cc
+   trunk/Socket/Protocols/INet/TCPSocketHandle.test.cc
+   trunk/Socket/Protocols/INet/UDPSocketHandle.test.cc
+   trunk/Socket/Protocols/INet/main.test.cc
+   trunk/Socket/Protocols/Raw/LLAddressing.test.cc
+   trunk/Socket/Protocols/Raw/MACAddress.test.cc
+   trunk/Socket/Protocols/Raw/PacketSocketHandle.test.cc
+   trunk/Socket/Protocols/Raw/main.test.cc
+   trunk/Socket/Protocols/UN/UNAddress.test.cc
+   trunk/Socket/Protocols/UN/UNAddressing.test.cc
+   trunk/Socket/Protocols/UN/UNDatagramSocketHandle.test.cc
+   trunk/Socket/Protocols/UN/UNProtocol.test.cc
+   trunk/Socket/Protocols/UN/main.test.cc
+   trunk/Socket/Protocols/main.test.cc
+   trunk/Socket/ServerSocketHandle.test.cc
+   trunk/Socket/SocketHandle.test.cc
+   trunk/Socket/SocketPolicy.test.cc
+   trunk/Socket/SocketProtocol.test.cc
+   trunk/Socket/main.test.cc
+   trunk/Utils/Buffer.test.cc
+   trunk/Utils/Exception.test.cc
+   trunk/Utils/IpChecksum.test.cc
+   trunk/Utils/IteratorTraits.test.cc
+   trunk/Utils/Logger/AreaRegistry.test.cc
+   trunk/Utils/Logger/Config.test.cc
+   trunk/Utils/Logger/Log.test.cc
+   trunk/Utils/Logger/Parameters.test.cc
+   trunk/Utils/Logger/StreamRegistry.test.cc
+   trunk/Utils/Logger/Target.test.cc
+   trunk/Utils/Logger/main.test.cc
+   trunk/Utils/SafeBool.test.cc
+   trunk/Utils/TypeIdValue.test.cc
+   trunk/Utils/TypeInfo.test.cc
+   trunk/Utils/hexdump.test.cc
+   trunk/Utils/intrusive_refcount.test.cc
+   trunk/Utils/main.test.cc
+   trunk/Utils/membind.test.cc
+   trunk/Utils/mpl.test.cc
+   trunk/Utils/pool_alloc_mixin.test.cc
+   trunk/Utils/singleton.test.cc
+
+Log:
+Fix boot auto unit tests for Boost V1.34 compatibility
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000343.html">[Senf-svn] r482 - trunk/Utils/Logger
+</A></li>
+	<LI>Next message: <A HREF="000345.html">[Senf-svn] r484 - in trunk: senfscons
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#344">[ date ]</a>
+              <a href="thread.html#344">[ thread ]</a>
+              <a href="subject.html#344">[ subject ]</a>
+              <a href="author.html#344">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/senf-svn">More information about the Senf-svn
+mailing list</a><br>
+</body></html>
